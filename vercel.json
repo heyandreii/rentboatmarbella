@@ -1,0 +1,666 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/Home.dc",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Home.dc.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/actividades-barco-marbella.dc",
+      "destination": "/actividades-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/actividades-barco-marbella.dc.html",
+      "destination": "/actividades-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/activites.dc",
+      "destination": "/activites",
+      "permanent": true
+    },
+    {
+      "source": "/activites.dc.html",
+      "destination": "/activites",
+      "permanent": true
+    },
+    {
+      "source": "/activities.dc",
+      "destination": "/activities",
+      "permanent": true
+    },
+    {
+      "source": "/activities.dc.html",
+      "destination": "/activities",
+      "permanent": true
+    },
+    {
+      "source": "/aktivnosti.dc",
+      "destination": "/aktivnosti",
+      "permanent": true
+    },
+    {
+      "source": "/aktivnosti.dc.html",
+      "destination": "/aktivnosti",
+      "permanent": true
+    },
+    {
+      "source": "/anniversaire-yacht-marbella.dc",
+      "destination": "/anniversaire-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/anniversaire-yacht-marbella.dc.html",
+      "destination": "/anniversaire-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/avistamiento-delfines-marbella.dc",
+      "destination": "/avistamiento-delfines-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/avistamiento-delfines-marbella.dc.html",
+      "destination": "/avistamiento-delfines-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-party-yacht-marbella.dc",
+      "destination": "/bachelor-party-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/bachelor-party-yacht-marbella.dc.html",
+      "destination": "/bachelor-party-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/birthday-boat-marbella.dc",
+      "destination": "/birthday-boat-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/birthday-boat-marbella.dc.html",
+      "destination": "/birthday-boat-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/blog-nautico-marbella.dc",
+      "destination": "/blog-nautico-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/blog-nautico-marbella.dc.html",
+      "destination": "/blog-nautico-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/blog-nautique.dc",
+      "destination": "/blog-nautique",
+      "permanent": true
+    },
+    {
+      "source": "/blog-nautique.dc.html",
+      "destination": "/blog-nautique",
+      "permanent": true
+    },
+    {
+      "source": "/booking.dc",
+      "destination": "/booking",
+      "permanent": true
+    },
+    {
+      "source": "/booking.dc.html",
+      "destination": "/booking",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-events-boat-marbella.dc",
+      "destination": "/corporate-events-boat-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-events-boat-marbella.dc.html",
+      "destination": "/corporate-events-boat-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/cumpleanos-en-barco-marbella.dc",
+      "destination": "/cumpleanos-en-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/cumpleanos-en-barco-marbella.dc.html",
+      "destination": "/cumpleanos-en-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/demande-mariage-yacht-marbella.dc",
+      "destination": "/demande-mariage-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/demande-mariage-yacht-marbella.dc.html",
+      "destination": "/demande-mariage-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/den-rozhdeniya-yakhta-marbella.dc",
+      "destination": "/den-rozhdeniya-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/den-rozhdeniya-yakhta-marbella.dc.html",
+      "destination": "/den-rozhdeniya-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/despedida-soltera-barco-marbella.dc",
+      "destination": "/despedida-soltera-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/despedida-soltera-barco-marbella.dc.html",
+      "destination": "/despedida-soltera-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/despedida-soltero-barco-marbella.dc",
+      "destination": "/despedida-soltero-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/despedida-soltero-barco-marbella.dc.html",
+      "destination": "/despedida-soltero-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/devichnik-yakhta-marbella.dc",
+      "destination": "/devichnik-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/devichnik-yakhta-marbella.dc.html",
+      "destination": "/devichnik-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/dolphin-watching-marbella.dc",
+      "destination": "/dolphin-watching-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/dolphin-watching-marbella.dc.html",
+      "destination": "/dolphin-watching-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/ekskursiya-gibraltar-marbella.dc",
+      "destination": "/ekskursiya-gibraltar-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/ekskursiya-gibraltar-marbella.dc.html",
+      "destination": "/ekskursiya-gibraltar-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/en.dc",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/en.dc.html",
+      "destination": "/en",
+      "permanent": true
+    },
+    {
+      "source": "/evenements-entreprise-bateau-marbella.dc",
+      "destination": "/evenements-entreprise-bateau-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/evenements-entreprise-bateau-marbella.dc.html",
+      "destination": "/evenements-entreprise-bateau-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/eventos-empresa-barco-marbella.dc",
+      "destination": "/eventos-empresa-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/eventos-empresa-barco-marbella.dc.html",
+      "destination": "/eventos-empresa-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/evg-bateau-marbella.dc",
+      "destination": "/evg-bateau-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/evg-bateau-marbella.dc.html",
+      "destination": "/evg-bateau-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/evjf-yacht-marbella.dc",
+      "destination": "/evjf-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/evjf-yacht-marbella.dc.html",
+      "destination": "/evjf-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/excursion-bateau-gibraltar-marbella.dc",
+      "destination": "/excursion-bateau-gibraltar-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/excursion-bateau-gibraltar-marbella.dc.html",
+      "destination": "/excursion-bateau-gibraltar-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/fleet.dc",
+      "destination": "/fleet",
+      "permanent": true
+    },
+    {
+      "source": "/fleet.dc.html",
+      "destination": "/fleet",
+      "permanent": true
+    },
+    {
+      "source": "/flot.dc",
+      "destination": "/flot",
+      "permanent": true
+    },
+    {
+      "source": "/flot.dc.html",
+      "destination": "/flot",
+      "permanent": true
+    },
+    {
+      "source": "/flota-barcos-marbella.dc",
+      "destination": "/flota-barcos-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/flota-barcos-marbella.dc.html",
+      "destination": "/flota-barcos-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/flotte.dc",
+      "destination": "/flotte",
+      "permanent": true
+    },
+    {
+      "source": "/flotte.dc.html",
+      "destination": "/flotte",
+      "permanent": true
+    },
+    {
+      "source": "/fotos-boda-barco-marbella.dc",
+      "destination": "/fotos-boda-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/fotos-boda-barco-marbella.dc.html",
+      "destination": "/fotos-boda-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/fr.dc",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/fr.dc.html",
+      "destination": "/fr",
+      "permanent": true
+    },
+    {
+      "source": "/gibraltar-boat-trip-marbella.dc",
+      "destination": "/gibraltar-boat-trip-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/gibraltar-boat-trip-marbella.dc.html",
+      "destination": "/gibraltar-boat-trip-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/hen-party-yacht-marbella.dc",
+      "destination": "/hen-party-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/hen-party-yacht-marbella.dc.html",
+      "destination": "/hen-party-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/korporativy-yakhta-marbella.dc",
+      "destination": "/korporativy-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/korporativy-yakhta-marbella.dc.html",
+      "destination": "/korporativy-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/malchishnik-yakhta-marbella.dc",
+      "destination": "/malchishnik-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/malchishnik-yakhta-marbella.dc.html",
+      "destination": "/malchishnik-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/morskoy-blog.dc",
+      "destination": "/morskoy-blog",
+      "permanent": true
+    },
+    {
+      "source": "/morskoy-blog.dc.html",
+      "destination": "/morskoy-blog",
+      "permanent": true
+    },
+    {
+      "source": "/nablyudenie-delfinov-marbella.dc",
+      "destination": "/nablyudenie-delfinov-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/nablyudenie-delfinov-marbella.dc.html",
+      "destination": "/nablyudenie-delfinov-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/observation-dauphins-marbella.dc",
+      "destination": "/observation-dauphins-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/observation-dauphins-marbella.dc.html",
+      "destination": "/observation-dauphins-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/pedida-matrimonio-barco-marbella.dc",
+      "destination": "/pedida-matrimonio-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/pedida-matrimonio-barco-marbella.dc.html",
+      "destination": "/pedida-matrimonio-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/photos-mariage-yacht-marbella.dc",
+      "destination": "/photos-mariage-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/photos-mariage-yacht-marbella.dc.html",
+      "destination": "/photos-mariage-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/politica-privacidad.dc",
+      "destination": "/politica-privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/politica-privacidad.dc.html",
+      "destination": "/politica-privacidad",
+      "permanent": true
+    },
+    {
+      "source": "/post-alquilar-barco-marbella-invierno.dc",
+      "destination": "/post/alquilar-barco-marbella-invierno",
+      "permanent": true
+    },
+    {
+      "source": "/post-alquilar-barco-marbella-invierno.dc.html",
+      "destination": "/post/alquilar-barco-marbella-invierno",
+      "permanent": true
+    },
+    {
+      "source": "/post-combien-coute-location-bateau-marbella.dc",
+      "destination": "/post/combien-coute-location-bateau-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/post-combien-coute-location-bateau-marbella.dc.html",
+      "destination": "/post/combien-coute-location-bateau-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/post-cuanto-cuesta-alquilar-barco-marbella.dc",
+      "destination": "/post/cuanto-cuesta-alquilar-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/post-cuanto-cuesta-alquilar-barco-marbella.dc.html",
+      "destination": "/post/cuanto-cuesta-alquilar-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/post-despedida-soltera-barco-consejos.dc",
+      "destination": "/post/despedida-soltera-barco-consejos",
+      "permanent": true
+    },
+    {
+      "source": "/post-despedida-soltera-barco-consejos.dc.html",
+      "destination": "/post/despedida-soltera-barco-consejos",
+      "permanent": true
+    },
+    {
+      "source": "/post-mejores-calas-fondear-marbella.dc",
+      "destination": "/post/mejores-calas-fondear-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/post-mejores-calas-fondear-marbella.dc.html",
+      "destination": "/post/mejores-calas-fondear-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/post-pedida-matrimonio-en-el-mar.dc",
+      "destination": "/post/pedida-matrimonio-en-el-mar",
+      "permanent": true
+    },
+    {
+      "source": "/post-pedida-matrimonio-en-el-mar.dc.html",
+      "destination": "/post/pedida-matrimonio-en-el-mar",
+      "permanent": true
+    },
+    {
+      "source": "/post-skolko-stoit-arenda-yakhty-marbella.dc",
+      "destination": "/post/skolko-stoit-arenda-yakhty-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/post-skolko-stoit-arenda-yakhty-marbella.dc.html",
+      "destination": "/post/skolko-stoit-arenda-yakhty-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/predlozhenie-ruki-yakhta-marbella.dc",
+      "destination": "/predlozhenie-ruki-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/predlozhenie-ruki-yakhta-marbella.dc.html",
+      "destination": "/predlozhenie-ruki-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy.dc",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy.dc.html",
+      "destination": "/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/proposal-yacht-marbella.dc",
+      "destination": "/proposal-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/proposal-yacht-marbella.dc.html",
+      "destination": "/proposal-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/reservar.dc",
+      "destination": "/reservar",
+      "permanent": true
+    },
+    {
+      "source": "/reservar.dc.html",
+      "destination": "/reservar",
+      "permanent": true
+    },
+    {
+      "source": "/reservation.dc",
+      "destination": "/reservation",
+      "permanent": true
+    },
+    {
+      "source": "/reservation.dc.html",
+      "destination": "/reservation",
+      "permanent": true
+    },
+    {
+      "source": "/ru.dc",
+      "destination": "/ru",
+      "permanent": true
+    },
+    {
+      "source": "/ru.dc.html",
+      "destination": "/ru",
+      "permanent": true
+    },
+    {
+      "source": "/ruta-barco-gibraltar-marbella.dc",
+      "destination": "/ruta-barco-gibraltar-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/ruta-barco-gibraltar-marbella.dc.html",
+      "destination": "/ruta-barco-gibraltar-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/sunset-tour-barco-marbella.dc",
+      "destination": "/sunset-tour-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/sunset-tour-barco-marbella.dc.html",
+      "destination": "/sunset-tour-barco-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/sunset-tour-bateau-marbella.dc",
+      "destination": "/sunset-tour-bateau-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/sunset-tour-bateau-marbella.dc.html",
+      "destination": "/sunset-tour-bateau-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/sunset-tour-yacht-marbella.dc",
+      "destination": "/sunset-tour-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/sunset-tour-yacht-marbella.dc.html",
+      "destination": "/sunset-tour-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/sunset-tour-yakhta-marbella.dc",
+      "destination": "/sunset-tour-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/sunset-tour-yakhta-marbella.dc.html",
+      "destination": "/sunset-tour-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/svadebnye-foto-yakhta-marbella.dc",
+      "destination": "/svadebnye-foto-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/svadebnye-foto-yakhta-marbella.dc.html",
+      "destination": "/svadebnye-foto-yakhta-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/wedding-photos-yacht-marbella.dc",
+      "destination": "/wedding-photos-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/wedding-photos-yacht-marbella.dc.html",
+      "destination": "/wedding-photos-yacht-marbella",
+      "permanent": true
+    },
+    {
+      "source": "/yacht-blog.dc",
+      "destination": "/yacht-blog",
+      "permanent": true
+    },
+    {
+      "source": "/yacht-blog.dc.html",
+      "destination": "/yacht-blog",
+      "permanent": true
+    },
+    {
+      "source": "/zabronirovat.dc",
+      "destination": "/zabronirovat",
+      "permanent": true
+    },
+    {
+      "source": "/zabronirovat.dc.html",
+      "destination": "/zabronirovat",
+      "permanent": true
+    },
+    {
+      "source": "/Home.dc",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/Home.dc.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
