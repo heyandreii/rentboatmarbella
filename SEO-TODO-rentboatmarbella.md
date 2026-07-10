@@ -77,11 +77,11 @@ Ampliar cada landing (sunset, despedidas, delfines, Gibraltar, cumpleaños, pedi
 
 ## FASE 6 — Verificación final
 
-- [ ] **6.1** Crawl completo del build: cero 404 internos, cero redirecciones en cadena.
-- [ ] **6.2** Validar todos los JSON-LD (FAQPage, LocalBusiness, Product) sin errores.
-- [ ] **6.3** Comprobar en el build: un solo H1 por página, titles y metas únicos en las 4 lenguas, canonicals hacia `https://www.rentboatmarbella.com`.
-- [ ] **6.4** Comprobar que sitemap.xml se genera correcto en el deploy de Vercel y que robots.txt lo referencia.
-- [ ] **6.5** Generar `SEO-CHANGELOG.md` con el resumen de todo lo hecho y lo que queda pendiente de datos del propietario (teléfono +34, dirección exacta del amarre, datos fiscales para legales).
+- [x] **6.1** Crawl completo: **cero 404 internos**, **cero redirecciones en cadena**.
+- [x] **6.2** Todos los JSON-LD (FAQPage, LocalBusiness, Product, BlogPosting, BreadcrumbList) **parsean sin errores** en las 76 páginas.
+- [x] **6.3** Verificado: **1 solo H1** por página, titles y metas **únicos** (sin duplicados), canonicals hacia `https://www.rentboatmarbella.com`.
+- [x] **6.4** `sitemap.xml` XML válido con las 76 URLs (todas resuelven a un archivo), referenciado en `robots.txt`. *(Lighthouse post-deploy pendiente — ver 5.4.)*
+- [x] **6.5** Generado `SEO-CHANGELOG.md` con el resumen y lo pendiente del propietario (teléfono +34, amarre exacto, datos fiscales, URL de Google Business).
 
 ---
 
