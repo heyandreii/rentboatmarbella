@@ -18,7 +18,7 @@ Resumen de la ejecución del plan de acción SEO (`SEO-TODO-rentboatmarbella.md`
 ### Fase 2 — Quick wins técnicos
 - **LocalBusiness** JSON-LD en las 76 páginas (`additionalType` BoatRental, `areaServed`, `priceRange:"€€€€"`, `sameAs` Instagram, dirección Puerto Banús + geo).
 - **FAQPage** ya presente en las 4 homes; **Product/Offer** en todas las landings.
-- **Páginas legales creadas**: Términos y Condiciones (`/terminos-condiciones`, `/terms-conditions`) y Política de Cookies (`/politica-cookies`, `/cookies-policy`), enlazadas en el footer de los 4 idiomas.
+- **Páginas legales**: Aviso Legal, Política de Privacidad, Términos y Condiciones y Política de Cookies en **los 4 idiomas** (16 páginas), con hreflang recíproco, enlazadas en el footer de cada idioma y en el sitemap. Datos fiscales reales incorporados (ver "Datos de empresa" abajo); sin placeholders.
 - Hueco `TODO: +34` añadido en el footer de todas las páginas.
 - **Formato de cifras** unificado: EN `€1,200`; FR/RU `1 200 €`; ES `1.200€`.
 - Selectores de reserva verificados (ya ordenados 2 h → 4 h → 8 h → a medida).
@@ -48,12 +48,19 @@ Resumen de la ejecución del plan de acción SEO (`SEO-TODO-rentboatmarbella.md`
 
 ---
 
+## Datos de empresa incorporados (julio 2026)
+
+- **Razón social / `legalName`:** Bulgarian Business Management Company EOOD
+- **NIF / `taxID`:** N0396825B
+- **Domicilio social (solo en Aviso Legal):** Complejo Resid. Yuzhen Park, Bl. 123, Pl. 5 – Apto. 18, Distrito de Triaditsa, 1421 Sofía (Bulgaria)
+- **Nombre comercial (`name` en schema):** Rent Boat Marbella · **Amarre / `address`:** Puerto Banús, 29660 Marbella (Málaga)
+- Añadidos `legalName` y `taxID` al schema LocalBusiness de las 86 páginas; nombre comercial intacto; `address` sigue siendo el amarre de Puerto Banús (la dirección de Sofía solo figura en el Aviso Legal).
+
 ## Pendiente de datos del propietario (Claude Code no puede completarlo)
 
-1. **Teléfono +34**: hay un hueco `TODO` en el footer de todas las páginas. Facilitar el número español para mostrarlo junto al +33.
+1. **Teléfono +34**: hay un hueco `TODO` en el footer de todas las páginas (ahora se usa el +33). Facilitar el número español para mostrarlo junto al +33.
 2. **Dirección exacta del amarre**: el schema usa "Puerto Banús, 29660 Marbella". Confirmar pantalán/número de amarre exacto (mejora la SERP local y coincidencia con Google Business).
-3. **Datos fiscales para las páginas legales**: sustituir `[Razón social]` y `[NIF]` en `terminos-condiciones.html`, `terms-conditions.html` y `politica-privacidad.html`.
-4. **Google Business Profile**: añadir su URL al array `sameAs` del LocalBusiness (ahora solo Instagram) y completar/reclamar la ficha.
+3. **Google Business Profile**: añadir su URL al array `sameAs` del LocalBusiness (ahora solo Instagram) y completar/reclamar la ficha.
 
 ## Backlog SEO (mejoras futuras)
 
