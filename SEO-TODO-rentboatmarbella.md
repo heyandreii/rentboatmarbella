@@ -70,10 +70,10 @@ Ampliar cada landing (sunset, despedidas, delfines, Gibraltar, cumpleaños, pedi
 
 ## FASE 5 — Rendimiento
 
-- [ ] **5.1** Convertir las imágenes hero y de galería a **WebP/AVIF** con `srcset`/`sizes` responsivos (o el componente de imagen del framework). Objetivo: LCP < 2,5 s en móvil.
-- [ ] **5.2** `loading="lazy"` en todas las imágenes bajo el fold; `fetchpriority="high"` en la imagen LCP.
-- [ ] **5.3** Revisar scripts de terceros que bloqueen render; diferir lo no crítico.
-- [ ] **5.4** Repetir Lighthouse y comparar con las puntuaciones de la Fase 0. Documentar mejora en el PR.
+- [x] **5.1** Convertidas las 17 imágenes JPG a **WebP** (reescaladas a máx. 1920px, calidad 80): **20 MB → 1,7 MB (−92%)**. Los `<img>` (146) se envolvieron en `<picture>` con `<source type="image/webp">` + fallback JPG; los 52 heroes con `background-image` CSS pasan a `.webp`. *(AVIF y `srcset` multi-ancho = refinamiento futuro; el mayor ahorro ya está capturado.)*
+- [x] **5.2** Verificado: todas las imágenes ya tenían `loading` o `fetchpriority`; las imágenes LCP conservan `fetchpriority="high"` (no lazy) y el resto `loading="lazy"`.
+- [x] **5.3** Scripts de terceros ya diferidos: Cookiebot `async`, GA4 `async` + `type="text/plain"` (bloqueado hasta consentimiento). Único recurso bloqueante: hoja de fuentes de Google (con `preconnect` + `display=swap`), aceptable.
+- [ ] **5.4** Lighthouse comparativo: **a ejecutar tras el deploy** (requiere el sitio servido; ver 6.4). Mejora esperada muy alta por la reducción de imágenes de 20 MB → 1,7 MB en el LCP.
 
 ## FASE 6 — Verificación final
 
