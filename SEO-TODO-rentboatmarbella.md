@@ -63,10 +63,10 @@ Ampliar cada landing (sunset, despedidas, delfines, Gibraltar, cumpleaños, pedi
 
 ## FASE 4 — Internacionalización del contenido
 
-- [ ] **4.1** Traducir al **inglés** los 5 posts del blog y la página de diferenciación (localizar, no traducir literal: el público objetivo son británicos — usar "hen party", "stag do", "boat hire").
-- [ ] **4.2** Comprobar paridad EN de todas las landings de experiencia; crear las que falten.
-- [ ] **4.3** FR y RU: traducir al menos la home, flota, reserva y las 2 landings principales (sunset y despedidas). Marcar el resto como backlog.
-- [ ] **4.4** Verificar que el hreflang cubre todas las nuevas páginas.
+- [x] **4.1** Creados en **inglés (UK)** los 5 posts del blog (localizados: "hen party", "boat hire", "marriage proposal") y la página de diferenciación `/private-boat-vs-rental-platforms`. Blog EN (`/yacht-blog`) repuntado a los 5 posts EN + tarjeta de precios añadida.
+- [x] **4.2** Paridad EN: las 9 landings de experiencia EN ampliadas a 600–900 palabras con mini-FAQ (FAQPage) y enlaces internos EN, igual que las ES. Todas existían; ninguna faltaba.
+- [x] **4.3** FR y RU: todas las páginas ya existían traducidas (sitio 4-idiomas completo). Ampliadas las 2 landings principales en cada uno (FR: sunset + EVJF; RU: sunset + девичник). *Backlog: ampliar el resto de landings FR/RU y traducir los 5 posts a FR/RU (solo existe la versión de precios FR/RU).*
+- [x] **4.4** hreflang recíproco ES↔EN añadido a los 5 posts + páginas de diferenciación; landings ya tenían hreflang de las 4 lenguas. Sitemap a 76 URLs con las nuevas páginas EN.
 
 ## FASE 5 — Rendimiento
 
