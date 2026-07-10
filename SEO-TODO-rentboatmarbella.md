@@ -42,15 +42,15 @@ El índice del blog (`/blog-nautico-marbella`) enlaza a 5 posts bajo `/post/...`
 
 ## FASE 2 — Quick wins técnicos
 
-- [ ] **2.1 Schema FAQPage** en la home: convertir la FAQ ya existente en JSON-LD `FAQPage`. Validar con https://validator.schema.org.
-- [ ] **2.2 Schema LocalBusiness** (subtipo `TouristAttraction` o `BoatRental` vía `additionalType`) en todas las páginas: nombre, URL, teléfono, dirección con el amarre/puerto exacto (**pedir al propietario si no consta en el repo**), `areaServed: Marbella / Puerto Banús`, horario, `priceRange: €€€€`, enlaces `sameAs` a redes sociales y perfil de Google Business.
-- [ ] **2.3 Schema Product/Offer** en las landings de experiencia con nombre, descripción, precio y moneda.
-- [ ] **2.4 Páginas legales:** crear **Términos y Condiciones** y **Política de Cookies** (ahora aparecen en el footer sin enlace). Redactar plantilla estándar adaptada a chárter náutico en España y enlazarlas en el footer en los 4 idiomas. Marcar con `TODO:` los datos legales que deba confirmar el propietario (razón social, NIF, dirección fiscal).
-- [ ] **2.5 Teléfono:** añadir un número español (+34) junto al +33 en header/footer/contacto. Si no existe en el repo, dejar `TODO: confirmar +34 con propietario` y preparar el hueco.
-- [ ] **2.6 Formato de cifras en EN:** unificar todos los precios de la versión inglesa al formato inglés (`€1,200`, `€1,800`, `€3,000`). Revisar FR y RU con el formato correcto de cada locale.
-- [ ] **2.7 Selectores de reserva:** ordenar opciones de forma lógica (personas: 1→máx; duración: 2 h → 4 h → día completo).
-- [ ] **2.8 robots.txt y sitemap.xml:** crear/corregir. El sitemap debe incluir todas las páginas de los 4 idiomas y **ninguna URL rota**; regenerarse en cada build; referenciarse desde robots.txt.
-- [ ] **2.9 hreflang:** implementar etiquetas `hreflang` recíprocas entre ES/EN/FR/RU + `x-default` (ES) en todas las páginas, o vía sitemap si el framework lo facilita.
+- [x] **2.1 Schema FAQPage** — ya presente en las 4 homes (ES/EN/FR/RU). JSON-LD válido (parseado sin errores).
+- [x] **2.2 Schema LocalBusiness** — inyectado/mejorado en **las 69 páginas**: `additionalType` BoatRental, `areaServed` (Marbella / Puerto Banús / Costa del Sol), `priceRange:"€€€€"`, `sameAs` (Instagram), dirección Puerto Banús 29660 + geo. *(Amarre exacto y URL de Google Business = TODO propietario.)*
+- [x] **2.3 Schema Product/Offer** — ya presente en todas las landings de experiencia (nombre, precio, moneda).
+- [x] **2.4 Páginas legales** — creadas **Términos y Condiciones** (`/terminos-condiciones`, `/terms-conditions`) y **Política de Cookies** (`/politica-cookies`, `/cookies-policy`) en ES+EN (patrón bilingüe del sitio) y enlazadas en el footer de los 4 idiomas. Datos fiscales marcados `[Razón social]`/`[NIF]` como TODO propietario.
+- [x] **2.5 Teléfono** — añadido comentario-hueco `TODO: +34` junto al +33 en el footer de las 69 páginas (número real pendiente del propietario).
+- [x] **2.6 Formato de cifras** — EN unificado a `€1,200 / €1,800 / €3,000`; FR y RU a `1 200 € / 1 800 € / 3 000 €`; ES intacto (`1.200€`).
+- [x] **2.7 Selectores de reserva** — verificado: duración ya ordenada 2 h → 4 h → 8 h → a medida en las 4 páginas de reserva; invitados con stepper 1→máx. Sin cambios necesarios.
+- [x] **2.8 robots.txt y sitemap.xml** — robots.txt referencia el sitemap; sitemap actualizado a **69 URLs** (añadidas las 4 legales), **cero URLs rotas**. *(Sitio estático: el sitemap se mantiene como archivo, no hay build.)*
+- [x] **2.9 hreflang** — ya presente y recíproco ES/EN/FR/RU + `x-default` en todas las páginas; las nuevas legales y posts incluyen sus alternates.
 
 ## FASE 3 — Contenido de las landings de experiencia
 
