@@ -97,22 +97,22 @@
     <!-- duration -->
     <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:14px">1 · Choose your duration</div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:34px">
-      <div style="cursor:pointer;border-radius:14px;padding:18px 16px;border:1px solid #ecebe6;background:#fff;transition:all .15s">
+      <div data-dur-pill data-price="1200" style="cursor:pointer;border-radius:14px;padding:18px 16px;border:1px solid #ecebe6;background:#fff;transition:all .15s">
           <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#9aa4a4">2 HOURS</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin:8px 0 2px">€1,200</div>
           <div style="font-size:11.5px;color:#8a949a;line-height:1.4">Cruise & anchor</div>
         </div>
-      <div style="cursor:pointer;border-radius:14px;padding:18px 16px;border:1px solid #ecebe6;background:#fff;transition:all .15s">
+      <div data-dur-pill data-price="1800" style="cursor:pointer;border-radius:14px;padding:18px 16px;border:1px solid #ecebe6;background:#fff;transition:all .15s">
           <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#9aa4a4">4 HOURS</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin:8px 0 2px">€1,800</div>
           <div style="font-size:11.5px;color:#8a949a;line-height:1.4">Extended coast</div>
         </div>
-      <div style="cursor:pointer;border-radius:14px;padding:18px 16px;border:1.5px solid #3F7A72;background:rgba(63,122,114,.06);transition:all .15s">
-          <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#3F7A72">8 HOURS</div>
+      <div data-dur-pill data-price="3000" style="cursor:pointer;border-radius:14px;padding:18px 16px;border:1px solid #ecebe6;background:#fff;transition:all .15s">
+          <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#9aa4a4">8 HOURS</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin:8px 0 2px">€3,000</div>
           <div style="font-size:11.5px;color:#8a949a;line-height:1.4">Full day</div>
         </div>
-      <div style="cursor:pointer;border-radius:14px;padding:18px 16px;border:1px solid #ecebe6;background:#fff;transition:all .15s">
+      <div data-dur-pill data-price="0" style="cursor:pointer;border-radius:14px;padding:18px 16px;border:1px solid #ecebe6;background:#fff;transition:all .15s">
           <div style="font-size:10.5px;font-weight:700;letter-spacing:.08em;color:#9aa4a4">CUSTOM</div>
           <div style="font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:600;margin:8px 0 2px">Quote</div>
           <div style="font-size:11.5px;color:#8a949a;line-height:1.4">Events & weddings</div>
@@ -124,13 +124,13 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:34px">
       <div style="background:#f7f6f2;border-radius:12px;padding:14px 18px">
         <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9aa4a4;margin-bottom:6px">Departure date</div>
-        <input type="date" value="2026-07-11" style="border:none;background:transparent;font-size:15px;font-weight:600;color:#12232B;width:100%;outline:none"/>
+        <input type="date" id="bk-date" value="2026-07-11" style="border:none;background:transparent;font-size:15px;font-weight:600;color:#12232B;width:100%;outline:none"/>
       </div>
       <div style="background:#f7f6f2;border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
-        <div><div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9aa4a4;margin-bottom:6px">Guests</div><div style="font-size:15px;font-weight:600">8 guests</div></div>
+        <div><div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9aa4a4;margin-bottom:6px">Guests</div><div id="bk-guests" style="font-size:15px;font-weight:600">8 guests</div></div>
         <div style="display:flex;gap:8px">
-          <div style="width:32px;height:32px;border-radius:9px;background:#fff;border:1px solid #e0dfd8;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#3F7A72;cursor:pointer;user-select:none">−</div>
-          <div style="width:32px;height:32px;border-radius:9px;background:#fff;border:1px solid #e0dfd8;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#3F7A72;cursor:pointer;user-select:none">+</div>
+          <div style="width:32px;height:32px;border-radius:9px;background:#fff;border:1px solid #e0dfd8;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#3F7A72;cursor:pointer;user-select:none" id="bk-dec">−</div>
+          <div style="width:32px;height:32px;border-radius:9px;background:#fff;border:1px solid #e0dfd8;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:600;color:#3F7A72;cursor:pointer;user-select:none" id="bk-inc">+</div>
         </div>
       </div>
     </div>
@@ -138,19 +138,19 @@
     <!-- extras -->
     <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:14px">3 · Extras (optional)</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:34px">
-      <div style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:16px 18px;border:1px solid #ecebe6;background:#fff">
+      <div data-extra-pill data-price="0" data-request="1" data-checked="0" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:16px 18px;border:1px solid #ecebe6;background:#fff">
           <div><div style="font-size:14px;font-weight:600">Professional photographer / videographer</div><div style="font-size:12px;color:#8a949a">Price on request</div></div>
           <div style="width:22px;height:22px;border-radius:7px;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;background:transparent;border:1.5px solid #d5d4cc"></div>
         </div>
-      <div style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:16px 18px;border:1px solid #ecebe6;background:#fff">
+      <div data-extra-pill data-price="250" data-checked="0" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:16px 18px;border:1px solid #ecebe6;background:#fff">
           <div><div style="font-size:14px;font-weight:600">Jet ski</div><div style="font-size:12px;color:#8a949a">+€250</div></div>
           <div style="width:22px;height:22px;border-radius:7px;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;background:transparent;border:1.5px solid #d5d4cc"></div>
         </div>
-      <div style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:16px 18px;border:1px solid #ecebe6;background:#fff">
+      <div data-extra-pill data-price="180" data-checked="0" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:16px 18px;border:1px solid #ecebe6;background:#fff">
           <div><div style="font-size:14px;font-weight:600">Extended catering</div><div style="font-size:12px;color:#8a949a">+€180</div></div>
           <div style="width:22px;height:22px;border-radius:7px;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;background:transparent;border:1.5px solid #d5d4cc"></div>
         </div>
-      <div style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:16px 18px;border:1px solid #ecebe6;background:#fff">
+      <div data-extra-pill data-price="120" data-checked="0" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-radius:12px;padding:16px 18px;border:1px solid #ecebe6;background:#fff">
           <div><div style="font-size:14px;font-weight:600">Special decoration</div><div style="font-size:12px;color:#8a949a">+€120</div></div>
           <div style="width:22px;height:22px;border-radius:7px;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;background:transparent;border:1.5px solid #d5d4cc"></div>
         </div>
@@ -174,18 +174,18 @@
       <div style="font-size:12.5px;color:#9aa4a4;margin-bottom:18px">Departure from Puerto Banús</div>
 
       <div style="display:flex;flex-direction:column;gap:11px;font-size:13.5px;padding-bottom:16px;border-bottom:1px dashed #e0dfd8">
-        <div style="display:flex;justify-content:space-between"><span style="color:#66737a">8h trip</span><span style="font-weight:600">€3,000</span></div>
+        <div style="display:flex;justify-content:space-between"><span id="bk-sum-dur" style="color:#66737a">8h trip</span><span id="bk-sum-durprice" style="font-weight:600">€3,000</span></div>
         
-        <div style="display:flex;justify-content:space-between"><span style="color:#66737a">Guests</span><span style="font-weight:600">8 pax</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:#66737a">Guests</span><span id="bk-sum-guests" style="font-weight:600">8 pax</span></div>
       </div>
 
       <div style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 4px">
         <span style="font-size:14px;font-weight:600">Estimated total</span>
-        <span style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;color:#3F7A72">€3,000</span>
+        <span id="bk-sum-total" style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;color:#3F7A72">€3,000</span>
       </div>
       <div style="font-size:11.5px;color:#9aa4a4;margin-bottom:18px">Skipper, fuel and equipment included · VAT incl.</div>
 
-      <div style="text-align:center;background:#e8843c;color:#fff;font-size:15px;font-weight:700;padding:15px;border-radius:12px;cursor:pointer">Request booking</div>
+      <div id="bk-submit" style="text-align:center;background:#e8843c;color:#fff;font-size:15px;font-weight:700;padding:15px;border-radius:12px;cursor:pointer">Request booking</div>
       <a href="https://wa.me/33767126360" style="display:block;text-align:center;border:1.5px solid #12232B;color:#12232B;font-size:14px;font-weight:600;padding:13px;border-radius:12px;text-decoration:none;margin-top:10px">WhatsApp us</a>
       <div style="display:flex;align-items:center;gap:7px;justify-content:center;margin-top:16px;font-size:11.5px;color:#3F7A72;font-weight:600">✓ Free cancellation up to 24h before</div>
     </div>
@@ -244,8 +244,8 @@
       <div>
         <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3F7A72;margin-bottom:16px">Contact</div>
         <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:rgba(230,236,238,.7)">
-          <span>+33 7 67 12 63 60</span><!-- TODO: añadir teléfono español +34 junto al +33 (confirmar número con el propietario) -->
-          <span>info@rentboatmarbella.com</span>
+          <a href="tel:+33767126360" style="color:inherit;text-decoration:none">+33 7 67 12 63 60</a><!-- TODO: añadir teléfono español +34 junto al +33 (confirmar número con el propietario) -->
+          <a href="mailto:info@rentboatmarbella.com" style="color:inherit;text-decoration:none">info@rentboatmarbella.com</a>
           <span>Puerto Banús, Marbella</span>
           <span>9:00 – 21:00 · All year round</span>
         </div>
@@ -264,5 +264,69 @@
 <a href="https://wa.me/33767126360" style="position:fixed;right:26px;bottom:26px;z-index:100;width:56px;height:56px;border-radius:50%;background:#25d366;box-shadow:0 10px 26px -6px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;animation:floatpulse 3s ease-in-out infinite;text-decoration:none">
   <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35zM12 21.5c-1.66 0-3.28-.44-4.7-1.28l-.34-.2-3.49.92.93-3.4-.22-.35A9.4 9.4 0 012.5 12 9.5 9.5 0 0112 2.5 9.5 9.5 0 0121.5 12 9.5 9.5 0 0112 21.5z"></path></svg>
 </a>
+<script>
+(function(){
+  var CFG={"min": 1, "max": 11, "guestWord": "guests", "pax": " pax", "consult": "On request", "sep": ",", "pre": "€", "suf": "", "durSum": ["2 hours", "4 hours", "8-hour day", "Custom"], "msg": {"hi": "Hi! I'd like to request a booking of the De Antonio D50:", "dur": "• Duration", "guests": "• Guests", "date": "• Date", "extras": "• Extras", "total": "• Estimated total", "onRequest": "(price on request)", "confirm": "Could you confirm availability?"}};
+  function grp(n,sep){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,sep);}
+  function fmt(n){return CFG.pre+grp(n,CFG.sep)+CFG.suf;}
+  var durPills=[].slice.call(document.querySelectorAll('[data-dur-pill]'));
+  var extraPills=[].slice.call(document.querySelectorAll('[data-extra-pill]'));
+  var guestsEl=document.getElementById('bk-guests');
+  var dec=document.getElementById('bk-dec'),inc=document.getElementById('bk-inc');
+  var dateEl=document.getElementById('bk-date');
+  var sumDur=document.getElementById('bk-sum-dur'),sumDurP=document.getElementById('bk-sum-durprice');
+  var sumGuests=document.getElementById('bk-sum-guests'),sumTotal=document.getElementById('bk-sum-total');
+  var submit=document.getElementById('bk-submit');
+  if(!durPills.length||!submit)return;
+  var DEF_DATE=dateEl?dateEl.getAttribute('value'):'';
+  var state={dur:2,guests:8};
+  function checkedExtras(){return extraPills.filter(function(p){return p.getAttribute('data-checked')==='1';});}
+  function calc(){
+    var dp=parseInt(durPills[state.dur].getAttribute('data-price'),10);
+    var custom=dp===0,t=custom?0:dp;
+    checkedExtras().forEach(function(p){t+=parseInt(p.getAttribute('data-price'),10)||0;});
+    return {t:t,custom:custom,dp:dp};
+  }
+  function paintDur(){
+    durPills.forEach(function(p,i){
+      var sel=i===state.dur;
+      p.style.border=sel?'1.5px solid #3F7A72':'1px solid #ecebe6';
+      p.style.background=sel?'rgba(63,122,114,.06)':'#fff';
+      if(p.children[0])p.children[0].style.color=sel?'#3F7A72':'#9aa4a4';
+    });
+  }
+  function paintExtra(p){
+    var on=p.getAttribute('data-checked')==='1',box=p.children[1];
+    p.style.border=on?'1.5px solid #3F7A72':'1px solid #ecebe6';
+    p.style.background=on?'rgba(63,122,114,.06)':'#fff';
+    if(box){box.style.background=on?'#3F7A72':'transparent';box.style.borderColor=on?'#3F7A72':'#d5d4cc';box.textContent=on?'✓':'';}
+  }
+  function render(){
+    paintDur();
+    var c=calc();
+    if(sumDur)sumDur.textContent=CFG.durSum[state.dur];
+    if(sumDurP)sumDurP.textContent=c.custom?CFG.consult:fmt(c.dp);
+    if(sumGuests)sumGuests.textContent=state.guests+CFG.pax;
+    if(guestsEl)guestsEl.textContent=state.guests+' '+CFG.guestWord;
+    if(sumTotal)sumTotal.textContent=c.custom?CFG.consult:fmt(c.t);
+  }
+  durPills.forEach(function(p,i){p.addEventListener('click',function(){state.dur=i;render();});});
+  extraPills.forEach(function(p){p.setAttribute('data-checked','0');p.addEventListener('click',function(){p.setAttribute('data-checked',p.getAttribute('data-checked')==='1'?'0':'1');paintExtra(p);render();});});
+  if(dec)dec.addEventListener('click',function(){if(state.guests>CFG.min){state.guests--;render();}});
+  if(inc)inc.addEventListener('click',function(){if(state.guests<CFG.max){state.guests++;render();}});
+  submit.addEventListener('click',function(){
+    var c=calc(),L=[CFG.msg.hi];
+    L.push(CFG.msg.dur+': '+CFG.durSum[state.dur]+(c.custom?'':' ('+fmt(c.dp)+')'));
+    L.push(CFG.msg.guests+': '+state.guests);
+    if(dateEl&&dateEl.value&&dateEl.value!==DEF_DATE){var d=dateEl.value.split('-');L.push(CFG.msg.date+': '+d[2]+'/'+d[1]+'/'+d[0]);}
+    var ex=checkedExtras().map(function(p){var lb=p.children[0].children[0].textContent;return p.getAttribute('data-request')==='1'?lb+' '+CFG.msg.onRequest:lb;});
+    if(ex.length)L.push(CFG.msg.extras+': '+ex.join(', '));
+    L.push(CFG.msg.total+': '+(c.custom?CFG.consult:fmt(c.t)));
+    L.push(CFG.msg.confirm);
+    window.open('https://wa.me/33767126360?text='+encodeURIComponent(L.join('\n')),'_blank');
+  });
+  render();
+})();
+</script>
 </body>
 </html>
