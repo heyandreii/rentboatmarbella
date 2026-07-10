@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
 
+# Motores de IA / LLMs — rastreo e indexación permitidos explícitamente
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.rentboatmarbella.com/sitemap.xml
