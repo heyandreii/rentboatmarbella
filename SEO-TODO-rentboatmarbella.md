@@ -56,10 +56,10 @@ El índice del blog (`/blog-nautico-marbella`) enlaza a 5 posts bajo `/post/...`
 
 Ampliar cada landing (sunset, despedidas, delfines, Gibraltar, cumpleaños, pedidas, eventos de empresa) de ~250 a **600–900 palabras**, manteniendo el diseño actual:
 
-- [ ] **3.1** Estructura por landing: intro con keyword en las primeras 100 palabras → itinerario/qué incluye la experiencia → qué se ve/ruta → para quién es ideal → mini-FAQ propia (3–4 preguntas, con schema FAQPage) → CTA.
-- [ ] **3.2** Enlazado interno contextual: cada landing enlaza a 2–3 páginas relacionadas (otras experiencias, posts del blog, flota) con anchor text descriptivo. Ninguna página del sitio debe quedar huérfana.
-- [ ] **3.3** H1 de la home: cambiar a un patrón tipo `Alquiler de barco privado en Marbella — De Antonio D50` (categoría primero, modelo después). Adaptar en los 4 idiomas.
-- [ ] **3.4** Página nueva de diferenciación: `Barco privado vs. plataformas de alquiler` — por qué reservar directo un chárter 100% privado (nunca compartido, patrón multilingüe, todo incluido, reembolso por mala mar) frente a marketplaces. Tono comparativo honesto, sin nombrar marcas de forma negativa.
+- [x] **3.1** Ampliadas a 600–900 palabras las **9 landings de experiencia ES** (sunset, despedida soltera, despedida soltero, delfines, Gibraltar, cumpleaños, pedida, eventos de empresa, fotos de boda): intro con keyword en primeras 100 palabras → qué incluye → ruta/qué se ve → para quién → mini-FAQ (3–4 preguntas con **FAQPage** schema) → CTA. *(Paridad EN/FR/RU = Fase 4.)*
+- [x] **3.2** Enlazado interno contextual añadido en cada landing (2–3 a experiencias/posts + reserva). Verificado con crawl: **cero páginas huérfanas** y cero 404 internos.
+- [x] **3.3** H1 de la home cambiado a `Alquiler de barco privado en Marbella — De Antonio D50` (categoría→modelo) en los 4 idiomas (ES/EN/FR/RU), manteniendo el estilo y el resaltado teal del modelo.
+- [x] **3.4** Creada la página de diferenciación `/barco-privado-vs-plataformas` (ES, ~830 palabras, tono comparativo honesto con tabla) + enlazada en el footer de las 25 páginas ES y añadida al sitemap. *(Versión EN = Fase 4.1.)*
 
 ## FASE 4 — Internacionalización del contenido
 
