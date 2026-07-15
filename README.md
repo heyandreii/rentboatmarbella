@@ -45,3 +45,16 @@ y **falla con exit 1 si alguna no responde 200**. Si falla, **no hagas push**.
 scripts/check-links.sh                 # 0 fallos esperados
 curl -sI https://www.rentboatmarbella.com/robots.txt | head -1
 ```
+
+## Reglas para futuras sesiones
+
+### Regla anti-invención de datos comerciales
+
+**Cualquier dato comercial en contenido nuevo (precios, duraciones, capacidades, extras, qué incluye una tarifa) debe existir previamente en la home o el formulario de reserva. Si no existe, marcarlo como `[CONFIRMAR CON PROPIETARIO]` y no publicar hasta confirmación. Nunca completar con cifras plausibles inventadas.**
+
+Referencia de datos confirmados a día de hoy (fuente: home + formulario `/reservar`):
+
+- **Duraciones y tarifas:** 2 h → 1.200 € · 4 h → 1.800 € · 8 h (día completo) → 3.000 €. *(No existe tarifa de 6 h ni de 2.400 €.)*
+- **Capacidad:** hasta **10** personas (por barco, no por persona).
+- **Incluido:** patrón, combustible de la ruta habitual e IVA.
+- Formato de cifras por idioma: ES `1.200€` · EN `€1,200` · FR/RU `1 200 €`.
