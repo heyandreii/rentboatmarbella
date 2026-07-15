@@ -36,15 +36,23 @@ ts="$(date +%s)"
 while IFS= read -r path; do
   [ -z "$path" ] && continue
   total=$((total + 1))
-  # cache-buster único por URL -> Vercel lo trata como URL nueva -> cache MISS
-  url="$BASE$path?cb=${ts}-${total}-${RANDOM}"
-  headers="$(curl -sIL --max-time 25 "$url")"
-  code="$(printf '%s' "$headers" | awk 'toupper($1) ~ /^HTTP/ {c=$2} END{print c}')"
-  vcache="$(printf '%s' "$headers" | awk 'tolower($1) ~ /^x-vercel-cache:/ {v=$2} END{print v}' | tr -d '\r')"
+  # Reintentos: evita falsos positivos por timeouts transitorios (p. ej. cache
+  # MISS lento justo tras un redeploy). Solo se considera FAIL si tras 3 intentos
+  # no se obtiene 200.
+  code=""; vcache=""
+  for attempt in 1 2 3; do
+    # cache-buster único por intento -> Vercel lo trata como URL nueva
+    url="$BASE$path?cb=${ts}-${total}-${attempt}-${RANDOM}"
+    headers="$(curl -sIL --max-time 40 --retry 2 --retry-delay 1 "$url")"
+    code="$(printf '%s' "$headers" | awk 'toupper($1) ~ /^HTTP/ {c=$2} END{print c}')"
+    vcache="$(printf '%s' "$headers" | awk 'tolower($1) ~ /^x-vercel-cache:/ {v=$2} END{print v}' | tr -d '\r')"
+    [ "$code" = "200" ] && break
+    sleep 1
+  done
   if [ "$code" = "200" ]; then
     printf 'ok    %s  x-vercel-cache=%-6s  %s%s\n' "$code" "${vcache:-n/a}" "$BASE" "$path"
   else
-    printf 'FAIL  %s  x-vercel-cache=%-6s  %s%s\n' "$code" "${vcache:-n/a}" "$BASE" "$path"
+    printf 'FAIL  %s  x-vercel-cache=%-6s  %s%s\n' "${code:-timeout}" "${vcache:-n/a}" "$BASE" "$path"
     fail=$((fail + 1))
   fi
 done <<< "$paths"
