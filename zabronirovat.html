@@ -268,7 +268,7 @@
 </a>
 <script>
 (function(){
-  var CFG={"min": 1, "max": 11, "guestWord": "чел.", "pax": " чел.", "consult": "По запросу", "sep": " ", "pre": "", "suf": " €", "durSum": ["2 часа", "4 часа", "День 8ч", "Индивидуально"], "msg": {"hi": "Здравствуйте! Хочу оставить заявку на аренду De Antonio D50:", "dur": "• Длительность", "guests": "• Гости", "date": "• Дата", "extras": "• Экстры", "total": "• Итого ориентировочно", "onRequest": "(цена по запросу)", "confirm": "Подтвердите, пожалуйста, доступность."}};
+  var CFG={"min": 1, "max": 10, "guestWord": "чел.","guestWord1": "чел.", "pax": " чел.", "consult": "По запросу", "sep": " ", "pre": "", "suf": " €", "durSum": ["2 часа", "4 часа", "День 8ч", "Индивидуально"], "msg": {"hi": "Здравствуйте! Хочу оставить заявку на аренду De Antonio D50:", "dur": "• Длительность", "guests": "• Гости", "date": "• Дата", "extras": "• Экстры", "total": "• Итого ориентировочно", "onRequest": "(цена по запросу)", "confirm": "Подтвердите, пожалуйста, доступность."}};
   function grp(n,sep){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,sep);}
   function fmt(n){return CFG.pre+grp(n,CFG.sep)+CFG.suf;}
   var durPills=[].slice.call(document.querySelectorAll('[data-dur-pill]'));
@@ -309,7 +309,7 @@
     if(sumDur)sumDur.textContent=CFG.durSum[state.dur];
     if(sumDurP)sumDurP.textContent=c.custom?CFG.consult:fmt(c.dp);
     if(sumGuests)sumGuests.textContent=state.guests+CFG.pax;
-    if(guestsEl)guestsEl.textContent=state.guests+' '+CFG.guestWord;
+    if(guestsEl)guestsEl.textContent=state.guests+' '+(state.guests===1?CFG.guestWord1:CFG.guestWord);
     if(sumTotal)sumTotal.textContent=c.custom?CFG.consult:fmt(c.t);
   }
   durPills.forEach(function(p,i){p.addEventListener('click',function(){state.dur=i;render();});});
