@@ -64,8 +64,8 @@ Resumen de la ejecución del plan de acción SEO (`SEO-TODO-rentboatmarbella.md`
 
 ## Backlog SEO (mejoras futuras)
 
-- Traducir los 5 posts del blog a **FR y RU** (por ahora solo existe la versión de precios en FR/RU).
-- Ampliar el resto de landings **FR/RU** a 600–900 palabras (hechas sunset + despedida en cada idioma).
+- **[PRIORITARIO] Traducir a FR y RU los 4 posts del blog que hoy solo existen en ES:** `mejores-calas-fondear-marbella`, `alquilar-barco-marbella-invierno`, `despedida-soltera-barco-consejos` y `pedida-matrimonio-en-el-mar`. **Máxima prioridad: "mejores calas"** (es la pieza pilar). Mientras no existan, los índices `/blog-nautique` (FR) y `/morskoy-blog` (RU) solo muestran su post de precios propio (se eliminaron las cards que enlazaban a los posts ES para no mezclar idiomas). Al traducirlos, volver a añadir sus cards a los índices FR/RU.
+- ~~Ampliar el resto de landings FR/RU a 600–900 palabras~~ ✅ **hecho** (las 14 landings FR/RU ampliadas).
 - **AVIF** y `srcset`/`sizes` multi-ancho (la conversión a WebP ya captura el mayor ahorro).
 - Ejecutar **Lighthouse** tras el deploy en Vercel y comparar (baseline no capturada por falta de entorno servido; mejora esperada alta por la reducción de imágenes).
 
