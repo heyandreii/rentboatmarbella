@@ -268,7 +268,7 @@
 </a>
 <script>
 (function(){
-  var CFG={"min": 1, "max": 11, "guestWord": "personnes","guestWord1": "personne", "pax": " pers.", "consult": "Sur devis", "sep": " ", "pre": "", "suf": " €", "durSum": ["2 heures", "4 heures", "Journée 8h", "Sur mesure"], "msg": {"hi": "Bonjour ! Je souhaite demander une réservation du De Antonio D50 :", "dur": "• Durée", "guests": "• Personnes", "date": "• Date", "extras": "• Extras", "total": "• Total estimé", "onRequest": "(prix sur demande)", "confirm": "Pouvez-vous confirmer la disponibilité ?"}};
+  var CFG={"min": 1, "max": 10, "guestWord": "personnes","guestWord1": "personne", "pax": " pers.", "consult": "Sur devis", "sep": " ", "pre": "", "suf": " €", "durSum": ["2 heures", "4 heures", "Journée 8h", "Sur mesure"], "msg": {"hi": "Bonjour ! Je souhaite demander une réservation du De Antonio D50 :", "dur": "• Durée", "guests": "• Personnes", "date": "• Date", "extras": "• Extras", "total": "• Total estimé", "onRequest": "(prix sur demande)", "confirm": "Pouvez-vous confirmer la disponibilité ?"}};
   function grp(n,sep){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,sep);}
   function fmt(n){return CFG.pre+grp(n,CFG.sep)+CFG.suf;}
   var durPills=[].slice.call(document.querySelectorAll('[data-dur-pill]'));
