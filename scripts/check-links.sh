@@ -16,15 +16,33 @@
 # invisible para el usuario en el blog y casi huérfano para Google. Eso es lo
 # que detecta la fase 1.
 #
+# Un 200 solo cuenta si la URL final (tras redirecciones) sigue en el MISMO host
+# que BASE. Sin esta comprobación, un Preview con Deployment Protection redirige
+# todo a vercel.com/login —que responde 200— y el script daba verde incluso para
+# URLs inexistentes.
+#
 # Uso:
 #   scripts/check-links.sh                        # producción
 #   scripts/check-links.sh http://127.0.0.1:8000  # servidor local
+#   scripts/check-links.sh https://<preview>.vercel.app   # Preview de un PR
+#
+# Preview protegido por SSO: exporta el token de "Protection Bypass for
+# Automation" (Vercel → Project → Settings → Deployment Protection) y el script
+# lo enviará como cabecera. NO lo escribas en este fichero ni lo commitees:
+#   VERCEL_BYPASS_TOKEN=xxxxx scripts/check-links.sh https://<preview>.vercel.app
 #
 set -uo pipefail
 
 BASE="${1:-https://www.rentboatmarbella.com}"
 BASE="${BASE%/}"
+BASE_HOST="$(printf '%s' "$BASE" | sed -E 's#^[a-zA-Z]+://([^/]+).*#\1#')"
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+
+CURL_OPTS=(-sIL --max-time 40 --retry 2 --retry-delay 1)
+if [ -n "${VERCEL_BYPASS_TOKEN:-}" ]; then
+  CURL_OPTS+=(-H "x-vercel-protection-bypass: ${VERCEL_BYPASS_TOKEN}")
+  echo "· Usando x-vercel-protection-bypass (Preview protegido)."
+fi
 
 INDEXES=(blog-nautico-marbella.html yacht-blog.html blog-nautique.html morskoy-blog.html)
 
@@ -108,18 +126,25 @@ while IFS= read -r path; do
   # Reintentos: evita falsos positivos por timeouts transitorios (p. ej. cache
   # MISS lento justo tras un redeploy). Solo se considera FAIL si tras 3 intentos
   # no se obtiene 200.
-  code=""; vcache=""
+  code=""; vcache=""; final_host=""
   for attempt in 1 2 3; do
     # cache-buster único por intento -> Vercel lo trata como URL nueva
     url="$BASE$path?cb=${ts}-${total}-${attempt}-${RANDOM}"
-    headers="$(curl -sIL --max-time 40 --retry 2 --retry-delay 1 "$url")"
-    code="$(printf '%s' "$headers" | awk 'toupper($1) ~ /^HTTP/ {c=$2} END{print c}')"
-    vcache="$(printf '%s' "$headers" | awk 'tolower($1) ~ /^x-vercel-cache:/ {v=$2} END{print v}' | tr -d '\r')"
-    [ "$code" = "200" ] && break
+    out="$(curl "${CURL_OPTS[@]}" -w '\n__FINAL__ %{url_effective}\n' "$url")"
+    code="$(printf '%s' "$out" | awk 'toupper($1) ~ /^HTTP/ {c=$2} END{print c}')"
+    vcache="$(printf '%s' "$out" | awk 'tolower($1) ~ /^x-vercel-cache:/ {v=$2} END{print v}' | tr -d '\r')"
+    final_url="$(printf '%s' "$out" | awk '$1=="__FINAL__" {u=$2} END{print u}')"
+    final_host="$(printf '%s' "$final_url" | sed -E 's#^[a-zA-Z]+://([^/]+).*#\1#')"
+    # Un 200 en otro host (p. ej. vercel.com/login de un Preview protegido) NO
+    # es un éxito: significa que nunca llegamos a servir la página pedida.
+    [ "$code" = "200" ] && [ "$final_host" = "$BASE_HOST" ] && break
     sleep 1
   done
-  if [ "$code" = "200" ]; then
+  if [ "$code" = "200" ] && [ "$final_host" = "$BASE_HOST" ]; then
     printf 'ok    %s  x-vercel-cache=%-6s  %s%s\n' "$code" "${vcache:-n/a}" "$BASE" "$path"
+  elif [ "$code" = "200" ]; then
+    printf 'FAIL  %s  redirige fuera de %s -> %s  %s%s\n' "$code" "$BASE_HOST" "${final_host:-?}" "$BASE" "$path"
+    fail=$((fail + 1))
   else
     printf 'FAIL  %s  x-vercel-cache=%-6s  %s%s\n' "${code:-timeout}" "${vcache:-n/a}" "$BASE" "$path"
     fail=$((fail + 1))
@@ -131,6 +156,8 @@ echo "Comprobadas: $total · Fallos: $fail · Base: $BASE (con cache-buster)"
 echo "Posts del sitemap: $orphan_total · Huérfanos: $orphan_fail"
 if [ "$fail" -ne 0 ]; then
   echo "❌ Hay URLs enlazadas desde el blog que NO responden 200. NO hacer push a main."
+  echo "   Si los fallos dicen 'redirige fuera de <host>': el destino está protegido"
+  echo "   (Deployment Protection). Relanza con VERCEL_BYPASS_TOKEN=... — ver cabecera."
 fi
 if [ "$orphan_fail" -ne 0 ]; then
   echo "❌ Hay posts en el sitemap sin card en su índice de blog. NO hacer push a main."
