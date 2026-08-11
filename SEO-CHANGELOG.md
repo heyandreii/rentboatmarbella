@@ -147,3 +147,37 @@ El script pasa ahora a tener dos fases:
 2. **Fase 2 (red)** — la comprobación de 200 con cache-buster que ya existía.
 
 Falla (exit 1) si falla cualquiera de las dos. Estado actual en main: **87 URLs, 0 fallos · 18 posts del sitemap, 0 huérfanos.**
+
+---
+
+## Auditoría externa — correcciones (agosto 2026)
+
+Cinco hallazgos de una auditoría externa, verificados uno a uno contra el repo antes de corregir.
+
+### 1. Ficha técnica: motorización truncada
+La tarjeta de motores de la ficha de flota mostraba `2× M` (campo cortado) en los **4 idiomas**. Sustituida por la motorización real, con el formato de cifras de cada locale:
+
+| Idioma | Valor | Etiqueta |
+|---|---|---|
+| ES | `1.200 CV` | Motores · 2× Mercury V12 600 CV |
+| EN | `1,200 hp` | Engines · 2× Mercury V12 600 hp |
+| FR | `1 200 ch` | Moteurs · 2× Mercury V12 600 ch |
+| RU | `1 200 л.с.` | Двигатели · 2× Mercury V12 600 л.с. |
+
+La potencia se añade también al `Product` de cada ficha vía `additionalProperty` (`PropertyValue`), y el dato entra en la **tabla de datos confirmados del README** junto a tarifas y capacidad (regla anti-invención).
+
+### 2. Residuos de "12" (capacidad antigua)
+Grep global de `12 guests` / `12 invitados` / `12 человек` / `12 personnes` / `12 pax` (+ variantes en letra y regex de proximidad) sobre las 100 páginas: **2 ocurrencias reales**, ambas en `sunset-tour-yacht-marbella.html` (texto visible + `FAQPage`). Corregidas a **10**. ES/FR/RU ya decían 10. El resto de resultados que Google pudiera mostrar con "12" es caché del sitio anterior.
+
+### 3. Organization + WebSite en las 4 homes
+`WebSite` ya existía. Añadido **`Organization`** (`@id` `…/#organization`, `name`, `legalName` "Bulgarian Business Management Company EOOD", `url`, `logo` 512×512, `sameAs` Instagram) y enlazado desde `WebSite` con `publisher`. El icono de marca vivía solo en `brand-assets/` (ignorado por git → 404 en producción); se publica como `img/logo-icon-512.png`.
+
+### 4. Ficha de flota ampliada (4 idiomas)
+Nueva sección de ~330–410 palabras por idioma reforzando el ángulo **privacidad + lugar** (*yate privado en Puerto Banús* / *private yacht charter Puerto Banús*), con el D50 como producto que lo hace creíble: specs completas (15 m, 10 pax, 2× Mercury V12 600 CV, 2026), qué lo diferencia de un alquiler típico y por qué un solo barco premium en vez de una flota. Sin perseguir la keyword del modelo. Datos comerciales exclusivamente de la tabla confirmada.
+
+### 5. Footer: "FB" sin enlace
+El cuadro `FB` del footer era texto plano sin `href` (no hay página de Facebook activa). **Eliminado de las 100 páginas**; queda solo el icono de Instagram enlazado.
+
+### Verificación
+- `scripts/check-links.sh` contra producción: **95 URLs, 0 fallos · 26 posts del sitemap, 0 huérfanos**.
+- JSON-LD: **332 bloques en 100 páginas · 0 errores**, validados offline contra el vocabulario oficial de schema.org (`schemaorg-current-https.jsonld`): todo `@type` existe, toda propiedad existe y es aplicable a su tipo siguiendo `domainIncludes` + `rdfs:subClassOf`. Se validó además una muestra por `validator.schema.org` (0 errores, 0 warnings) hasta agotar su límite de peticiones.
