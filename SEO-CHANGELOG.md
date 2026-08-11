@@ -83,8 +83,11 @@ H2/H3, los CTAs y el JSON-LD del original ES.
   Sin tarifa de 6 h ni 2 400 €.
 - **Índices:** recuperadas las cards en `/blog-nautique` y `/morskoy-blog` (grid de 4, cada uno en su idioma).
 - **hreflang:** los 4 grupos pasan de 3 a 5 alternates (`es`/`en`/`fr`/`ru`/`x-default`→ES) en las 16 páginas.
-- **Sitemap:** +8 URLs (94 en total). Nav/footer/breadcrumb 100 % en el idioma de la página; logo y
-  breadcrumb «Accueil»/«Главная» apuntan a `/fr` y `/ru` (no a la home ES).
+- **Sitemap:** +8 URLs (100 en total, sumando las 6 del Paquete A). Nav/footer/breadcrumb 100 % en el
+  idioma de la página; logo y breadcrumb «Accueil»/«Главная» apuntan a `/fr` y `/ru` (no a la home ES).
+- **Además:** logo, breadcrumb visible y `BreadcrumbList` de los 3 posts de precios EN/FR/RU
+  remapeados a `/en`, `/fr` y `/ru` (resto del bug de plantilla de `bb19659`), y `check-links.sh`
+  endurecido para que un 200 tras redirigir a otro host (Preview con SSO) cuente como fallo.
 
 ## Backlog SEO (mejoras futuras)
 
