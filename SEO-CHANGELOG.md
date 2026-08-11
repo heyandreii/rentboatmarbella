@@ -76,3 +76,34 @@ Resumen de la ejecución del plan de acción SEO (`SEO-TODO-rentboatmarbella.md`
 - Verificar propiedad en Google Search Console y enviar el sitemap.
 - Alta en directorios náuticos/turismo Costa del Sol; conserjerías de hoteles de la Milla de Oro.
 - Vigilar la confusión de marca con *rentalboatmarbella.com* (competidor de nombre casi idéntico).
+
+---
+
+## Paquete A — Contenido nuevo basado en datos de Search Console (agosto 2026)
+
+### Posts nuevos (6)
+Mismo patrón que el resto del blog: `title` ≤ 60 con keyword, meta description 150–160, un solo H1, keyword en las primeras 100 palabras, mini-FAQ con **FAQPage** + **BlogPosting** + **BreadcrumbList**, 2–4 enlaces internos contextuales y CTA a reserva. 1.000–1.300 palabras cada uno.
+
+| Post | Idioma | Keywords objetivo |
+|---|---|---|
+| `necesitas-licencia-alquilar-barco-marbella` | ES | alquiler barco sin licencia marbella |
+| `do-you-need-licence-rent-boat-marbella` | EN | boat hire with licence costa del sol |
+| `bodas-eventos-barco-marbella` | ES | yates para eventos marbella · alquiler de yates para bodas marbella |
+| `boat-party-puerto-banus` | EN | puerto banus boat party · boat party marbella |
+| `alquiler-barco-costa-del-sol-puerto-banus` | ES | alquiler lancha premium costa del sol |
+| `boat-rental-costa-del-sol-puerto-banus` | EN | boat rental costa del sol |
+
+- **hreflang recíproco ES/EN** (+ `x-default` → ES) entre los pares de licencia y de Costa del Sol.
+- El post geográfico es **uno solo** para toda la costa: no se han creado páginas por ciudad.
+- Datos comerciales exclusivamente de la tabla confirmada (2 h/4 h/8 h, capacidad 10, patrón + combustible + IVA incluidos) y de los extras del formulario de reserva (moto de agua +250 €, catering ampliado +180 €, decoración +120 €, fotógrafo a consultar).
+
+### Guía de precios — decisión del propietario
+Se evaluó añadir una sección H2 "Alquiler de barco por horas en Marbella" (keyword *alquiler barco marbella por horas*) con el precio por hora resultante de cada bloque. **Descartada por decisión del propietario: no se publican equivalencias por hora.** La guía se mantiene solo con las tarifas cerradas 2 h / 4 h / 8 h. No reintroducir sin confirmación expresa.
+
+### Enlaces internos hacia páginas top-10
+- **Home FR** → `/anniversaire-yacht-marbella` y `/demande-mariage-yacht-marbella` (párrafo contextual en la sección de experiencias).
+- **Home ES** y **guía de precios ES** → `/barco-privado-vs-plataformas`.
+- **Home EN** → `/fleet` (en el bloque del De Antonio D50).
+
+### Integración
+Cards añadidas a `/blog-nautico-marbella` (3) y `/yacht-blog` (3), 6 URLs nuevas en `sitemap.xml`. `scripts/check-links.sh` ejecutado contra servidor local con emulación de `cleanUrls`: **87 URLs, 0 fallos**.
