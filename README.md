@@ -56,5 +56,6 @@ Referencia de datos confirmados a día de hoy (fuente: home + formulario `/reser
 
 - **Duraciones y tarifas:** 2 h → 1.200 € · 4 h → 1.800 € · 8 h (día completo) → 3.000 €. *(No existe tarifa de 6 h ni de 2.400 €.)*
 - **Capacidad:** hasta **10** personas (por barco, no por persona).
+- **Barco y motorización:** De Antonio D50, 15 m de eslora, año 2026, **2× Mercury V12 de 600 CV (total 1.200 CV)**. Formato por idioma: ES `2× Mercury V12 600 CV` · EN `2× Mercury V12 600 hp` · FR `2× Mercury V12 600 ch` · RU `2× Mercury V12 600 л.с.`
 - **Incluido:** patrón, combustible de la ruta habitual e IVA.
 - Formato de cifras por idioma: ES `1.200€` · EN `€1,200` · FR/RU `1 200 €`.
