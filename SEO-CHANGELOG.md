@@ -62,9 +62,33 @@ Resumen de la ejecución del plan de acción SEO (`SEO-TODO-rentboatmarbella.md`
 2. **Dirección exacta del amarre**: el schema usa "Puerto Banús, 29660 Marbella". Confirmar pantalán/número de amarre exacto (mejora la SERP local y coincidencia con Google Business).
 3. **Google Business Profile**: añadir su URL al array `sameAs` del LocalBusiness (ahora solo Instagram) y completar/reclamar la ficha.
 
+## Traducción FR/RU de los 4 posts pendientes (agosto 2026)
+
+Los 4 posts que solo existían en ES ya están en los 4 idiomas. **Localización, no traducción literal**:
+se adaptaron el gancho, los ejemplos y las referencias a cada mercado (en FR: comparación con las
+calanques de Cassis y Porquerolles, vuelos directos a Málaga, vacaciones escolares, terminología EVJF/EVG
+y coste por persona; en RU: público que inverna en la costa y viaja en las vacaciones de fin de año,
+topónimos transliterados —Пуэрто-Банус, Кабопино, Ла-Конча—), manteniendo la misma estructura de
+H2/H3, los CTAs y el JSON-LD del original ES.
+
+| Post ES | FR | RU |
+|---|---|---|
+| `mejores-calas-fondear-marbella` | `meilleures-criques-mouillage-marbella` | `luchshie-buhty-marbella` |
+| `alquilar-barco-marbella-invierno` | `louer-bateau-marbella-hiver` | `arenda-yakhty-marbella-zimoy` |
+| `despedida-soltera-barco-consejos` | `evjf-bateau-marbella-conseils` | `devichnik-na-yakhte-sovety` |
+| `pedida-matrimonio-en-el-mar` | `demande-mariage-en-mer` | `predlozhenie-ruki-v-more` |
+
+- **Datos comerciales:** solo los confirmados (2 h → 1 200 € · 4 h → 1 800 € · 8 h → 3 000 €, hasta 10
+  personas, patrón + combustible + IVA incluidos). Formato de cifras por locale (`1 200 €` en FR y RU).
+  Sin tarifa de 6 h ni 2 400 €.
+- **Índices:** recuperadas las cards en `/blog-nautique` y `/morskoy-blog` (grid de 4, cada uno en su idioma).
+- **hreflang:** los 4 grupos pasan de 3 a 5 alternates (`es`/`en`/`fr`/`ru`/`x-default`→ES) en las 16 páginas.
+- **Sitemap:** +8 URLs (94 en total). Nav/footer/breadcrumb 100 % en el idioma de la página; logo y
+  breadcrumb «Accueil»/«Главная» apuntan a `/fr` y `/ru` (no a la home ES).
+
 ## Backlog SEO (mejoras futuras)
 
-- **[PRIORITARIO] Traducir a FR y RU los 4 posts del blog que hoy solo existen en ES:** `mejores-calas-fondear-marbella`, `alquilar-barco-marbella-invierno`, `despedida-soltera-barco-consejos` y `pedida-matrimonio-en-el-mar`. **Máxima prioridad: "mejores calas"** (es la pieza pilar). Mientras no existan, los índices `/blog-nautique` (FR) y `/morskoy-blog` (RU) solo muestran su post de precios propio (se eliminaron las cards que enlazaban a los posts ES para no mezclar idiomas). Al traducirlos, volver a añadir sus cards a los índices FR/RU.
+- ~~**[PRIORITARIO]** Traducir a FR y RU los 4 posts del blog que solo existían en ES~~ ✅ **hecho (agosto 2026)** — ver «Traducción FR/RU de los 4 posts pendientes» más abajo.
 - ~~Ampliar el resto de landings FR/RU a 600–900 palabras~~ ✅ **hecho** (las 14 landings FR/RU ampliadas).
 - **AVIF** y `srcset`/`sizes` multi-ancho (la conversión a WebP ya captura el mayor ahorro).
 - Ejecutar **Lighthouse** tras el deploy en Vercel y comparar (baseline no capturada por falta de entorno servido; mejora esperada alta por la reducción de imágenes).
