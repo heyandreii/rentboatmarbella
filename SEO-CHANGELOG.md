@@ -97,8 +97,8 @@ Mismo patrón que el resto del blog: `title` ≤ 60 con keyword, meta descriptio
 - El post geográfico es **uno solo** para toda la costa: no se han creado páginas por ciudad.
 - Datos comerciales exclusivamente de la tabla confirmada (2 h/4 h/8 h, capacidad 10, patrón + combustible + IVA incluidos) y de los extras del formulario de reserva (moto de agua +250 €, catering ampliado +180 €, decoración +120 €, fotógrafo a consultar).
 
-### Mejora de la guía de precios (4 idiomas)
-Nueva sección H2 **"Alquiler de barco por horas en Marbella"** (y equivalentes EN/FR/RU) explicando el formato 2 h/4 h/8 h y el precio por hora resultante (600 € / 450 € / 375 €, derivado de las tarifas confirmadas). Keyword objetivo: *alquiler barco marbella por horas*.
+### Guía de precios — decisión del propietario
+Se evaluó añadir una sección H2 "Alquiler de barco por horas en Marbella" (keyword *alquiler barco marbella por horas*) con el precio por hora resultante de cada bloque. **Descartada por decisión del propietario: no se publican equivalencias por hora.** La guía se mantiene solo con las tarifas cerradas 2 h / 4 h / 8 h. No reintroducir sin confirmación expresa.
 
 ### Enlaces internos hacia páginas top-10
 - **Home FR** → `/anniversaire-yacht-marbella` y `/demande-mariage-yacht-marbella` (párrafo contextual en la sección de experiencias).
