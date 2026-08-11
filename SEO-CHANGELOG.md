@@ -107,3 +107,16 @@ Se evaluó añadir una sección H2 "Alquiler de barco por horas en Marbella" (ke
 
 ### Integración
 Cards añadidas a `/blog-nautico-marbella` (3) y `/yacht-blog` (3), 6 URLs nuevas en `sitemap.xml`. `scripts/check-links.sh` ejecutado contra servidor local con emulación de `cleanUrls`: **87 URLs, 0 fallos**.
+
+---
+
+## Salvaguarda: posts huérfanos del sitemap (agosto 2026)
+
+`scripts/check-links.sh` solo comprobaba que las URLs **enlazadas desde los índices** respondieran 200. Eso deja un hueco: un post publicado y presente en `sitemap.xml` al que ningún índice enlaza responde 200 y el script daba verde, pero el post es invisible en el blog para el usuario y prácticamente huérfano para Google.
+
+El script pasa ahora a tener dos fases:
+
+1. **Fase 1 (offline)** — para cada `<loc>.../post/<slug>` del sitemap se lee el idioma del propio post (`<html lang="xx">`) y se exige que su índice lo enlace: `es`→`blog-nautico-marbella`, `en`→`yacht-blog`, `fr`→`blog-nautique`, `ru`→`morskoy-blog`. También falla si el sitemap lista un post que no existe en `post/` o con idioma no reconocido.
+2. **Fase 2 (red)** — la comprobación de 200 con cache-buster que ya existía.
+
+Falla (exit 1) si falla cualquiera de las dos. Estado actual en main: **87 URLs, 0 fallos · 18 posts del sitemap, 0 huérfanos.**
