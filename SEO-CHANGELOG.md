@@ -208,3 +208,61 @@ Dato conforme a la **regla anti-invención**: `2 h → 1.200 €` ya figura en l
 ### Verificación
 - JSON-LD: **332 bloques · 0 errores de parseo · 0 `Offer` con `priceCurrency` sin `price`** en todo el sitio.
 - Coincidencia schema ↔ visible comprobada en las 4 páginas: `price:"1200"` + `EUR` en el `Offer`, y la cifra con el formato del locale presente en el body descontando los bloques `<script>`.
+
+---
+
+## Medición anónima del abandono del formulario de reserva (agosto 2026)
+
+Objetivo: saber en qué punto se cae la gente al reservar y con qué configuración,
+**sin recoger ningún dato de identidad**. Ver la guía de consulta en
+[`docs/GA4-embudo-reserva.md`](docs/GA4-embudo-reserva.md).
+
+### Qué se ha encontrado antes de tocar nada
+
+Dos cosas que cambiaron el planteamiento inicial:
+
+1. **El widget de la home no es el formulario de reserva.** Es un buscador de 3
+   campos (fecha, duración, invitados) cuyo CTA es un `<a>` a `/reservar`: sin
+   extras, sin campos de contacto y sin envío a WhatsApp. Como la navegación
+   dispara `pagehide`, medirlo con el mismo esquema habría contado como abandono
+   a **todo** el que sí avanza. Se le ha dado su propio evento de éxito,
+   `form_continue`.
+2. **Los campos de nombre, email, teléfono y peticiones no iban a ningún sitio.**
+   Eran `<input>` sin `id` ni `name`, y el handler de «Solicitar reserva» montaba
+   el mensaje de WhatsApp solo con duración, invitados, fecha, extras y total. El
+   cliente los rellenaba y se perdían, en los 4 idiomas.
+
+### Cambios
+
+- **`js/form-tracking.js`** (nuevo): módulo compartido por las 8 páginas. Emite
+  `form_start`, `form_progress` (con `step`), `form_continue`, `whatsapp_submit`
+  y `form_abandon` (con `last_step`), con los parámetros de producto `duration`,
+  `guests`, `extras_count`, `date_offset`, `form_location` y `lang`.
+  `form_abandon` usa `visibilitychange`/`pagehide` con `transport_type:'beacon'`.
+  **No lee jamás el `.value` de los campos de identidad**: del bloque de contacto
+  solo registra que hubo interacción.
+- **Datos de contacto al mensaje de WhatsApp.** Los 4 campos reciben `id` y se
+  añaden al mensaje prerrellenado de `wa.me`, con etiquetas por idioma. Es el
+  sitio correcto para ese dato: lo envía el propio cliente, es first-party y no
+  entra en GA4.
+- **Fecha por defecto en el pasado (bug).** Los 8 campos de fecha llevaban
+  `value="2026-07-11"` hardcodeado — un mes por detrás de la fecha actual. Ahora
+  salen **vacíos** y con `min` = hoy, fijado en tiempo de ejecución para que no
+  vuelva a caducar. Se elimina de paso la lógica muerta de `DEF_DATE`.
+
+### Verificación (local, con el transporte de GA4 interceptado)
+
+Recorrido completo del embudo en `es`, `en`, `fr` y `ru`, en la home y en el
+formulario de reserva, leyendo el payload real de `/g/collect`:
+
+- Los 7 eventos de `/reservar` y los 5 de la home salen con sus parámetros
+  correctos; `date_offset` se calcula bien (0 = hoy, 18, 139) y **se omite** si
+  aún no se ha elegido fecha, para no confundirlo con «hoy».
+- `form_start` una sola vez por sesión y formulario; un `form_progress` por paso
+  aunque se toque el bloque varias veces; `form_abandon` **una sola vez** aun
+  recibiendo dos `pagehide` y un `visibilitychange`; y suprimido si hubo éxito.
+- **Prueba de fuga:** rellenados nombre, email, teléfono y notas con cadenas
+  canario y buscadas en todo el tráfico saliente hacia Google Analytics
+  (URL + cuerpo de los POST por lotes, codificado y descodificado).
+  **Cero coincidencias.** El mensaje de WhatsApp, en cambio, sí llega completo
+  con los 4 campos en los 4 idiomas.
