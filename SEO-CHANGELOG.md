@@ -266,3 +266,59 @@ formulario de reserva, leyendo el payload real de `/g/collect`:
   (URL + cuerpo de los POST por lotes, codificado y descodificado).
   **Cero coincidencias.** El mensaje de WhatsApp, en cambio, sí llega completo
   con los 4 campos en los 4 idiomas.
+
+---
+
+## Aviso por email de cada solicitud de reserva (agosto 2026)
+
+Hasta ahora «Solicitar reserva» solo abría WhatsApp. Quien está en un ordenador
+sin WhatsApp Web se perdía. Ahora, además, llega un email a `info@` con el lead.
+
+### `/api/lead` (nuevo)
+
+Función serverless en Vercel. Recibe el formulario por POST y manda el correo con
+**Resend**, leyendo la credencial de `process.env.RESEND_API_KEY` — nunca escrita
+en el repo, nunca devuelta en una respuesta, nunca en un log. `from` usa el
+dominio verificado (`reservas@rentboatmarbella.com`) y `reply_to` es el email del
+cliente, para responderle sin copiar y pegar la dirección.
+
+No hace falta `package.json` ni dependencias: el runtime de Node de Vercel ya
+trae `fetch`, así que se llama a la API REST de Resend directamente.
+
+Al ser un endpoint público sin autenticar, lleva: solo POST, tope de 8 KB de
+cuerpo, tope de longitud por campo, limpieza de caracteres de control (evita
+cabeceras fabricadas), escapado HTML de todo lo que escribe el usuario y un
+limitador de 10 peticiones/minuto por IP. El limitador es *best-effort*: la
+memoria muere con la instancia y Vercel levanta varias, así que frena un bucle
+accidental, no un ataque decidido.
+
+**El correo solo se manda si hay email o teléfono.** Sin ninguno de los dos no
+habría a quién responder, y el cliente no se pierde porque WhatsApp se le abre
+igual.
+
+### En los 4 formularios
+
+La llamada va **antes** de `window.open`, con `fetch(..., {keepalive:true})`,
+envuelta en `try` y con `.catch()` vacío. Es fire-and-forget: no se espera
+respuesta, no se comprueba el resultado y ningún fallo puede impedir que se abra
+WhatsApp. El mensaje de WhatsApp y la medición GA4 del PR #12 quedan intactos.
+
+### Corregido de paso: `js/form-tracking.js` era incacheable de por vida
+
+La regla `/(.*)\.(css|js|woff2|woff|ttf)` de `vercel.json` sirve los `.js` con
+`max-age=31536000, immutable`. Con un nombre sin versionar, el tracker que subimos
+en el PR #12 **nunca** se habría refrescado en un navegador que ya lo tuviera.
+Ahora se carga como `/js/form-tracking.js?v=1` en las 8 páginas. **Al editar ese
+fichero hay que subir el número**, o el cambio no llegará a los visitantes que
+repiten.
+
+### Verificación
+
+- `scripts/test-lead-api.js` (nuevo, `node scripts/test-lead-api.js`): 21
+  comprobaciones con Resend simulado, sin red ni credenciales. Cubren el asunto,
+  los 11 campos del cuerpo, destinatario y `reply_to`, las guardas (405/400/413/
+  422/500/502), que la credencial no viaja nunca a la respuesta, el escapado de
+  `<img onerror>`, la limpieza de `\r\n` en el teléfono y el limitador por IP.
+- En navegador, en los 4 idiomas: **WhatsApp se abre igual** con `/api/lead`
+  devolviendo 404 y con `fetch` lanzando una excepción síncrona; la llamada sale
+  con `keepalive:true`; y sin email ni teléfono no se llama a la API.
