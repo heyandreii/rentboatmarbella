@@ -31,7 +31,24 @@
   body{margin:0;background:#fff;font-family:'Manrope',system-ui,sans-serif;color:#12232B;-webkit-font-smoothing:antialiased}
   *{box-sizing:border-box}
   @keyframes floatpulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-  input,textarea{font-family:inherit}
+  input,textarea,button{font-family:inherit}
+  .bk-fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .bk-full{grid-column:span 2}
+  .bk-cc{position:relative;display:flex;gap:8px}
+  .bk-ccb{display:flex;align-items:center;gap:6px;flex:none;border:1px solid #e0dfd8;border-radius:12px;background:#fff;padding:0 12px;font-size:14px;color:#12232B;cursor:pointer;white-space:nowrap}
+  .bk-ccp{position:absolute;top:calc(100% + 6px);left:0;z-index:30;width:280px;max-width:100%;background:#fff;border:1px solid #e0dfd8;border-radius:12px;box-shadow:0 18px 44px -20px rgba(15,42,51,.45);padding:8px}
+  .bk-ccq{width:100%;border:1px solid #e0dfd8;border-radius:9px;padding:9px 11px;font-size:13.5px;outline:none}
+  .bk-ccl{list-style:none;margin:8px 0 0;padding:0;max-height:212px;overflow-y:auto}
+  .bk-ccl li{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;font-size:13.5px;cursor:pointer}
+  .bk-ccl li:hover,.bk-ccl li[aria-selected="true"]{background:rgba(63,122,114,.09)}
+  .bk-ccl b{margin-left:auto;color:#626b6a;font-weight:600}
+  .bk-ccn{padding:10px 6px;font-size:13px;color:#626b6a}
+  .bk-err{display:none;margin-top:6px;font-size:12px;font-weight:600;color:#c0392b}
+  .bk-bad{border-color:#c0392b!important}
+  /* En móvil los campos van uno debajo de otro: dos columnas dejaban el email
+     en 54px. Se controla aquí y no en mobile.css porque ese selector genérico
+     (div[style*="grid-template-columns"]) ya no alcanza a una rejilla con clase. */
+  @media (max-width:760px){.bk-fields{grid-template-columns:1fr}.bk-full{grid-column:auto}}
 </style>
 <!-- Verificación de buscadores -->
 <meta name="msvalidate.01" content="B9E8685957B2E9164DA2722874B143DC">
@@ -159,11 +176,28 @@
 
     <!-- contact -->
     <div style="font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:600;margin-bottom:14px">4 · Your details</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-      <input id="bk-name" placeholder="Full name" style="border:1px solid #e0dfd8;border-radius:12px;padding:14px 16px;font-size:14px;outline:none;grid-column:span 2" aria-label="Full name"/>
-      <input id="bk-email" placeholder="Email" style="border:1px solid #e0dfd8;border-radius:12px;padding:14px 16px;font-size:14px;outline:none" aria-label="Email"/>
-      <input id="bk-phone" placeholder="Phone / WhatsApp" style="border:1px solid #e0dfd8;border-radius:12px;padding:14px 16px;font-size:14px;outline:none" aria-label="Phone / WhatsApp"/>
-      <textarea id="bk-notes" placeholder="Any special requests? (birthday, catering, decoration...)" rows="3" style="border:1px solid #e0dfd8;border-radius:12px;padding:14px 16px;font-size:14px;outline:none;grid-column:span 2;resize:none" aria-label="Any special requests? (birthday, catering, decoration...)"></textarea>
+    <div class="bk-fields">
+      <div class="bk-full">
+        <input id="bk-name" placeholder="Full name *" aria-required="true" style="width:100%;border:1px solid #e0dfd8;border-radius:12px;padding:14px 16px;font-size:14px;outline:none" aria-label="Full name"/>
+        <div id="bk-err-name" class="bk-err" role="alert"></div>
+      </div>
+      <div>
+        <input id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="Email *" aria-required="true" style="width:100%;border:1px solid #e0dfd8;border-radius:12px;padding:14px 16px;font-size:14px;outline:none" aria-label="Email"/>
+        <div id="bk-err-email" class="bk-err" role="alert"></div>
+      </div>
+      <div>
+        <div class="bk-cc">
+          <button type="button" id="bk-cc-btn" class="bk-ccb" aria-haspopup="listbox" aria-expanded="false" aria-label="Phone country code +44"><span id="bk-cc-flag" aria-hidden="true">🇬🇧</span><span id="bk-cc-dial">+44</span><span aria-hidden="true" style="color:#98a0a3;font-size:11px">▼</span></button>
+          <input id="bk-phone" type="tel" inputmode="tel" autocomplete="tel-national" placeholder="Phone / WhatsApp *" aria-required="true" style="flex:1;min-width:0;border:1px solid #e0dfd8;border-radius:12px;padding:14px 16px;font-size:14px;outline:none" aria-label="Phone / WhatsApp"/>
+          <div id="bk-cc-pop" class="bk-ccp" hidden>
+            <input id="bk-cc-q" class="bk-ccq" type="text" autocomplete="off" placeholder="Search country" aria-label="Search country"/>
+            <ul id="bk-cc-list" class="bk-ccl" role="listbox" aria-label="Phone country code"></ul>
+            <div id="bk-cc-none" class="bk-ccn" hidden>No results</div>
+          </div>
+        </div>
+        <div id="bk-err-phone" class="bk-err" role="alert"></div>
+      </div>
+      <textarea id="bk-notes" class="bk-full" placeholder="Any special requests? (birthday, catering, decoration...)" rows="3" style="border:1px solid #e0dfd8;border-radius:12px;padding:14px 16px;font-size:14px;outline:none;resize:none" aria-label="Any special requests? (birthday, catering, decoration...)"></textarea>
     </div>
   </div>
 
@@ -341,7 +375,171 @@
   extraPills.forEach(function(p){p.setAttribute('data-checked','0');p.addEventListener('click',function(){p.setAttribute('data-checked',p.getAttribute('data-checked')==='1'?'0':'1');paintExtra(p);render();track.progress('extras');});});
   if(dec)dec.addEventListener('click',function(){if(state.guests>CFG.min){state.guests--;render();}track.progress('invitados');});
   if(inc)inc.addEventListener('click',function(){if(state.guests<CFG.max){state.guests++;render();}track.progress('invitados');});
+
+  /* --- Prefijo telefónico internacional (sin librerías ni imágenes) -------
+     Los países viajan en UNA cadena "ISO,prefijo,nombre|..." y la bandera se
+     deriva del ISO con los símbolos regionales Unicode: es texto, no pesa y no
+     pide ni una petición más. La lista se construye la primera vez que se
+     abre el desplegable, para no meter 54 nodos en el DOM de la carga. */
+  var CC={"lbl":"Phone country code","def":"GB","err":{"name":["Enter your full name","At least 2 characters"],"email":["Enter your email","Invalid email. E.g. name@domain.com"],"phone":["Enter your phone number","Invalid phone. At least 6 digits"]},
+    "list":"AD,376,Andorra|AR,54,Argentina|AU,61,Australia|AT,43,Austria|BH,973,Bahrain|BY,375,Belarus|BE,32,Belgium|BR,55,Brazil|BG,359,Bulgaria|CA,1,Canada|HR,385,Croatia|CY,357,Cyprus|CZ,420,Czechia|DK,45,Denmark|EE,372,Estonia|FI,358,Finland|FR,33,France|DE,49,Germany|GR,30,Greece|HU,36,Hungary|IS,354,Iceland|IE,353,Ireland|IL,972,Israel|IT,39,Italy|KZ,7,Kazakhstan|KW,965,Kuwait|LV,371,Latvia|LT,370,Lithuania|LU,352,Luxembourg|MT,356,Malta|MX,52,Mexico|MC,377,Monaco|MA,212,Morocco|NL,31,Netherlands|NO,47,Norway|OM,968,Oman|PL,48,Poland|PT,351,Portugal|QA,974,Qatar|RO,40,Romania|RU,7,Russia|SA,966,Saudi Arabia|RS,381,Serbia|SK,421,Slovakia|SI,386,Slovenia|ZA,27,South Africa|ES,34,Spain|SE,46,Sweden|CH,41,Switzerland|TR,90,Türkiye|UA,380,Ukraine|AE,971,United Arab Emirates|GB,44,United Kingdom|US,1,United States"};
+  var ccBtn=document.getElementById('bk-cc-btn'),ccPop=document.getElementById('bk-cc-pop');
+  var ccQ=document.getElementById('bk-cc-q'),ccList=document.getElementById('bk-cc-list');
+  var ccNone=document.getElementById('bk-cc-none');
+  var ccFlagEl=document.getElementById('bk-cc-flag'),ccDialEl=document.getElementById('bk-cc-dial');
+  var ccWrap=ccBtn?ccBtn.parentNode:null;
+  var ccItems=CC.list.split('|').map(function(s){var p=s.split(',');return {iso:p[0],dial:'+'+p[1],name:p[2]};});
+  function ccFlag(iso){return String.fromCodePoint(0x1F1E6+iso.charCodeAt(0)-65,0x1F1E6+iso.charCodeAt(1)-65);}
+  function norm(s){s=String(s||'').toLowerCase();return s.normalize?s.normalize('NFD').replace(/[\u0300-\u036f]/g,''):s;}
+  var ccSel=ccItems[0],ccLis=null,ccOpen=false,ccAct=null;
+  ccItems.forEach(function(c){if(c.iso===CC.def)ccSel=c;});
+
+  function ccPaint(){
+    if(ccFlagEl)ccFlagEl.textContent=ccFlag(ccSel.iso);
+    if(ccDialEl)ccDialEl.textContent=ccSel.dial;
+    /* El nombre accesible del botón incluye el prefijo visible (WCAG 2.5.3). */
+    ccBtn.setAttribute('aria-label',CC.lbl+' '+ccSel.dial);
+  }
+  function ccBuild(){
+    if(ccLis)return;
+    var h='';
+    for(var i=0;i<ccItems.length;i++){
+      var c=ccItems[i];
+      h+='<li role="option" aria-selected="false" data-i="'+i+'" data-k="'+norm(c.name)+' '+c.iso.toLowerCase()+' '+c.dial.slice(1)+'"><span aria-hidden="true">'+ccFlag(c.iso)+'</span><span>'+c.name+'</span><b>'+c.dial+'</b></li>';
+    }
+    ccList.innerHTML=h;
+    ccLis=[].slice.call(ccList.children);
+  }
+  function ccMark(li){
+    if(ccAct)ccAct.setAttribute('aria-selected','false');
+    ccAct=li||null;
+    if(ccAct){ccAct.setAttribute('aria-selected','true');if(ccAct.scrollIntoView)ccAct.scrollIntoView({block:'nearest'});}
+  }
+  function ccFilter(){
+    var q=norm(ccQ.value).replace(/^\+/,'').trim(),first=null,n=0;
+    for(var i=0;i<ccLis.length;i++){
+      var vis=!q||ccLis[i].getAttribute('data-k').indexOf(q)>-1;
+      ccLis[i].style.display=vis?'':'none';
+      if(vis){n++;if(!first)first=ccLis[i];}
+    }
+    ccNone.hidden=n>0;
+    ccMark(first);
+  }
+  function ccShow(){
+    ccBuild();ccPop.hidden=false;ccOpen=true;ccBtn.setAttribute('aria-expanded','true');
+    ccQ.value='';ccFilter();ccQ.focus();
+  }
+  function ccClose(focus){
+    if(!ccOpen)return;
+    ccPop.hidden=true;ccOpen=false;ccBtn.setAttribute('aria-expanded','false');
+    if(focus)ccBtn.focus();
+  }
+  function ccPick(li){
+    if(!li)return;
+    ccSel=ccItems[+li.getAttribute('data-i')];
+    ccPaint();ccClose();
+    if(phoneEl)phoneEl.focus();
+  }
+  function ccStep(d){
+    var vis=ccLis.filter(function(l){return l.style.display!=='none';});
+    if(!vis.length)return;
+    var i=vis.indexOf(ccAct);
+    i=i<0?(d>0?0:vis.length-1):(i+d+vis.length)%vis.length;
+    ccMark(vis[i]);
+  }
+  if(ccBtn){
+    ccPaint();
+    ccBtn.addEventListener('click',function(){ccOpen?ccClose(true):ccShow();track.progress('contacto');});
+    ccQ.addEventListener('input',ccFilter);
+    ccQ.addEventListener('keydown',function(e){
+      if(e.key==='ArrowDown'){e.preventDefault();ccStep(1);}
+      else if(e.key==='ArrowUp'){e.preventDefault();ccStep(-1);}
+      else if(e.key==='Enter'){e.preventDefault();ccPick(ccAct);}
+      else if(e.key==='Escape'){e.preventDefault();ccClose(true);}
+    });
+    ccList.addEventListener('click',function(e){
+      var el=e.target;
+      while(el&&el!==ccList&&el.tagName!=='LI')el=el.parentNode;
+      if(el&&el.tagName==='LI')ccPick(el);
+    });
+    document.addEventListener('click',function(e){
+      if(ccOpen&&ccWrap&&!ccWrap.contains(e.target))ccClose();
+    });
+  }
+
+  /* Si el usuario escribe o pega el número en formato internacional (+34…,
+     0034…), el prefijo se mueve al selector en vez de duplicarse en el
+     mensaje. Solo actúa cuando el propio texto empieza por + o por 00. */
+  function ccAbsorb(){
+    if(!phoneEl)return;
+    var t=phoneEl.value.trim();
+    if(!/^(\+|00)/.test(t))return;
+    var raw=t.replace(/\D/g,'').replace(/^00/,''),best=null;
+    for(var i=0;i<ccItems.length;i++){
+      var d=ccItems[i].dial.slice(1);
+      if(raw.indexOf(d)===0&&(!best||d.length>best.dial.length-1))best=ccItems[i];
+    }
+    if(!best)return;
+    ccSel=best;ccPaint();
+    phoneEl.value=raw.slice(best.dial.length-1);
+  }
+  /** Teléfono completo tal y como sale hacia WhatsApp y hacia /api/lead. */
+  function fullPhone(){
+    ccAbsorb();
+    return ccSel.dial+' '+phoneEl.value.trim();
+  }
+
+  /* --- Validación de los datos de contacto -------------------------------
+     Nombre, email y teléfono son obligatorios: un lead sin forma de
+     contactar no sirve de nada. Sin esto, "test" pasaba y el aviso por
+     email salía inútil. [RBM-VALIDATION-START] — probado en
+     scripts/test-booking-form.js */
+  function vName(v){v=String(v||'').trim();return v.length>=2&&/[A-Za-zÀ-ÖØ-öø-ÿА-Яа-яЁёЀ-ӿ]/.test(v);}
+  function vEmail(v){return /^[^\s@]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/.test(String(v||'').trim());}
+  function vPhone(v){v=String(v||'').trim();return /^(\+|00)?[0-9\s().-]{6,}$/.test(v)&&(v.match(/\d/g)||[]).length>=6;}
+  /* [RBM-VALIDATION-END] */
+
+  var errBox={name:document.getElementById('bk-err-name'),
+              email:document.getElementById('bk-err-email'),
+              phone:document.getElementById('bk-err-phone')};
+  var FIELDS=[['name',nameEl,vName],['email',emailEl,vEmail],['phone',phoneEl,vPhone]];
+  var touched=false;
+  function setErr(el,box,msg){
+    if(!el||!box)return;
+    if(msg){el.classList.add('bk-bad');box.textContent=msg;box.style.display='block';}
+    else{el.classList.remove('bk-bad');box.textContent='';box.style.display='none';}
+  }
+  function checkField(key,el,ok){
+    if(!el)return true;
+    var v=el.value.trim(),msgs=CC.err[key];
+    var msg=!v?msgs[0]:(ok(v)?'':msgs[1]);
+    setErr(el,errBox[key],msg);
+    return !msg;
+  }
+  function validate(){
+    ccAbsorb();
+    var bad=null;
+    for(var i=0;i<FIELDS.length;i++){
+      var f=FIELDS[i];
+      if(!checkField(f[0],f[1],f[2])&&!bad)bad=f[1];
+    }
+    touched=true;
+    if(bad){
+      bad.focus();
+      if(bad.scrollIntoView)bad.scrollIntoView({block:'center',behavior:'smooth'});
+      return false;
+    }
+    return true;
+  }
+  FIELDS.forEach(function(f){
+    if(!f[1])return;
+    f[1].addEventListener('input',function(){if(touched)checkField(f[0],f[1],f[2]);});
+  });
+  if(phoneEl)phoneEl.addEventListener('blur',function(){ccAbsorb();if(touched)checkField('phone',phoneEl,vPhone);});
   submit.addEventListener('click',function(){
+    /* Sin datos de contacto válidos no se dispara nada: ni whatsapp_submit,
+       ni el aviso por email, ni la apertura de WhatsApp. */
+    if(!validate())return;
     track.success();
     var c=calc(),L=[CFG.msg.hi];
     L.push(CFG.msg.dur+': '+CFG.durSum[state.dur]+(c.custom?'':' ('+fmt(c.dp)+')'));
@@ -350,9 +548,10 @@
     var ex=checkedExtras().map(function(p){var lb=p.children[0].children[0].textContent;return p.getAttribute('data-request')==='1'?lb+' '+CFG.msg.onRequest:lb;});
     if(ex.length)L.push(CFG.msg.extras+': '+ex.join(', '));
     L.push(CFG.msg.total+': '+(c.custom?CFG.consult:fmt(c.t)));
-    [[nameEl,CFG.msg.name],[emailEl,CFG.msg.email],[phoneEl,CFG.msg.phone],[notesEl,CFG.msg.notes]].forEach(function(fld){
-      var v=fld[0]&&fld[0].value?fld[0].value.trim():'';
-      if(v)L.push(fld[1]+': '+v);
+    var tel=fullPhone();
+    [[CFG.msg.name,nameEl?nameEl.value.trim():''],[CFG.msg.email,emailEl?emailEl.value.trim():''],
+     [CFG.msg.phone,tel],[CFG.msg.notes,notesEl?notesEl.value.trim():'']].forEach(function(fld){
+      if(fld[1])L.push(fld[0]+': '+fld[1]);
     });
     L.push(CFG.msg.confirm);
     /* Aviso por email en paralelo, fire-and-forget. Nunca debe retrasar ni
@@ -362,7 +561,7 @@
       if(window.fetch){
         var lead={
           name:nameEl?nameEl.value:'', email:emailEl?emailEl.value:'',
-          phone:phoneEl?phoneEl.value:'', notes:notesEl?notesEl.value:'',
+          phone:tel, notes:notesEl?notesEl.value:'',
           date:(dateEl&&dateEl.value)||'', duration:CFG.durSum[state.dur],
           guests:String(state.guests), extras:ex.join(', '),
           total:c.custom?CFG.consult:fmt(c.t),

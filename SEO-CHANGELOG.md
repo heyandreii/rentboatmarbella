@@ -322,3 +322,81 @@ repiten.
 - En navegador, en los 4 idiomas: **WhatsApp se abre igual** con `/api/lead`
   devolviendo 404 y con `fetch` lanzando una excepción síncrona; la llamada sale
   con `keepalive:true`; y sin email ni teléfono no se llama a la API.
+
+---
+
+## Datos de contacto obligatorios y selector de prefijo internacional (agosto 2026)
+
+Los tres campos de contacto eran opcionales y no se validaban: se podía enviar
+la solicitud con «test» en email y teléfono. El lead llegaba sin forma de
+contactar y, cuando el teléfono venía sin prefijo, tampoco se sabía a qué país
+llamar. Además `/api/lead` descarta el aviso si no hay email **ni** teléfono, así
+que esos envíos no generaban correo.
+
+### Obligatorios y validados (los 4 formularios, los 4 idiomas)
+
+Nombre, email y teléfono son ahora obligatorios (`aria-required`, asterisco en el
+campo). El botón **no envía nada** si alguno falla: ni `whatsapp_submit`, ni
+`/api/lead`, ni la apertura de WhatsApp. El error sale bajo el campo que falla,
+en el idioma de la página, y el primer campo inválido recibe el foco.
+
+- **Email**: `@` + dominio con TLD. Rechaza `test`, `test@`, `test@dominio`.
+- **Teléfono**: mínimo 6 dígitos y solo dígitos, espacios y `().-`.
+- **Nombre**: mínimo 2 caracteres, con al menos una letra (latina o cirílica).
+
+Tras el primer intento fallido, cada campo se revalida mientras se escribe.
+
+### Selector de prefijo, sin librerías
+
+Nada de `intl-tel-input` ni imágenes de banderas. 54 países viajan en **una sola
+cadena** `"ISO,prefijo,nombre|…"` dentro del propio HTML y la bandera se deriva
+del ISO con los símbolos regionales Unicode: es texto, no pesa y no añade ni una
+petición. La lista se construye en el DOM la **primera vez que se abre** el
+desplegable, no en la carga.
+
+- Buscable escribiendo el nombre del país (sin tildes también: «espan» → España),
+  el código ISO o el propio prefijo. Teclado completo: ↑ ↓, Enter, Esc.
+- Nombres de país **en el idioma de la página** y ordenados alfabéticamente en
+  ese idioma (ES Alemania · EN Germany · FR Allemagne · RU Германия).
+- Prefijo por defecto según idioma: ES +34 · EN +44 · FR +33 · RU +7.
+- Si el usuario pega el número en formato internacional (`+33 6…`, `0044 7…`), el
+  prefijo se mueve al selector en vez de duplicarse en el mensaje.
+
+El teléfono sale **completo (prefijo + número)** tanto en el mensaje de WhatsApp
+como en el POST a `/api/lead`.
+
+### Corregido de paso: el email quedaba en 54 px en móvil
+
+La rejilla de contacto usaba `grid-template-columns` en el `style` y mobile.css
+la forzaba a una columna con `!important`; como dos hijos llevaban
+`grid-column:span 2`, el navegador creaba una columna implícita y el campo de
+email se quedaba en 54 px de ancho. Ahora la rejilla tiene clase propia
+(`.bk-fields` / `.bk-full`) con su media query, y en móvil los campos van uno
+debajo de otro a ancho completo.
+
+### Coste en rendimiento
+
+Prioridad absoluta, siendo un sitio con 88–99 en PageSpeed:
+
+- **+3,8 KB gzip** por página de reserva (8,7 → 12,6 KB el documento), **cero
+  peticiones nuevas** y ningún recurso bloqueante añadido: todo va en el `<script>`
+  que ya existía al final del `<body>`.
+- Construir la lista al abrirla: **~8 ms** (Chrome, CPU ×4). Filtrar: **0,05 ms**
+  por tecla. Cero *long tasks* en la carga. CLS 0,00 antes y después.
+- Lighthouse móvil (mismo servidor local, antes vs después): accesibilidad
+  **96 → 96**, buenas prácticas **100 → 100**, SEO **100 → 100**. El único fallo
+  de accesibilidad es el contraste del footer, que ya existía.
+
+### Verificación
+
+- `scripts/test-booking-form.js` (nuevo, `node scripts/test-booking-form.js`):
+  304 comprobaciones sobre los 4 HTML. Ejecuta **las reglas de validación reales**
+  extraídas del propio fichero servido (marcadores `[RBM-VALIDATION-*]`) y
+  comprueba el marcado, la lista de países (ISO, prefijos, idioma, orden, sin
+  duplicados), el prefijo por defecto de cada idioma, que `validate()` va antes de
+  `track.success()` / `/api/lead` / `window.open`, y que a GA4 no viaja ningún
+  valor tecleado.
+- En navegador, en los 4 idiomas: envío bloqueado con «test» (0 aperturas de
+  WhatsApp, 0 llamadas a la API, sin `whatsapp_submit`), filtrado del selector en
+  cada idioma, prefijo por defecto correcto y teléfono completo llegando al
+  mensaje de WhatsApp y al cuerpo del POST.

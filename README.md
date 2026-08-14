@@ -12,6 +12,10 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 - `vercel.json` — `cleanUrls`, `trailingSlash` y redirecciones 301.
 - `robots.txt`, `sitemap.xml`.
 - `scripts/check-links.sh` — comprobación anti-regresión de enlaces (ver abajo).
+- `scripts/test-lead-api.js` — pruebas de `/api/lead` con Resend simulado (sin red).
+- `scripts/test-booking-form.js` — pruebas del formulario de reserva de los 4
+  idiomas: validación de nombre/email/teléfono y selector de prefijo. Ejecuta las
+  reglas tal y como se sirven en el HTML. `node scripts/test-booking-form.js`.
 
 ## ⚠️ Antes de cada push a `main` (obligatorio)
 
