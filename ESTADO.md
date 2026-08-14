@@ -7,7 +7,9 @@ es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 Documentos relacionados: [`README.md`](README.md) (cómo trabajar en el repo y
 reglas duras), [`SEO-CHANGELOG.md`](SEO-CHANGELOG.md) (detalle técnico de cada
 tanda de trabajo), [`docs/GA4-embudo-reserva.md`](docs/GA4-embudo-reserva.md)
-(cómo leer la analítica).
+(cómo leer la analítica) y [`docs/contexto-chat.md`](docs/contexto-chat.md)
+(contexto completo para pegar al abrir una conversación con una IA que no conoce
+el proyecto).
 
 ---
 

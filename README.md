@@ -4,6 +4,10 @@ Sitio estático (HTML) de alquiler de barco privado en Marbella (De Antonio D50)
 Desplegado en **Vercel** desde la rama `main` de GitHub. Sin framework ni build:
 los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 
+> ¿Empiezas una conversación con una IA que no conoce el proyecto? Pégale
+> [`docs/contexto-chat.md`](docs/contexto-chat.md): negocio, stack, historial de
+> los PR #1–#16, configuración externa, estado y reglas, todo en un archivo.
+
 ## Estructura
 
 - `*.html` — páginas del sitio en 4 idiomas (ES/EN/FR/RU), URLs traducidas.
