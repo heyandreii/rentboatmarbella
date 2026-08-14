@@ -11,7 +11,13 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 - `img/` — imágenes (WebP + fallback JPG, con variantes responsivas `-640`/`-1280`).
 - `vercel.json` — `cleanUrls`, `trailingSlash` y redirecciones 301.
 - `robots.txt`, `sitemap.xml`.
+- `mobile.css` — ajustes responsive (se sirve `immutable` un año: **si lo tocas,
+  sube el `?v=` del `<link>` en las 100 páginas** o los visitantes recurrentes
+  verán el HTML nuevo con la CSS vieja).
+- `js/lang-switcher.js` — desplegable de idioma del header en móvil.
 - `scripts/check-links.sh` — comprobación anti-regresión de enlaces (ver abajo).
+- `scripts/check-lang-switcher.py` — comprobación del selector de idioma (ver abajo).
+- `scripts/apply-lang-switcher.py` — regenera el selector de idioma del header.
 - `scripts/test-lead-api.js` — pruebas de `/api/lead` con Resend simulado (sin red).
 - `scripts/test-booking-form.js` — pruebas del formulario de reserva de los 4
   idiomas: validación de nombre/email/teléfono y selector de prefijo. Ejecuta las
@@ -40,6 +46,29 @@ y **falla con exit 1 si alguna no responde 200**. Si falla, **no hagas push**.
 > de Vercel, así que los `/post/<slug>` sin `.html` darán 404 en local aunque el
 > archivo exista. Para validar rutas limpias, comprueba contra la URL de *Preview*
 > de Vercel del PR, o contra producción tras el deploy.
+
+Y, si has tocado páginas o `hreflang`, el selector de idioma del header
+(offline, sin red):
+
+```bash
+scripts/check-lang-switcher.py
+```
+
+## Selector de idioma del header
+
+Los enlaces ES/EN/FR/RU del header **no se escriben a mano**: se generan desde
+los `<link rel="alternate" hreflang>` de cada página, así que cambiar de idioma
+te deja en la traducción de *esa misma* página, no en la portada. Una página que
+no declara alternate para un idioma no ofrece ese idioma (los posts que solo
+existen en ES/EN muestran solo esos dos).
+
+Al añadir una página o una traducción: pon bien sus `hreflang`, regenera con
+`scripts/apply-lang-switcher.py` y valida con `scripts/check-lang-switcher.py`.
+El validador falla si un enlace apunta a algo que no existe o a una página que
+está en otro idioma del que dice.
+
+En escritorio los 4 idiomas siguen en línea; en ≤760px se pliegan en un botón
+(`ES ▾`) que abre un desplegable. Sin JavaScript se quedan en línea, como antes.
 
 ## Despliegue
 
