@@ -181,3 +181,30 @@ El cuadro `FB` del footer era texto plano sin `href` (no hay página de Facebook
 ### Verificación
 - `scripts/check-links.sh` contra producción: **95 URLs, 0 fallos · 26 posts del sitemap, 0 huérfanos**.
 - JSON-LD: **332 bloques en 100 páginas · 0 errores**, validados offline contra el vocabulario oficial de schema.org (`schemaorg-current-https.jsonld`): todo `@type` existe, toda propiedad existe y es aplicable a su tipo siguiendo `domainIncludes` + `rdfs:subClassOf`. Se validó además una muestra por `validator.schema.org` (0 errores, 0 warnings) hasta agotar su límite de peticiones.
+
+---
+
+## Search Console: `Offer` sin `price` en las páginas corporativas (agosto 2026)
+
+Search Console notificó formalmente el error ya detectado en la auditoría: el `Offer` del `Product` de las 4 landings de eventos de empresa declaraba `priceCurrency:"EUR"` sin `price`. Un `Offer` con moneda y sin importe no es válido para el rich result de precio.
+
+**Barrido previo.** Parseados los **332 bloques JSON-LD de las 100 páginas** recorriendo el árbol completo (no un grep por fichero), buscando `Offer`/`AggregateOffer` con `priceCurrency` y sin ninguno de `price` / `lowPrice` / `highPrice` / `priceSpecification`. **Resultado: exactamente los 4 casos conocidos, ningún otro.** Los otros 36 `Offer` del sitio ya llevaban `price`.
+
+**Decisión: opción A′ — precio visible + schema**, no solo schema. Marcar un precio que no aparece en la página incumple la política de datos estructurados de Google (el importe debe ser el que ve el usuario) y expone a acción manual, justo el riesgo que se quería cerrar. La alternativa de eliminar `offers` habría sido válida pero renunciaba al rich result de precio.
+
+**Estado real de partida** (no era homogéneo): FR y RU **ya mostraban `1 200 €`** en el body y en su `FAQPage`; solo les faltaba el `price` en el `Offer`. ES y EN no tenían ninguna cifra en toda la página.
+
+| Página | Cambio en el body | Cambio en el `Offer` |
+|---|---|---|
+| `eventos-empresa-barco-marbella` | FAQ *"¿Qué incluye el precio del evento?"* pasa a abrir con **`1.200€`** (salida privada de 2 h) | `price:"1200"` |
+| `corporate-events-boat-marbella` | Sección *"What's included & options"* abre con **`€1,200`** | `price:"1200"` |
+| `evenements-entreprise-bateau-marbella` | ya mostraba `1 200 €` (sin cambios) | `price:"1200"` |
+| `korporativy-yakhta-marbella` | ya mostraba `1 200 €` (sin cambios) | `price:"1200"` |
+
+El precio se redacta siempre como **suelo, no como tarifa cerrada**: el texto mantiene el ángulo "presupuesto a medida" y explicita que el importe final depende de duración, catering y extras. Formato de cifras por idioma según la regla del README. En ES el texto es idéntico en el `FAQPage` y en el HTML visible, y se editó de una sola vez para que no se desincronicen.
+
+Dato conforme a la **regla anti-invención**: `2 h → 1.200 €` ya figura en la tabla de datos confirmados del README.
+
+### Verificación
+- JSON-LD: **332 bloques · 0 errores de parseo · 0 `Offer` con `priceCurrency` sin `price`** en todo el sitio.
+- Coincidencia schema ↔ visible comprobada en las 4 páginas: `price:"1200"` + `EUR` en el `Offer`, y la cifra con el formato del locale presente en el body descontando los bloques `<script>`.
