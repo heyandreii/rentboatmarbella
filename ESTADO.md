@@ -213,7 +213,10 @@ Datos confirmados a día de hoy:
   (decisión expresa del propietario).*
 - **Capacidad:** hasta **10** personas por barco.
 - **Barco:** De Antonio D50, 15 m, año 2026, **2× Mercury V12 600 CV (1.200 CV)**.
-- **Incluido:** patrón, combustible de la ruta habitual e IVA.
+- **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf,
+  snorkel, **catering ligero con bebidas** (bebidas + fruta y frutos secos) e IVA.
+  *Sin confirmar:* si el alcohol entra en las bebidas incluidas y qué lleva el
+  catering del sunset — ver `docs/contexto-chat.md` §1.4.
 - **Formato de cifras:** ES `1.200€` · EN `€1,200` · FR/RU `1 200 €`.
 
 ### Anti-regresión

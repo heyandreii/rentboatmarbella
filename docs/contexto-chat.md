@@ -81,17 +81,39 @@ Existe además un competidor de nombre casi idéntico, **rentalboatmarbella.com*
 
 ## 1.4 Qué incluye la tarifa
 
-Lo que dice literalmente el sitio (home y FAQ): **patrón titulado, combustible de
-la ruta habitual, seguro, paddle surf, snorkel y catering ligero a bordo**, más el
-equipo de seguridad completo y la plataforma de baño.
+**Patrón titulado, combustible de la ruta habitual, seguro, paddle surf, snorkel y
+catering ligero con bebidas a bordo**, más el equipo de seguridad completo y la
+plataforma de baño. Todo con IVA incluido.
 
-> ⚠️ **Matiz que conviene tener claro:** el sitio habla de **catering ligero a
-> bordo**, no de «bebidas» como categoría propia. Si al redactar contenido nuevo
-> necesitas decir qué bebidas van incluidas, ese dato **no está confirmado** en
-> ninguna página: pídelo al propietario antes de publicarlo.
+**El catering ligero incluye bebidas y comida** (fruta, frutos secos).
+Confirmado por el propietario el **15 de agosto de 2026**; hasta entonces el sitio
+solo decía «catering ligero» en ES y las bebidas únicamente se explicitaban en las
+páginas de sunset EN/FR/RU. Las enumeraciones de «qué incluye el precio» de las 4
+homes y las 4 fichas de flota ya lo dicen.
 
 Excepción: en las **rutas a Gibraltar** el combustible va aparte (la ruta se sale
 del recorrido habitual). Así figura ya en la home.
+
+> ⚠️ **PENDIENTE DE DECISIÓN — las páginas de sunset prometen más que eso.**
+> Las 4 landings de sunset describen el catering con un detalle que **no coincide**
+> con «fruta y frutos secos», y además dan por incluida una botella para brindar:
+>
+> | Idioma | Comida que promete | Bebida que promete |
+> |---|---|---|
+> | ES | plato de fruta fresca y **tabla de quesos y embutidos** | agua, refrescos **y una botella para brindar** |
+> | EN | fresh fruit platter with a **cheese and charcuterie board** | drinks, **including a bottle of chilled cava or champagne** |
+> | FR | plateau de fruits frais, **planche de fromages et de charcuterie** | eau, softs **et une bouteille pour trinquer** (champagne en option premium) |
+> | RU | фруктовая тарелка, **сырная и мясная нарезка** | прохладительные напитки (игристое по желанию) |
+>
+> Hay que decidir cuál es la realidad y alinear las 4 páginas: **(a)** el sunset
+> lleva de verdad tabla de quesos y botella y entonces es un catering distinto al
+> de las salidas normales y hay que decirlo así, o **(b)** no los lleva y hay que
+> corregir las 4 landings. Mientras no se decida, **no des por buena ninguna de las
+> dos versiones al redactar contenido nuevo.**
+>
+> Relacionado y también sin confirmar: **si el alcohol entra o no en las
+> «bebidas» incluidas.** La versión FR es la única que da una pista, al presentar
+> el «champagne premium» como extra de pago.
 
 ## 1.5 Extras (los del formulario de reserva)
 
@@ -727,6 +749,12 @@ el contraste del footer, único fallo de accesibilidad que queda.
 7. **Posibles actividades nuevas:** **seabob**, **wakeboard / donut**, **parada en
    beach club por mar**, **tarjeta regalo**. Ninguna se publica hasta que exista
    como producto real y con precio confirmado — regla anti-invención (§8).
+8. **🔴 Qué lleva exactamente el catering del sunset** (ver el aviso de §1.4):
+   decidir si la tabla de quesos y embutidos y la botella para brindar existen o
+   no, y alinear las 4 landings de sunset. Es lo único del sitio que hoy promete
+   algo que puede no corresponderse con la realidad, así que va por delante del
+   resto del backlog de contenido. Decidir de paso si el alcohol entra en las
+   bebidas incluidas.
 
 ---
 
