@@ -29,9 +29,17 @@ CHEVRON = ('<svg width="9" height="6" viewBox="0 0 9 6" aria-hidden="true" focus
            'style="display:block"><path d="M1 1.5 4.5 5 8 1.5" fill="none" stroke="currentColor" '
            'stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
+# Dos formas del selector, porque el script tiene que poder reejecutarse:
+#   1) el bloque en línea original (páginas que aún no han pasado por aquí);
+#   2) el desplegable que genera build() (todas las páginas desde el PR #15).
+# Sin la segunda alternativa el script no encontraba ningún selector en un repo
+# ya migrado y fallaba con "0 selectores encontrados" en las 101 páginas, así que
+# era imposible regenerar el selector al añadir una traducción — que es justo
+# para lo que existe. El patrón (2) es el mismo que usa check-lang-switcher.py.
 SWITCHER = re.compile(
     r'<div style="display:flex;align-items:center;gap:2px;font-size:12px;font-weight:600;'
-    r'color:#626b6a;letter-spacing:\.04em">.*?</div>', re.S)
+    r'color:#626b6a;letter-spacing:\.04em">.*?</div>'
+    r'|<div data-rbm-lang\b.*?</div></div>', re.S)
 ALTERNATE = re.compile(r'<link rel="alternate" hreflang="([a-zA-Z-]+)" href="([^"]+)"')
 HTML_LANG = re.compile(r'<html lang="([a-zA-Z-]+)"')
 CANONICAL = re.compile(r'<link rel="canonical" href="([^"]+)"')

@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **14 de agosto de 2026**.
+**Documento vivo.** Última actualización: **19 de agosto de 2026**.
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -25,8 +25,8 @@ por medio. Cuatro idiomas con URLs traducidas: **ES / EN / FR / RU**.
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 100 URLs en el sitemap · 26 posts de blog · 4 formularios de
-reserva (uno por idioma) · 332 bloques JSON-LD validados.
+**Tamaño actual:** 101 URLs en el sitemap · 27 posts de blog · 4 formularios de
+reserva (uno por idioma) · 336 bloques JSON-LD validados.
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
 y agosto de 2026 (PR #1 a #15) cerraron los problemas críticos (404 del blog,
@@ -41,11 +41,11 @@ es afinado, contenido y decisiones comerciales — nada bloqueante.
 
 - **Blog reparado.** Los `/post/...` enlazados desde los índices no existían: 404
   en todo el blog. Creados los posts y, desde entonces, un script anti-regresión
-  impide que vuelva a pasar. Hoy: **26 posts** en 4 idiomas, todos enlazados desde
+  impide que vuelva a pasar. Hoy: **27 posts** en 4 idiomas, todos enlazados desde
   el índice de su idioma.
-- **Schema completo** en las 100 páginas: `LocalBusiness` (con `legalName` y
+- **Schema completo** en las 101 páginas: `LocalBusiness` (con `legalName` y
   `taxID` reales), `Product` + `Offer`, `FAQPage`, `BlogPosting`,
-  `BreadcrumbList`, y `Organization` + `WebSite` en las 4 homes. 332 bloques
+  `BreadcrumbList`, y `Organization` + `WebSite` en las 4 homes. 336 bloques
   JSON-LD validados offline contra el vocabulario oficial de schema.org: 0 errores.
 - **Accesibilidad WCAG AA** (PR #2, #3): labels, `aria`, `main`, contraste del
   naranja de marca corregido a navy/ámbar. Lighthouse móvil: accesibilidad **96**,
@@ -58,7 +58,7 @@ es afinado, contenido y decisiones comerciales — nada bloqueante.
   páginas traducidas; nav, footer y breadcrumb siempre en el idioma de la página.
 - **Legal:** Aviso Legal, Privacidad, Términos y Cookies en los 4 idiomas (16
   páginas) con datos fiscales reales.
-- **`sitemap.xml`** con 100 URLs, sin rotas, referenciado desde `robots.txt`.
+- **`sitemap.xml`** con 101 URLs, sin rotas, referenciado desde `robots.txt`.
 - **`robots.txt` abierto a bots de IA**: `GPTBot`, `ClaudeBot`, `PerplexityBot` y
   `Google-Extended` permitidos explícitamente.
 
@@ -106,6 +106,24 @@ Header móvil: en ≤760px los 4 idiomas se pliegan en un desplegable, y cada en
 lleva a la traducción de **esa misma página** (se genera desde los `hreflang`, no
 a mano).
 
+### Boat party: CTR y versión ES (agosto 2026)
+
+- **Title y meta description del post EN de boat party reescritos para CTR.** Estaba
+  en posición ~9-10 para «boat party puerto banus» con **0 clics en 58 impresiones**:
+  el problema era el gancho, no el ranking. Ahora el title lleva beneficio y cifra
+  real (barco privado para 10, desde 1.200 €) y la description enumera qué incluye.
+  Sincronizados `og:`, `twitter:` y el `headline` del `BlogPosting`, que iban por
+  libre con tres textos distintos.
+- **Creado `post/fiesta-en-barco-puerto-banus`**, versión ES localizada (no traducida):
+  gancho y ejemplos adaptados a despedidas, cumpleaños y grupos de amigos. Con
+  `hreflang` recíproco EN↔ES + `x-default`, card en el índice ES, dos enlaces
+  contextuales entrantes y entrada en el sitemap.
+- **Corregido `scripts/apply-lang-switcher.py`.** Su regex solo reconocía el selector
+  *anterior* al PR #15, así que en un repo ya migrado no encontraba ninguno y fallaba
+  con «0 selectores encontrados» en las 101 páginas: era imposible regenerar el
+  selector al añadir una traducción, que es justo para lo que existe. Ahora acepta las
+  dos formas y es idempotente.
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -131,14 +149,17 @@ a mano).
 2. **Campo `url` en los 4 `Offer` corporativos.** Los `Offer` de las landings de
    eventos de empresa llevan `price`, `priceCurrency` y `availability`, pero no
    `url`. Es recomendado por Google y barato de añadir.
-3. **`hreflang` para los 2 posts sin traducción.** `post/boat-party-puerto-banus`
-   (EN) y `post/bodas-eventos-barco-marbella` (ES) declaran un solo alternate. Se
-   resuelve solo al traducirlos; mientras tanto están correctos como páginas
-   monolingües.
+3. **`hreflang` para el post que sigue sin traducción.** Queda solo
+   `post/bodas-eventos-barco-marbella` (ES), que declara un único alternate.
+   `post/boat-party-puerto-banus` **resuelto** en agosto de 2026 al crear su versión
+   ES (`post/fiesta-en-barco-puerto-banus`), con alternates recíprocos + `x-default`
+   en ambos. Se resuelve solo al traducirlo; mientras tanto es correcto como página
+   monolingüe.
 4. **Traducir a FR y RU los posts que solo están en ES/EN.** Quedan tres grupos
    del Paquete A: licencia (`necesitas-licencia…` / `do-you-need-licence…`), Costa
-   del Sol (`alquiler-barco-costa-del-sol…` / `boat-rental-costa-del-sol…`) y los
-   dos monolingües del punto anterior. Mismo criterio que en agosto:
+   del Sol (`alquiler-barco-costa-del-sol…` / `boat-rental-costa-del-sol…`) y el
+   grupo de boat party (`fiesta-en-barco-puerto-banus` / `boat-party-puerto-banus`),
+   además del monolingüe del punto anterior. Mismo criterio que en agosto:
    **localización, no traducción literal** (adaptar gancho, ejemplos y referencias
    a cada mercado).
 
@@ -146,14 +167,25 @@ a mano).
 
 5. **Fotos reales.** Varias páginas repiten las mismas imágenes. Sustituirlas por
    fotos propias del D50 mejora conversión y da material para Google Business.
-6. **Experimento de landing en alemán.** Solo **si los datos lo justifican**
-   (tráfico DE en Search Console / GA4). No abrir un quinto idioma por intuición.
+6. ~~**Experimento de landing en alemán.**~~ **NO — descartado con datos**
+   (**20 impresiones DE en 3 meses**, Search Console, agosto de 2026). No hay
+   demanda que justifique abrir un quinto idioma. Revisar solo si esa cifra cambia
+   de orden de magnitud.
 
 ### Decisión comercial pendiente (no tocar hasta que el propietario confirme)
 
 7. **Posibles actividades nuevas:** seabob, wakeboard, parada en beach club,
    tarjeta regalo. Ninguna se publica hasta que exista como producto real y con
    precio confirmado — ver regla anti-invención.
+8. **🔴 Equipamiento y bebida a bordo — cuatro cosas que confirmar.** No están ni en
+   la home ni en `/reservar`, así que no existen a efectos de contenido nuevo:
+   **equipo de sonido Bluetooth**, **política de descorche** (si se puede subir bebida
+   propia), **si el alcohol entra en las bebidas incluidas**, y los extras que menciona
+   `despedida-soltera-barco-marbella.html` (**nevera**, **ducha de agua dulce**,
+   **banda de globos**). Ojo: hasta que el propietario responda, esas afirmaciones
+   **siguen publicadas** en `post/boat-party-puerto-banus` y en esa landing — el post
+   ES nuevo ya las deja fuera y las marca `[CONFIRMAR CON PROPIETARIO]` en un
+   comentario HTML. **Cuando responda, alinear las 3 páginas.**
 
 ---
 
@@ -192,6 +224,15 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    nombre casi idéntico.
 8. **Datos aún no facilitados:** teléfono español `+34` (hay un hueco `TODO` en el
    footer, ahora solo se muestra el +33) y el pantalán/número de amarre exacto.
+9. **🔴 Confirmar qué hay de verdad a bordo** — equipo de sonido Bluetooth, política
+   de descorche (si el cliente puede subir su propia bebida), si el alcohol entra en
+   las bebidas incluidas, y nevera / ducha de agua dulce / banda de globos. Bloquea
+   contenido nuevo y hay tres páginas publicadas que ya lo afirman sin confirmar:
+   ver el punto 8 del backlog (§3).
+10. **Indexar las 2 URLs de boat party** — `/post/fiesta-en-barco-puerto-banus`
+   (nueva) y `/post/boat-party-puerto-banus` (title y meta reescritos). Pedir
+   indexación en Search Console y, dentro de 3-4 semanas, comparar el CTR del post
+   EN contra el 0 % actual (0 clics / 58 impresiones).
 
 ---
 
