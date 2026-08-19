@@ -6,7 +6,7 @@
 # enlazada desde el índice de blog de SU idioma.
 #
 # FASE 2 (red) — hace curl a TODAS las URLs internas enlazadas desde los índices
-# del blog (ES/EN/FR/RU), añadiendo un cache-buster (?cb=...) para NO validar
+# del blog (ES/EN/FR/RU/IT), añadiendo un cache-buster (?cb=...) para NO validar
 # nunca contra la caché de edge de Vercel, y falla (exit 1) si alguna no
 # responde 200. Reporta también x-vercel-cache (esperado MISS por el cache-buster).
 #
@@ -44,7 +44,7 @@ if [ -n "${VERCEL_BYPASS_TOKEN:-}" ]; then
   echo "· Usando x-vercel-protection-bypass (Preview protegido)."
 fi
 
-INDEXES=(blog-nautico-marbella.html yacht-blog.html blog-nautique.html morskoy-blog.html)
+INDEXES=(blog-nautico-marbella.html yacht-blog.html blog-nautique.html morskoy-blog.html blog-nautica-marbella.html)
 
 paths=$(for f in "${INDEXES[@]}"; do
           [ -f "$ROOT/$f" ] && grep -ohE 'href="/[^"#?]*"' "$ROOT/$f"
@@ -64,7 +64,7 @@ fi
 # Para cada <loc> .../post/<slug> del sitemap se lee el idioma del propio post
 # (<html lang="xx">) y se exige que su índice enlace a /post/<slug>.
 # Mapa idioma -> índice: es→blog-nautico-marbella, en→yacht-blog,
-# fr→blog-nautique, ru→morskoy-blog.
+# fr→blog-nautique, ru→morskoy-blog, it→blog-nautica-marbella.
 # ---------------------------------------------------------------------------
 index_for_lang() {
   case "$1" in
@@ -72,6 +72,7 @@ index_for_lang() {
     en) echo "yacht-blog.html" ;;
     fr) echo "blog-nautique.html" ;;
     ru) echo "morskoy-blog.html" ;;
+    it) echo "blog-nautica-marbella.html" ;;
     *)  echo "" ;;
   esac
 }

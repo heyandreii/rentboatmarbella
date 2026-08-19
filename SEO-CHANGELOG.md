@@ -865,3 +865,120 @@ anterior había añadido desaparece: ya no tiene sentido.
 - `node scripts/test-booking-form.js`: 380/380. `node scripts/test-lead-api.js`:
   21/21. `scripts/check-offer-price.sh`: 5/5.
 - `mobile.css` y `js/` sin tocar: no hubo bump de `CSS_V`/`JS_V`.
+
+---
+
+## Oleada IT — Entrega 3: el blog italiano. Oleada COMPLETA (19 de agosto de 2026)
+
+Quince páginas nuevas —el índice del blog italiano y los 14 posts— y con ellas se
+cierra la oleada: **el italiano es el quinto idioma del sitio a todos los
+efectos, con 29 páginas**.
+
+### La lista salió del repo, no de memoria
+
+Se agruparon los 56 posts existentes por sus `hreflang` y salieron **14 grupos,
+los 14 con los 4 miembros completos**: precios, licencia, calas, bodas y eventos,
+pedida, despedida (consejos), boat party, Costa del Sol, invierno y los cinco de
+zona. Coincide exactamente con el alcance pedido: ni grupos huérfanos que
+arrastrar ni monolingües que decidir.
+
+### Slugs
+
+| Página | ES | IT | title | len |
+|---|---|---|---|---|
+| Índice | `blog-nautico-marbella` | `blog-nautica-marbella` | Blog Nautico di Marbella \| Rotte, Cale e Consigli | 49 |
+| Calas | `post/mejores-calas-fondear-marbella` | `post/migliori-cale-ancoraggio-marbella` | Migliori Cale per Ancorare fra Puerto Banús e Cabopino | 54 |
+| Precios | `post/cuanto-cuesta-alquilar-barco-marbella` | `post/quanto-costa-noleggiare-barca-marbella` | Quanto Costa Noleggiare una Barca a Marbella \| da 1.200 € | 57 |
+| Licencia | `post/necesitas-licencia-alquilar-barco-marbella` | `post/serve-patente-nautica-noleggio-marbella` | Serve la Patente Nautica per Noleggiare a Marbella? | 51 |
+| Bodas | `post/bodas-eventos-barco-marbella` | `post/matrimoni-eventi-barca-marbella` | Matrimoni ed Eventi in Barca a Marbella \| da 1.200 € | 52 |
+| Pedida | `post/pedida-matrimonio-en-el-mar` | `post/proposta-matrimonio-in-mare` | Proposta di Matrimonio in Mare a Marbella \| da 1.200 € | 54 |
+| Despedida | `post/despedida-soltera-barco-consejos` | `post/addio-al-nubilato-barca-consigli` | Addio al Nubilato in Barca a Marbella: la Guida \| 1.800 € | 57 |
+| Boat party | `post/fiesta-en-barco-puerto-banus` | `post/festa-in-barca-puerto-banus` | Festa in Barca a Puerto Banús: la Barca Intera, da 1.200 € | 58 |
+| Costa del Sol | `post/alquiler-barco-costa-del-sol-puerto-banus` | `post/noleggio-barca-costa-del-sol-puerto-banus` | Noleggio Barca sulla Costa del Sol: da Dove Uscire | 50 |
+| Invierno | `post/alquilar-barco-marbella-invierno` | `post/noleggio-barca-marbella-inverno` | Noleggiare una Barca a Marbella d'Inverno: Conviene? | 52 |
+| Estepona | `post/alquiler-barco-estepona-puerto-banus` | `post/noleggio-barca-estepona-puerto-banus` | Noleggio Barca a Estepona: Charter Privato a 20 Minuti | 54 |
+| Sotogrande | `post/alquiler-barco-sotogrande-puerto-banus` | `post/noleggio-barca-sotogrande-puerto-banus` | Noleggio Barca a Sotogrande: Charter Diretto, da 1.200 € | 56 |
+| Fuengirola | `post/alquiler-barco-fuengirola-puerto-banus` | `post/noleggio-barca-fuengirola-puerto-banus` | Noleggio Barca a Fuengirola: la Barca Intera, da 1.200 € | 56 |
+| Benalmádena | `post/alquiler-barco-benalmadena-puerto-banus` | `post/noleggio-barca-benalmadena-puerto-banus` | Noleggio Barca a Benalmádena: Barca Privata da 1.200 € | 54 |
+| Málaga | `post/alquiler-barco-malaga-puerto-banus` | `post/noleggio-barca-malaga-puerto-banus` | Noleggio Barca da Málaga: la Giornata Intera da 3.000 € | 55 |
+
+Los 15 `title` ≤60 y las 15 `meta` en 140–155. La cifra va en el `title` donde
+mueve el CTR y se deja fuera donde el formato manda (calas, Costa del Sol,
+licencia, invierno).
+
+**El único slug que no sale de la traducción.** El índice **no puede llamarse
+`blog-nautico-marbella`**: en italiano «blog nautico» se escribe igual que en
+español y ese slug ya es del ES. Se usa el sustantivo —`blog-nautica-marbella`,
+de *la nautica*—, que en italiano se busca igual de bien. Queda anotado para
+mirar si el mismo choque aparece en neerlandés y alemán.
+
+### Los cinco de zona no son clones: medido
+
+Cada uno conserva el ángulo diferencial que tiene en los otros idiomas y le añade
+la capa italiana:
+
+| Zona | Ángulo | Capa italiana |
+|---|---|---|
+| Estepona | 22 km y las calas de poniente *de camino a casa* | Por qué la geografía de aquí no premia el puerto más cercano |
+| Sotogrande | El puerto ya lo tienen: lo que cambia es **quién hay detrás** | Charter directo frente a plataforma de anuncios |
+| Fuengirola | Barco entero frente a los barcos del paseo, **y el levante** | El paralelismo con la *gita collettiva* y el *posto* |
+| Benalmádena | Qué cambia **a bordo** frente a la excursión de Puerto Marina | Cuatro diferencias enumeradas, no insinuadas |
+| Málaga | La aritmética del día completo y el aeropuerto | Los vuelos directos desde Milán, Roma, Bolonia y Nápoles |
+
+Solapamiento de trigramas entre cada par de los cinco: **máximo 17,2%**
+(mínimo 12,0%). Cuerpo de 668 a 915 palabras.
+
+### Localización, no traducción, en el resto
+
+- **Licencia.** El lector italiano llega con el modelo de la *patente nautica
+  entro le 12 miglia*, así que el gancho es que aquí no le sirve de nada:
+  **skipper sempre incluso, nessuna patente**. La escala española (titulín, PNB,
+  PER, Patrón de Yate) se explica solo para el caso de querer conducir, y se dice
+  con todas las letras que **el reconocimiento de un título extranjero no es
+  automático y no depende de nosotros** — que es lo honesto y además el argumento
+  más fuerte a favor del charter con patrón.
+- **Precios.** Se contrasta con lo que el lector conoce —el *gommone a ore* y el
+  *posto* en una gita collettiva— y se pone el número que desarma la comparación:
+  en diez personas la jornada completa son **300 € por persona**.
+- **Boat party.** El grupo que quedó fuera de la Entrega 2 por ser post y no
+  landing. Grupo 4→5.
+- **Invierno.** No se inventan descuentos de temporada baja: las tarifas
+  publicadas son las mismas todo el año y lo que cambia es la disponibilidad.
+
+### Recableado de cierre
+
+- **El nav italiano gana «Blog»** en las 14 páginas de las Entregas 1 y 2, y el
+  footer el enlace al índice. Hasta hoy iban sin él a propósito.
+- **La landing de addio al nubilato enlaza al post de festa in barca**, que es el
+  patrón que sigue el español (la landing EN no lo hace; se replica el ES, que es
+  el idioma fuente de la localización).
+- **El hub de esperienze enlaza al blog.**
+- **Los posts de zona** enlazan a la guía de Costa del Sol y a una zona vecina, y
+  la guía de Costa del Sol lista los cinco — el mismo esquema de los otros
+  idiomas, sin malla.
+
+### `check-links.sh` conoce el índice italiano
+
+Dado de alta en el array `INDEXES` **y** en `index_for_lang()`. Las dos cosas son
+necesarias y por motivos distintos: sin la segunda, la fase 1 marca los 14 posts
+nuevos como «idioma no reconocido» y falla; sin la primera, la fase 2 no los
+recorre nunca. Ahora recorre **153 URLs** y valida **70 posts sin huérfanos**.
+
+### Verificación
+
+- `scripts/check-links.sh` local con handler `cleanUrls`: **153 URLs, 0 fallos;
+  70 posts del sitemap, 0 huérfanos**.
+- Barrido propio de las **159** URLs internas del repo: todas 200.
+- **Reciprocidad `hreflang` en las 159 páginas: 0 incoherencias.** Los **15
+  grupos** ampliados se reescribieron enteros — **60 páginas existentes**, no solo
+  las nuevas — y el `x-default` sigue apuntando al español en los quince.
+- `scripts/apply-lang-switcher.py` + `check-lang-switcher.py`: 159 páginas,
+  **773 enlaces de idioma**, 0 problemas.
+- `scripts/check-datos-comerciales.sh`: **0 claims prohibidos** y **50 páginas**
+  con el equipo de sonido, todas con la redacción canónica.
+- JSON-LD offline: **559 bloques** (eran 501), todos parseables, con **0
+  desincronías FAQ nuevas** medidas contra HEAD.
+- `node scripts/test-booking-form.js` 380/380 · `test-lead-api.js` 21/21 ·
+  `check-offer-price.sh` 5/5.
+- Sitemap: 144 → **159** URLs, XML bien formado.
+- `mobile.css` y `js/` sin tocar: no hubo bump de `CSS_V`/`JS_V`.

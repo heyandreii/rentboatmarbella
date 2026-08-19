@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (10.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (11.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -19,9 +19,9 @@ Web de **chárter privado de un solo barco** —un De Antonio D50 de 15 m, año 
 amarrado en **Puerto Banús (Marbella)**— con reserva directa, sin marketplace de
 por medio. Cuatro idiomas completos con URLs traducidas (**ES / EN / FR / RU**) y
 un **programa multiidioma** en curso que lo lleva a ocho: **IT → NL → DE → AR**,
-en oleadas de tres entregas cada una. Hoy el italiano cubre **14 páginas**
-(Entregas 1 y 2 de su oleada): core, landings de ocasión y formulario propio.
-Le falta el blog.
+en oleadas de tres entregas cada una. **El italiano está completo**: 29 páginas
+—core, landings de ocasión, formulario propio, índice de blog y 14 posts— y es
+el quinto idioma del sitio a todos los efectos. **La oleada siguiente es NL.**
 
 **Stack:** HTML estático puro, sin framework ni paso de build. Desplegado en
 **Vercel** desde `main` (`cleanUrls: true`, `trailingSlash: false`); cada push a
@@ -29,9 +29,9 @@ Le falta el blog.
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 144 URLs en el sitemap · 56 posts de blog · **5 formularios de
-reserva** (uno por idioma publicado, incluido `/prenota` en italiano) · 501
-bloques JSON-LD validados.
+**Tamaño actual:** 159 URLs en el sitemap · **70 posts de blog** · **5 índices de
+blog** · **5 formularios de reserva** (uno por idioma publicado) · 559 bloques
+JSON-LD validados.
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
 y agosto de 2026 (PR #1 a #15) cerraron los problemas críticos (404 del blog,
@@ -559,6 +559,63 @@ Siguen prohibidos, ahora con patrón propio en los 5 idiomas: **DJ a bordo, barr
 premium, altavoz portátil, karaoke**, más la nevera, el hielo y la bebida fría
 como servicio.
 
+### Oleada IT, Entrega 3: el blog italiano — oleada COMPLETA (19 de agosto de 2026)
+
+Quince páginas nuevas: el **índice del blog italiano** y los **14 posts** que
+replican los 14 grupos que existen en los cuatro idiomas. Con esto **la oleada
+italiana se cierra**: el italiano es el quinto idioma del sitio a todos los
+efectos, con 29 páginas.
+
+**La lista salió del repo, no de memoria.** Se agruparon los 56 posts por sus
+`hreflang` y salieron exactamente **14 grupos, los 14 con los 4 miembros
+completos**: precios, licencia, calas, bodas y eventos, pedida, despedida
+(consejos), boat party, Costa del Sol, invierno y los 5 de zona. Sin grupos
+huérfanos ni monolingües que arrastrar.
+
+**El único slug que no sale de la traducción.** El índice **no puede llamarse
+`blog-nautico-marbella`**: en italiano «blog nautico» se escribe igual que en
+español y ese slug ya es del ES. Se usa el sustantivo —**`blog-nautica-marbella`**,
+de *la nautica*—, que en italiano se busca igual de bien. Conviene mirar si el
+mismo choque se repite en neerlandés y alemán antes de abrir esas oleadas.
+
+**Los 5 posts de zona no son clones.** Cada uno mantiene el ángulo diferencial
+que tiene en los otros idiomas, con la capa italiana encima:
+
+| Zona | Ángulo | Capa italiana |
+|---|---|---|
+| Estepona | 22 km y las calas de poniente *de camino a casa* | Por qué la geografía de aquí no premia el puerto más cercano |
+| Sotogrande | El puerto ya lo tienen: lo que cambia es **quién hay detrás** | Charter directo frente a la plataforma de anuncios |
+| Fuengirola | Barco entero frente a los barcos del paseo, **y el levante** | El paralelismo con la *gita collettiva* y el *posto* |
+| Benalmádena | Qué cambia **a bordo** frente a la excursión de Puerto Marina | Cuatro diferencias enumeradas, no insinuadas |
+| Málaga | La aritmética del día completo y el aeropuerto | Los vuelos directos desde Milán, Roma, Bolonia y Nápoles |
+
+Medido: el solapamiento máximo de trigramas entre dos cualesquiera de los cinco
+es del **17,2%**, y el cuerpo va de 668 a 915 palabras.
+
+**Localización, no traducción**, también en el resto:
+
+- **Licencia** — el lector llega del modelo de la *patente nautica entro le 12
+  miglia*, así que el gancho es que aquí no le sirve de nada: skipper sempre
+  incluso, nessuna patente. La escala española (titulín, PNB, PER, Patrón de
+  Yate) se explica solo para el caso de querer conducir, y se dice con claridad
+  que **el reconocimiento de un título extranjero no es automático y no depende
+  de nosotros**.
+- **Precios** — se contrasta con lo que el lector italiano conoce: el *gommone a
+  ore* y el *posto* en una gita collettiva, y se pone el número que desarma la
+  comparación (en diez, la jornada completa son 300 € por persona).
+- **Boat party** — el grupo que quedó fuera de la Entrega 2 por ser post y no
+  landing. Grupo 4→5.
+
+**Recableado de cierre.** El nav italiano gana **«Blog»** en las 14 páginas de
+las Entregas 1 y 2, y el footer el enlace al índice. La landing de addio al
+nubilato enlaza al post de festa in barca —el patrón que sigue el español— y el
+hub de esperienze enlaza al blog.
+
+**`check-links.sh` conoce el índice italiano**, en el array `INDEXES` **y** en
+`index_for_lang()`. Sin lo segundo la fase 1 habría marcado los 14 posts nuevos
+como «idioma no reconocido»; sin lo primero la fase 2 no los recorrería. Ahora
+recorre **153 URLs** y valida **70 posts sin huérfanos**.
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -621,16 +678,27 @@ como servicio.
 
 9. ~~**Oleada IT, Entrega 2.**~~ **HECHA** (19/08/2026): 8 landings de ocasión +
    `/prenota`, 27 CTA recableados, hub y footer al día. Ver §2.
-10. **Oleada IT, Entrega 3:** blog italiano completo, incluidos los 5 posts de
-   zona **y el de boat party**, que no tiene landing en ningún idioma y por eso
-   quedó fuera de la Entrega 2 (ver §2). Requiere además:
-   - dar de alta el índice italiano en `check-links.sh` (arrays `INDEXES` y
-     `index_for_lang`), que hoy solo conoce ES/EN/FR/RU;
-   - añadir **«Blog» al nav italiano** de las 14 páginas ya publicadas, que hoy
-     va sin él a propósito;
-   - añadir la columna del blog al footer italiano.
-11. **Oleadas NL y DE:** mismas tres entregas. Antes de escribir nada, fijar sus
-   slugs en la tabla del README, igual que se hizo con el italiano.
+10. ~~**Oleada IT, Entrega 3.**~~ **HECHA** (19/08/2026): índice del blog
+   italiano + los 14 posts, nav con «Blog», `check-links.sh` con el índice IT.
+   **Con esto la oleada italiana está COMPLETA**: 29 páginas. Ver §2.
+
+11. **🔵 Oleada NL — la siguiente, y ya se puede abrir.** Mismas tres entregas.
+   Antes de escribir una sola página: **fijar sus slugs en las tablas del
+   README** (core, landings y blog), igual que se hizo con el italiano. Lo que
+   la oleada italiana deja aprendido y conviene aplicar desde el principio:
+   - **Comprobar los choques de slug con el español** antes de empezar. En
+     italiano lo destapó el índice del blog (`blog-nautico` se escribe igual en
+     los dos idiomas); en neerlandés y alemán puede pasar con otras páginas.
+   - **Preguntar por la atención en ese idioma antes de escribir** (§5.15): en
+     italiano la respuesta llegó a mitad de oleada y hubo que repasar 14
+     páginas para añadirla.
+   - **El formulario se transforma, no se escribe.** Sustituciones literales
+     afirmadas sobre el inglés, y alta en `scripts/test-booking-form.js`.
+   - **El nav va sin «Blog» hasta la Entrega 3**, y en esa entrega hay que dar
+     de alta el índice en `check-links.sh` (los dos sitios) y recablear el nav
+     y el footer de todas las páginas ya publicadas.
+   - Las redacciones canónicas NL y DE de **lo incluido, puerto base, capacidad,
+     motorización y equipo de sonido** ya están escritas en el README.
 12. **Oleada AR — la última, y no se empieza hasta cerrar DE.** No es un idioma
    más: `dir="rtl"`, espejado de nav, footer, breadcrumbs y grids, tipografía e
    iconos direccionales, y una pasada de QA visual completa. La infraestructura
@@ -696,18 +764,15 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    hablando ES · EN · FR · RU** y ninguna página dice otra cosa. **La misma
    pregunta sigue abierta para NL, DE y AR**: hasta que se confirme, sus páginas
    no lo dirán.
-12. **Indexar las 14 URLs italianas.** Las 5 de la Entrega 1 (`/it`,
-   `/flotta-barche-marbella`, `/escursioni-barca-marbella`,
-   `/proposta-matrimonio-barca-marbella`, `/foto-matrimonio-barca-marbella`) y
-   las **9 nuevas** de la Entrega 2 (`/addio-al-celibato-barca-marbella`,
-   `/addio-al-nubilato-barca-marbella`, `/compleanno-in-barca-marbella`,
-   `/sunset-tour-barca-marbella`, `/avvistamento-delfini-marbella`,
-   `/escursione-barca-gibilterra-marbella`, `/eventi-aziendali-barca-marbella`,
-   `/barca-privata-vs-piattaforme`, `/prenota`). Repartirlas en dos o tres días.
-   Y **revalidar en Search Console los 14 grupos `hreflang` ampliados**: 5 en la
-   Entrega 1 y 9 en la Entrega 2. Al pasar de 4 a 5 miembros (o de 2 a 3 en la
-   comparativa), Google tarda en releer los alternates de las **34 páginas
-   viejas** reescritas.
+12. **Indexar las 29 URLs italianas — la oleada entera.** Las 14 de las Entregas
+   1 y 2 (`/it`, flota, hub, las 8 landings de ocasión, la comparativa y
+   `/prenota`) y las **15 de la Entrega 3**: `/blog-nautica-marbella` y sus 14
+   posts. Repartirlas en tres o cuatro días y **empezar por el índice del blog**,
+   que es la puerta de entrada al resto. Y **revalidar en Search Console los 29
+   grupos `hreflang` ampliados**: 5 en la Entrega 1, 9 en la 2 y 15 en la 3. Al
+   pasar de 4 a 5 miembros Google tarda en releer los alternates de las **94
+   páginas viejas** reescritas a lo largo de la oleada.
+
 13. **Indexar las 2 URLs de boat party** — `/post/fiesta-en-barco-puerto-banus`
    (nueva) y `/post/boat-party-puerto-banus` (title y meta reescritos). Pedir
    indexación en Search Console y, dentro de 3-4 semanas, comparar el CTR del post

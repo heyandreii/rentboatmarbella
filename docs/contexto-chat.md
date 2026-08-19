@@ -17,12 +17,12 @@
 > técnico está en `SEO-CHANGELOG.md`. Los cambios de fondo que hay que conocer
 > antes de tocar nada:
 >
-> - **El sitio ya no son 4 idiomas, sino 4 + un programa que lo lleva a 8**
->   (IT → NL → DE → AR, en oleadas de tres entregas). El italiano ya tiene
->   **14 páginas** —core, las 8 landings de ocasión y su propio formulario
->   `/prenota`— y le falta solo el blog (Entrega 3). Convenciones de slug,
->   formato de cifras y **redacciones canónicas IT/NL/DE** en `README.md` →
->   «Idiomas del programa multiidioma».
+> - **El sitio ya no son 4 idiomas, sino 5 + un programa que lo lleva a 8.**
+>   La oleada italiana está **completa**: 29 páginas (core, 8 landings, el
+>   formulario `/prenota`, el índice `/blog-nautica-marbella` y 14 posts). El
+>   italiano es el quinto idioma a todos los efectos. **La siguiente oleada es
+>   NL.** Convenciones de slug, formato de cifras y **redacciones canónicas
+>   IT/NL/DE** en `README.md` → «Idiomas del programa multiidioma».
 > - **Ya son 5 formularios de reserva, no 4**: `/reservar`, `/booking`,
 >   `/reservation`, `/zabronirovat` y `/prenota`. Todo lo que este archivo dice
 >   «de los 4 formularios» hay que leerlo como «de los 5».
@@ -270,8 +270,8 @@ Hoy `js/form-tracking.js` se sirve como `?v=1`.
 `post/`**. También: 4 formularios de reserva (uno por idioma) y **332 bloques
 JSON-LD** validados.
 
-> ⚠️ **Desfasado.** Hoy son **144 URLs**, 88 páginas en la raíz, 56 posts,
-> **5 formularios** (con `/prenota`) y **501 bloques JSON-LD**. Los números
+> ⚠️ **Desfasado.** Hoy son **159 URLs**, 89 páginas en la raíz, **70 posts**,
+> **5 formularios** (con `/prenota`), **5 índices de blog** y **559 bloques JSON-LD**. Los números
 > buenos están en `ESTADO.md` §1.
 
 ```

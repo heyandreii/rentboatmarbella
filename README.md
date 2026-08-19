@@ -12,8 +12,8 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 
 - `*.html` — páginas del sitio con URLs traducidas. Cuatro idiomas completos
   (ES/EN/FR/RU) más los del **programa multiidioma** en curso (IT/NL/DE/AR, ver
-  su sección más abajo): hoy IT cubre 14 páginas (core + landings de ocasión +
-  formulario `/prenota`), a falta del blog.
+  su sección más abajo): **IT está completo** con 29 páginas (core, landings de
+  ocasión, formulario `/prenota`, índice de blog y 14 posts).
 - `post/*.html` — artículos del blog (servidos como `/post/<slug>`).
 - `img/` — imágenes (WebP + fallback JPG, con variantes responsivas `-640`/`-768`/`-1280`;
   no todas tienen las tres: nunca se genera una variante más ancha que el original).
@@ -52,7 +52,8 @@ scripts/check-links.sh http://127.0.0.1:8000
 ```
 
 El script hace `curl` a todas las URLs internas enlazadas desde los índices del
-blog (`/blog-nautico-marbella`, `/yacht-blog`, `/blog-nautique`, `/morskoy-blog`)
+blog (`/blog-nautico-marbella`, `/yacht-blog`, `/blog-nautique`, `/morskoy-blog`,
+`/blog-nautica-marbella`)
 y **falla con exit 1 si alguna no responde 200**. Si falla, **no hagas push**.
 
 > Nota: un `python3 -m http.server` pelado **no** replica `cleanUrls` de Vercel,
@@ -142,8 +143,9 @@ una replica el sitio completo en **tres entregas**:
 | 2 | Resto de landings de ocasión + **formulario de reserva propio del idioma**. |
 | 3 | Blog completo, incluidos los 5 posts de zona. |
 
-**Estado:** IT — Entregas 1 y 2 hechas (14 páginas: 5 core + 8 landings +
-formulario `/prenota`). Falta la Entrega 3 (blog). NL, DE y AR sin empezar.
+**Estado:** **IT completo** — las tres entregas cerradas, 29 páginas (5 core +
+8 landings + `/prenota` + índice de blog + 14 posts). **La oleada siguiente es
+NL**, y antes de escribir nada hay que fijar sus slugs en las tablas de abajo.
 
 ### Convención de slugs
 
@@ -174,6 +176,28 @@ español (`<keyword>-<barco>-marbella`), sin acentos ni diacríticos:
 | Eventos de empresa | `eventos-empresa-barco-marbella` | `eventi-aziendali-barca-marbella` |
 | Comparativa | `barco-privado-vs-plataformas` | `barca-privata-vs-piattaforme` |
 | **Formulario de reserva** | `reservar` | `prenota` |
+
+**Blog (Entrega 3)** — índice y los 14 grupos de posts:
+
+| Página | ES | IT |
+|---|---|---|
+| **Índice del blog** | `blog-nautico-marbella` | `blog-nautica-marbella` |
+| Precios | `post/cuanto-cuesta-alquilar-barco-marbella` | `post/quanto-costa-noleggiare-barca-marbella` |
+| Licencia | `post/necesitas-licencia-alquilar-barco-marbella` | `post/serve-patente-nautica-noleggio-marbella` |
+| Calas | `post/mejores-calas-fondear-marbella` | `post/migliori-cale-ancoraggio-marbella` |
+| Bodas y eventos | `post/bodas-eventos-barco-marbella` | `post/matrimoni-eventi-barca-marbella` |
+| Pedida | `post/pedida-matrimonio-en-el-mar` | `post/proposta-matrimonio-in-mare` |
+| Despedida (consejos) | `post/despedida-soltera-barco-consejos` | `post/addio-al-nubilato-barca-consigli` |
+| Boat party | `post/fiesta-en-barco-puerto-banus` | `post/festa-in-barca-puerto-banus` |
+| Costa del Sol | `post/alquiler-barco-costa-del-sol-puerto-banus` | `post/noleggio-barca-costa-del-sol-puerto-banus` |
+| Invierno | `post/alquilar-barco-marbella-invierno` | `post/noleggio-barca-marbella-inverno` |
+| Zona (×5) | `post/alquiler-barco-<zona>-puerto-banus` | `post/noleggio-barca-<zona>-puerto-banus` |
+
+> **El índice no puede llamarse `blog-nautico-marbella`**: en italiano «blog
+> nautico» se escribe igual que en español y ese slug ya es del ES. Se usa el
+> sustantivo (`la nautica`), que en italiano se busca igual de bien y no colisiona.
+> Es el único slug IT que no sale directo de la traducción del español; conviene
+> mirar si el mismo choque se repite en NL y DE antes de abrir esas oleadas.
 
 Los slugs de NL/DE/AR se fijan aquí al abrir su oleada, antes de escribir una
 sola página, para que no haya dos convenciones conviviendo.
@@ -292,7 +316,7 @@ su oleada. Hasta entonces, los CTA de la Entrega 1 apuntan al formulario **EN**
 entiende sin fricción, y evita publicar enlaces muertos o mandarlo al español.
 
 **IT ya está recableado:** los **27** CTA de las 5 páginas de la Entrega 1
-apuntan a `/prenota`. El grep para la oleada siguiente, con sus páginas:
+apuntan a `/prenota`, y el nav italiano tiene «Blog» desde la Entrega 3. El grep para la oleada siguiente, con sus páginas:
 
 ```bash
 grep -o 'href="/booking"' <páginas de la Entrega 1 del idioma> | wc -l
@@ -328,6 +352,22 @@ Lo único ya preparado es la infraestructura del selector: `ORDER`, `CODE`,
 en el enlace al árabe desde cualquier página LTR, `check-lang-switcher.py` valida
 que ese `dir` esté donde toca y solo ahí, y el panel del selector se posiciona
 con `inset-inline-end` en vez de `left`, así que se ancla solo al lado correcto.
+
+### Al abrir el blog de un idioma nuevo (Entrega 3)
+
+Además de escribir el índice y los posts, hay **tres piezas fuera del HTML** que
+se olvidan con facilidad:
+
+1. **`scripts/check-links.sh`** — dar de alta el índice en el array `INDEXES`
+   **y** en `index_for_lang()`. Sin lo segundo, la fase 1 marca todos los posts
+   nuevos como «idioma no reconocido» y falla; sin lo primero, la fase 2 no los
+   recorre nunca.
+2. **El nav y el footer** de todas las páginas del idioma que ya estaban
+   publicadas: hasta la Entrega 3 van a propósito sin «Blog».
+3. **Los enlaces contextuales entrantes**, que son lo que distingue un blog de
+   una carpeta de posts: cada post de zona con la guía de Costa del Sol y con
+   una zona vecina, los posts de ocasión con su landing, y la landing con el
+   post donde el resto de idiomas lo hace.
 
 ## Despliegue
 
