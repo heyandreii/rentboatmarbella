@@ -49,8 +49,8 @@ es afinado, contenido y decisiones comerciales — nada bloqueante.
   JSON-LD validados offline contra el vocabulario oficial de schema.org: 0 errores.
 - **Accesibilidad WCAG AA** (PR #2, #3): labels, `aria`, `main`, contraste del
   naranja de marca corregido a navy/ámbar. Lighthouse móvil: accesibilidad **96**,
-  buenas prácticas 100, SEO 100. El único fallo pendiente es el contraste del
-  footer.
+  buenas prácticas 100, SEO 100. El contraste del footer, que era el fallo que
+  quedaba, se corrigió en agosto de 2026 (ver más abajo).
 - **Rendimiento:** 17 imágenes JPG → WebP (**20 MB → 1,7 MB, −92 %**), `<picture>`
   con fallback, `fetchpriority` en el LCP y `loading="lazy"` en el resto. PageSpeed
   88–99.
@@ -123,6 +123,24 @@ a mano).
   con «0 selectores encontrados» en las 101 páginas: era imposible regenerar el
   selector al añadir una traducción, que es justo para lo que existe. Ahora acepta las
   dos formas y es idempotente.
+
+### Contraste del footer (agosto 2026)
+
+- **Títulos de sección del footer de `#3F7A72` a `#e6ecee` en las 101 páginas.**
+  «EXPERIENCIAS», «INFO», «CONTACTO» y sus equivalentes EN/FR/RU iban en el verde
+  de marca sobre el fondo `#12232B`: **3,26:1**, por debajo del 4,5:1 que WCAG AA
+  exige a texto pequeño (11px, `font-weight:700`). Era el último fallo de
+  accesibilidad que reportaba PageSpeed (96 en móvil y escritorio). Ahora
+  **13,53:1**.
+- `#e6ecee` no es un color nuevo: ya es el color base declarado en el contenedor
+  del footer (`background:#12232B;color:#e6ecee`) y del que derivan sus enlaces
+  (`rgba(230,236,238,.7)`, 7,29:1). Los títulos pasan a ese mismo color a plena
+  opacidad.
+- El estilo es **inline en cada página**, no vive en `mobile.css`, así que no hubo
+  ningún `?v=` que subir. Cambio hecho por script (sustitución literal de la cadena
+  de estilo completa, 303 ocurrencias = 101 páginas × 3 títulos) y verificado línea
+  a línea: 303 inserciones / 303 borrados, 0 líneas donde cambiara algo más que el
+  color, y los otros 1.008 usos de `#3F7A72` del sitio intactos.
 
 ### Herramientas de verificación en el repo
 
