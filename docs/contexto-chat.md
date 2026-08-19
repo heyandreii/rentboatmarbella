@@ -81,39 +81,47 @@ Existe además un competidor de nombre casi idéntico, **rentalboatmarbella.com*
 
 ## 1.4 Qué incluye la tarifa
 
-**Patrón titulado, combustible de la ruta habitual, seguro, paddle surf, snorkel y
-catering ligero con bebidas a bordo**, más el equipo de seguridad completo y la
-plataforma de baño. Todo con IVA incluido.
+**Patrón titulado, combustible de la ruta habitual, seguro, paddle surf, snorkel,
+catering ligero (fruta y frutos secos), agua y refrescos y una copa de champán de
+cortesía**, más el equipo de seguridad completo y la plataforma de baño. Todo con
+IVA incluido.
 
-**El catering ligero incluye bebidas y comida** (fruta, frutos secos).
-Confirmado por el propietario el **15 de agosto de 2026**; hasta entonces el sitio
-solo decía «catering ligero» en ES y las bebidas únicamente se explicitaban en las
-páginas de sunset EN/FR/RU. Las enumeraciones de «qué incluye el precio» de las 4
-homes y las 4 fichas de flota ya lo dicen.
+Confirmado por el propietario el **19 de agosto de 2026**, cerrando la última duda
+abierta sobre lo que va incluido. Redacción canónica por idioma:
+
+| Idioma | Fórmula |
+|---|---|
+| ES | catering ligero, agua y refrescos, y copa de champán de cortesía |
+| EN | light catering, water and soft drinks, and a complimentary glass of champagne |
+| FR | catering léger, eau et sodas, et une coupe de champagne offerte |
+| RU | лёгкий кейтеринг, вода и напитки, и бокал шампанского в подарок |
 
 Excepción: en las **rutas a Gibraltar** el combustible va aparte (la ruta se sale
 del recorrido habitual). Así figura ya en la home.
 
-> ⚠️ **PENDIENTE DE DECISIÓN — las páginas de sunset prometen más que eso.**
-> Las 4 landings de sunset describen el catering con un detalle que **no coincide**
-> con «fruta y frutos secos», y además dan por incluida una botella para brindar:
->
-> | Idioma | Comida que promete | Bebida que promete |
-> |---|---|---|
-> | ES | plato de fruta fresca y **tabla de quesos y embutidos** | agua, refrescos **y una botella para brindar** |
-> | EN | fresh fruit platter with a **cheese and charcuterie board** | drinks, **including a bottle of chilled cava or champagne** |
-> | FR | plateau de fruits frais, **planche de fromages et de charcuterie** | eau, softs **et une bouteille pour trinquer** (champagne en option premium) |
-> | RU | фруктовая тарелка, **сырная и мясная нарезка** | прохладительные напитки (игристое по желанию) |
->
-> Hay que decidir cuál es la realidad y alinear las 4 páginas: **(a)** el sunset
-> lleva de verdad tabla de quesos y botella y entonces es un catering distinto al
-> de las salidas normales y hay que decirlo así, o **(b)** no los lleva y hay que
-> corregir las 4 landings. Mientras no se decida, **no des por buena ninguna de las
-> dos versiones al redactar contenido nuevo.**
->
-> Relacionado y también sin confirmar: **si el alcohol entra o no en las
-> «bebidas» incluidas.** La versión FR es la única que da una pista, al presentar
-> el «champagne premium» como extra de pago.
+### Lo que NO existe a bordo (confirmado 19/08/2026 — no publicar)
+
+- **Equipo de sonido / altavoz Bluetooth.** No hay. Eliminado de las 14 páginas que
+  lo afirmaban.
+- **Nevera y ducha de agua dulce.** No hay.
+- **Política de descorche.** No se promete que el cliente pueda subir su propia
+  bebida. Eliminado de las 14 páginas que lo decían.
+- **Agua y hielo como claim aparte.** El agua y los refrescos van dentro de lo
+  incluido; el hielo no se menciona.
+- **Globos sueltos.** Solo existen dentro del extra «decoración especial (+120 €)».
+
+### Alcohol
+
+El único alcohol incluido es **una copa de champán de cortesía**. El resto de
+bebidas incluidas son sin alcohol. Las **botellas** siguen siendo extra de pago y
+las páginas que las presentan así son correctas: copa incluida, botella extra.
+
+### El catering del sunset (antes 🔴, ahora cerrado)
+
+Las 4 landings de sunset prometían tabla de quesos y embutidos y una botella para
+brindar. **El propietario confirma que el sunset no lleva catering especial:** es
+el mismo catering ligero + agua y refrescos + copa de champán de cortesía que el
+resto de salidas. Las 4 páginas se corrigieron el 19/08/2026.
 
 ## 1.5 Extras (los del formulario de reserva)
 
@@ -749,12 +757,10 @@ el contraste del footer, único fallo de accesibilidad que queda.
 7. **Posibles actividades nuevas:** **seabob**, **wakeboard / donut**, **parada en
    beach club por mar**, **tarjeta regalo**. Ninguna se publica hasta que exista
    como producto real y con precio confirmado — regla anti-invención (§8).
-8. **🔴 Qué lleva exactamente el catering del sunset** (ver el aviso de §1.4):
-   decidir si la tabla de quesos y embutidos y la botella para brindar existen o
-   no, y alinear las 4 landings de sunset. Es lo único del sitio que hoy promete
-   algo que puede no corresponderse con la realidad, así que va por delante del
-   resto del backlog de contenido. Decidir de paso si el alcohol entra en las
-   bebidas incluidas.
+8. ~~**Qué lleva exactamente el catering del sunset.**~~ **RESUELTO** (19/08/2026):
+   el sunset lleva el mismo catering que el resto de salidas; las 4 landings ya
+   están corregidas. El alcohol incluido se limita a una copa de champán de
+   cortesía. Ver §1.4.
 
 ---
 

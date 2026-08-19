@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (2.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (3.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -169,6 +169,26 @@ sonido Bluetooth, champagne y «agua y hielo incluidos», y los posts de precios
 RU repiten lo del descorche y el agua y el hielo. Nada de eso se ha trasladado a las
 traducciones nuevas — ver el punto 8 del backlog (§3).
 
+### Deuda de datos sin confirmar, pagada (19 de agosto de 2026)
+
+El propietario respondió a las preguntas abiertas y se corrigió **todo el sitio de
+una vez**, no solo las páginas que las traducciones habían ido destapando:
+
+- **Fuera:** equipo de sonido / Bluetooth (14 páginas), política de descorche (14),
+  «agua y hielo» como claim (11), nevera y ducha de agua dulce (6), y los globos
+  prometidos sueltos, que ahora solo aparecen dentro del extra de decoración (+120 €).
+- **Dato nuevo incluido:** una **copa de champán de cortesía**, añadida a las
+  enumeraciones canónicas —respuesta «¿Qué incluye el precio?» y tarjeta de catering
+  de las 4 homes, párrafo y tarjeta de tarifa de las 4 fichas de flota, FAQ del
+  sunset— editando `FAQPage` y HTML visible a la vez para que no se desincronicen.
+- **Las 4 landings de sunset corregidas:** fuera la tabla de quesos y embutidos y la
+  botella para brindar; el sunset lleva el mismo catering que el resto de salidas.
+  Era lo único del sitio que prometía algo que podía no entregarse.
+- Las botellas de champán **como extra de pago siguen siendo correctas** y se han
+  dejado: copa incluida, botella extra.
+
+Retirados los 6 comentarios `[CONFIRMAR CON PROPIETARIO]` de los posts nuevos.
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -215,15 +235,11 @@ traducciones nuevas — ver el punto 8 del backlog (§3).
 7. **Posibles actividades nuevas:** seabob, wakeboard, parada en beach club,
    tarjeta regalo. Ninguna se publica hasta que exista como producto real y con
    precio confirmado — ver regla anti-invención.
-8. **🔴 Equipamiento y bebida a bordo — cuatro cosas que confirmar.** No están ni en
-   la home ni en `/reservar`, así que no existen a efectos de contenido nuevo:
-   **equipo de sonido Bluetooth**, **política de descorche** (si se puede subir bebida
-   propia), **si el alcohol entra en las bebidas incluidas**, y los extras que menciona
-   `despedida-soltera-barco-marbella.html` (**nevera**, **ducha de agua dulce**,
-   **banda de globos**). Ojo: hasta que el propietario responda, esas afirmaciones
-   **siguen publicadas** en `post/boat-party-puerto-banus` y en esa landing — el post
-   ES nuevo ya las deja fuera y las marca `[CONFIRMAR CON PROPIETARIO]` en un
-   comentario HTML. **Cuando responda, alinear las 3 páginas.**
+8. ~~**Equipamiento y bebida a bordo.**~~ **RESUELTO** (19/08/2026). El propietario
+   confirmó: no hay Bluetooth, nevera ni ducha de agua dulce; no se promete
+   descorche; el único alcohol incluido es una copa de champán de cortesía; los
+   globos solo dentro del extra de decoración; y el sunset lleva el mismo catering
+   que el resto. Las 45 páginas afectadas se corrigieron en la misma tanda. Ver §2.
 
 ---
 
@@ -293,9 +309,13 @@ Datos confirmados a día de hoy:
 - **Capacidad:** hasta **10** personas por barco.
 - **Barco:** De Antonio D50, 15 m, año 2026, **2× Mercury V12 600 CV (1.200 CV)**.
 - **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf,
-  snorkel, **catering ligero con bebidas** (bebidas + fruta y frutos secos) e IVA.
-  *Sin confirmar:* si el alcohol entra en las bebidas incluidas y qué lleva el
-  catering del sunset — ver `docs/contexto-chat.md` §1.4.
+  snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una
+  copa de champán de cortesía** e IVA. *(Confirmado el 19/08/2026.)*
+- **No existe a bordo** (confirmado 19/08/2026): equipo de sonido / Bluetooth,
+  nevera, ducha de agua dulce. **No se promete descorche.** El único alcohol
+  incluido es la copa de champán; las botellas siguen siendo extra de pago. Los
+  globos solo dentro de «decoración especial (+120 €)». El **sunset lleva el mismo
+  catering** que el resto de salidas.
 - **Formato de cifras:** ES `1.200€` · EN `€1,200` · FR/RU `1 200 €`.
 
 ### Anti-regresión
