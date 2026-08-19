@@ -1,17 +1,15 @@
 /* Selector de idioma del header — patrón "disclosure" (botón + panel).
  *
- * En escritorio (>=761px) los 4 idiomas siguen en línea como siempre y este
- * script no cambia nada visible: la media query de mobile.css es la que decide
- * si se ve el botón o la fila de enlaces.
+ * Desde el programa multiidioma el desplegable es el único modo, también en
+ * escritorio: con 8 idiomas (ES EN FR RU IT NL DE AR) la fila en línea ya no
+ * cabe en el header. mobile.css solo agranda el área táctil en ≤760px.
  *
  * El script marca el contenedor con data-js. Sin JS, mobile.css deja los
- * idiomas en línea también en móvil (el comportamiento de antes) en vez de
- * esconderlos tras un botón que nadie podría abrir.
+ * idiomas en línea (el comportamiento de siempre) en vez de esconderlos tras
+ * un botón que nadie podría abrir.
  */
 (function () {
   'use strict';
-
-  var mq = window.matchMedia('(max-width: 760px)');
 
   function setup(root) {
     var btn = root.querySelector('[data-rbm-lang-btn]');
@@ -63,13 +61,9 @@
       if (e.relatedTarget && !root.contains(e.relatedTarget)) close(false);
     });
 
-    // Al pasar a escritorio los idiomas vuelven a estar en línea; un data-open
-    // residual dejaría el panel flotando sobre el header.
-    function onChange() {
-      if (!mq.matches) close(false);
-    }
-    if (mq.addEventListener) mq.addEventListener('change', onChange);
-    else if (mq.addListener) mq.addListener(onChange);
+    // Girar el móvil o redimensionar la ventana recoloca el header; un panel
+    // abierto se quedaría flotando fuera de sitio.
+    window.addEventListener('resize', function () { close(false); });
   }
 
   /* El header es position:fixed y [data-nav-spacer] reserva su alto. Ese alto

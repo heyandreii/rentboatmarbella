@@ -26,9 +26,14 @@ ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else
                        os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
 SWITCHER = re.compile(r'<div data-rbm-lang\b.*?</div></div>', re.S)
+# El dir="rtl" solo lo llevan los idiomas de escritura derecha-izquierda (árabe).
 LINK = re.compile(r'<a href="([^"]+)" hreflang="([a-z]{2})" lang="([a-z]{2})" '
-                  r'aria-label="[^"]+"( aria-current="true")?')
+                  r'aria-label="[^"]+"( aria-current="true")?( dir="rtl")?')
 HTML_LANG = re.compile(r'<html lang="([a-zA-Z-]+)"')
+# Los 8 idiomas del programa multiidioma. Una página solo ofrece los que declara
+# en sus hreflang, así que este conjunto es el techo, no lo esperado por página.
+LANGS = ('es', 'en', 'fr', 'ru', 'it', 'nl', 'de', 'ar')
+RTL = {'ar'}
 
 
 def target_file(path):
@@ -68,10 +73,16 @@ def main():
             problems.append('%s: aria-current en "%s" pero <html lang="%s">'
                             % (rel, current[0][1], lang_of[rel]))
 
-        for href, hreflang, lang, is_current in links:
+        for href, hreflang, lang, is_current, rtl in links:
             total_links += 1
             if hreflang != lang:
                 problems.append('%s: hreflang="%s" != lang="%s"' % (rel, hreflang, lang))
+            if hreflang not in LANGS:
+                problems.append('%s: idioma no registrado en el programa (%s)' % (rel, hreflang))
+            if bool(rtl) != (hreflang in RTL):
+                problems.append('%s: %s %s dir="rtl" (los RTL son: %s)'
+                                % (rel, hreflang, 'no debería llevar' if rtl else 'debería llevar',
+                                   ', '.join(sorted(RTL))))
             tgt = target_file(href)
             if not os.path.isfile(os.path.join(ROOT, tgt)):
                 problems.append('%s: %s -> %s no existe' % (rel, hreflang, href))

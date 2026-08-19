@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (6.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (7.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -17,7 +17,10 @@ el proyecto).
 
 Web de **chárter privado de un solo barco** —un De Antonio D50 de 15 m, año 2026,
 amarrado en **Puerto Banús (Marbella)**— con reserva directa, sin marketplace de
-por medio. Cuatro idiomas con URLs traducidas: **ES / EN / FR / RU**.
+por medio. Cuatro idiomas completos con URLs traducidas (**ES / EN / FR / RU**) y
+un **programa multiidioma** en curso que lo lleva a ocho: **IT → NL → DE → AR**,
+en oleadas de tres entregas cada una. Hoy el italiano existe en las 5 páginas
+core (Entrega 1 de su oleada).
 
 **Stack:** HTML estático puro, sin framework ni paso de build. Desplegado en
 **Vercel** desde `main` (`cleanUrls: true`, `trailingSlash: false`); cada push a
@@ -25,8 +28,9 @@ por medio. Cuatro idiomas con URLs traducidas: **ES / EN / FR / RU**.
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 130 URLs en el sitemap · 56 posts de blog · 4 formularios de
-reserva (uno por idioma) · 452 bloques JSON-LD validados.
+**Tamaño actual:** 135 URLs en el sitemap · 56 posts de blog · 4 formularios de
+reserva (uno por idioma; el italiano llega en la Entrega 2) · 468 bloques JSON-LD
+validados.
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
 y agosto de 2026 (PR #1 a #15) cerraron los problemas críticos (404 del blog,
@@ -288,6 +292,78 @@ ofrecía subir bebida propia y tenerla enfriada — no hay nevera ni política d
 descorche. Las cinco reescritas con las enumeraciones canónicas. El grep queda a
 **0 hits fuera de comentarios** en las 130 páginas.
 
+
+### Programa multiidioma: Fase 0 + Oleada IT, Entrega 1 (19 de agosto de 2026)
+
+El sitio pasa de 4 a 8 idiomas (IT, NL, DE y AR) en oleadas, cada una completa
+antes de abrir la siguiente y dividida en tres entregas: core, landings +
+formulario propio, blog. Esta tanda cierra la infraestructura común y el core
+italiano. Reglas, convenciones y **redacciones canónicas IT/NL/DE** viven en
+`README.md` → «Idiomas del programa multiidioma».
+
+**Fase 0 — infraestructura.** El selector de idioma pasa a **desplegable en
+todos los anchos, no solo en móvil**: con ocho idiomas la fila en línea ya no
+cabe en el header ni en escritorio. Botón con el código actual + panel anclado
+al borde derecho con `inset-inline-end` (no `left`), filas de código + endónimo
+(`IT  Italiano`), 40px de alto en escritorio y 44px en móvil, `max-height` con
+scroll propio. **El alto del header no cambia** —69px en escritorio, 91px en
+móvil— así que no hay CLS ni hubo que tocar `[data-nav-spacer]`. Sin JavaScript
+los idiomas siguen en línea, como siempre. `mobile.css` y `js/lang-switcher.js`
+cambiaron, así que subió el `?v=` en las 135 páginas (`?v=3` y `?v=2`); la
+versión ahora se declara **una sola vez**, en `CSS_V`/`JS_V` de
+`apply-lang-switcher.py`, en vez de repetirse a mano por página.
+
+`apply-lang-switcher.py` y `check-lang-switcher.py` conocen ya los 8 idiomas y
+el árabe como RTL: el generador emite `dir="rtl"` en el enlace al árabe desde
+cualquier página LTR y el validador falla si ese `dir` está donde no toca. **Las
+130 páginas ES/EN/FR/RU siguen mostrando solo los idiomas que cada una declara**
+en sus `hreflang`: el techo son 8, lo ofrecido depende de la página.
+
+**Oleada IT — Entrega 1.** Cinco páginas nuevas, localizadas desde el español,
+no traducidas: `/it`, `/flotta-barche-marbella`, `/escursioni-barca-marbella`,
+`/proposta-matrimonio-barca-marbella` y `/foto-matrimonio-barca-marbella`.
+
+El gancho italiano no es el mismo que el español. El lector que llega de Italia
+tiene en la cabeza **el gommone a noleggio por horas —con o sin patente— o el
+posto en una gita collettiva**, así que la home explica la diferencia en esos
+términos: la barca entera para tu grupo, skipper siempre a bordo (ninguna
+patente, tampoco la italiana), tarifa por embarcación y no a testa. La landing
+de propuesta usa que nadie os reconoce y nadie graba desde una tumbona; la de
+fotos, que un servizio fotografico que en Italia pediría permisos y una playa
+disputada en agosto aquí son dos horas y un solo desplazamiento.
+
+- **Grupos `hreflang`: 5 de 4 a 5 miembros**, con todos los miembros reescritos
+  (home, flota, actividades, pedida y bodas: 20 páginas existentes + las 5
+  nuevas). `x-default` sigue apuntando al español en los cinco. El resto de
+  grupos del sitio no se ha tocado.
+- **JSON-LD** con el mismo patrón de bloques que sus equivalentes ES:
+  `LocalBusiness + WebSite + Organization + FAQPage` en la home,
+  `Product + LocalBusiness` en la flota, `CollectionPage + LocalBusiness` en el
+  hub, y `Product + BreadcrumbList + LocalBusiness + FAQPage` en las dos
+  landings. 468 bloques en total, validados offline: 0 errores.
+- **Nav sin «Blog»** hasta la Entrega 3: no se manda a un lector italiano al
+  blog inglés desde su propio menú. El footer lista las dos experiencias que ya
+  existen en italiano y **enlaza las legales EN** con `hreflang="en"` y un
+  `(in inglese)` visible, según la decisión del propietario.
+- **CTA de reserva a `/booking` (EN)** hasta la Entrega 2, en la que el italiano
+  tendrá formulario propio. Es lo más cercano que un lector italiano entiende
+  sin fricción, y evita enlaces muertos. El recableado es un grep, documentado
+  en el README. `form-tracking.js` no necesitó cambios: saca `lang` de
+  `<html lang>`, así que el embudo de GA4 ya separa el italiano solo.
+- **El patrón habla ES · EN · FR · RU**, y las páginas italianas lo dicen tal
+  cual: en ningún sitio se afirma que se atienda en italiano. Ver §5.12.
+
+**Deuda ajena corregida de paso.** El grep anti-invención, ahora un script
+(`scripts/check-datos-comerciales.sh`) con patrones por idioma, destapó **13
+páginas ya publicadas** que la limpieza de datos del 19/08 no había alcanzado:
+equipo de sonido a bordo (ES, EN ×2, FR, RU ×3 — en HTML visible **y** en el
+`FAQPage`), subir bebida propia (EN y FR), colchoneta flotante en cuatro posts
+EN/FR/RU, y una botella «fría» para brindar. 35 sustituciones. Además, la card
+de sunset de las 4 páginas de actividades seguía prometiendo tabla de quesos
+—las 4 landings de sunset se habían corregido, la card no— y la tarjeta de
+motores de las 4 portadas seguía mostrando `2× M` truncado, arreglado en su día
+solo en las fichas de flota. El grep queda a **0 hits** en las 135 páginas.
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -298,6 +374,7 @@ descorche. Las cinco reescritas con las enumeraciones canónicas. El grep queda 
 | `scripts/test-booking-form.js` | 304 comprobaciones sobre los 4 formularios (validación, prefijos, orden de ejecución, no-fuga a GA4). |
 | `scripts/test-lead-api.js` | 21 comprobaciones de `/api/lead` con Resend simulado, sin red. |
 | `scripts/check-offer-price.sh` | Que ningún `Offer` tenga `priceCurrency` sin `price`. |
+| `scripts/check-datos-comerciales.sh` | Que no se publique ningún claim que el propietario confirmó falso (sonido, nevera, hielo, descorche, ducha, colchoneta, alcohol incluido, tarifa de 6 h), en los 8 idiomas. **Obligatorio antes de cada push a `main`.** |
 
 ---
 
@@ -324,10 +401,12 @@ descorche. Las cinco reescritas con las enumeraciones canónicas. El grep queda 
 
 5. **Fotos reales.** Varias páginas repiten las mismas imágenes. Sustituirlas por
    fotos propias del D50 mejora conversión y da material para Google Business.
-6. ~~**Experimento de landing en alemán.**~~ **NO — descartado con datos**
-   (**20 impresiones DE en 3 meses**, Search Console, agosto de 2026). No hay
-   demanda que justifique abrir un quinto idioma. Revisar solo si esa cifra cambia
-   de orden de magnitud.
+6. ~~**Experimento de landing en alemán.**~~ **SUPERADO** por el programa
+   multiidioma (agosto de 2026). Lo que se descartó en su día fue abrir un quinto
+   idioma *a partir de la demanda medida* (20 impresiones DE en 3 meses, Search
+   Console); el propietario ha decidido después abrir cuatro —IT, NL, DE y AR— en
+   oleadas, como apuesta y no como respuesta a la demanda actual. El alemán entra
+   en la tercera oleada.
 
 ### Decisión comercial pendiente (no tocar hasta que el propietario confirme)
 
@@ -339,6 +418,23 @@ descorche. Las cinco reescritas con las enumeraciones canónicas. El grep queda 
    descorche; el único alcohol incluido es una copa de champán de cortesía; los
    globos solo dentro del extra de decoración; y el sunset lleva el mismo catering
    que el resto. Las 45 páginas afectadas se corrigieron en la misma tanda. Ver §2.
+
+### Programa multiidioma — lo que queda
+
+9. **Oleada IT, Entrega 2:** resto de landings de ocasión en italiano
+   (cumpleaños, despedidas, sunset, delfines, Gibraltar, eventos de empresa) **y
+   formulario de reserva italiano propio**. Al crearlo hay que recablear los CTA
+   de las 5 páginas de la Entrega 1, que hoy apuntan a `/booking` (EN); el grep
+   está en el README. Añadir «Blog» al nav solo cuando exista el blog italiano.
+10. **Oleada IT, Entrega 3:** blog italiano completo, incluidos los 5 posts de
+   zona. Requiere además dar de alta el índice italiano en `check-links.sh`
+   (arrays `INDEXES` y `index_for_lang`), que hoy solo conoce ES/EN/FR/RU.
+11. **Oleadas NL y DE:** mismas tres entregas. Antes de escribir nada, fijar sus
+   slugs en la tabla del README, igual que se hizo con el italiano.
+12. **Oleada AR — la última, y no se empieza hasta cerrar DE.** No es un idioma
+   más: `dir="rtl"`, espejado de nav, footer, breadcrumbs y grids, tipografía e
+   iconos direccionales, y una pasada de QA visual completa. La infraestructura
+   del selector ya está preparada (ver README).
 
 ---
 
@@ -377,16 +473,26 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    nombre casi idéntico.
 8. **Datos aún no facilitados:** teléfono español `+34` (hay un hueco `TODO` en el
    footer, ahora solo se muestra el +33) y el pantalán/número de amarre exacto.
-9. **🔴 Confirmar qué hay de verdad a bordo** — equipo de sonido Bluetooth, política
-   de descorche (si el cliente puede subir su propia bebida), si el alcohol entra en
-   las bebidas incluidas, y nevera / ducha de agua dulce / banda de globos. Bloquea
-   contenido nuevo y hay tres páginas publicadas que ya lo afirman sin confirmar:
-   ver el punto 8 del backlog (§3).
+9. ~~**🔴 Confirmar qué hay de verdad a bordo.**~~ **RESUELTO** (19/08/2026) y, con
+   esta tanda, aplicado a **todo** el HTML publicado: las 13 páginas que todavía
+   prometían equipo de sonido, bebida propia o colchoneta flotante están
+   corregidas y `scripts/check-datos-comerciales.sh` lo vigila a partir de ahora.
 10. **Indexar las 20 URLs de los posts de zona** — Estepona, Sotogrande,
    Fuengirola, Benalmádena y Málaga en ES/EN/FR/RU. Repartirlas en tres días
    (7 + 7 + 6), priorizando Málaga y Estepona ES/EN, que son las de más volumen
    de búsqueda.
-11. **Indexar las 2 URLs de boat party** — `/post/fiesta-en-barco-puerto-banus`
+11. **🟠 ¿Se atiende en italiano?** Ninguna página italiana lo afirma, porque no
+   está confirmado: el patrón habla ES · EN · FR · RU y eso es lo que dicen las
+   páginas. Si alguien responde WhatsApp o email en italiano, dilo y se añade a
+   las redacciones canónicas del README y a las 5 páginas IT — es de los pocos
+   argumentos que de verdad mueven la conversión de un mercado nuevo. La misma
+   pregunta valdrá para NL, DE y AR.
+12. **Indexar las 5 URLs italianas** — `/it`, `/flotta-barche-marbella`,
+   `/escursioni-barca-marbella`, `/proposta-matrimonio-barca-marbella` y
+   `/foto-matrimonio-barca-marbella`. Y **revalidar en Search Console los 5 grupos
+   `hreflang` ampliados** (home, flota, actividades, pedida y bodas): al pasar de
+   4 a 5 miembros, Google tarda en releer los alternates de las 20 páginas viejas.
+13. **Indexar las 2 URLs de boat party** — `/post/fiesta-en-barco-puerto-banus`
    (nueva) y `/post/boat-party-puerto-banus` (title y meta reescritos). Pedir
    indexación en Search Console y, dentro de 3-4 semanas, comparar el CTR del post
    EN contra el 0 % actual (0 clics / 58 impresiones).
@@ -413,7 +519,11 @@ Datos confirmados a día de hoy:
 - **Barco:** De Antonio D50, 15 m, año 2026, **2× Mercury V12 600 CV (1.200 CV)**.
 - **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf,
   snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una
-  copa de champán de cortesía** e IVA. *(Confirmado el 19/08/2026.)*
+  copa de champán de cortesía** e IVA. *(Confirmado el 19/08/2026.)* Redacción
+  canónica de los idiomas nuevos (IT/NL/DE), en `README.md`.
+- **El patrón habla ES · EN · FR · RU.** No está confirmado que se atienda en
+  italiano, neerlandés, alemán ni árabe, así que **ninguna** página de esos
+  idiomas lo afirma. Ver §5.11.
 - **No existe a bordo** (confirmado 19/08/2026): equipo de sonido / Bluetooth,
   nevera, ducha de agua dulce y **colchoneta flotante** —el único equipo de agua es
   el paddle surf. **No se promete descorche.** El único alcohol
@@ -429,13 +539,14 @@ Datos confirmados a día de hoy:
   Пуэрто-Банус. Выход из [X] — по запросу.» **No se inventan** suplementos, precios
   de recogida, tiempos de traslado ni condiciones, y nunca se ofrece la salida desde
   X como estándar.
-- **Formato de cifras:** ES `1.200€` · EN `€1,200` · FR/RU `1 200 €`.
+- **Formato de cifras:** ES `1.200€` · EN `€1,200` · FR/RU `1 200 €` · IT `1.200 €` · NL `€ 1.200` · DE `1.200 €`.
 
 ### Anti-regresión
 
 `scripts/check-links.sh` **antes de cada push a `main`**. Si falla, no se hace
 push. El blog se ha caído en producción dos veces; el script existe por eso. Si
-tocas páginas o `hreflang`, además `scripts/check-lang-switcher.py`.
+tocas páginas o `hreflang`, además `scripts/check-lang-switcher.py`; y si tocas
+contenido, `scripts/check-datos-comerciales.sh`.
 
 ### La analítica nunca captura datos personales
 
@@ -450,7 +561,9 @@ tiene que mantener esta propiedad.
 `mobile.css` y los `.js` se sirven con `max-age=31536000, immutable`. **Al editar
 uno de esos ficheros hay que subir el `?v=` de su etiqueta en todas las páginas
 que lo cargan**, o los visitantes recurrentes verán el HTML nuevo con el asset
-viejo.
+viejo. Desde esta tanda la versión se declara **en un solo sitio**: `CSS_V` y
+`JS_V` en `scripts/apply-lang-switcher.py`, que la propaga a las 135 páginas al
+reejecutarse. Valores actuales: `mobile.css?v=3`, `lang-switcher.js?v=2`.
 
 ---
 

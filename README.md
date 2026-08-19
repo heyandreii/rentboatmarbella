@@ -10,19 +10,26 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 
 ## Estructura
 
-- `*.html` — páginas del sitio en 4 idiomas (ES/EN/FR/RU), URLs traducidas.
+- `*.html` — páginas del sitio con URLs traducidas. Cuatro idiomas completos
+  (ES/EN/FR/RU) más los del **programa multiidioma** en curso (IT/NL/DE/AR, ver
+  su sección más abajo): hoy IT existe solo en las 5 páginas core.
 - `post/*.html` — artículos del blog (servidos como `/post/<slug>`).
 - `img/` — imágenes (WebP + fallback JPG, con variantes responsivas `-640`/`-768`/`-1280`;
   no todas tienen las tres: nunca se genera una variante más ancha que el original).
 - `vercel.json` — `cleanUrls`, `trailingSlash` y redirecciones 301.
 - `robots.txt`, `sitemap.xml`.
 - `mobile.css` — ajustes responsive (se sirve `immutable` un año: **si lo tocas,
-  sube el `?v=` del `<link>` en las 100 páginas** o los visitantes recurrentes
-  verán el HTML nuevo con la CSS vieja).
-- `js/lang-switcher.js` — desplegable de idioma del header en móvil.
+  sube `CSS_V` en `scripts/apply-lang-switcher.py` y reejecútalo** para propagar
+  el `?v=` a todas las páginas, o los visitantes recurrentes verán el HTML nuevo
+  con la CSS vieja).
+- `js/lang-switcher.js` — desplegable de idioma del header (móvil **y**
+  escritorio). Mismo versionado, con `JS_V`.
 - `scripts/check-links.sh` — comprobación anti-regresión de enlaces (ver abajo).
 - `scripts/check-lang-switcher.py` — comprobación del selector de idioma (ver abajo).
-- `scripts/apply-lang-switcher.py` — regenera el selector de idioma del header.
+- `scripts/apply-lang-switcher.py` — regenera el selector de idioma del header
+  y propaga el `?v=` de `mobile.css` y `js/lang-switcher.js`.
+- `scripts/check-datos-comerciales.sh` — grep anti-invención en los 8 idiomas
+  (ver abajo). **Obligatorio antes de cada push a `main`.**
 - `scripts/test-lead-api.js` — pruebas de `/api/lead` con Resend simulado (sin red).
 - `scripts/test-booking-form.js` — pruebas del formulario de reserva de los 4
   idiomas: validación de nombre/email/teléfono y selector de prefijo. Ejecuta las
@@ -47,10 +54,29 @@ El script hace `curl` a todas las URLs internas enlazadas desde los índices del
 blog (`/blog-nautico-marbella`, `/yacht-blog`, `/blog-nautique`, `/morskoy-blog`)
 y **falla con exit 1 si alguna no responde 200**. Si falla, **no hagas push**.
 
-> Nota: un servidor local (`python3 -m http.server`) **no** replica `cleanUrls`
-> de Vercel, así que los `/post/<slug>` sin `.html` darán 404 en local aunque el
-> archivo exista. Para validar rutas limpias, comprueba contra la URL de *Preview*
-> de Vercel del PR, o contra producción tras el deploy.
+> Nota: un `python3 -m http.server` pelado **no** replica `cleanUrls` de Vercel,
+> así que los `/post/<slug>` sin `.html` darán 404 en local aunque el archivo
+> exista. Para una comprobación local de verdad, sírvelo con un handler que
+> pruebe también `<ruta>.html`; con eso `check-links.sh http://127.0.0.1:<puerto>`
+> pasa entero sin salir a producción:
+>
+> ```python
+> # serve.py — cleanUrls:true + trailingSlash:false
+> import http.server, os
+> ROOT = os.getcwd()
+> class H(http.server.SimpleHTTPRequestHandler):
+>     def translate_path(self, path):
+>         p = path.split('?', 1)[0].split('#', 1)[0]
+>         full = os.path.join(ROOT, p.lstrip('/'))
+>         if p in ('', '/'): return os.path.join(ROOT, 'index.html')
+>         if os.path.isfile(full): return full
+>         if os.path.isfile(full + '.html'): return full + '.html'
+>         return full
+> http.server.HTTPServer(('127.0.0.1', 8123), H).serve_forever()
+> ```
+>
+> La alternativa sigue siendo la URL de *Preview* de Vercel del PR, o producción
+> tras el deploy.
 
 Y, si has tocado páginas o `hreflang`, el selector de idioma del header
 (offline, sin red):
@@ -59,21 +85,191 @@ Y, si has tocado páginas o `hreflang`, el selector de idioma del header
 scripts/check-lang-switcher.py
 ```
 
+Y **siempre** que haya contenido nuevo o editado, el grep anti-invención de
+datos comerciales, que cubre los 8 idiomas del programa:
+
+```bash
+scripts/check-datos-comerciales.sh
+```
+
 ## Selector de idioma del header
 
-Los enlaces ES/EN/FR/RU del header **no se escriben a mano**: se generan desde
-los `<link rel="alternate" hreflang>` de cada página, así que cambiar de idioma
-te deja en la traducción de *esa misma* página, no en la portada. Una página que
-no declara alternate para un idioma no ofrece ese idioma (los posts que solo
-existen en ES/EN muestran solo esos dos).
+Los enlaces de idioma del header **no se escriben a mano**: se generan desde los
+`<link rel="alternate" hreflang>` de cada página, así que cambiar de idioma te
+deja en la traducción de *esa misma* página, no en la portada. Una página que no
+declara alternate para un idioma no ofrece ese idioma — por eso las 130 páginas
+ES/EN/FR/RU siguen mostrando solo sus cuatro aunque el programa tenga ocho
+idiomas registrados, y los posts que solo existen en ES/EN muestran solo esos dos.
 
 Al añadir una página o una traducción: pon bien sus `hreflang`, regenera con
 `scripts/apply-lang-switcher.py` y valida con `scripts/check-lang-switcher.py`.
-El validador falla si un enlace apunta a algo que no existe o a una página que
-está en otro idioma del que dice.
+El validador falla si un enlace apunta a algo que no existe, a una página que
+está en otro idioma del que dice, o si el `dir="rtl"` no cuadra con el idioma.
 
-En escritorio los 4 idiomas siguen en línea; en ≤760px se pliegan en un botón
-(`ES ▾`) que abre un desplegable. Sin JavaScript se quedan en línea, como antes.
+**Es un desplegable en todos los anchos, no solo en móvil.** Con ocho idiomas la
+fila en línea ya no cabe en el header ni en escritorio, así que el patrón
+*disclosure* que el PR #15 dejó solo en ≤760px pasa a ser el único:
+
+- Un botón con el código del idioma actual y un chevron (`IT ▾`), alineado a la
+  derecha justo antes del CTA de reserva. Alto 34px en escritorio y 38px en
+  móvil, de modo que **no cambia el alto del header** (69px escritorio / 91px
+  móvil, los mismos de antes: sin CLS y sin tocar `[data-nav-spacer]`).
+- Al pulsarlo se abre un panel anclado al **borde derecho** del botón —con
+  `inset-inline-end`, no `left`, para que el día que entre el árabe se ancle
+  solo al lado correcto—, de 174px de ancho y con `max-height:min(70vh,420px)`
+  y scroll propio, porque ocho filas no siempre caben en un móvil apaisado.
+- Cada fila muestra **código + endónimo** (`IT  Italiano`), con 40px de alto en
+  escritorio y 44px en móvil (WCAG 2.5.5). El idioma actual va en el verde de
+  marca, con fondo `#f1f6f5` y `aria-current="true"`.
+- Accesibilidad igual que antes: `aria-expanded`, `aria-controls`, foco al
+  primer idioma **distinto** del actual al abrir, cierre con `Escape`, con clic
+  fuera y al salir con `Tab`.
+- **Sin JavaScript** no hay panel que abrir, así que los idiomas se quedan en
+  línea como siempre y el botón no se pinta; en ese modo degradado solo se ven
+  los códigos de dos letras (el endónimo va oculto). Ocho códigos ocupan ~236px:
+  siguen cabiendo en el header.
+
+## Idiomas del programa multiidioma (IT · NL · DE · AR)
+
+El sitio pasa de 4 a 8 idiomas en **oleadas**: primero IT, luego NL, luego DE y
+por último AR. Cada oleada se cierra entera antes de abrir la siguiente, y cada
+una replica el sitio completo en **tres entregas**:
+
+| Entrega | Contenido |
+|---|---|
+| 1 | Core: home, ficha de flota, hub de experiencias y las 2 landings más rentables (pedida y bodas). |
+| 2 | Resto de landings de ocasión + **formulario de reserva propio del idioma**. |
+| 3 | Blog completo, incluidos los 5 posts de zona. |
+
+**Estado:** IT — Entrega 1 hecha (5 páginas). NL, DE y AR sin empezar.
+
+### Convención de slugs
+
+Home corta con el código del idioma (`/it`, `/nl`, `/de`, `/ar`); el resto,
+descriptivos y con la keyword principal del idioma, siguiendo el patrón del
+español (`<keyword>-<barco>-marbella`), sin acentos ni diacríticos:
+
+| | Home | Flota | Experiencias | Pedida | Bodas |
+|---|---|---|---|---|---|
+| ES | `/` | `flota-barcos-marbella` | `actividades-barco-marbella` | `pedida-matrimonio-barco-marbella` | `fotos-boda-barco-marbella` |
+| IT | `/it` | `flotta-barche-marbella` | `escursioni-barca-marbella` | `proposta-matrimonio-barca-marbella` | `foto-matrimonio-barca-marbella` |
+| NL | `/nl` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
+| DE | `/de` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
+| AR | `/ar` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
+
+Los slugs de NL/DE/AR se fijan aquí al abrir su oleada, antes de escribir una
+sola página, para que no haya dos convenciones conviviendo.
+
+### Formato de cifras y potencia
+
+| Idioma | Precio | Potencia |
+|---|---|---|
+| ES | `1.200€` | `600 CV` |
+| EN | `€1,200` | `600 hp` |
+| FR / RU | `1 200 €` | `600 ch` / `600 л.с.` |
+| **IT** | `1.200 €` | `600 CV` |
+| **NL** | `€ 1.200` | `600 pk` |
+| **DE** | `1.200 €` | `600 PS` |
+| **AR** | *se fija al abrir su oleada* | *idem* |
+
+### Redacciones canónicas de los idiomas nuevos
+
+**Fuente única.** Cualquier página IT/NL/DE debe usar estas cadenas literalmente
+(adaptando concordancia, no el contenido). Están escritas a partir de los datos
+confirmados, no traducidas palabra por palabra: el objetivo es que suenen a
+alguien que vende en ese idioma, no a un traductor automático.
+
+**Lo incluido** *(catering ligero + agua y refrescos + copa de champán de cortesía)*
+
+- **IT** — `catering leggero, acqua e bibite e un calice di champagne in omaggio`
+  · enumeración completa: `skipper, carburante della rotta abituale, assicurazione,
+  paddle surf, snorkeling, catering leggero, acqua e bibite, un calice di champagne
+  in omaggio e IVA`.
+- **NL** — `lichte catering, water en frisdrank en een glas champagne van het huis`
+  · enumeración completa: `schipper, brandstof voor de gebruikelijke route,
+  verzekering, suppen, snorkelen, lichte catering, water en frisdrank, een glas
+  champagne van het huis en btw`.
+- **DE** — `leichtes Catering, Wasser und Softdrinks sowie ein Glas Champagner als
+  Aufmerksamkeit des Hauses` · enumeración completa: `Skipper, Kraftstoff für die
+  übliche Route, Versicherung, Stand-up-Paddling, Schnorcheln, leichtes Catering,
+  Wasser und Softdrinks, ein Glas Champagner als Aufmerksamkeit des Hauses und
+  Mehrwertsteuer`.
+
+*«En omaggio» / «van het huis» / «als Aufmerksamkeit des Hauses» son las tres
+formas idiomáticas de «de cortesía»: dicen que la copa la pone la casa sin
+prometer una botella. **Una copa, no una botella**; las botellas siguen siendo
+extra de pago.*
+
+**Puerto base y salida desde otros puertos**
+
+- **IT** — `Porto base: Puerto Banús. Partenza da [X] disponibile su richiesta.`
+- **NL** — `Thuishaven: Puerto Banús. Vertrek vanuit [X] op aanvraag mogelijk.`
+- **DE** — `Heimathafen: Puerto Banús. Abfahrt ab [X] auf Anfrage möglich.`
+
+*Igual que en ES/EN/FR/RU: **prohibido** inventar suplementos, precios de
+recogida, tiempos de traslado del barco o condiciones. Solo «su richiesta / op
+aanvraag / auf Anfrage», y nunca ofrecer la salida desde X como estándar.*
+
+**Capacidad**
+
+- **IT** — `fino a 10 persone a bordo` · tarifa: `la tariffa è per la barca
+  intera, non a persona`.
+- **NL** — `tot 10 personen aan boord` · tarifa: `het tarief geldt voor de hele
+  boot, niet per persoon`.
+- **DE** — `bis zu 10 Personen an Bord` · tarifa: `der Preis gilt für das ganze
+  Boot, nicht pro Person`.
+
+**Motorización**
+
+- **IT** — `2× Mercury V12 da 600 CV (1.200 CV totali)`
+- **NL** — `2× Mercury V12 van 600 pk (1.200 pk in totaal)`
+- **DE** — `2× Mercury V12 mit je 600 PS (1.200 PS gesamt)`
+
+**Patrón multilingüe.** El patrón habla **ES · EN · FR · RU**. Las páginas de los
+idiomas nuevos lo dicen tal cual y **no** afirman que se atienda en italiano,
+neerlandés, alemán ni árabe — ni a bordo ni por WhatsApp. Es un dato sin
+confirmar; si el propietario lo confirma, se añade aquí antes de publicarlo.
+
+### Páginas legales
+
+**No se traducen a los idiomas nuevos.** Aviso legal, privacidad, términos y
+cookies existen solo en ES/EN/FR/RU (16 páginas). El footer de las páginas
+IT/NL/DE/AR enlaza a las **EN** (`/legal-notice`, `/privacy-policy`,
+`/terms-conditions`, `/cookies-policy`), con `hreflang="en"` en cada enlace y un
+`(in inglese)` visible al lado para que nadie llegue por sorpresa a una página
+en otro idioma. Decisión del propietario.
+
+### Formularios de reserva
+
+Cada idioma nuevo tendrá **su propio formulario**, creado en la **Entrega 2** de
+su oleada. Hasta entonces, los CTA de la Entrega 1 apuntan al formulario **EN**
+(`/booking`): es lo más cercano que un lector italiano, neerlandés o alemán
+entiende sin fricción, y evita publicar enlaces muertos o mandarlo al español.
+
+Recablear en la Entrega 2 es un solo grep por idioma:
+
+```bash
+grep -c 'href="/booking"' it.html flotta-barche-marbella.html \
+    escursioni-barca-marbella.html proposta-matrimonio-barca-marbella.html \
+    foto-matrimonio-barca-marbella.html
+```
+
+`js/form-tracking.js` no necesita cambios: saca el parámetro `lang` de
+`<html lang>`, así que el embudo de GA4 ya separa IT del resto por sí solo.
+
+### Árabe: última oleada, y con trabajo propio
+
+**AR es la última y no se empieza hasta cerrar DE.** No es «un idioma más»:
+requiere `dir="rtl"` en `<html>`, espejado de nav, footer, breadcrumbs y grids,
+revisión de tipografía y de los iconos direccionales, y una pasada de QA visual
+completa. Nada de eso está hecho, y hacerlo a medias se ve peor que no tenerlo.
+
+Lo único ya preparado es la infraestructura del selector: `ORDER`, `CODE`,
+`ENDONYM`, `HOME`, `BTN_LABEL` y el conjunto `RTL` de
+`scripts/apply-lang-switcher.py` ya incluyen `ar`, el generador emite `dir="rtl"`
+en el enlace al árabe desde cualquier página LTR, `check-lang-switcher.py` valida
+que ese `dir` esté donde toca y solo ahí, y el panel del selector se posiciona
+con `inset-inline-end` en vez de `left`, así que se ancla solo al lado correcto.
 
 ## Despliegue
 
@@ -94,9 +290,10 @@ Referencia de datos confirmados a día de hoy (fuente: home + formulario `/reser
 
 - **Duraciones y tarifas:** 2 h → 1.200 € · 4 h → 1.800 € · 8 h (día completo) → 3.000 €. *(No existe tarifa de 6 h ni de 2.400 €.)*
 - **Capacidad:** hasta **10** personas (por barco, no por persona).
-- **Barco y motorización:** De Antonio D50, 15 m de eslora, año 2026, **2× Mercury V12 de 600 CV (total 1.200 CV)**. Formato por idioma: ES `2× Mercury V12 600 CV` · EN `2× Mercury V12 600 hp` · FR `2× Mercury V12 600 ch` · RU `2× Mercury V12 600 л.с.`
-- **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf, snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una copa de champán de cortesía** e IVA. *(Confirmado por el propietario el 19/08/2026.)* Redacción por idioma: ES `catering ligero, agua y refrescos, y copa de champán de cortesía` · EN `light catering, water and soft drinks, and a complimentary glass of champagne` · FR `catering léger, eau et sodas, et une coupe de champagne offerte` · RU `лёгкий кейтеринг, вода и напитки, и бокал шампанского в подарок`.
+- **Barco y motorización:** De Antonio D50, 15 m de eslora, año 2026, **2× Mercury V12 de 600 CV (total 1.200 CV)**. Formato por idioma: ES `2× Mercury V12 600 CV` · EN `2× Mercury V12 600 hp` · FR `2× Mercury V12 600 ch` · RU `2× Mercury V12 600 л.с.` · IT `2× Mercury V12 da 600 CV` (NL/DE/AR: ver «Idiomas del programa multiidioma»)
+- **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf, snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una copa de champán de cortesía** e IVA. *(Confirmado por el propietario el 19/08/2026.)* Redacción por idioma: ES `catering ligero, agua y refrescos, y copa de champán de cortesía` · EN `light catering, water and soft drinks, and a complimentary glass of champagne` · FR `catering léger, eau et sodas, et une coupe de champagne offerte` · RU `лёгкий кейтеринг, вода и напитки, и бокал шампанского в подарок` · IT `catering leggero, acqua e bibite e un calice di champagne in omaggio` (NL/DE/AR: ver «Idiomas del programa multiidioma»).
 - **NO existe a bordo** (confirmado 19/08/2026, no publicar): equipo de sonido / Bluetooth, nevera, ducha de agua dulce, **colchoneta flotante** *(el único equipo de agua es el paddle surf)*. **No hay política de descorche**: no se promete subir bebida propia. **Alcohol incluido: solo la copa de champán de cortesía**; el resto de bebidas incluidas son sin alcohol (las botellas siguen siendo extra de pago). Los **globos** solo existen dentro del extra «decoración especial (+120 €)», nunca como incluido.
 - **El sunset no lleva catering especial:** mismo catering ligero + agua y refrescos + copa de champán de cortesía que el resto de salidas (confirmado 19/08/2026).
-- **Puerto base y salidas desde otros puertos** *(confirmado por el propietario el 19/08/2026)*: el barco está amarrado en **Puerto Banús (Marbella)**. La **salida desde otros puertos de la Costa del Sol** (Estepona, Sotogrande, Fuengirola, Benalmádena, Málaga…) está **disponible a consultar**. Redacción canónica por idioma: ES `Puerto base: Puerto Banús. Salida desde [X] disponible a consultar.` · EN `Home port: Puerto Banús. Departure from [X] available on request.` · FR `Port d'attache : Puerto Banús. Départ depuis [X] possible sur demande.` · RU `Порт базирования: Пуэрто-Банус. Выход из [X] — по запросу.` **Prohibido** inventar suplementos, precios de recogida, tiempos de traslado del barco o condiciones: solo «a consultar / on request», y nunca prometer la salida desde X como estándar.
-- Formato de cifras por idioma: ES `1.200€` · EN `€1,200` · FR/RU `1 200 €`.
+- **Puerto base y salidas desde otros puertos** *(confirmado por el propietario el 19/08/2026)*: el barco está amarrado en **Puerto Banús (Marbella)**. La **salida desde otros puertos de la Costa del Sol** (Estepona, Sotogrande, Fuengirola, Benalmádena, Málaga…) está **disponible a consultar**. Redacción canónica por idioma: ES `Puerto base: Puerto Banús. Salida desde [X] disponible a consultar.` · EN `Home port: Puerto Banús. Departure from [X] available on request.` · FR `Port d'attache : Puerto Banús. Départ depuis [X] possible sur demande.` · RU `Порт базирования: Пуэрто-Банус. Выход из [X] — по запросу.` · IT `Porto base: Puerto Banús. Partenza da [X] disponibile su richiesta.` **Prohibido** inventar suplementos, precios de recogida, tiempos de traslado del barco o condiciones: solo «a consultar / on request», y nunca prometer la salida desde X como estándar.
+- Formato de cifras por idioma: ES `1.200€` · EN `€1,200` · FR/RU `1 200 €` · IT `1.200 €` · NL `€ 1.200` · DE `1.200 €`.
+- **Comprobación automática:** `scripts/check-datos-comerciales.sh` busca los claims prohibidos (equipo de sonido, nevera, hielo, descorche, ducha de agua dulce, colchoneta, alcohol incluido, tarifa de 6 h) en los 8 idiomas y falla si aparece alguno fuera de un comentario HTML. Al abrir una oleada nueva hay que añadirle sus patrones.

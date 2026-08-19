@@ -8,6 +8,27 @@
 > **Última actualización: 14 de agosto de 2026.** Las secciones marcadas
 > **[ACTUALIZAR EN CADA REVISIÓN]** caducan: si la fecha de arriba tiene más de un
 > mes, trátalas como orientativas y pide datos frescos antes de decidir nada.
+>
+> ⚠️ **Este archivo va por detrás desde el 19 de agosto de 2026.** Las tandas de
+> ese día (limpieza de datos sin confirmar, `sizes` e imágenes responsivas, 20
+> posts de zona, y el arranque del programa multiidioma) **no** están recogidas
+> aquí. Sus cifras de tamaño —100 URLs, 26 posts, 332 bloques JSON-LD— están
+> desfasadas: los números buenos son los de **`ESTADO.md` §1**, y el detalle
+> técnico está en `SEO-CHANGELOG.md`. Los cambios de fondo que hay que conocer
+> antes de tocar nada:
+>
+> - **El sitio ya no son 4 idiomas, sino 4 + un programa que lo lleva a 8**
+>   (IT → NL → DE → AR, en oleadas de tres entregas). Hoy existe el core
+>   italiano: `/it`, `/flotta-barche-marbella`, `/escursioni-barca-marbella`,
+>   `/proposta-matrimonio-barca-marbella` y `/foto-matrimonio-barca-marbella`.
+>   Convenciones de slug, formato de cifras y **redacciones canónicas IT/NL/DE**
+>   en `README.md` → «Idiomas del programa multiidioma».
+> - **El selector de idioma es un desplegable en todos los anchos**, no solo en
+>   móvil como dice §7 (PR #15) más abajo.
+> - **Hay datos que se confirmaron falsos el 19/08** —equipo de sonido, nevera,
+>   ducha, colchoneta flotante, descorche— y que este archivo puede seguir dando
+>   por buenos. Manda `README.md` → «Regla anti-invención», y lo vigila
+>   `scripts/check-datos-comerciales.sh`.
 
 **Documentos hermanos en el repo** (este los resume; ellos tienen el detalle):
 

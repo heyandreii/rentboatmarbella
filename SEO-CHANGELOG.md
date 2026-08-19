@@ -400,3 +400,138 @@ Prioridad absoluta, siendo un sitio con 88–99 en PageSpeed:
   WhatsApp, 0 llamadas a la API, sin `whatsapp_submit`), filtrado del selector en
   cada idioma, prefijo por defecto correcto y teléfono completo llegando al
   mensaje de WhatsApp y al cuerpo del POST.
+
+---
+
+## Programa multiidioma: Fase 0 + Oleada IT, Entrega 1 (19 de agosto de 2026)
+
+El sitio pasa de 4 a 8 idiomas (**IT, NL, DE, AR**) en oleadas: cada una se cierra
+entera antes de abrir la siguiente y se reparte en tres entregas (core → landings
++ formulario propio → blog). Esta tanda cubre la infraestructura común y la
+Entrega 1 del italiano. Convenciones y redacciones canónicas: `README.md` →
+«Idiomas del programa multiidioma».
+
+### Fase 0 — infraestructura
+
+**Selector de idioma: desplegable también en escritorio.** Con ocho idiomas la
+fila en línea deja de caber en el header, así que el patrón *disclosure* que el
+PR #15 dejó solo en ≤760px pasa a ser el único modo.
+
+- `mobile.css`: el bloque del desplegable sale de la media query de 760px y pasa
+  a ser global; en móvil solo queda el ajuste del área táctil (botón 38px, filas
+  44px, WCAG 2.5.5). El panel se ancla con **`inset-inline-end`** en vez de
+  `left` —así el árabe no necesitará una regla aparte—, mide 174px, muestra
+  código + endónimo y lleva `max-height:min(70vh,420px)` con scroll propio,
+  porque ocho filas no caben en un móvil apaisado.
+- Botón de **34px de alto en escritorio**, por debajo de los 35px del CTA
+  «Reservar»: medido en navegador, el header sigue en **69px** (escritorio) y
+  **91px** (móvil), los mismos de antes. Sin CLS y sin tocar `[data-nav-spacer]`.
+- `js/lang-switcher.js`: fuera el `matchMedia('(max-width: 760px)')` que cerraba
+  el panel al pasar a escritorio, porque ahí ya no había panel; ahora se cierra
+  al redimensionar. El resto (foco al primer idioma distinto del actual, `Escape`,
+  clic fuera, `focusout`, `syncSpacer`) intacto.
+- **Sin JavaScript**, comportamiento de siempre: los idiomas quedan en línea, el
+  botón no se pinta y el endónimo va oculto, así que solo se ven los códigos de
+  dos letras (~236px para ocho). Verificado en navegador.
+- `apply-lang-switcher.py`: 8 idiomas en `ORDER`/`CODE`/`ENDONYM`/`HOME`/
+  `BTN_LABEL`, conjunto `RTL = {'ar'}` y `dir="rtl"` en el enlace al árabe desde
+  cualquier página LTR. El *fallback* a portadas de idioma para páginas sin
+  alternates ahora solo ofrece las portadas **que existen**, para no crear
+  enlaces rotos hacia oleadas sin abrir.
+- **La versión de los assets immutables se declara en un solo sitio.** Antes el
+  `?v=` estaba escrito a mano en cada página y el script solo sabía añadirlo si
+  faltaba; ahora `CSS_V`/`JS_V` en `apply-lang-switcher.py` se propagan por regex
+  a las 135 páginas. `mobile.css?v=2 → ?v=3`, `lang-switcher.js?v=1 → ?v=2`.
+- `check-lang-switcher.py`: valida los 8 idiomas y que el `dir="rtl"` esté
+  exactamente en los idiomas RTL y en ningún otro. 561 enlaces comprobados.
+
+### Oleada IT — Entrega 1 (5 páginas)
+
+| Slug | Title | Long. | Meta desc. |
+|---|---|---|---|
+| `/it` | Noleggio Barca a Marbella \| Yacht Privato da 1.200 € | 52 | 148 |
+| `/flotta-barche-marbella` | La Nostra Flotta a Marbella \| De Antonio D50 di 15 Metri | 56 | 155 |
+| `/escursioni-barca-marbella` | Escursioni in Barca a Marbella \| Esperienze in Yacht | 52 | 151 |
+| `/proposta-matrimonio-barca-marbella` | Proposta di Matrimonio in Barca a Marbella \| Yacht Privato | 58 | 145 |
+| `/foto-matrimonio-barca-marbella` | Foto di Matrimonio in Barca a Marbella \| Servizio in Yacht | 58 | 151 |
+
+**Localización, no traducción.** El lector italiano llega con dos modelos en la
+cabeza —el gommone a noleggio por horas, con o sin patente, o el *posto* en una
+gita collettiva— y la home ataca justo esa diferencia: la barca entera para tu
+grupo, skipper siempre a bordo (ninguna patente, tampoco la italiana), tarifa
+per la barca intera e non a testa. Se apoya con el dato de aeropuerto ya
+verificado en el sitio (Málaga, ~65 km, 45-60 min). La landing de propuesta usa
+la discreción de proponer fuera de casa; la de fotos, que un *servizio
+fotografico* que en Italia pediría permisos y una playa disputada en agosto aquí
+son dos horas y un solo desplazamiento.
+
+- **5 grupos `hreflang` de 4 a 5 miembros**, con los 25 miembros reescritos
+  (home, flota, actividades, pedida, bodas). `x-default` sigue en ES en los cinco.
+  Ningún otro grupo del sitio tocado.
+- **JSON-LD** con el mismo patrón de bloques que el equivalente ES y
+  `inLanguage: it` donde el ES lo lleva. Total del sitio: **468 bloques**
+  (452 + 16), validados offline contra el vocabulario schema.org: **0 errores**.
+- **Markup idéntico al español**, no reescrito: `mobile.css` selecciona por
+  subcadenas del `style` inline (`div[style*="grid-template-columns:repeat(4"]`…),
+  así que cualquier deriva rompería el responsive en silencio. Donde la Entrega 1
+  solo tiene 2 landings en vez de 9, la rejilla usa `1fr 1fr` —que colapsa a una
+  columna en móvil— en vez de `repeat(2,1fr)`, que en este CSS se queda en dos.
+- **Nav sin «Blog»** hasta la Entrega 3: no se manda a un lector italiano al blog
+  inglés desde su propio menú. El hub de experiencias lista las 2 landings
+  italianas como cards y las otras 6 ocasiones como texto sin enlace, en vez de
+  enlazarlas en otro idioma.
+- **Footer**: legales **EN** con `hreflang="en"` y un `(in inglese)` visible.
+- **CTA de reserva → `/booking` (EN)** hasta la Entrega 2. `form-tracking.js` no
+  necesitó cambios: saca `lang` de `<html lang>`, así que el embudo GA4 separa el
+  italiano solo.
+- **Sitemap 130 → 135.**
+
+### Deuda ajena que destapó el grep anti-invención
+
+El grep pasa a ser script (`scripts/check-datos-comerciales.sh`), con patrones
+por idioma y por claim, y con los comentarios HTML excluidos. Encontró **13
+páginas publicadas** que la limpieza del 19/08 no había alcanzado — **35
+sustituciones**:
+
+- **Equipo de sonido a bordo** en HTML visible *y* en el `FAQPage`:
+  `despedida-soltero-barco-marbella` (ES), `cumpleanos-en-barco-marbella` (ES),
+  `hen-party-yacht-marbella` y `bachelor-party-yacht-marbella` (EN),
+  `birthday-boat-marbella` (EN), `anniversaire-yacht-marbella` (FR),
+  `devichnik-yakhta-marbella`, `malchishnik-yakhta-marbella` y
+  `sunset-tour-yakhta-marbella` (RU). También el extra «upgraded speaker set-up»,
+  que daba por hecho que hay un equipo base.
+- **Subir bebida propia** (no hay política de descorche): `hen-party-yacht-marbella`
+  (EN), `anniversaire-yacht-marbella` (FR) y `despedida-soltero-barco-marbella` (ES).
+- **Colchoneta flotante** (el único equipo de agua es el paddle surf) en cuatro
+  posts EN/FR/RU, y una botella «fría» para brindar en `birthday-boat-marbella`.
+
+Y dos regresiones antiguas más, del mismo tipo:
+
+- **Tabla de quesos en la card de sunset** de las 4 páginas de actividades. Las 4
+  landings de sunset se corrigieron el 19/08; esta card, no. Sustituida por la
+  enumeración canónica de cada idioma.
+- **`2× M` truncado** en la tarjeta de motores de las **4 portadas**. El PR #10
+  arregló la de las fichas de flota y dio el caso por cerrado. Ahora muestra la
+  potencia total con la motorización debajo, en el formato de cada idioma
+  (`1.200 CV` · `1,200 hp` · `1 200 ch` · `1 200 л.с.`).
+
+`scripts/check-datos-comerciales.sh` queda a **0 hits** en las 135 páginas.
+
+### Verificación
+
+- `scripts/check-links.sh` contra un servidor local **con `cleanUrls`** (handler
+  que prueba `<ruta>.html`; el `python3 -m http.server` pelado no lo replica y
+  daba 404 en todos los `/post/`): 125 URLs, **0 fallos**; 56 posts del sitemap,
+  **0 huérfanos**.
+- Barrido offline propio: **2.986 enlaces internos distintos** de las 135 páginas
+  resuelven a un fichero, las 135 URLs del sitemap existen y ninguna página del
+  repo queda fuera del sitemap. Hacía falta porque `check-links.sh` solo recorre
+  lo enlazado desde los índices de blog, y las 5 páginas italianas aún no lo están.
+- `scripts/check-lang-switcher.py`: 135 páginas, 561 enlaces, **0 problemas**.
+- `scripts/check-offer-price.sh`: 4 páginas corporativas, **0 problemas**.
+- JSON-LD offline: 468 bloques, `@context` correcto y tipos del vocabulario
+  schema.org, **0 errores**.
+- Navegador (Chrome DevTools, servidor local): desplegable a **1440px** y a
+  **390px** (emulación de móvil con DPR 3), alto del header y del *spacer*
+  coincidentes (69/69 y 91/91), panel sin desbordar por ningún lado, 44px de alto
+  por fila en móvil, y modo degradado sin JS con los idiomas en línea.
