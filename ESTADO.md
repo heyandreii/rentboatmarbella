@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (4.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (6.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -25,8 +25,8 @@ por medio. Cuatro idiomas con URLs traducidas: **ES / EN / FR / RU**.
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 110 URLs en el sitemap · 36 posts de blog · 4 formularios de
-reserva (uno por idioma) · 372 bloques JSON-LD validados.
+**Tamaño actual:** 130 URLs en el sitemap · 56 posts de blog · 4 formularios de
+reserva (uno por idioma) · 452 bloques JSON-LD validados.
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
 y agosto de 2026 (PR #1 a #15) cerraron los problemas críticos (404 del blog,
@@ -41,7 +41,7 @@ es afinado, contenido y decisiones comerciales — nada bloqueante.
 
 - **Blog reparado.** Los `/post/...` enlazados desde los índices no existían: 404
   en todo el blog. Creados los posts y, desde entonces, un script anti-regresión
-  impide que vuelva a pasar. Hoy: **36 posts** en 4 idiomas, todos enlazados desde
+  impide que vuelva a pasar. Hoy: **56 posts** en 4 idiomas, todos enlazados desde
   el índice de su idioma.
 - **Schema completo** en las 110 páginas: `LocalBusiness` (con `legalName` y
   `taxID` reales), `Product` + `Offer`, `FAQPage`, `BlogPosting`,
@@ -58,7 +58,7 @@ es afinado, contenido y decisiones comerciales — nada bloqueante.
   páginas traducidas; nav, footer y breadcrumb siempre en el idioma de la página.
 - **Legal:** Aviso Legal, Privacidad, Términos y Cookies en los 4 idiomas (16
   páginas) con datos fiscales reales.
-- **`sitemap.xml`** con 110 URLs, sin rotas, referenciado desde `robots.txt`.
+- **`sitemap.xml`** con 130 URLs, sin rotas, referenciado desde `robots.txt`.
 - **`robots.txt` abierto a bots de IA**: `GPTBot`, `ClaudeBot`, `PerplexityBot` y
   `Google-Extended` permitidos explícitamente.
 
@@ -237,6 +237,57 @@ Por página (DPR 1,75): `/actividades` 721→289 KiB · `/blog-nautico` 456→17
 `fetchpriority="high"` intacto en los heros y ninguno pasó a lazy: solo cambia la
 **talla** elegida, nunca la prioridad ni el diseño.
 
+### Posts de zona: 20 páginas nuevas en 4 idiomas (19 de agosto de 2026)
+
+Cinco zonas de la Costa del Sol —**Estepona, Sotogrande, Fuengirola, Benalmádena y
+Málaga**— en ES/EN/FR/RU, en dos entregas. Es la primera vez que el sitio ataca
+búsquedas de zona («alquiler de barco en X»), que hasta ahora solo cubría la guía
+genérica de Costa del Sol.
+
+**Enfoque honesto, no doorway page.** El riesgo evidente de una tanda así es
+publicar cinco clones con el topónimo cambiado, o insinuar que salimos de cinco
+puertos distintos. Ninguna de las dos cosas:
+
+- **Dato comercial nuevo, confirmado el 19/08/2026** y añadido a los datos
+  confirmados (§6): puerto base **Puerto Banús**; salida desde otros puertos
+  **a consultar**. Cada uno de los 20 posts lleva una sección «¿Cómo funciona la
+  salida?» con la redacción canónica de su idioma y nada más — **no se inventan
+  suplementos, precios de recogida, tiempos de traslado ni condiciones**, y en
+  ningún sitio se ofrece la salida desde X como estándar. El title captura la
+  búsqueda de zona sin afirmar salida desde allí; la meta description nombra el
+  puerto base *y* la opción a consultar.
+- **Un ángulo propio por zona**, no un molde: Estepona, la distancia real (22 km,
+  20-25 min) y que las calas de poniente le quedan al lector *de camino a casa*;
+  Sotogrande, que ya tiene puerto y por tanto el argumento es *quién está detrás
+  del barco* —chárter directo frente a plataforma de anuncios—; Fuengirola, la
+  alternativa privada a los barcos compartidos del paseo **y** el levante, que
+  convierte un puerto base céntrico en una ventaja náutica y no solo logística;
+  Benalmádena, qué cambia realmente a bordo frente a la excursión de Puerto
+  Marina (quién decide la ruta, fondeo, reloj propio, diez y no cuarenta);
+  Málaga, la aritmética del día completo para quien llega por aeropuerto o AVE.
+  Cada versión está **localizada, no traducida**: la FR y la RU de Sotogrande
+  reconocen el perfil residente/segunda residencia de esas comunidades, y la de
+  Málaga cambia las referencias de viaje según el mercado.
+- **Distancias y tiempos verificados** contra datos de mapa, no estimados: 22 km /
+  20-25 min (Estepona), ~50 km / 40 min (Sotogrande), ~40 km / 30 min
+  (Fuengirola), ~50 km / 35 min (Benalmádena), ~65 km / 45-60 min (Málaga).
+
+**Estructura**, idéntica en los 20: slug según la convención de cada idioma,
+header/footer/breadcrumb/nav en su idioma, el mismo patrón de 4 bloques JSON-LD
+(`BlogPosting` + `BreadcrumbList` + `FAQPage` + `LocalBusiness`) con `inLanguage`
+correcto y breadcrumb terminando en el canonical, `hreflang` recíproco de los 4
+idiomas + `x-default` al ES en los 5 grupos, card en el índice del blog de su
+idioma, un bloque «Guías por zona» entrante desde el post de Costa del Sol de su
+idioma y **un solo** enlace entre zonas vecinas (no una malla).
+
+**Deuda ajena corregida de paso.** El grep anti-invención de la Entrega 1 destapó
+**cinco páginas ya publicadas** que la limpieza de datos del 19/08 no había
+alcanzado: «agua y hielo» como incluido (bodas ES, licencia ES y EN), champagne
+frío «listo para descorchar» (pedida ES) y una FAQ RU de despedida de soltero que
+ofrecía subir bebida propia y tenerla enfriada — no hay nevera ni política de
+descorche. Las cinco reescritas con las enumeraciones canónicas. El grep queda a
+**0 hits fuera de comentarios** en las 130 páginas.
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -331,7 +382,11 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    las bebidas incluidas, y nevera / ducha de agua dulce / banda de globos. Bloquea
    contenido nuevo y hay tres páginas publicadas que ya lo afirman sin confirmar:
    ver el punto 8 del backlog (§3).
-10. **Indexar las 2 URLs de boat party** — `/post/fiesta-en-barco-puerto-banus`
+10. **Indexar las 20 URLs de los posts de zona** — Estepona, Sotogrande,
+   Fuengirola, Benalmádena y Málaga en ES/EN/FR/RU. Repartirlas en tres días
+   (7 + 7 + 6), priorizando Málaga y Estepona ES/EN, que son las de más volumen
+   de búsqueda.
+11. **Indexar las 2 URLs de boat party** — `/post/fiesta-en-barco-puerto-banus`
    (nueva) y `/post/boat-party-puerto-banus` (title y meta reescritos). Pedir
    indexación en Search Console y, dentro de 3-4 semanas, comparar el CTR del post
    EN contra el 0 % actual (0 clics / 58 impresiones).
