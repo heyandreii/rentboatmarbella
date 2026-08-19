@@ -741,3 +741,127 @@ en `ESTADO.md` §3.13 y §5.14.
   40px por fila, sin scroll horizontal y **0 errores de consola**.
 - **Sitemap**: 135 → **144** URLs, XML bien formado.
 - **`mobile.css` y `js/` sin tocar**, así que no hubo bump de `CSS_V`/`JS_V`.
+
+---
+
+## Equipo de sonido: de claim prohibido a claim confirmado (19 de agosto de 2026)
+
+El propietario **aclara** la confirmación de esa misma mañana: **sí hay equipo de
+sonido a bordo, con Bluetooth**, y el cliente conecta su propia música. La
+retirada de todas las menciones que se hizo en las dos tandas anteriores fue
+**decisión editorial, no de existencia**. El dato vuelve al sitio con redacción
+sobria, y el guardián automático cambia de bando.
+
+### Redacción canónica
+
+Fuente única en `README.md` → «Regla anti-invención»:
+
+| Idioma | Redacción |
+|---|---|
+| ES | `equipo de sonido con Bluetooth: conecta tu propia música` |
+| EN | `sound system with Bluetooth: connect your own music` |
+| FR | `système audio avec Bluetooth : connectez votre propre musique` |
+| RU | `аудиосистема с Bluetooth: подключайте свою музыку` |
+| IT | `impianto audio con Bluetooth: collega la tua musica` |
+| NL | `geluidssysteem met Bluetooth: verbind je eigen muziek` |
+| DE | `Soundsystem mit Bluetooth: eigene Musik verbinden` |
+
+**Límites, que son parte del dato:** ni DJ, ni barra, ni altavoces portátiles
+adicionales, ni karaoke, ni marca ni potencia del equipo. Nada de «premium
+sound» ni superlativos.
+
+### Dónde se publicó, y dónde no
+
+Lo que no es automático de esta tanda es el criterio editorial. Se aplicó así:
+
+**Criterio 1 — sí, visible (24 páginas).** Las **20 landings de fiesta**
+(despedida de soltero, de soltera, cumpleaños y eventos de empresa × ES/EN/FR/RU/IT)
+y los **4 posts de boat party**. En cada una, dos toques: la tarjeta «Incluido»
+del bloque superior y el párrafo de equipamiento del cuerpo. Donde ese párrafo es
+además una respuesta del `FAQPage`, las dos copias se editaron con la misma
+sustitución literal sobre el fichero entero, y en el JSON-LD sin el `<strong>`.
+**Nunca como titular.**
+
+**Criterio 2 — sí, en ficha (5 páginas).** Las **5 fichas de flota**: tarjeta
+propia en «Todo incluido a bordo», insertada **justo detrás de la de paddle surf
+y snorkel**, que es donde el propietario lo situó. La rejilla pasa de 6 a 7
+tarjetas. Además, el párrafo de «lo que no hay que negociar aparte», que es la
+enumeración completa del equipamiento.
+
+**Criterio 3 — no (0 páginas tocadas).** Pedida, bodas, fotos de boda, sunset,
+delfines y Gibraltar: **ninguna se ha tocado**. El tono de esas páginas es otro y
+ninguna tiene un bloque de equipamiento completo donde la ausencia chirríe. La
+«música en vivo» que aparece en las 5 landings de pedida es otra cosa y se queda
+como estaba: un **extra a presupuestar** junto al fotógrafo y la decoración
+floral.
+
+**Criterio 4 — las ~120 menciones grises, revisadas y conservadas.** Eran el
+punto §3.13 del backlog y dependían exactamente de esta respuesta. Repasadas una
+a una: «ponéis vuestra música», «coordinamos la playlist», «Musique douce
+diffusée à bord», «musique à fond», las secciones «Música y baile» de las
+landings de despedida. **Todas compatibles** con conectar la propia música al
+equipo de a bordo, y **ninguna promete más**. En todo el HTML publicado no hay ni
+un DJ, ni un altavoz prestado, ni karaoke, ni micrófono. **No se ha reescrito
+ninguna.**
+
+**Criterio 5 — diferenciador (3 páginas).** Las comparativas vs plataformas de
+ES, EN e IT: donde ya decían «decidís vosotros la música», ahora dicen por qué
+—«el barco lleva equipo de sonido con Bluetooth, así que suena vuestra playlist y
+no la del operador de turno»—. En la italiana entra además en la enumeración de
+lo incluido.
+
+**Restauración de lo que la tanda anterior quitó (10 páginas).** Las **4 cards de
+despedida de soltera** de los hubs de experiencias y las **6 meta description** de
+landings de fiesta (3 copias cada una: `meta`, `og:` y `twitter:`), con la
+redacción nueva y no con la vieja. Las cuatro que se pasaban de 155 caracteres se
+reescribieron a 141–146.
+
+**Una pastilla que NO se restaura.** La tanda anterior cambió «Música a bordo»
+por «100% privado» en el hero de las 4 landings de despedida de soltera. Se queda:
+una pastilla del hero es un titular, y el dato se pidió **como ítem de
+equipamiento**. «100% privado» es cierto y vende igual.
+
+**Total: 36 páginas mencionan el equipo, las 36 con la redacción canónica.**
+
+### Deuda que apareció al revisar
+
+Dos menciones habían **sobrevivido a la purga anterior** porque el patrón del grep
+no las veía, y resulta que eran ciertas todo el tiempo:
+
+- `la sono` en la landing FR de despedida de soltero (coloquial: no casaba con
+  `système (audio|de son)`), en la tarjeta «Inclus» y en una respuesta del FAQ.
+  Pasa a la redacción canónica.
+- `любимый плейлист через колонку` en la landing RU de cumpleaños. Se queda: ya
+  describe exactamente lo que hay.
+
+### El script cambia de bando
+
+`scripts/check-datos-comerciales.sh` deja de buscar el equipo de sonido como claim
+prohibido —fuera las 5 reglas `sonido|xx|…`— y pasa a **vigilar su deriva**: toda
+mención del equipo (`equipo de sonido`, `sound system`, `système audio`,
+`аудиосистем`, `impianto audio`, `geluidssysteem`, `Soundsystem`) tiene que llevar
+**«Bluetooth»**, que es la palabra que comparten las siete redacciones canónicas.
+Una reescritura a mano rompe el build.
+
+Probado en las dos direcciones: con el sitio tal cual, `ok 36 páginas lo mencionan
+y todas con la redacción canónica`; introduciendo «Premium sound system on board»
+a propósito en `/fleet`, **exit 1**.
+
+Lo que **sigue prohibido**, ahora con patrón propio en los 5 idiomas publicados:
+**DJ a bordo, barra premium, altavoz portátil, karaoke**, más la nevera, el hielo y
+la bebida fría como servicio. Y la lista blanda de «música a bordo» que la tanda
+anterior había añadido desaparece: ya no tiene sentido.
+
+### Verificación
+
+- `scripts/check-datos-comerciales.sh`: **0 claims prohibidos** y **36/36** con
+  redacción canónica.
+- `scripts/check-links.sh` contra servidor local con `cleanUrls`: 125 URLs, **0
+  fallos**; 56 posts del sitemap, **0 huérfanos**. Barrido propio de las 144 URLs
+  internas: todas 200.
+- `scripts/check-lang-switcher.py`: 144 páginas, 638 enlaces, **0 problemas**.
+- JSON-LD offline: **501 bloques**, todos parseables; **sincronía FAQ
+  `<head>`↔visible intacta** — 0 desincronías nuevas en las 36 páginas tocadas.
+- `node scripts/test-booking-form.js`: 380/380. `node scripts/test-lead-api.js`:
+  21/21. `scripts/check-offer-price.sh`: 5/5.
+- `mobile.css` y `js/` sin tocar: no hubo bump de `CSS_V`/`JS_V`.

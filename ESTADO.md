@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (9.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (10.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -179,7 +179,9 @@ traducciones nuevas — ver el punto 8 del backlog (§3).
 El propietario respondió a las preguntas abiertas y se corrigió **todo el sitio de
 una vez**, no solo las páginas que las traducciones habían ido destapando:
 
-- **Fuera:** equipo de sonido / Bluetooth (14 páginas), política de descorche (14),
+- **Fuera:** equipo de sonido / Bluetooth (14 páginas) *(revertido más tarde ese
+  mismo día: el equipo sí existe, ver «Equipo de sonido: de claim prohibido a claim
+  confirmado»)*, política de descorche (14),
   «agua y hielo» como claim (11), nevera y ducha de agua dulce (6), y los globos
   prometidos sueltos, que ahora solo aparecen dentro del extra de decoración (+120 €).
 - **Dato nuevo incluido:** una **copa de champán de cortesía**, añadida a las
@@ -474,8 +476,11 @@ RU y así lo dice la comparativa, que es la única página donde conviven los do
 datos — separados y en ese orden.
 
 **Deuda ajena corregida de paso: la música a bordo.** Al localizar salió a la luz
-una clase de claim que el grep no cubría. El propietario confirmó el 19/08 que
-**no hay equipo de sonido a bordo**, y sin embargo:
+una clase de claim que el grep no cubría. El propietario había confirmado el
+19/08 que no había equipo de sonido a bordo *(dato que él mismo corrigió ese
+mismo día: **sí lo hay**, ver «Equipo de sonido: de claim prohibido a claim
+confirmado» más abajo — buena parte de lo que sigue quedó revertido)*, y sin
+embargo:
 
 - La landing ES de despedida de soltero —fuente directa de la italiana— ofrecía
   «barra premium con **DJ y altavoz portátil**» y «catering ampliado con marisco y
@@ -494,6 +499,65 @@ patrón **duro** por idioma para el equipo que tendríamos que poner nosotros
 «música a bordo», que ya queda a 0. **Lo que no se ha tocado** son las ~120
 menciones de «vuestra música / la playlist / coordinamos la música» repartidas por
 el sitio: son zona gris y dependen de una pregunta al propietario — ver §5.
+
+### Equipo de sonido: de claim prohibido a claim confirmado (19 de agosto de 2026)
+
+**Sí hay equipo de sonido a bordo, con Bluetooth, y el cliente conecta su propia
+música.** El propietario aclara la confirmación anterior del mismo día, que lo
+daba por inexistente: la retirada de todas las menciones fue **decisión
+editorial, no de existencia**. El dato vuelve al sitio con redacción sobria.
+
+**Redacción canónica** (fuente única en `README.md` → «Regla anti-invención»):
+ES `equipo de sonido con Bluetooth: conecta tu propia música` · EN `sound system
+with Bluetooth: connect your own music` · FR `système audio avec Bluetooth :
+connectez votre propre musique` · RU `аудиосистема с Bluetooth: подключайте свою
+музыку` · IT `impianto audio con Bluetooth: collega la tua musica`, más NL y DE
+preparadas para sus oleadas. **Límites:** ni DJ, ni barra, ni altavoces portátiles
+adicionales, ni karaoke, ni marca o potencia del equipo. Nada de «premium sound».
+
+**Dónde se ha publicado —y dónde no—, que es la parte que no es automática:**
+
+| Criterio | Páginas | Cómo |
+|---|---|---|
+| Sí, visible | Las **20 landings de fiesta** (despedida de soltero, de soltera, cumpleaños y eventos de empresa × 5 idiomas) y los **4 posts de boat party** | Ítem de equipamiento en la tarjeta «Incluido» **y** en el párrafo de equipamiento del cuerpo. Nunca como titular. |
+| Sí, en ficha | Las **5 fichas de flota** | Tarjeta propia en «Todo incluido a bordo», justo detrás de paddle surf y snorkel, más el párrafo de «lo que no hay que negociar aparte». |
+| Sí, diferenciador | Las **3 comparativas** vs plataformas | «Suena vuestra playlist y no la del operador de turno», donde el contraste ya existía. |
+| Restaurado | Las **4 cards de despedida de soltera** de los hubs y las **6 meta description** de landings de fiesta | Revierte lo que la tanda anterior quitó por editorial, con la redacción nueva. |
+| **No** | Pedida, bodas, fotos de boda, sunset, delfines y Gibraltar | El tono de esas páginas es otro y ninguna tiene un bloque de equipamiento donde la ausencia chirríe. No se toca ninguna. |
+
+**36 páginas** lo mencionan y **las 36 con la redacción canónica**.
+
+**Una pastilla que no se ha restaurado.** La tanda anterior cambió «Música a
+bordo» por «100% privado» en el hero de las 4 landings de despedida de soltera.
+Se queda como está: una pastilla del hero es un titular, y el propietario pide el
+dato **como ítem de equipamiento**. «100% privado» es cierto y vende igual.
+
+**Las ~120 menciones en zona gris, revisadas y conservadas.** Eran el punto
+§3.13 del backlog y dependían justo de esta respuesta. Repasadas una a una: todas
+son compatibles con «conectar tu propia música al equipo de a bordo» —«ponéis
+vuestra música», «coordinamos la playlist», «Musique douce diffusée à bord»,
+«musique à fond», las secciones «Música y baile» de las landings de despedida— y
+**ninguna promete más que eso**. No hay ni un DJ, ni un altavoz prestado, ni
+karaoke, ni micrófono en todo el HTML publicado. **No se ha reescrito ninguna.**
+La «música en vivo» de las 5 landings de pedida es otra cosa: aparece como
+**extra a presupuestar** junto al fotógrafo y la decoración floral, que es como
+estaba y como debe estar.
+
+**Deuda ajena que aparece al revisar:** dos menciones habían sobrevivido a la
+purga anterior porque el patrón del grep no las veía — `la sono` en la landing FR
+de despedida de soltero (coloquial, no casaba con `système (audio|de son)`) y
+`любимый плейлист через колонку` en la RU de cumpleaños. Las dos eran ciertas
+todo el tiempo. La francesa pasa a la redacción canónica; la rusa se queda porque
+ya describe exactamente lo que hay.
+
+**El script cambia de bando.** `check-datos-comerciales.sh` deja de buscar el
+equipo de sonido como claim prohibido y pasa a **vigilar su deriva**: toda mención
+del equipo tiene que llevar «Bluetooth», la palabra que comparten las siete
+redacciones canónicas. Una reescritura a mano rompe el build — probado
+introduciendo «Premium sound system on board» a propósito: falla con exit 1.
+Siguen prohibidos, ahora con patrón propio en los 5 idiomas: **DJ a bordo, barra
+premium, altavoz portátil, karaoke**, más la nevera, el hielo y la bebida fría
+como servicio.
 
 ### Herramientas de verificación en el repo
 
@@ -545,7 +609,8 @@ el sitio: son zona gris y dependen de una pregunta al propietario — ver §5.
    tarjeta regalo. Ninguna se publica hasta que exista como producto real y con
    precio confirmado — ver regla anti-invención.
 8. ~~**Equipamiento y bebida a bordo.**~~ **RESUELTO** (19/08/2026). El propietario
-   confirmó: no hay Bluetooth, nevera ni ducha de agua dulce; no se promete
+   confirmó: no hay nevera ni ducha de agua dulce *(el Bluetooth sí existe: lo
+   aclaró después, ver §2)*; no se promete
    descorche; el único alcohol incluido es una **botella** de champán de cortesía
    (confirmó primero una copa y la corrigió a botella el mismo día); los globos solo
    dentro del extra de decoración; y el sunset lleva el mismo catering que el resto.
@@ -571,20 +636,14 @@ el sitio: son zona gris y dependen de una pregunta al propietario — ver §5.
    iconos direccionales, y una pasada de QA visual completa. La infraestructura
    del selector ya está preparada (ver README).
 
-### Deuda detectada, acotada y no cerrada
+### Deuda detectada, acotada y cerrada
 
-13. **La «música» del sitio, en las ~120 menciones que quedan.** No hay equipo de
-   sonido a bordo (confirmado 19/08/2026). En la tanda de la Entrega 2 se
-   eliminaron los claims que prometían equipo de la casa —«música a bordo» en 12
-   páginas, «barra premium con DJ y altavoz portátil», «bebida fría»— y las
-   `meta description` que lo llevaban al buscador. **Quedan ~120 menciones de
-   otro tipo** («ponéis vuestra música», «coordinamos la playlist», «Musique
-   douce diffusée à bord», secciones «Música y baile» de las landings de
-   despedida) repartidas por ~45 páginas en los 4 idiomas. Son zona gris: se
-   pueden cumplir o no según una sola respuesta del propietario — ver §5.14.
-   `check-datos-comerciales.sh` las lista para revisión a mano, sin romper el
-   build. **No abrir esta tanda hasta tener esa respuesta**, o se reescriben 45
-   páginas dos veces.
+13. ~~**La «música» del sitio, en las ~120 menciones que quedan.**~~ **CERRADO**
+   (19/08/2026). El propietario aclaró que **sí hay equipo de sonido con
+   Bluetooth**: la pregunta que bloqueaba el punto ya tiene respuesta. Las ~120
+   menciones se revisaron una a una y **se conservan todas** —ninguna promete más
+   que conectar la propia música—, y el dato se publicó con redacción canónica en
+   36 páginas. Ver §2.
 
 ---
 
@@ -656,18 +715,12 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
 
 ---
 
-14. **🟠 ¿Se puede subir un altavoz propio al barco?** Es la pregunta que
-   desbloquea las ~120 menciones de «música» del sitio (§3.13). No hay equipo de
-   sonido a bordo, eso está confirmado; lo que no sabemos es si el cliente puede
-   llevar el suyo. Tres respuestas posibles y tres consecuencias distintas:
-   **(a) sí, sin condiciones** → las menciones de «vuestra música / vuestra
-   playlist» se quedan y se añade una frase que aclare que el equipo lo pone el
-   cliente; **(b) sí, con condiciones** (volumen, horario, tipo de aparato) →
-   hay que escribirlas y publicarlas; **(c) no** → se eliminan las ~120
-   menciones en los 4 idiomas y la música desaparece del sitio, incluidas las
-   secciones «Música y baile» de las landings de despedida y la playlist de las
-   de pedida. Mientras no haya respuesta, **no se toca nada**: reescribir 45
-   páginas dos veces es peor que esperar.
+14. ~~**🟠 ¿Se puede subir un altavoz propio al barco?**~~ **RESUELTO**
+   (19/08/2026), y por la vía corta: **hay equipo de sonido con Bluetooth a
+   bordo**, así que no hace falta subir nada — se conecta el móvil. Las ~120
+   menciones de «música» del sitio quedaron validadas de golpe y el dato se
+   publicó en 36 páginas. Ver §2. *Lo que sigue sin existir, y sigue prohibido:
+   DJ, barra premium, altavoces portátiles adicionales y karaoke.*
 
 15. **🟠 ¿Se atiende también en neerlandés, alemán o árabe?** La respuesta al
    italiano fue que sí. Antes de abrir cada oleada conviene preguntarlo, porque
@@ -710,11 +763,15 @@ Datos confirmados a día de hoy:
   está confirmada** (19/08/2026) y se publica solo en las páginas IT, con la
   redacción canónica del README. Son dos datos distintos y no se mezclan. Para
   NL, DE y AR sigue sin confirmar: sus páginas no lo dirán. Ver §5.11 y §5.15.
-- **No hay equipo de sonido a bordo.** Ninguna página promete «música a bordo»
-  ni equipo que ponga la casa (altavoz, barra premium con DJ). Si el cliente
-  puede subir el suyo es una pregunta abierta — ver §5.14 y §3.13.
-- **No existe a bordo** (confirmado 19/08/2026): equipo de sonido / Bluetooth,
-  nevera, ducha de agua dulce y **colchoneta flotante** —el único equipo de agua es
+- **Sí hay equipo de sonido a bordo, con Bluetooth** *(aclarado el 19/08/2026;
+  corrige la confirmación anterior del mismo día)*. El cliente **conecta su propia
+  música**. Se publica **solo con la redacción canónica** del `README.md` y solo
+  donde el criterio editorial lo permite (landings de fiesta, posts de boat party,
+  fichas de flota y comparativas; **no** en pedida, bodas, sunset, delfines ni
+  Gibraltar). **Siguen sin existir y siguen prohibidos:** DJ, barra premium,
+  altavoces portátiles adicionales y karaoke; tampoco se promete marca ni potencia
+  del equipo. `check-datos-comerciales.sh` vigila las dos mitades.
+- **No existe a bordo** (confirmado 19/08/2026): nevera, ducha de agua dulce y **colchoneta flotante** —el único equipo de agua es
   el paddle surf. **No se promete descorche.** El único alcohol
   incluido es la botella de champán de cortesía; las botellas **adicionales** siguen
   siendo extra de pago y hay que nombrarlas así para que no choquen con la incluida.

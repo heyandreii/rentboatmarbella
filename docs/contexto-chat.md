@@ -31,13 +31,16 @@
 >   README. **El patrón sigue hablando ES · EN · FR · RU** y ninguna página dice
 >   otra cosa: son dos datos distintos y no se mezclan. Para NL, DE y AR el dato
 >   sigue sin confirmar.
-> - **No hay equipo de sonido a bordo**, así que ninguna página promete «música a
->   bordo» ni equipo que ponga la casa. Quedan ~120 menciones de «vuestra música
->   / la playlist» pendientes de una pregunta al propietario: ver `ESTADO.md`
->   §3.13 y §5.14 antes de escribir nada sobre música.
+> - **Sí hay equipo de sonido a bordo, con Bluetooth**, y el cliente conecta su
+>   propia música (aclarado el 19/08/2026; corrige la confirmación anterior del
+>   mismo día, que este archivo puede seguir dando por buena). Solo se publica con
+>   la **redacción canónica** del `README.md` y solo donde el criterio editorial
+>   lo permite: landings de fiesta, posts de boat party, fichas de flota y
+>   comparativas — **no** en pedida, bodas, sunset, delfines ni Gibraltar. Siguen
+>   prohibidos **DJ, barra premium, altavoces portátiles y karaoke**.
 > - **El selector de idioma es un desplegable en todos los anchos**, no solo en
 >   móvil como dice §7 (PR #15) más abajo.
-> - **Hay datos que se confirmaron falsos el 19/08** —equipo de sonido, nevera,
+> - **Hay datos que se confirmaron falsos el 19/08** —nevera,
 >   ducha, colchoneta flotante, descorche— y que este archivo puede seguir dando
 >   por buenos. Manda `README.md` → «Regla anti-invención», y lo vigila
 >   `scripts/check-datos-comerciales.sh`.
@@ -141,8 +144,12 @@ del recorrido habitual). Así figura ya en la home.
 
 ### Lo que NO existe a bordo (confirmado 19/08/2026 — no publicar)
 
-- **Equipo de sonido / altavoz Bluetooth.** No hay. Eliminado de las 14 páginas que
-  lo afirmaban.
+- ~~**Equipo de sonido / altavoz Bluetooth.**~~ **Sí hay** — el propietario aclaró
+  ese mismo día que la confirmación era errónea y que la retirada de las 14 páginas
+  había sido decisión editorial, no de existencia. Hay **equipo de sonido con
+  Bluetooth** y el cliente **conecta su propia música**. Restaurado en 36 páginas
+  con la redacción canónica del `README.md`. Lo que sigue sin existir: **DJ, barra
+  premium, altavoces portátiles adicionales y karaoke**.
 - **Nevera y ducha de agua dulce.** No hay.
 - **Colchoneta flotante.** No hay. El único equipo de agua es el **paddle surf**
   (más el material de snorkel). Confirmado el 19/08/2026 tras detectarse en 2

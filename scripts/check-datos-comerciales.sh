@@ -9,10 +9,17 @@
 # volver a colarse: un patrón por idioma, no una revisión a ojo.
 #
 # Qué NO hay a bordo (confirmado 19/08/2026):
-#   equipo de sonido / Bluetooth · nevera · ducha de agua dulce · colchoneta
-#   flotante · hielo · política de descorche (subir bebida propia) · globos
-#   sueltos (solo dentro del extra "decoración especial +120 €") · alcohol
-#   incluido más allá de UNA botella de champán de cortesía · tarifa de 6 h.
+#   nevera · ducha de agua dulce · colchoneta flotante · hielo · política de
+#   descorche (subir bebida propia) · globos sueltos (solo dentro del extra
+#   "decoración especial +120 €") · alcohol incluido más allá de UNA botella de
+#   champán de cortesía · tarifa de 6 h.
+#
+# SÍ hay equipo de sonido (aclarado por el propietario el 19/08/2026, corrige la
+# confirmación anterior): equipo de sonido con Bluetooth, el cliente conecta su
+# propia música. Dejó de ser claim prohibido y pasa a ser claim CONFIRMADO: aquí
+# ya no se busca que desaparezca, se busca que aparezca con la redacción canónica
+# del README y nunca acompañado de lo que sigue sin existir — DJ, barra premium,
+# altavoz portátil que preste la casa, karaoke.
 #
 # Y la redacción VIEJA del champán: hasta el 19/08/2026 lo incluido era una
 # "copa" de champán y ese mismo día el propietario lo subió a "botella". La copa
@@ -32,16 +39,11 @@ fail=0
 # Un patrón por línea:  <etiqueta>|<idioma>|<regex extendida>
 # Las regex van con -i (case-insensitive) y sobre el HTML tal cual se sirve.
 read -r -d '' RULES <<'PATTERNS'
-sonido|es|equipo de sonido|altavoces a bordo|bluetooth
-sonido|en|sound system|bluetooth speaker|on-?board (sound|speakers)
-sonido|fr|système (audio|de son)|enceinte (bluetooth|à bord)
-sonido|ru|аудиосистем|блютуз|колонк[аи] на борту
-sonido|it|impianto (audio|stereo)|casse (bluetooth|a bordo)|bluetooth
-equipo|es|altavoz|altavoces|barra premium|barra libre premium|bebida fría
-equipo|en|portable speaker|premium bar|dj set|cold drinks included
-equipo|fr|enceinte portable|bar premium|boissons fraîches incluses
-equipo|ru|переносн\w+ колонк|премиум-бар
-equipo|it|cassa portatile|open bar premium|bevande fredde incluse
+equipo|es|altavoz portátil|barra premium|barra libre premium|bebida fría|dj a bordo|karaoke
+equipo|en|portable speaker|premium bar|dj set|dj on board|cold drinks included|karaoke
+equipo|fr|enceinte portable|bar premium|dj à bord|boissons fraîches incluses|karaoké
+equipo|ru|переносн\w+ колонк|премиум-бар|диджей на борту|караоке
+equipo|it|cassa portatile|open bar premium|dj a bordo|bevande fredde incluse|karaoke
 nevera|es|nevera a bordo|nevera incluida|frigorífico
 nevera|en|(fridge|refrigerator|cool ?box|ice ?box) (on board|included)|on-?board fridge
 nevera|fr|(frigo|réfrigérateur|glacière) (à bord|inclus)
@@ -86,14 +88,13 @@ PATTERNS
 # que se listan aparte para revisarlos a mano en vez de darlos por rotos.
 GLOBOS='globos|balloons|ballons|шар(ы|ики)|palloncini'
 
-# La MÚSICA es zona gris y por eso no rompe el build: no hay equipo de sonido a
-# bordo (confirmado 19/08/2026), pero el cliente puede llevar el suyo y eso no
-# está ni confirmado ni desmentido. Lo que sí es un claim prohibido —altavoz que
-# pongamos nosotros, barra premium con DJ— va arriba, en los patrones duros.
-# Estas líneas se revisan a mano: "música a bordo" promete equipo, "vuestra
-# música" no necesariamente. Pendiente de que el propietario aclare si se puede
-# subir un altavoz propio (ver §5 de ESTADO.md).
-MUSICA='m[uú]sica a bordo|music on board|musique à bord|музыка на борту|musica a bordo'
+# El equipo de sonido es un claim CONFIRMADO con redacción canónica (README →
+# "Regla anti-invención"). Aquí no se busca su ausencia sino su deriva: cualquier
+# mención del equipo tiene que usar una de las formas canónicas. Se comprueba que
+# toda línea que nombra el equipo contenga "Bluetooth", que es la palabra que las
+# siete redacciones comparten; una mención sin ella es una reescritura a mano y
+# hay que revisarla.
+SONIDO_MENCION='equipo de sonido|sound system|système audio|аудиосистем|impianto audio|geluidssysteem|Soundsystem'
 
 echo "== Claims prohibidos =="
 while IFS='|' read -r tag lang rest; do
@@ -119,14 +120,17 @@ else
 fi
 
 echo
-echo "== Música a bordo (zona gris: no hay equipo de sonido, revisar a mano) =="
-m="$(grep -rniE "$MUSICA" --include='*.html' . 2>/dev/null | grep -vE '<!--' || true)"
-if [ -n "$m" ]; then
-  printf '%s\n' "$m" | cut -c1-160 | sed 's/^/      /'
-  echo "      ^ NO rompe el build. Cada línea debe poder cumplirse sin equipo de"
-  echo "        sonido de la casa. Ver la nota de este script y §5 de ESTADO.md."
+echo "== Equipo de sonido: claim confirmado, redacción canónica =="
+desviadas="$(grep -rniE "$SONIDO_MENCION" --include='*.html' . 2>/dev/null \
+             | grep -vE '<!--' | grep -viE 'bluetooth' || true)"
+if [ -n "$desviadas" ]; then
+  printf '\nFAIL  [sonido/canonica]  mención del equipo sin "Bluetooth"\n'
+  printf '%s\n' "$desviadas" | cut -c1-200 | sed 's/^/      /'
+  echo "      ^ usa la redacción canónica del README (\"Regla anti-invención\")."
+  fail=$((fail + 1))
 else
-  echo "ok    ninguna mención."
+  n="$(grep -rliE "$SONIDO_MENCION" --include='*.html' . 2>/dev/null | wc -l | tr -d ' ')"
+  echo "ok    $n páginas lo mencionan y todas con la redacción canónica."
 fi
 
 echo
