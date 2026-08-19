@@ -104,6 +104,9 @@ del recorrido habitual). Así figura ya en la home.
 - **Equipo de sonido / altavoz Bluetooth.** No hay. Eliminado de las 14 páginas que
   lo afirmaban.
 - **Nevera y ducha de agua dulce.** No hay.
+- **Colchoneta flotante.** No hay. El único equipo de agua es el **paddle surf**
+  (más el material de snorkel). Confirmado el 19/08/2026 tras detectarse en 2
+  páginas; retirada de ambas.
 - **Política de descorche.** No se promete que el cliente pueda subir su propia
   bebida. Eliminado de las 14 páginas que lo decían.
 - **Agua y hielo como claim aparte.** El agua y los refrescos van dentro de lo

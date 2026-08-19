@@ -312,7 +312,8 @@ Datos confirmados a día de hoy:
   snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una
   copa de champán de cortesía** e IVA. *(Confirmado el 19/08/2026.)*
 - **No existe a bordo** (confirmado 19/08/2026): equipo de sonido / Bluetooth,
-  nevera, ducha de agua dulce. **No se promete descorche.** El único alcohol
+  nevera, ducha de agua dulce y **colchoneta flotante** —el único equipo de agua es
+  el paddle surf. **No se promete descorche.** El único alcohol
   incluido es la copa de champán; las botellas siguen siendo extra de pago. Los
   globos solo dentro de «decoración especial (+120 €)». El **sunset lleva el mismo
   catering** que el resto de salidas.
