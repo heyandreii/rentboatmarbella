@@ -159,45 +159,56 @@ español (`<keyword>-<barco>-marbella`), sin acentos ni diacríticos:
 |---|---|---|---|---|---|
 | ES | `/` | `flota-barcos-marbella` | `actividades-barco-marbella` | `pedida-matrimonio-barco-marbella` | `fotos-boda-barco-marbella` |
 | IT | `/it` | `flotta-barche-marbella` | `escursioni-barca-marbella` | `proposta-matrimonio-barca-marbella` | `foto-matrimonio-barca-marbella` |
-| NL | `/nl` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
+| NL | `/nl` | `vloot-boten-marbella` | `activiteiten-boot-marbella` | `huwelijksaanzoek-boot-marbella` | `trouwfotos-boot-marbella` |
 | DE | `/de` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
 | AR | `/ar` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
 
-**Landings de ocasión y formulario (Entrega 2)** — fijados con la oleada IT:
+**Landings de ocasión y formulario (Entrega 2)** — fijados con la oleada IT, NL
+con la suya:
 
-| Página | ES | IT |
-|---|---|---|
-| Despedida de soltero | `despedida-soltero-barco-marbella` | `addio-al-celibato-barca-marbella` |
-| Despedida de soltera | `despedida-soltera-barco-marbella` | `addio-al-nubilato-barca-marbella` |
-| Cumpleaños | `cumpleanos-en-barco-marbella` | `compleanno-in-barca-marbella` |
-| Sunset tour | `sunset-tour-barco-marbella` | `sunset-tour-barca-marbella` |
-| Delfines | `avistamiento-delfines-marbella` | `avvistamento-delfini-marbella` |
-| Gibraltar | `ruta-barco-gibraltar-marbella` | `escursione-barca-gibilterra-marbella` |
-| Eventos de empresa | `eventos-empresa-barco-marbella` | `eventi-aziendali-barca-marbella` |
-| Comparativa | `barco-privado-vs-plataformas` | `barca-privata-vs-piattaforme` |
-| **Formulario de reserva** | `reservar` | `prenota` |
+| Página | ES | IT | NL |
+|---|---|---|---|
+| Despedida de soltero | `despedida-soltero-barco-marbella` | `addio-al-celibato-barca-marbella` | `vrijgezellenfeest-man-boot-marbella` |
+| Despedida de soltera | `despedida-soltera-barco-marbella` | `addio-al-nubilato-barca-marbella` | `vrijgezellenfeest-vrouw-boot-marbella` |
+| Cumpleaños | `cumpleanos-en-barco-marbella` | `compleanno-in-barca-marbella` | `verjaardag-boot-marbella` |
+| Sunset tour | `sunset-tour-barco-marbella` | `sunset-tour-barca-marbella` | `sunset-tour-boot-marbella` |
+| Delfines | `avistamiento-delfines-marbella` | `avvistamento-delfini-marbella` | `dolfijnen-spotten-marbella` |
+| Gibraltar | `ruta-barco-gibraltar-marbella` | `escursione-barca-gibilterra-marbella` | `boottocht-gibraltar-marbella` |
+| Eventos de empresa | `eventos-empresa-barco-marbella` | `eventi-aziendali-barca-marbella` | `bedrijfsuitje-boot-marbella` |
+| Comparativa | `barco-privado-vs-plataformas` | `barca-privata-vs-piattaforme` | `prive-boot-vs-verhuurplatforms` |
+| **Formulario de reserva** | `reservar` | `prenota` | `reserveren` |
+
+> **`vrijgezellenfeest` es unisex en neerlandés**, así que las dos despedidas no
+> se distinguen solas como en italiano (`celibato`/`nubilato`): se desambiguan
+> con `-man-` y `-vrouw-`, que es como las nombra el propio mercado neerlandés.
 
 **Blog (Entrega 3)** — índice y los 14 grupos de posts:
 
-| Página | ES | IT |
-|---|---|---|
-| **Índice del blog** | `blog-nautico-marbella` | `blog-nautica-marbella` |
-| Precios | `post/cuanto-cuesta-alquilar-barco-marbella` | `post/quanto-costa-noleggiare-barca-marbella` |
-| Licencia | `post/necesitas-licencia-alquilar-barco-marbella` | `post/serve-patente-nautica-noleggio-marbella` |
-| Calas | `post/mejores-calas-fondear-marbella` | `post/migliori-cale-ancoraggio-marbella` |
-| Bodas y eventos | `post/bodas-eventos-barco-marbella` | `post/matrimoni-eventi-barca-marbella` |
-| Pedida | `post/pedida-matrimonio-en-el-mar` | `post/proposta-matrimonio-in-mare` |
-| Despedida (consejos) | `post/despedida-soltera-barco-consejos` | `post/addio-al-nubilato-barca-consigli` |
-| Boat party | `post/fiesta-en-barco-puerto-banus` | `post/festa-in-barca-puerto-banus` |
-| Costa del Sol | `post/alquiler-barco-costa-del-sol-puerto-banus` | `post/noleggio-barca-costa-del-sol-puerto-banus` |
-| Invierno | `post/alquilar-barco-marbella-invierno` | `post/noleggio-barca-marbella-inverno` |
-| Zona (×5) | `post/alquiler-barco-<zona>-puerto-banus` | `post/noleggio-barca-<zona>-puerto-banus` |
+| Página | ES | IT | NL |
+|---|---|---|---|
+| **Índice del blog** | `blog-nautico-marbella` | `blog-nautica-marbella` | `vaarblog-marbella` |
+| Precios | `post/cuanto-cuesta-alquilar-barco-marbella` | `post/quanto-costa-noleggiare-barca-marbella` | `post/wat-kost-boot-huren-marbella` |
+| Licencia | `post/necesitas-licencia-alquilar-barco-marbella` | `post/serve-patente-nautica-noleggio-marbella` | `post/vaarbewijs-nodig-boot-huren-marbella` |
+| Calas | `post/mejores-calas-fondear-marbella` | `post/migliori-cale-ancoraggio-marbella` | `post/mooiste-baaien-ankeren-marbella` |
+| Bodas y eventos | `post/bodas-eventos-barco-marbella` | `post/matrimoni-eventi-barca-marbella` | `post/bruiloften-evenementen-boot-marbella` |
+| Pedida | `post/pedida-matrimonio-en-el-mar` | `post/proposta-matrimonio-in-mare` | `post/huwelijksaanzoek-op-zee` |
+| Despedida (consejos) | `post/despedida-soltera-barco-consejos` | `post/addio-al-nubilato-barca-consigli` | `post/vrijgezellenfeest-boot-tips` |
+| Boat party | `post/fiesta-en-barco-puerto-banus` | `post/festa-in-barca-puerto-banus` | `post/bootfeest-puerto-banus` |
+| Costa del Sol | `post/alquiler-barco-costa-del-sol-puerto-banus` | `post/noleggio-barca-costa-del-sol-puerto-banus` | `post/boot-huren-costa-del-sol-puerto-banus` |
+| Invierno | `post/alquilar-barco-marbella-invierno` | `post/noleggio-barca-marbella-inverno` | `post/boot-huren-marbella-winter` |
+| Zona (×5) | `post/alquiler-barco-<zona>-puerto-banus` | `post/noleggio-barca-<zona>-puerto-banus` | `post/boot-huren-<zona>-puerto-banus` |
 
 > **El índice no puede llamarse `blog-nautico-marbella`**: en italiano «blog
 > nautico» se escribe igual que en español y ese slug ya es del ES. Se usa el
 > sustantivo (`la nautica`), que en italiano se busca igual de bien y no colisiona.
 > Es el único slug IT que no sale directo de la traducción del español; conviene
 > mirar si el mismo choque se repite en NL y DE antes de abrir esas oleadas.
+>
+> **En NL el choque no se repite, pero el calco tampoco sirve:** «nautische blog»
+> es correcto y no colisiona con nada, solo que nadie lo busca. Se usa
+> **`vaarblog-marbella`**, de *varen*, que es la palabra que un neerlandés
+> asocia con salir al agua. Los 29 slugs NL se contrastaron uno a uno contra las
+> 159 URLs publicadas antes de crear ninguna página: **cero colisiones**.
 
 Los slugs de NL/DE/AR se fijan aquí al abrir su oleada, antes de escribir una
 sola página, para que no haya dos convenciones conviviendo.

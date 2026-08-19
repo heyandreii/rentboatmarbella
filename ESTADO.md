@@ -792,6 +792,20 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    cambia el argumento de conversión de todas sus páginas y es más barato
    escribirlo desde el principio que añadirlo después.
 
+16. **🟠 ¿Se atiende en NEERLANDÉS por WhatsApp y email?** — pregunta viva, ya
+   con páginas publicadas esperándola. La oleada NL arrancó **sin** el dato: en
+   italiano estaba confirmado (`Assistenza in italiano su WhatsApp ed e-mail`) y
+   para el neerlandés **no hay confirmación**, así que **ninguna de las páginas NL
+   lo afirma**. Donde el italiano lo dice, el neerlandés dice lo único confirmado:
+   `Schipper spreekt ES · EN · FR · RU`.
+   - **Si la respuesta es sí:** hay que repasar las páginas NL publicadas para
+     añadir la redacción canónica, igual que hubo que repasar 14 páginas italianas
+     a mitad de oleada. Cuanto antes llegue, menos páginas hay que tocar.
+   - **Si la respuesta es no:** conviene decidir si se publica **«English spoken»**
+     como puente. Muchos neerlandeses aceptan sin fricción la atención en inglés,
+     y decirlo explícitamente convierte mejor que el silencio — pero es una
+     decisión comercial, no de código, y hoy no está tomada.
+
 ---
 
 ## 6. Reglas del proyecto

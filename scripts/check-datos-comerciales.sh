@@ -44,36 +44,43 @@ equipo|en|portable speaker|premium bar|dj set|dj on board|cold drinks included|k
 equipo|fr|enceinte portable|bar premium|dj à bord|boissons fraîches incluses|karaoké
 equipo|ru|переносн\w+ колонк|премиум-бар|диджей на борту|караоке
 equipo|it|cassa portatile|open bar premium|dj a bordo|bevande fredde incluse|karaoke
+equipo|nl|draagbare speaker|premium bar|dj aan boord|koude drankjes inbegrepen|karaoke
 nevera|es|nevera a bordo|nevera incluida|frigorífico
 nevera|en|(fridge|refrigerator|cool ?box|ice ?box) (on board|included)|on-?board fridge
 nevera|fr|(frigo|réfrigérateur|glacière) (à bord|inclus)
 nevera|ru|холодильник на борту|холодильник включ
 nevera|it|(frigorifero|frigo|ghiacciaia) (a bordo|incluso)
+nevera|nl|koelkast (aan boord|inbegrepen)|koelbox aan boord|minibar aan boord
 hielo|es|agua y hielo|hielo incluido|con hielo
 hielo|en|water and ice|ice included|ice buckets?
 hielo|fr|eau et glaçons|glaçons inclus|seau à glace
 hielo|ru|вода и лёд|со льдом|лёд включ
 hielo|it|acqua e ghiaccio|ghiaccio incluso|con ghiaccio|secchiello del ghiaccio
+hielo|nl|water en ijs\b|\bijs inbegrepen|ijsemmer|ijsblokjes|\bijs aan boord
 descorche|es|descorche|traer (tu|vuestra|su|vuestras|sus) propia?s? bebidas?|subir (tu|vuestra) bebida
 descorche|en|corkage|bring your own (drinks?|cava|wine|bottles?|booze|alcohol)
 descorche|fr|droit de bouchon|apporter (vos|votre) (propres? )?boissons?
 descorche|ru|со своим алкоголем|свои напитки|своими напитками
 descorche|it|diritto di tappo|portare (le |i )?(vostr[ie] )?(bevande|alcolici|bottiglie) da casa
+descorche|nl|kurkengeld|(eigen|zelf) (drank|drankjes|flessen) (mee|meenemen)|neem je eigen drank
 ducha|es|ducha de agua dulce
 ducha|en|fresh ?water shower
 ducha|fr|douche (à |d.)eau douce
 ducha|ru|пресн(ый|ого) душ
 ducha|it|doccia (di |ad )?acqua dolce
+ducha|nl|zoetwaterdouche|douche aan boord
 colchoneta|es|colchoneta
 colchoneta|en|floating mat|inflatable mat
 colchoneta|fr|matelas (flottant|gonflable)
 colchoneta|ru|(надувной|плавучий|плавающий) матрас
 colchoneta|it|materassino
+colchoneta|nl|opblaasmatras|drijfmatras|luchtbed
 alcohol|es|barra libre|alcohol incluido|bebidas alcohólicas incluidas
 alcohol|en|open bar|alcohol included|alcoholic drinks included
 alcohol|fr|open bar|alcool inclus|boissons alcoolisées incluses
 alcohol|ru|открытый бар|алкоголь включ
 alcohol|it|open bar|alcolici inclusi|bevande alcoliche incluse
+alcohol|nl|open bar|alcohol inbegrepen|alcoholische dranken inbegrepen|onbeperkt drinken
 tarifa6h|xx|6 ?h(oras|ours|eures)? ?[·–-] ?2[.,]400|2[.,]400 ?€|€ ?2[.,]400
 copavieja|es|copa de champ[aá]n|copa de champagne
 copavieja|en|(complimentary |free )?glass of champagne
@@ -86,7 +93,7 @@ PATTERNS
 
 # Los globos solo pueden aparecer dentro del extra de decoración especial, así
 # que se listan aparte para revisarlos a mano en vez de darlos por rotos.
-GLOBOS='globos|balloons|ballons|шар(ы|ики)|palloncini'
+GLOBOS='globos|balloons|ballons|шар(ы|ики)|palloncini|ballonnen'
 
 # El equipo de sonido es un claim CONFIRMADO con redacción canónica (README →
 # "Regla anti-invención"). Aquí no se busca su ausencia sino su deriva: cualquier
