@@ -12,7 +12,8 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 
 - `*.html` — páginas del sitio con URLs traducidas. Cuatro idiomas completos
   (ES/EN/FR/RU) más los del **programa multiidioma** en curso (IT/NL/DE/AR, ver
-  su sección más abajo): hoy IT existe solo en las 5 páginas core.
+  su sección más abajo): hoy IT cubre 14 páginas (core + landings de ocasión +
+  formulario `/prenota`), a falta del blog.
 - `post/*.html` — artículos del blog (servidos como `/post/<slug>`).
 - `img/` — imágenes (WebP + fallback JPG, con variantes responsivas `-640`/`-768`/`-1280`;
   no todas tienen las tres: nunca se genera una variante más ancha que el original).
@@ -31,8 +32,8 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 - `scripts/check-datos-comerciales.sh` — grep anti-invención en los 8 idiomas
   (ver abajo). **Obligatorio antes de cada push a `main`.**
 - `scripts/test-lead-api.js` — pruebas de `/api/lead` con Resend simulado (sin red).
-- `scripts/test-booking-form.js` — pruebas del formulario de reserva de los 4
-  idiomas: validación de nombre/email/teléfono y selector de prefijo. Ejecuta las
+- `scripts/test-booking-form.js` — pruebas del formulario de reserva de los 5
+  idiomas (ES/EN/FR/RU/IT): validación de nombre/email/teléfono y selector de prefijo. Ejecuta las
   reglas tal y como se sirven en el HTML. `node scripts/test-booking-form.js`.
 
 ## ⚠️ Antes de cada push a `main` (obligatorio)
@@ -97,9 +98,9 @@ scripts/check-datos-comerciales.sh
 Los enlaces de idioma del header **no se escriben a mano**: se generan desde los
 `<link rel="alternate" hreflang>` de cada página, así que cambiar de idioma te
 deja en la traducción de *esa misma* página, no en la portada. Una página que no
-declara alternate para un idioma no ofrece ese idioma — por eso las 130 páginas
-ES/EN/FR/RU siguen mostrando solo sus cuatro aunque el programa tenga ocho
-idiomas registrados, y los posts que solo existen en ES/EN muestran solo esos dos.
+declara alternate para un idioma no ofrece ese idioma — por eso las páginas
+ES/EN/FR/RU sin versión italiana siguen mostrando solo sus cuatro aunque el
+programa tenga ocho idiomas registrados, y los posts que solo existen en ES/EN muestran solo esos dos.
 
 Al añadir una página o una traducción: pon bien sus `hreflang`, regenera con
 `scripts/apply-lang-switcher.py` y valida con `scripts/check-lang-switcher.py`.
@@ -141,13 +142,16 @@ una replica el sitio completo en **tres entregas**:
 | 2 | Resto de landings de ocasión + **formulario de reserva propio del idioma**. |
 | 3 | Blog completo, incluidos los 5 posts de zona. |
 
-**Estado:** IT — Entrega 1 hecha (5 páginas). NL, DE y AR sin empezar.
+**Estado:** IT — Entregas 1 y 2 hechas (14 páginas: 5 core + 8 landings +
+formulario `/prenota`). Falta la Entrega 3 (blog). NL, DE y AR sin empezar.
 
 ### Convención de slugs
 
 Home corta con el código del idioma (`/it`, `/nl`, `/de`, `/ar`); el resto,
 descriptivos y con la keyword principal del idioma, siguiendo el patrón del
 español (`<keyword>-<barco>-marbella`), sin acentos ni diacríticos:
+
+**Core (Entrega 1)**
 
 | | Home | Flota | Experiencias | Pedida | Bodas |
 |---|---|---|---|---|---|
@@ -156,6 +160,20 @@ español (`<keyword>-<barco>-marbella`), sin acentos ni diacríticos:
 | NL | `/nl` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
 | DE | `/de` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
 | AR | `/ar` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
+
+**Landings de ocasión y formulario (Entrega 2)** — fijados con la oleada IT:
+
+| Página | ES | IT |
+|---|---|---|
+| Despedida de soltero | `despedida-soltero-barco-marbella` | `addio-al-celibato-barca-marbella` |
+| Despedida de soltera | `despedida-soltera-barco-marbella` | `addio-al-nubilato-barca-marbella` |
+| Cumpleaños | `cumpleanos-en-barco-marbella` | `compleanno-in-barca-marbella` |
+| Sunset tour | `sunset-tour-barco-marbella` | `sunset-tour-barca-marbella` |
+| Delfines | `avistamiento-delfines-marbella` | `avvistamento-delfini-marbella` |
+| Gibraltar | `ruta-barco-gibraltar-marbella` | `escursione-barca-gibilterra-marbella` |
+| Eventos de empresa | `eventos-empresa-barco-marbella` | `eventi-aziendali-barca-marbella` |
+| Comparativa | `barco-privado-vs-plataformas` | `barca-privata-vs-piattaforme` |
+| **Formulario de reserva** | `reservar` | `prenota` |
 
 Los slugs de NL/DE/AR se fijan aquí al abrir su oleada, antes de escribir una
 sola página, para que no haya dos convenciones conviviendo.
@@ -230,9 +248,22 @@ aanvraag / auf Anfrage», y nunca ofrecer la salida desde X como estándar.*
 - **DE** — `2× Mercury V12 mit je 600 PS (1.200 PS gesamt)`
 
 **Patrón multilingüe.** El patrón habla **ES · EN · FR · RU**. Las páginas de los
-idiomas nuevos lo dicen tal cual y **no** afirman que se atienda en italiano,
-neerlandés, alemán ni árabe — ni a bordo ni por WhatsApp. Es un dato sin
-confirmar; si el propietario lo confirma, se añade aquí antes de publicarlo.
+idiomas nuevos lo dicen tal cual y **no** afirman que el patrón hable italiano,
+neerlandés, alemán ni árabe a bordo.
+
+**Atención en italiano (confirmado por el propietario el 19/08/2026).** Se
+atiende por **WhatsApp y email en italiano**. Es publicable en las páginas IT
+—y solo en ellas— con esta redacción canónica:
+
+- **IT** — `Assistenza in italiano su WhatsApp ed e-mail`
+  · variante larga: `rispondiamo in italiano su WhatsApp e per e-mail`.
+
+*Cubre solo el canal escrito antes y hasta el día de la salida.* **Prohibido**
+derivar de aquí que el patrón hable italiano a bordo, que haya alguien
+italoparlante en el barco o que la atención sea 24/7. Donde conviven las dos
+cosas —la comparativa `barca-privata-vs-piattaforme`— se dicen por separado y en
+ese orden: el patrón habla ES/EN/FR/RU, la asistencia escrita es en italiano.
+Para NL, DE y AR el dato **sigue sin confirmar**: no se publica.
 
 ### Páginas legales
 
@@ -245,18 +276,31 @@ en otro idioma. Decisión del propietario.
 
 ### Formularios de reserva
 
-Cada idioma nuevo tendrá **su propio formulario**, creado en la **Entrega 2** de
+Cada idioma nuevo tiene **su propio formulario**, creado en la **Entrega 2** de
 su oleada. Hasta entonces, los CTA de la Entrega 1 apuntan al formulario **EN**
 (`/booking`): es lo más cercano que un lector italiano, neerlandés o alemán
 entiende sin fricción, y evita publicar enlaces muertos o mandarlo al español.
 
-Recablear en la Entrega 2 es un solo grep por idioma:
+**IT ya está recableado:** los **27** CTA de las 5 páginas de la Entrega 1
+apuntan a `/prenota`. El grep para la oleada siguiente, con sus páginas:
 
 ```bash
-grep -c 'href="/booking"' it.html flotta-barche-marbella.html \
-    escursioni-barca-marbella.html proposta-matrimonio-barca-marbella.html \
-    foto-matrimonio-barca-marbella.html
+grep -o 'href="/booking"' <páginas de la Entrega 1 del idioma> | wc -l
 ```
+
+> Ojo con `grep -c`: cuenta **líneas**, no ocurrencias. En italiano coincidían
+> (27 y 27), pero no tiene por qué ser así.
+
+El formulario nuevo **no se escribe desde cero**: se transforma el inglés con
+sustituciones literales afirmadas una a una, de modo que herede exactamente la
+misma lógica ya probada (validación, prefijos, orden de disparo, `/api/lead`,
+no-fuga a GA4). Después hay que **dar de alta la página en
+`scripts/test-booking-form.js`** (array `PAGES`: fichero, `lang`, prefijo por
+defecto, ISO, nombre de Alemania y texto del buscador de países) y ejecutarlo:
+con el italiano son **380 comprobaciones** sobre 5 formularios.
+
+La lista de prefijos se traduce **y se reordena** alfabéticamente en el idioma
+de la página: el test lo comprueba con `localeCompare(nombre, lang)`.
 
 `js/form-tracking.js` no necesita cambios: saca el parámetro `lang` de
 `<html lang>`, así que el embudo de GA4 ya separa IT del resto por sí solo.
@@ -299,5 +343,6 @@ Referencia de datos confirmados a día de hoy (fuente: home + formulario `/reser
 - **NO existe a bordo** (confirmado 19/08/2026, no publicar): equipo de sonido / Bluetooth, nevera, ducha de agua dulce, **colchoneta flotante** *(el único equipo de agua es el paddle surf)*. **No hay política de descorche**: no se promete subir bebida propia. **Alcohol incluido: solo la botella de champán de cortesía**; el resto de bebidas incluidas son sin alcohol. Las botellas **adicionales** siguen siendo extra de pago y hay que nombrarlas así («adicional / additional / supplémentaire / дополнительная / aggiuntiva») para que no choquen con la incluida. Los **globos** solo existen dentro del extra «decoración especial (+120 €)», nunca como incluido.
 - **El sunset no lleva catering especial:** mismo catering ligero + agua y refrescos + botella de champán de cortesía que el resto de salidas (confirmado 19/08/2026).
 - **Puerto base y salidas desde otros puertos** *(confirmado por el propietario el 19/08/2026)*: el barco está amarrado en **Puerto Banús (Marbella)**. La **salida desde otros puertos de la Costa del Sol** (Estepona, Sotogrande, Fuengirola, Benalmádena, Málaga…) está **disponible a consultar**. Redacción canónica por idioma: ES `Puerto base: Puerto Banús. Salida desde [X] disponible a consultar.` · EN `Home port: Puerto Banús. Departure from [X] available on request.` · FR `Port d'attache : Puerto Banús. Départ depuis [X] possible sur demande.` · RU `Порт базирования: Пуэрто-Банус. Выход из [X] — по запросу.` · IT `Porto base: Puerto Banús. Partenza da [X] disponibile su richiesta.` **Prohibido** inventar suplementos, precios de recogida, tiempos de traslado del barco o condiciones: solo «a consultar / on request», y nunca prometer la salida desde X como estándar.
+- **Atención en italiano** *(confirmado por el propietario el 19/08/2026)*: se atiende por **WhatsApp y email en italiano**. Publicable **solo en las páginas IT** con la redacción canónica `Assistenza in italiano su WhatsApp ed e-mail`. Cubre el canal escrito, no el patrón: **prohibido** afirmar que se hable italiano a bordo. Sin confirmar para NL, DE y AR.
 - Formato de cifras por idioma: ES `1.200€` · EN `€1,200` · FR/RU `1 200 €` · IT `1.200 €` · NL `€ 1.200` · DE `1.200 €`.
 - **Comprobación automática:** `scripts/check-datos-comerciales.sh` busca los claims prohibidos (equipo de sonido, nevera, hielo, descorche, ducha de agua dulce, colchoneta, alcohol incluido, tarifa de 6 h y la **redacción vieja de la «copa» de champán**) en los 8 idiomas y falla si aparece alguno fuera de un comentario HTML. Al abrir una oleada nueva hay que añadirle sus patrones.

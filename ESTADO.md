@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (8.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (9.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -19,8 +19,9 @@ Web de **chárter privado de un solo barco** —un De Antonio D50 de 15 m, año 
 amarrado en **Puerto Banús (Marbella)**— con reserva directa, sin marketplace de
 por medio. Cuatro idiomas completos con URLs traducidas (**ES / EN / FR / RU**) y
 un **programa multiidioma** en curso que lo lleva a ocho: **IT → NL → DE → AR**,
-en oleadas de tres entregas cada una. Hoy el italiano existe en las 5 páginas
-core (Entrega 1 de su oleada).
+en oleadas de tres entregas cada una. Hoy el italiano cubre **14 páginas**
+(Entregas 1 y 2 de su oleada): core, landings de ocasión y formulario propio.
+Le falta el blog.
 
 **Stack:** HTML estático puro, sin framework ni paso de build. Desplegado en
 **Vercel** desde `main` (`cleanUrls: true`, `trailingSlash: false`); cada push a
@@ -28,9 +29,9 @@ core (Entrega 1 de su oleada).
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 135 URLs en el sitemap · 56 posts de blog · 4 formularios de
-reserva (uno por idioma; el italiano llega en la Entrega 2) · 468 bloques JSON-LD
-validados.
+**Tamaño actual:** 144 URLs en el sitemap · 56 posts de blog · **5 formularios de
+reserva** (uno por idioma publicado, incluido `/prenota` en italiano) · 501
+bloques JSON-LD validados.
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
 y agosto de 2026 (PR #1 a #15) cerraron los problemas críticos (404 del blog,
@@ -401,6 +402,99 @@ duraciones; no se promete marca, tamaño ni más de una.
 los claims que el propietario descartó el 19/08; el patrón RU del grep solo cubría
 «надувной матрас» y no lo veía. Corregido y ampliado el patrón.
 
+### Oleada IT, Entrega 2: landings de ocasión y formulario propio (19 de agosto de 2026)
+
+Nueve páginas nuevas: las **8 landings de ocasión** que faltaban en italiano y el
+**formulario de reserva `/prenota`**. Con esto el italiano tiene el sitio entero
+menos el blog (Entrega 3).
+
+**Alcance.** La lista definitiva se sacó del conjunto de landings que existen en
+los idiomas ya publicados, no de una lista a ojo:
+
+| Landing | Slug IT | Grupo `hreflang` |
+|---|---|---|
+| Despedida de soltero | `addio-al-celibato-barca-marbella` | 4 → 5 |
+| Despedida de soltera | `addio-al-nubilato-barca-marbella` | 4 → 5 |
+| Cumpleaños | `compleanno-in-barca-marbella` | 4 → 5 |
+| Sunset tour | `sunset-tour-barca-marbella` | 4 → 5 |
+| Delfines | `avvistamento-delfini-marbella` | 4 → 5 |
+| Gibraltar | `escursione-barca-gibilterra-marbella` | 4 → 5 |
+| Eventos de empresa | `eventi-aziendali-barca-marbella` | 4 → 5 |
+| Comparativa directo vs plataformas | `barca-privata-vs-piattaforme` | 2 → 3 |
+| **Formulario de reserva** | `prenota` | 4 → 5 |
+
+**Dos decisiones de alcance, explícitas:**
+
+- **La comparativa entra aunque su grupo solo tuviera 2 miembros** (ES y EN): es
+  la página «por qué reservar directo», va enlazada desde el footer y es
+  justamente el argumento que necesita un mercado nuevo. Su grupo pasa de 2 a 3.
+- **El «boat party» queda fuera.** No existe como landing en **ningún** idioma:
+  es un post de blog en los cuatro (`/post/boat-party-puerto-banus` y sus
+  traducciones). Crear una landing italiana sin equivalente en ningún otro idioma
+  sería arquitectura nueva, no localización, y dejaría un grupo `hreflang` de un
+  solo miembro. Su sitio natural es la **Entrega 3**, con el resto del blog.
+
+**Localización, no traducción.** El gancho italiano de cada landing parte de con
+qué compara el lector: el addio al celibato/nubilato con la serata in discoteca
+(sin lista all'ingresso ni consumazione minima) y con el *posto* comprado en una
+gita collettiva; el compleanno con la cena per dieci al ristorante; la
+comparativa con el **gommone a noleggio senza patente**, que es la formula que un
+italiano tiene en la cabeza. En todas se repite que se alquila **la barca intera**
+con **skipper abilitato**, así que **nessuna patente nautica richiesta**.
+
+**Formulario `/prenota`.** No se escribió desde cero: se **transformó** el inglés
+con sustituciones literales afirmadas una a una, de modo que hereda la misma
+lógica ya probada. Lo propio del italiano son el `CFG` (formato `1.200 €`,
+`Su preventivo`, mensaje de WhatsApp), el `CC` (errores, `def:"IT"`, +39) y la
+**lista de 54 prefijos traducida y reordenada** por colación italiana. Probado en
+navegador contra un servidor local con `window.open` y `fetch` interceptados: se
+verificó que sin datos válidos no dispara nada, que los tres errores salen en
+italiano, que el mensaje de WhatsApp sale entero y bien formateado, que
+`/api/lead` recibe `lang:"it"` y que un `+34` pegado se mueve solo al selector.
+**No se mandó ningún lead real.**
+
+**Recableado.** Los **27** CTA de las 5 páginas de la Entrega 1 pasan de
+`/booking` (EN) a `/prenota`. *(El README decía 22: era el recuento de una versión
+anterior de esas páginas. Hoy son 27, y `grep -c` cuenta líneas, no ocurrencias.)*
+El nav italiano **sigue sin «Blog»**: llega con la Entrega 3.
+
+**Hub y footer.** Las **6 ocasiones que eran texto sin enlace** en
+`/escursioni-barca-marbella` ahora enlazan a sus landings, y la rejilla crece a
+**8** con eventos de empresa y la comparativa. El footer italiano de las 14
+páginas pasa de 2 a **8 experiencias**, gana «Perché prenotare diretto» en Info y
+el dato nuevo en Contatti.
+
+**Dato comercial nuevo (confirmado por el propietario el 19/08/2026): se atiende
+por WhatsApp y email en italiano.** Publicado **solo en las páginas IT**, con la
+redacción canónica del README (`Assistenza in italiano su WhatsApp ed e-mail`) y
+en los sitios donde convierte: junto a los CTA de la home, en el párrafo de
+entrada y en la tarjeta lateral de las 8 landings, en la tarjeta de resumen de
+`/prenota` y en el footer. **No se toca el patrón:** sigue hablando ES · EN · FR ·
+RU y así lo dice la comparativa, que es la única página donde conviven los dos
+datos — separados y en ese orden.
+
+**Deuda ajena corregida de paso: la música a bordo.** Al localizar salió a la luz
+una clase de claim que el grep no cubría. El propietario confirmó el 19/08 que
+**no hay equipo de sonido a bordo**, y sin embargo:
+
+- La landing ES de despedida de soltero —fuente directa de la italiana— ofrecía
+  «barra premium con **DJ y altavoz portátil**» y «catering ampliado con marisco y
+  **bebida fría**» (no hay nevera), en HTML visible **y** en el `FAQPage`.
+  6 sustituciones.
+- **12 páginas de los 4 idiomas** prometían literalmente «Música a bordo / Music
+  on board / Musique à bord / Музыка на борту»: los 4 hubs de experiencias, las 4
+  landings de cumpleaños y las pastillas del hero de las 4 de despedida de
+  soltera. 12 sustituciones.
+- Las **meta description** de 6 de esas páginas lo llevaban a la ficha del
+  buscador (3 copias por página: `meta`, `og:` y `twitter:`). 18 sustituciones.
+
+En total **36 sustituciones**. `check-datos-comerciales.sh` gana dos cosas: un
+patrón **duro** por idioma para el equipo que tendríamos que poner nosotros
+(altavoz, barra premium, DJ, bebida fría) y una lista **blanda** de revisión para
+«música a bordo», que ya queda a 0. **Lo que no se ha tocado** son las ~120
+menciones de «vuestra música / la playlist / coordinamos la música» repartidas por
+el sitio: son zona gris y dependen de una pregunta al propietario — ver §5.
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -408,9 +502,9 @@ los claims que el propietario descartó el 19/08; el patrón RU del grep solo cu
 | `scripts/check-links.sh` | 0 enlaces rotos + 0 posts huérfanos del sitemap. **Obligatorio antes de cada push a `main`.** |
 | `scripts/check-lang-switcher.py` | El selector de idioma del header no apunta a páginas inexistentes o de otro idioma. |
 | `scripts/apply-lang-switcher.py` | Regenera el selector desde los `hreflang`. |
-| `scripts/test-booking-form.js` | 304 comprobaciones sobre los 4 formularios (validación, prefijos, orden de ejecución, no-fuga a GA4). |
+| `scripts/test-booking-form.js` | **380** comprobaciones sobre los **5** formularios (validación, prefijos, orden de ejecución, no-fuga a GA4). |
 | `scripts/test-lead-api.js` | 21 comprobaciones de `/api/lead` con Resend simulado, sin red. |
-| `scripts/check-offer-price.sh` | Que ningún `Offer` tenga `priceCurrency` sin `price`. |
+| `scripts/check-offer-price.sh` | Que ningún `Offer` tenga `priceCurrency` sin `price` (5 landings corporativas). |
 | `scripts/check-datos-comerciales.sh` | Que no se publique ningún claim que el propietario confirmó falso (sonido, nevera, hielo, descorche, ducha, colchoneta, alcohol incluido, tarifa de 6 h), en los 8 idiomas. **Obligatorio antes de cada push a `main`.** |
 
 ---
@@ -460,20 +554,37 @@ los claims que el propietario descartó el 19/08; el patrón RU del grep solo cu
 
 ### Programa multiidioma — lo que queda
 
-9. **Oleada IT, Entrega 2:** resto de landings de ocasión en italiano
-   (cumpleaños, despedidas, sunset, delfines, Gibraltar, eventos de empresa) **y
-   formulario de reserva italiano propio**. Al crearlo hay que recablear los CTA
-   de las 5 páginas de la Entrega 1, que hoy apuntan a `/booking` (EN); el grep
-   está en el README. Añadir «Blog» al nav solo cuando exista el blog italiano.
+9. ~~**Oleada IT, Entrega 2.**~~ **HECHA** (19/08/2026): 8 landings de ocasión +
+   `/prenota`, 27 CTA recableados, hub y footer al día. Ver §2.
 10. **Oleada IT, Entrega 3:** blog italiano completo, incluidos los 5 posts de
-   zona. Requiere además dar de alta el índice italiano en `check-links.sh`
-   (arrays `INDEXES` y `index_for_lang`), que hoy solo conoce ES/EN/FR/RU.
+   zona **y el de boat party**, que no tiene landing en ningún idioma y por eso
+   quedó fuera de la Entrega 2 (ver §2). Requiere además:
+   - dar de alta el índice italiano en `check-links.sh` (arrays `INDEXES` y
+     `index_for_lang`), que hoy solo conoce ES/EN/FR/RU;
+   - añadir **«Blog» al nav italiano** de las 14 páginas ya publicadas, que hoy
+     va sin él a propósito;
+   - añadir la columna del blog al footer italiano.
 11. **Oleadas NL y DE:** mismas tres entregas. Antes de escribir nada, fijar sus
    slugs en la tabla del README, igual que se hizo con el italiano.
 12. **Oleada AR — la última, y no se empieza hasta cerrar DE.** No es un idioma
    más: `dir="rtl"`, espejado de nav, footer, breadcrumbs y grids, tipografía e
    iconos direccionales, y una pasada de QA visual completa. La infraestructura
    del selector ya está preparada (ver README).
+
+### Deuda detectada, acotada y no cerrada
+
+13. **La «música» del sitio, en las ~120 menciones que quedan.** No hay equipo de
+   sonido a bordo (confirmado 19/08/2026). En la tanda de la Entrega 2 se
+   eliminaron los claims que prometían equipo de la casa —«música a bordo» en 12
+   páginas, «barra premium con DJ y altavoz portátil», «bebida fría»— y las
+   `meta description` que lo llevaban al buscador. **Quedan ~120 menciones de
+   otro tipo** («ponéis vuestra música», «coordinamos la playlist», «Musique
+   douce diffusée à bord», secciones «Música y baile» de las landings de
+   despedida) repartidas por ~45 páginas en los 4 idiomas. Son zona gris: se
+   pueden cumplir o no según una sola respuesta del propietario — ver §5.14.
+   `check-datos-comerciales.sh` las lista para revisión a mano, sin romper el
+   build. **No abrir esta tanda hasta tener esa respuesta**, o se reescriben 45
+   páginas dos veces.
 
 ---
 
@@ -520,21 +631,48 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    Fuengirola, Benalmádena y Málaga en ES/EN/FR/RU. Repartirlas en tres días
    (7 + 7 + 6), priorizando Málaga y Estepona ES/EN, que son las de más volumen
    de búsqueda.
-11. **🟠 ¿Se atiende en italiano?** Ninguna página italiana lo afirma, porque no
-   está confirmado: el patrón habla ES · EN · FR · RU y eso es lo que dicen las
-   páginas. Si alguien responde WhatsApp o email en italiano, dilo y se añade a
-   las redacciones canónicas del README y a las 5 páginas IT — es de los pocos
-   argumentos que de verdad mueven la conversión de un mercado nuevo. La misma
-   pregunta valdrá para NL, DE y AR.
-12. **Indexar las 5 URLs italianas** — `/it`, `/flotta-barche-marbella`,
-   `/escursioni-barca-marbella`, `/proposta-matrimonio-barca-marbella` y
-   `/foto-matrimonio-barca-marbella`. Y **revalidar en Search Console los 5 grupos
-   `hreflang` ampliados** (home, flota, actividades, pedida y bodas): al pasar de
-   4 a 5 miembros, Google tarda en releer los alternates de las 20 páginas viejas.
+11. ~~**🟠 ¿Se atiende en italiano?**~~ **RESUELTO** (19/08/2026): sí, por
+   **WhatsApp y email**. Publicado en las 14 páginas italianas con la redacción
+   canónica del README, junto a los CTA y en el footer. **El patrón sigue
+   hablando ES · EN · FR · RU** y ninguna página dice otra cosa. **La misma
+   pregunta sigue abierta para NL, DE y AR**: hasta que se confirme, sus páginas
+   no lo dirán.
+12. **Indexar las 14 URLs italianas.** Las 5 de la Entrega 1 (`/it`,
+   `/flotta-barche-marbella`, `/escursioni-barca-marbella`,
+   `/proposta-matrimonio-barca-marbella`, `/foto-matrimonio-barca-marbella`) y
+   las **9 nuevas** de la Entrega 2 (`/addio-al-celibato-barca-marbella`,
+   `/addio-al-nubilato-barca-marbella`, `/compleanno-in-barca-marbella`,
+   `/sunset-tour-barca-marbella`, `/avvistamento-delfini-marbella`,
+   `/escursione-barca-gibilterra-marbella`, `/eventi-aziendali-barca-marbella`,
+   `/barca-privata-vs-piattaforme`, `/prenota`). Repartirlas en dos o tres días.
+   Y **revalidar en Search Console los 14 grupos `hreflang` ampliados**: 5 en la
+   Entrega 1 y 9 en la Entrega 2. Al pasar de 4 a 5 miembros (o de 2 a 3 en la
+   comparativa), Google tarda en releer los alternates de las **34 páginas
+   viejas** reescritas.
 13. **Indexar las 2 URLs de boat party** — `/post/fiesta-en-barco-puerto-banus`
    (nueva) y `/post/boat-party-puerto-banus` (title y meta reescritos). Pedir
    indexación en Search Console y, dentro de 3-4 semanas, comparar el CTR del post
    EN contra el 0 % actual (0 clics / 58 impresiones).
+
+---
+
+14. **🟠 ¿Se puede subir un altavoz propio al barco?** Es la pregunta que
+   desbloquea las ~120 menciones de «música» del sitio (§3.13). No hay equipo de
+   sonido a bordo, eso está confirmado; lo que no sabemos es si el cliente puede
+   llevar el suyo. Tres respuestas posibles y tres consecuencias distintas:
+   **(a) sí, sin condiciones** → las menciones de «vuestra música / vuestra
+   playlist» se quedan y se añade una frase que aclare que el equipo lo pone el
+   cliente; **(b) sí, con condiciones** (volumen, horario, tipo de aparato) →
+   hay que escribirlas y publicarlas; **(c) no** → se eliminan las ~120
+   menciones en los 4 idiomas y la música desaparece del sitio, incluidas las
+   secciones «Música y baile» de las landings de despedida y la playlist de las
+   de pedida. Mientras no haya respuesta, **no se toca nada**: reescribir 45
+   páginas dos veces es peor que esperar.
+
+15. **🟠 ¿Se atiende también en neerlandés, alemán o árabe?** La respuesta al
+   italiano fue que sí. Antes de abrir cada oleada conviene preguntarlo, porque
+   cambia el argumento de conversión de todas sus páginas y es más barato
+   escribirlo desde el principio que añadirlo después.
 
 ---
 
@@ -567,9 +705,14 @@ Datos confirmados a día de hoy:
   `лёгкий кейтеринг, вода и напитки, и бутылка шампанского в подарок` · IT
   `catering leggero, acqua e bibite e una bottiglia di champagne in omaggio`.
   Redacción canónica de NL/DE, en `README.md`.
-- **El patrón habla ES · EN · FR · RU.** No está confirmado que se atienda en
-  italiano, neerlandés, alemán ni árabe, así que **ninguna** página de esos
-  idiomas lo afirma. Ver §5.11.
+- **El patrón habla ES · EN · FR · RU**, y eso es lo que dicen todas las páginas,
+  también las italianas. **La atención escrita en italiano —WhatsApp y email— sí
+  está confirmada** (19/08/2026) y se publica solo en las páginas IT, con la
+  redacción canónica del README. Son dos datos distintos y no se mezclan. Para
+  NL, DE y AR sigue sin confirmar: sus páginas no lo dirán. Ver §5.11 y §5.15.
+- **No hay equipo de sonido a bordo.** Ninguna página promete «música a bordo»
+  ni equipo que ponga la casa (altavoz, barra premium con DJ). Si el cliente
+  puede subir el suyo es una pregunta abierta — ver §5.14 y §3.13.
 - **No existe a bordo** (confirmado 19/08/2026): equipo de sonido / Bluetooth,
   nevera, ducha de agua dulce y **colchoneta flotante** —el único equipo de agua es
   el paddle surf. **No se promete descorche.** El único alcohol
@@ -609,8 +752,9 @@ tiene que mantener esta propiedad.
 uno de esos ficheros hay que subir el `?v=` de su etiqueta en todas las páginas
 que lo cargan**, o los visitantes recurrentes verán el HTML nuevo con el asset
 viejo. Desde esta tanda la versión se declara **en un solo sitio**: `CSS_V` y
-`JS_V` en `scripts/apply-lang-switcher.py`, que la propaga a las 135 páginas al
-reejecutarse. Valores actuales: `mobile.css?v=3`, `lang-switcher.js?v=2`.
+`JS_V` en `scripts/apply-lang-switcher.py`, que la propaga a las 144 páginas al
+reejecutarse. Valores actuales: `mobile.css?v=3`, `lang-switcher.js?v=2`
+(esta tanda **no** tocó ni `mobile.css` ni `js/`, así que no hubo bump).
 
 ---
 

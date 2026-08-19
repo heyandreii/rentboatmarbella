@@ -535,3 +535,209 @@ Y dos regresiones antiguas más, del mismo tipo:
   **390px** (emulación de móvil con DPR 3), alto del header y del *spacer*
   coincidentes (69/69 y 91/91), panel sin desbordar por ningún lado, 44px de alto
   por fila en móvil, y modo degradado sin JS con los idiomas en línea.
+
+---
+
+## Oleada IT — Entrega 2: landings de ocasión, formulario propio y recableado (19 de agosto de 2026)
+
+Nueve páginas nuevas en italiano y el recableado de las cinco de la Entrega 1.
+Con esto el italiano tiene **14 páginas**: todo el sitio menos el blog, que es la
+Entrega 3. Reglas y redacciones canónicas, en `README.md`.
+
+### Alcance: cómo se fijó la lista
+
+La lista definitiva salió del **conjunto de landings que ya existen en los idiomas
+publicados**, no de una enumeración a ojo. Dos decisiones que conviene dejar
+escritas porque no son obvias:
+
+- **Entra la comparativa aunque su grupo solo tuviera 2 miembros.**
+  `barco-privado-vs-plataformas` existe en ES y EN, no en FR ni RU. Aun así se
+  localiza: es la página «por qué reservar directo», va enlazada desde el footer
+  y es exactamente el argumento que necesita un mercado nuevo, donde el lector no
+  conoce la marca. Su grupo `hreflang` pasa de **2 a 3**.
+- **Queda fuera el «boat party».** No existe como landing en **ningún** idioma:
+  es un post de blog en los cuatro (`/post/boat-party-puerto-banus`,
+  `/post/fiesta-en-barco-puerto-banus`, `/post/soiree-bateau-puerto-banus`,
+  `/post/vecherinka-na-yakhte-puerto-banus`). Crear una landing italiana sin
+  equivalente en ningún otro idioma sería arquitectura nueva, no localización, y
+  dejaría un grupo `hreflang` de un solo miembro. Va con la Entrega 3.
+
+### Las 9 páginas
+
+| Slug IT | `title` | len | `meta` | Precio | Grupo |
+|---|---|---|---|---|---|
+| `addio-al-celibato-barca-marbella` | Addio al Celibato in Barca a Marbella \| da 1.800 € | 50 | 149 | 1.800 € | 4→5 |
+| `addio-al-nubilato-barca-marbella` | Addio al Nubilato in Barca a Marbella \| da 1.800 € | 50 | 148 | 1.800 € | 4→5 |
+| `compleanno-in-barca-marbella` | Compleanno in Barca a Marbella \| Festa Privata da 1.200 € | 57 | 147 | 1.200 € | 4→5 |
+| `sunset-tour-barca-marbella` | Sunset Tour in Barca a Marbella \| Tramonto da 1.200 € | 53 | 146 | 1.200 € | 4→5 |
+| `avvistamento-delfini-marbella` | Avvistamento Delfini a Marbella \| Uscita Privata in Barca | 57 | 154 | 1.800 € | 4→5 |
+| `escursione-barca-gibilterra-marbella` | Escursione in Barca a Gibilterra da Marbella \| Yacht Privato | 60 | 141 | 3.000 € + carburante | 4→5 |
+| `eventi-aziendali-barca-marbella` | Eventi Aziendali in Barca a Marbella \| Yacht Privato | 52 | 152 | 1.200 € | 4→5 |
+| `barca-privata-vs-piattaforme` | Barca Privata o Piattaforme di Noleggio a Marbella | 50 | 154 | — | 2→3 |
+| `prenota` | Prenota una Barca a Marbella \| Prezzi e Disponibilità | 53 | 146 | — | 4→5 |
+
+Todos los `title` ≤60 y todas las `meta` en 140–155. La cifra va en el `title`
+donde de verdad aporta CTR (las cuatro landings con precio de entrada claro); en
+las de delfines, Gibraltar y eventos manda el formato de la salida, que es lo que
+diferencia la búsqueda.
+
+### Slugs
+
+Siguen la convención del README (`<keyword>-barca-marbella`, sin diacríticos) con
+dos excepciones razonadas, ambas heredadas del patrón de los demás idiomas:
+`avvistamento-delfini-marbella` no lleva el token de la barca —igual que
+`avistamiento-delfines-marbella` y `dolphin-watching-marbella`—, y
+`barca-privata-vs-piattaforme` sigue la forma de comparativa de ES y EN.
+`escursione-barca-gibilterra-marbella` usa el topónimo italiano (*Gibilterra*),
+que es como se busca desde Italia.
+
+### Localización, no traducción
+
+El gancho de cada landing parte de con qué compara el lector italiano:
+
+- **Addio al celibato / al nubilato:** contra la serata in discoteca (lista
+  all'ingresso, consumazione minima, tavolo diviso) y contra el *posto* comprado
+  en una gita collettiva. El argumento es la **barca intera** y la tariffa **per
+  imbarcazione, non a testa**.
+- **Compleanno:** contra la cena per dieci al ristorante — mismo gasto, dura todo
+  el día y no termina con la cuenta.
+- **Sunset tour:** contra la gita al tramonto a posto singolo; aquí la barca no
+  vuelve a puerto porque lo diga el horario del tour.
+- **Avvistamento delfini:** el eje es la honestidad — **no se garantiza el
+  avistamiento**, se dice en el primer bloque y en la FAQ, y se explica la regla
+  de no perseguir ni cortar la rota a los animales.
+- **Gibilterra:** el carburante adicional se anuncia **arriba**, no al final, y se
+  dice que el desembarco no está incluido porque es paso fronterizo.
+- **Eventi aziendali:** el argumento italiano es la **fattura con IVA** a nombre
+  de la sociedad y el presupuesto cerrado antes de salir.
+- **Comparativa:** contra el **gommone a noleggio senza patente**, que es la
+  fórmula que un italiano tiene en la cabeza, y con la tabla de 5 filas del
+  original.
+
+En las siete landings de ocasión: `Product + BreadcrumbList + LocalBusiness +
+FAQPage`, el mismo patrón que sus equivalentes ES. La comparativa lleva
+`BlogPosting + BreadcrumbList + FAQPage + LocalBusiness` con `inLanguage:"it"`,
+como su original. **Los `Offer` italianos llevan `url`**, que es justo lo que
+falta en los cuatro corporativos del backlog (§3.2 de `ESTADO.md`).
+
+### El formulario `/prenota`
+
+**No se escribió desde cero: se transformó `booking.html`** con 73 sustituciones
+literales, cada una afirmada con su número de ocurrencias esperadas. Si el
+original cambia, el generador falla en vez de producir una página a medias. Así
+el formulario italiano hereda **exactamente** la lógica ya probada: validación,
+absorción de prefijo pegado, orden de disparo (validar → `track.success` →
+`/api/lead` → WhatsApp), y la propiedad de que GA4 no lee ningún `.value` tecleado.
+
+Lo propio del italiano:
+
+- **`CFG`** — formato `1.200 €` (separador `.`, sufijo ` €`), `Su preventivo` para
+  la opción a medida, `durSum` (`2 ore`, `4 ore`, `Giornata 8h`, `Su misura`) y el
+  mensaje de WhatsApp entero.
+- **`CC`** — los tres pares de mensajes de error, `def:"IT"` y el botón que ya
+  pinta `+39` en el HTML servido, sin esperar al JS.
+- **Los 54 prefijos traducidos y reordenados** por colación italiana (*Cechia*
+  entre Canada y Cipro, *Paesi Bassi* en la P, *Regno Unito* en la R, *Stati
+  Uniti* en la S). El test lo comprueba con `localeCompare(nombre, 'it')`.
+
+`js/form-tracking.js` no necesitó ni una línea: saca `lang` de `<html lang>`, así
+que el embudo de GA4 y el aviso por email separan el italiano solos —verificado
+en el payload real, que sale con `lang:"it"` y `page:"/prenota"`.
+
+`scripts/test-booking-form.js` gana el quinto formulario en su array `PAGES`:
+**380 comprobaciones** (eran 304), todas en verde.
+
+### Recableado, hub y footer
+
+- **27 CTA** de las 5 páginas de la Entrega 1 pasan de `/booking` (EN) a
+  `/prenota`. El README decía 22: era el recuento de una versión anterior de esas
+  páginas. Antes de sustituir se comprueba que ningún `/booking` esté **dentro del
+  selector de idioma**, donde sí debe seguir apuntando al inglés.
+- **El hub `/escursioni-barca-marbella`**: las **6 ocasiones que eran texto sin
+  enlace** ahora enlazan a sus landings, y la rejilla crece a **8** con eventos de
+  empresa y la comparativa. Cada tarjeta pasa de `<div>` a `<a>` con su
+  «Scopri di più →».
+- **El footer italiano** de las 14 páginas: la columna «Esperienze» pasa de 2 a
+  **8** enlaces, «Info» gana «Perché prenotare diretto». **Sigue sin «Blog»**: la
+  Entrega 3 lo añadirá. Las legales siguen apuntando a las **EN** con
+  `hreflang="en"` y el `(in inglese)` visible.
+
+### Dato comercial nuevo: atención en italiano
+
+El propietario confirmó el 19/08/2026 que **se atiende por WhatsApp y email en
+italiano**. Es el argumento de conversión que le faltaba a un mercado nuevo, y se
+publica **solo en las páginas IT**, con la redacción canónica del README
+(`Assistenza in italiano su WhatsApp ed e-mail`), donde convierte: junto a los CTA
+de la home (buscador del hero y CTA final), en el párrafo de entrada y en la
+tarjeta lateral de las 8 landings, en la tarjeta de resumen de `/prenota`, en el
+CTA de la flota y del hub, y en la columna «Contatti» del footer.
+
+**Lo que no se dice, y es deliberado:** que el patrón hable italiano. El patrón
+habla **ES · EN · FR · RU** y así sigue en todas las páginas. En la comparativa
+—la única donde conviven los dos datos— van en párrafos separados y en ese orden:
+primero qué habla el patrón a bordo, después que la asistencia escrita es en
+italiano.
+
+### Deuda ajena corregida de paso: la música a bordo
+
+Localizar destapó una clase de claim que el grep no cubría. El propietario
+confirmó el 19/08 que **no hay equipo de sonido a bordo**, y sin embargo:
+
+- La landing **ES de despedida de soltero** —fuente directa de la italiana—
+  ofrecía «barra premium con **DJ y altavoz portátil**» y «catering ampliado con
+  marisco y **bebida fría**» (tampoco hay nevera), en HTML visible **y** en el
+  `FAQPage`. **6 sustituciones**, editando los dos a la vez para que no se
+  desincronicen.
+- **12 páginas de los 4 idiomas** prometían literalmente «Música a bordo / Music
+  on board / Musique à bord / Музыка на борту»: los 4 hubs de experiencias (card
+  de despedida de soltera), las 4 landings de cumpleaños y las pastillas del hero
+  de las 4 de despedida de soltera. **12 sustituciones**, cambiando la promesa por
+  algo confirmado (paddle surf, snorkel, 100% privado).
+- La **`meta description`** de 6 de esas páginas lo llevaba a la ficha del
+  buscador, con 3 copias por página (`meta`, `og:`, `twitter:`). **18
+  sustituciones**, todas dentro del rango de longitud que ya tenían.
+
+**36 sustituciones en total.** `check-datos-comerciales.sh` gana dos cosas: un
+patrón **duro** por idioma para el equipo que tendría que poner la casa (altavoz,
+barra premium, DJ, bebida fría) y una lista **blanda** de revisión para «música a
+bordo», que ya queda a 0 y no rompe el build.
+
+**Lo que no se ha tocado**, y conviene que se sepa: quedan **~120 menciones de
+«música» de otro tipo** («ponéis vuestra música», «coordinamos la playlist»,
+«Musique douce diffusée à bord», las secciones «Música y baile» de las landings de
+despedida) en ~45 páginas de los 4 idiomas. Son zona gris y dependen de **una sola
+pregunta al propietario**: si el cliente puede subir su propio altavoz. Reescribir
+45 páginas antes de tener esa respuesta es reescribirlas dos veces. Queda anotado
+en `ESTADO.md` §3.13 y §5.14.
+
+### Verificación
+
+- **`scripts/check-links.sh`** contra un servidor local con `cleanUrls`: 125 URLs,
+  **0 fallos**; 56 posts del sitemap, **0 huérfanos**.
+- **Barrido local propio**: las **144** URLs internas distintas enlazadas desde
+  cualquier página del repo, más todas las del sitemap, responden **200**. Hacía
+  falta porque `check-links.sh` solo recorre lo enlazado desde los índices de blog
+  y las páginas italianas no aparecen ahí hasta la Entrega 3.
+- **Reciprocidad `hreflang`** en las 144 páginas: **0 incoherencias**. Cada grupo
+  ampliado se reescribió entero —**34 páginas existentes**, no solo las nuevas— y
+  el `x-default` sigue apuntando al español en los nueve.
+- **`scripts/check-lang-switcher.py`**: 144 páginas, **638** enlaces de idioma, 0
+  problemas.
+- **`scripts/check-datos-comerciales.sh`**: **0 hits** de claims prohibidos.
+- **`node scripts/test-booking-form.js`**: **380** comprobaciones sobre 5
+  formularios, 0 fallos.
+- **`node scripts/test-lead-api.js`**: 21 comprobaciones, 0 fallos.
+- **`scripts/check-offer-price.sh`**: **5** páginas corporativas (con la italiana),
+  0 problemas.
+- **JSON-LD offline**: **501** bloques (eran 468), todos parseables; **FAQ del
+  `<head>` idéntica a la visible** en las 9 páginas nuevas y en la ES corregida.
+- **Navegador (servidor local, `window.open` y `fetch` interceptados —ningún lead
+  real)**: sin datos válidos el submit no dispara nada; los tres errores salen en
+  italiano; con datos válidos el mensaje de WhatsApp sale entero y bien formateado
+  (`4 ore (1.800 €)`, `Totale stimato: 2.050 €`); `/api/lead` recibe `lang:"it"`;
+  un `+34 600111222` pegado se mueve solo al selector y el campo queda en
+  `600111222`; el buscador de países filtra por «germ» → *Germania +49*. En una
+  landing: header a **69px** (sin CLS), panel del selector con sus 5 idiomas a
+  40px por fila, sin scroll horizontal y **0 errores de consola**.
+- **Sitemap**: 135 → **144** URLs, XML bien formado.
+- **`mobile.css` y `js/` sin tocar**, así que no hubo bump de `CSS_V`/`JS_V`.

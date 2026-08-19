@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Verifica en producción que las 4 landings de eventos de empresa tienen
+# Verifica en producción que las 5 landings de eventos de empresa tienen
 # price en el Offer y que ese precio coincide con el que ve el usuario.
 # Uso: scripts/check-offer-price.sh [base-url]
 set -uo pipefail
@@ -13,6 +13,7 @@ PAGES=(
   "corporate-events-boat-marbella|€1,200"
   "evenements-entreprise-bateau-marbella|1 200 €"
   "korporativy-yakhta-marbella|1 200 €"
+  "eventi-aziendali-barca-marbella|1.200 €"
 )
 
 for entry in "${PAGES[@]}"; do
@@ -55,7 +56,7 @@ done
 
 echo "----"
 if [ $FAIL -eq 0 ]; then
-  echo "✅ Las 4 páginas: price en el Offer y precio visible coincidente."
+  echo "✅ Las 5 páginas: price en el Offer y precio visible coincidente."
 else
   echo "❌ $FAIL página(s) con el Offer o el precio visible incorrectos."
   exit 1

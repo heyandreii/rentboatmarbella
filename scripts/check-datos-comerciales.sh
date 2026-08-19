@@ -37,6 +37,11 @@ sonido|en|sound system|bluetooth speaker|on-?board (sound|speakers)
 sonido|fr|système (audio|de son)|enceinte (bluetooth|à bord)
 sonido|ru|аудиосистем|блютуз|колонк[аи] на борту
 sonido|it|impianto (audio|stereo)|casse (bluetooth|a bordo)|bluetooth
+equipo|es|altavoz|altavoces|barra premium|barra libre premium|bebida fría
+equipo|en|portable speaker|premium bar|dj set|cold drinks included
+equipo|fr|enceinte portable|bar premium|boissons fraîches incluses
+equipo|ru|переносн\w+ колонк|премиум-бар
+equipo|it|cassa portatile|open bar premium|bevande fredde incluse
 nevera|es|nevera a bordo|nevera incluida|frigorífico
 nevera|en|(fridge|refrigerator|cool ?box|ice ?box) (on board|included)|on-?board fridge
 nevera|fr|(frigo|réfrigérateur|glacière) (à bord|inclus)
@@ -81,6 +86,15 @@ PATTERNS
 # que se listan aparte para revisarlos a mano en vez de darlos por rotos.
 GLOBOS='globos|balloons|ballons|шар(ы|ики)|palloncini'
 
+# La MÚSICA es zona gris y por eso no rompe el build: no hay equipo de sonido a
+# bordo (confirmado 19/08/2026), pero el cliente puede llevar el suyo y eso no
+# está ni confirmado ni desmentido. Lo que sí es un claim prohibido —altavoz que
+# pongamos nosotros, barra premium con DJ— va arriba, en los patrones duros.
+# Estas líneas se revisan a mano: "música a bordo" promete equipo, "vuestra
+# música" no necesariamente. Pendiente de que el propietario aclare si se puede
+# subir un altavoz propio (ver §5 de ESTADO.md).
+MUSICA='m[uú]sica a bordo|music on board|musique à bord|музыка на борту|musica a bordo'
+
 echo "== Claims prohibidos =="
 while IFS='|' read -r tag lang rest; do
   [ -z "${tag:-}" ] && continue
@@ -102,6 +116,17 @@ if [ -n "$g" ]; then
   echo "      ^ revisar a mano: cada línea debe estar dentro del extra de decoración."
 else
   echo "ok    ninguna mención suelta."
+fi
+
+echo
+echo "== Música a bordo (zona gris: no hay equipo de sonido, revisar a mano) =="
+m="$(grep -rniE "$MUSICA" --include='*.html' . 2>/dev/null | grep -vE '<!--' || true)"
+if [ -n "$m" ]; then
+  printf '%s\n' "$m" | cut -c1-160 | sed 's/^/      /'
+  echo "      ^ NO rompe el build. Cada línea debe poder cumplirse sin equipo de"
+  echo "        sonido de la casa. Ver la nota de este script y §5 de ESTADO.md."
+else
+  echo "ok    ninguna mención."
 fi
 
 echo

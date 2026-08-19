@@ -18,11 +18,23 @@
 > antes de tocar nada:
 >
 > - **El sitio ya no son 4 idiomas, sino 4 + un programa que lo lleva a 8**
->   (IT → NL → DE → AR, en oleadas de tres entregas). Hoy existe el core
->   italiano: `/it`, `/flotta-barche-marbella`, `/escursioni-barca-marbella`,
->   `/proposta-matrimonio-barca-marbella` y `/foto-matrimonio-barca-marbella`.
->   Convenciones de slug, formato de cifras y **redacciones canónicas IT/NL/DE**
->   en `README.md` → «Idiomas del programa multiidioma».
+>   (IT → NL → DE → AR, en oleadas de tres entregas). El italiano ya tiene
+>   **14 páginas** —core, las 8 landings de ocasión y su propio formulario
+>   `/prenota`— y le falta solo el blog (Entrega 3). Convenciones de slug,
+>   formato de cifras y **redacciones canónicas IT/NL/DE** en `README.md` →
+>   «Idiomas del programa multiidioma».
+> - **Ya son 5 formularios de reserva, no 4**: `/reservar`, `/booking`,
+>   `/reservation`, `/zabronirovat` y `/prenota`. Todo lo que este archivo dice
+>   «de los 4 formularios» hay que leerlo como «de los 5».
+> - **Se atiende por WhatsApp y email en italiano** (confirmado el 19/08/2026).
+>   Es publicable **solo en las páginas IT**, con la redacción canónica del
+>   README. **El patrón sigue hablando ES · EN · FR · RU** y ninguna página dice
+>   otra cosa: son dos datos distintos y no se mezclan. Para NL, DE y AR el dato
+>   sigue sin confirmar.
+> - **No hay equipo de sonido a bordo**, así que ninguna página promete «música a
+>   bordo» ni equipo que ponga la casa. Quedan ~120 menciones de «vuestra música
+>   / la playlist» pendientes de una pregunta al propietario: ver `ESTADO.md`
+>   §3.13 y §5.14 antes de escribir nada sobre música.
 > - **El selector de idioma es un desplegable en todos los anchos**, no solo en
 >   móvil como dice §7 (PR #15) más abajo.
 > - **Hay datos que se confirmaron falsos el 19/08** —equipo de sonido, nevera,
@@ -55,7 +67,7 @@ Un **solo barco**, no una flota:
 | Eslora | **15 metros** |
 | Motorización | **2× Mercury V12 600 CV — 1.200 CV totales** |
 | Capacidad | **hasta 10 personas** (por barco, no por persona) |
-| Patrón | **Incluido siempre** (titulado, multilingüe ES/EN/FR/RU). El cliente no necesita licencia. |
+| Patrón | **Incluido siempre** (titulado, multilingüe ES/EN/FR/RU — **no** italiano a bordo; la atención en italiano es por WhatsApp y email). El cliente no necesita licencia. |
 | Amarre | **Puerto Banús, 29660 Marbella (Málaga)** — todas las salidas parten de ahí |
 
 Formato de la motorización por idioma (importante, se usa literal en las fichas):
@@ -251,6 +263,10 @@ Hoy `js/form-tracking.js` se sirve como `?v=1`.
 `post/`**. También: 4 formularios de reserva (uno por idioma) y **332 bloques
 JSON-LD** validados.
 
+> ⚠️ **Desfasado.** Hoy son **144 URLs**, 88 páginas en la raíz, 56 posts,
+> **5 formularios** (con `/prenota`) y **501 bloques JSON-LD**. Los números
+> buenos están en `ESTADO.md` §1.
+
 ```
 /                          74 × .html   páginas del sitio (4 idiomas, URLs traducidas)
 /post/                     26 × .html   artículos del blog
@@ -321,7 +337,7 @@ BreadcrumbList + FAQPage**.
 | **`scripts/check-links.sh`** | **Doble fase.** *Fase 1 (offline):* para cada `/post/<slug>` del sitemap lee el `<html lang>` del post y exige que su índice de idioma lo enlace (`es`→`blog-nautico-marbella`, `en`→`yacht-blog`, `fr`→`blog-nautique`, `ru`→`morskoy-blog`); falla si el sitemap lista un post inexistente o de idioma desconocido. *Fase 2 (red):* curl con cache-buster a todas las URLs internas, exige 200. Un 200 tras redirigir a otro host cuenta como fallo (Preview con SSO). Exit 1 si falla cualquiera. | `scripts/check-links.sh` (producción) o `scripts/check-links.sh http://127.0.0.1:8000` |
 | **`scripts/check-lang-switcher.py`** | Que ningún enlace del selector de idioma apunte a una página inexistente o a una que en realidad está en otro idioma. Offline. | `scripts/check-lang-switcher.py` |
 | `scripts/apply-lang-switcher.py` | Regenera el selector de idioma del header desde los `hreflang` de cada página. | `scripts/apply-lang-switcher.py` |
-| **`scripts/test-booking-form.js`** | **304 comprobaciones** sobre los 4 formularios: validación real extraída del HTML servido (marcadores `[RBM-VALIDATION-*]`), lista de países (ISO, prefijos, idioma, orden, sin duplicados), prefijo por defecto, que `validate()` va **antes** de `track.success()` / `/api/lead` / `window.open`, y que a GA4 no viaja ningún valor tecleado. | `node scripts/test-booking-form.js` |
+| **`scripts/test-booking-form.js`** | **380 comprobaciones** sobre los 5 formularios (ES/EN/FR/RU/IT): validación real extraída del HTML servido (marcadores `[RBM-VALIDATION-*]`), lista de países (ISO, prefijos, idioma, orden, sin duplicados), prefijo por defecto, que `validate()` va **antes** de `track.success()` / `/api/lead` / `window.open`, y que a GA4 no viaja ningún valor tecleado. | `node scripts/test-booking-form.js` |
 | **`scripts/test-lead-api.js`** | **21 comprobaciones** de `/api/lead` con Resend simulado, sin red ni credenciales: asunto, 11 campos, destinatario, `reply_to`, guardas 405/400/413/422/500/502, que la API key nunca viaja a la respuesta, escapado de `<img onerror>`, limpieza de `\r\n`, limitador por IP. | `node scripts/test-lead-api.js` |
 | `scripts/check-offer-price.sh` | Que ningún `Offer` del sitio tenga `priceCurrency` sin `price`. | `scripts/check-offer-price.sh` |
 
@@ -563,7 +579,7 @@ ataque decidido. **El correo solo se manda si hay email o teléfono** (sin ningu
 de los dos no habría a quién responder; el cliente no se pierde porque WhatsApp se
 abre igual).
 
-En los 4 formularios la llamada va **antes** de `window.open`, con
+En los 5 formularios la llamada va **antes** de `window.open`, con
 `fetch(..., {keepalive:true})`, en `try` y con `.catch()` vacío:
 **fire-and-forget**, ningún fallo puede impedir que se abra WhatsApp.
 
@@ -624,8 +640,8 @@ página que no declara alternate para un idioma no ofrece ese idioma.
 ## 4.1 Google Analytics 4
 
 - Propiedad **`G-5FQ4F67XC4`**, cargada en todas las páginas.
-- Eventos del embudo (los emite `js/form-tracking.js`, cargado en las 4 homes y
-  los 4 formularios):
+- Eventos del embudo (los emite `js/form-tracking.js`, cargado en las homes y
+  los 5 formularios; saca `lang` de `<html lang>`, así que separa el italiano solo):
 
 | Evento | Cuándo | Dónde |
 |---|---|---|
