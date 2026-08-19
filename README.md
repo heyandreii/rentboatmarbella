@@ -32,8 +32,8 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 - `scripts/check-datos-comerciales.sh` — grep anti-invención en los 8 idiomas
   (ver abajo). **Obligatorio antes de cada push a `main`.**
 - `scripts/test-lead-api.js` — pruebas de `/api/lead` con Resend simulado (sin red).
-- `scripts/test-booking-form.js` — pruebas del formulario de reserva de los 5
-  idiomas (ES/EN/FR/RU/IT): validación de nombre/email/teléfono y selector de prefijo. Ejecuta las
+- `scripts/test-booking-form.js` — pruebas del formulario de reserva de los 6
+  idiomas (ES/EN/FR/RU/IT/NL): validación de nombre/email/teléfono y selector de prefijo. Ejecuta las
   reglas tal y como se sirven en el HTML. `node scripts/test-booking-form.js`.
 
 ## ⚠️ Antes de cada push a `main` (obligatorio)
@@ -144,8 +144,9 @@ una replica el sitio completo en **tres entregas**:
 | 3 | Blog completo, incluidos los 5 posts de zona. |
 
 **Estado:** **IT completo** — las tres entregas cerradas, 29 páginas (5 core +
-8 landings + `/prenota` + índice de blog + 14 posts). **La oleada siguiente es
-NL**, y antes de escribir nada hay que fijar sus slugs en las tablas de abajo.
+8 landings + `/prenota` + índice de blog + 14 posts). **NL en curso**: Entregas 1
+y 2 cerradas (5 core + 8 landings + `/reserveren` = 14 páginas); queda la
+Entrega 3, el blog. Los slugs de las tres entregas NL ya están fijados abajo.
 
 ### Convención de slugs
 
@@ -327,7 +328,8 @@ su oleada. Hasta entonces, los CTA de la Entrega 1 apuntan al formulario **EN**
 entiende sin fricción, y evita publicar enlaces muertos o mandarlo al español.
 
 **IT ya está recableado:** los **27** CTA de las 5 páginas de la Entrega 1
-apuntan a `/prenota`, y el nav italiano tiene «Blog» desde la Entrega 3. El grep para la oleada siguiente, con sus páginas:
+apuntan a `/prenota`, y el nav italiano tiene «Blog» desde la Entrega 3. **NL
+igual:** también **27** CTA, recableados a `/reserveren` en su Entrega 2. El grep para la oleada siguiente, con sus páginas:
 
 ```bash
 grep -o 'href="/booking"' <páginas de la Entrega 1 del idioma> | wc -l
@@ -342,7 +344,7 @@ misma lógica ya probada (validación, prefijos, orden de disparo, `/api/lead`,
 no-fuga a GA4). Después hay que **dar de alta la página en
 `scripts/test-booking-form.js`** (array `PAGES`: fichero, `lang`, prefijo por
 defecto, ISO, nombre de Alemania y texto del buscador de países) y ejecutarlo:
-con el italiano son **380 comprobaciones** sobre 5 formularios.
+con el neerlandés son **456 comprobaciones** sobre 6 formularios.
 
 La lista de prefijos se traduce **y se reordena** alfabéticamente en el idioma
 de la página: el test lo comprueba con `localeCompare(nombre, lang)`.
