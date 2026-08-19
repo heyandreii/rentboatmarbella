@@ -12,7 +12,13 @@
 #   equipo de sonido / Bluetooth · nevera · ducha de agua dulce · colchoneta
 #   flotante · hielo · política de descorche (subir bebida propia) · globos
 #   sueltos (solo dentro del extra "decoración especial +120 €") · alcohol
-#   incluido más allá de UNA copa de champán de cortesía · tarifa de 6 h.
+#   incluido más allá de UNA botella de champán de cortesía · tarifa de 6 h.
+#
+# Y la redacción VIEJA del champán: hasta el 19/08/2026 lo incluido era una
+# "copa" de champán y ese mismo día el propietario lo subió a "botella". La copa
+# queda prohibida en los 8 idiomas: si reaparece, es una regresión, no un dato.
+# Ojo, las menciones AMBIENTALES de champán (decoración, extras, "brindis con
+# champán") son legítimas y no se buscan aquí — solo la copa "de cortesía".
 #
 # Uso:  scripts/check-datos-comerciales.sh
 # Sale 1 si encuentra algo. Los comentarios HTML (<!-- ... -->) se ignoran:
@@ -54,7 +60,7 @@ ducha|it|doccia (di |ad )?acqua dolce
 colchoneta|es|colchoneta
 colchoneta|en|floating mat|inflatable mat
 colchoneta|fr|matelas (flottant|gonflable)
-colchoneta|ru|надувной матрас
+colchoneta|ru|(надувной|плавучий|плавающий) матрас
 colchoneta|it|materassino
 alcohol|es|barra libre|alcohol incluido|bebidas alcohólicas incluidas
 alcohol|en|open bar|alcohol included|alcoholic drinks included
@@ -62,6 +68,13 @@ alcohol|fr|open bar|alcool inclus|boissons alcoolisées incluses
 alcohol|ru|открытый бар|алкоголь включ
 alcohol|it|open bar|alcolici inclusi|bevande alcoliche incluse
 tarifa6h|xx|6 ?h(oras|ours|eures)? ?[·–-] ?2[.,]400|2[.,]400 ?€|€ ?2[.,]400
+copavieja|es|copa de champ[aá]n|copa de champagne
+copavieja|en|(complimentary |free )?glass of champagne
+copavieja|fr|coupe de champagne (offerte|incluse)
+copavieja|ru|бокал\w* шампанского в подарок
+copavieja|it|calice di champagne
+copavieja|nl|glas champagne van het huis
+copavieja|de|Glas Champagner als Aufmerksamkeit
 PATTERNS
 
 # Los globos solo pueden aparecer dentro del extra de decoración especial, así

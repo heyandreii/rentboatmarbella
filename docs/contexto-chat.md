@@ -103,19 +103,26 @@ Existe además un competidor de nombre casi idéntico, **rentalboatmarbella.com*
 ## 1.4 Qué incluye la tarifa
 
 **Patrón titulado, combustible de la ruta habitual, seguro, paddle surf, snorkel,
-catering ligero (fruta y frutos secos), agua y refrescos y una copa de champán de
-cortesía**, más el equipo de seguridad completo y la plataforma de baño. Todo con
-IVA incluido.
+catering ligero (fruta y frutos secos), agua y refrescos y una botella de champán
+de cortesía**, más el equipo de seguridad completo y la plataforma de baño. Todo
+con IVA incluido.
 
 Confirmado por el propietario el **19 de agosto de 2026**, cerrando la última duda
-abierta sobre lo que va incluido. Redacción canónica por idioma:
+abierta sobre lo que va incluido. Ese mismo día **subió el detalle de copa a
+botella**: la redacción de la botella **sustituye** a la de la copa en todas
+partes. Criterio: **una botella por reserva**, incluida en la tarifa y en todas las
+duraciones; no se promete marca, tamaño ni más de una. Redacción canónica por
+idioma (las 5 publicadas + NL/DE, preparadas para su oleada):
 
 | Idioma | Fórmula |
 |---|---|
-| ES | catering ligero, agua y refrescos, y copa de champán de cortesía |
-| EN | light catering, water and soft drinks, and a complimentary glass of champagne |
-| FR | catering léger, eau et sodas, et une coupe de champagne offerte |
-| RU | лёгкий кейтеринг, вода и напитки, и бокал шампанского в подарок |
+| ES | catering ligero, agua y refrescos, y botella de champán de cortesía |
+| EN | light catering, water and soft drinks, and a complimentary bottle of champagne |
+| FR | catering léger, eau et sodas, et une bouteille de champagne offerte |
+| RU | лёгкий кейтеринг, вода и напитки, и бутылка шампанского в подарок |
+| IT | catering leggero, acqua e bibite e una bottiglia di champagne in omaggio |
+| NL | lichte catering, water en frisdrank en een fles champagne van het huis |
+| DE | leichtes Catering, Wasser und Softdrinks sowie eine Flasche Champagner als Aufmerksamkeit des Hauses |
 
 Excepción: en las **rutas a Gibraltar** el combustible va aparte (la ruta se sale
 del recorrido habitual). Así figura ya en la home.
@@ -127,7 +134,8 @@ del recorrido habitual). Así figura ya en la home.
 - **Nevera y ducha de agua dulce.** No hay.
 - **Colchoneta flotante.** No hay. El único equipo de agua es el **paddle surf**
   (más el material de snorkel). Confirmado el 19/08/2026 tras detectarse en 2
-  páginas; retirada de ambas.
+  páginas; retirada de ambas. Reapareció una tercera en el post RU de precios
+  («плавучий матрас»), retirada el 19/08/2026 al ampliar el patrón del grep.
 - **Política de descorche.** No se promete que el cliente pueda subir su propia
   bebida. Eliminado de las 14 páginas que lo decían.
 - **Agua y hielo como claim aparte.** El agua y los refrescos van dentro de lo
@@ -136,16 +144,19 @@ del recorrido habitual). Así figura ya en la home.
 
 ### Alcohol
 
-El único alcohol incluido es **una copa de champán de cortesía**. El resto de
-bebidas incluidas son sin alcohol. Las **botellas** siguen siendo extra de pago y
-las páginas que las presentan así son correctas: copa incluida, botella extra.
+El único alcohol incluido es **una botella de champán de cortesía**. El resto de
+bebidas incluidas son sin alcohol. Las **botellas adicionales** siguen siendo extra
+de pago, y hay que nombrarlas así —«adicional / additional / supplémentaire /
+дополнительная / aggiuntiva»— para que no choquen con la incluida. Ninguno de los
+4 extras del formulario de reserva es una botella de champán (son fotógrafo, moto
+de agua, catering ampliado y decoración especial), así que ahí no hay conflicto.
 
 ### El catering del sunset (antes 🔴, ahora cerrado)
 
 Las 4 landings de sunset prometían tabla de quesos y embutidos y una botella para
 brindar. **El propietario confirma que el sunset no lleva catering especial:** es
-el mismo catering ligero + agua y refrescos + copa de champán de cortesía que el
-resto de salidas. Las 4 páginas se corrigieron el 19/08/2026.
+el mismo catering ligero + agua y refrescos + botella de champán de cortesía que
+el resto de salidas. Las 4 páginas se corrigieron el 19/08/2026.
 
 ## 1.5 Extras (los del formulario de reserva)
 
@@ -783,8 +794,9 @@ el contraste del footer, único fallo de accesibilidad que queda.
    como producto real y con precio confirmado — regla anti-invención (§8).
 8. ~~**Qué lleva exactamente el catering del sunset.**~~ **RESUELTO** (19/08/2026):
    el sunset lleva el mismo catering que el resto de salidas; las 4 landings ya
-   están corregidas. El alcohol incluido se limita a una copa de champán de
-   cortesía. Ver §1.4.
+   están corregidas. El alcohol incluido se limita a una botella de champán de
+   cortesía (el propietario confirmó primero una copa y la subió a botella el mismo
+   día). Ver §1.4.
 
 ---
 

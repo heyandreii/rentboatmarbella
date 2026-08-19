@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (7.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (8.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -185,11 +185,14 @@ una vez**, no solo las páginas que las traducciones habían ido destapando:
   enumeraciones canónicas —respuesta «¿Qué incluye el precio?» y tarjeta de catering
   de las 4 homes, párrafo y tarjeta de tarifa de las 4 fichas de flota, FAQ del
   sunset— editando `FAQPage` y HTML visible a la vez para que no se desincronicen.
+  *(La copa quedó superada ese mismo día: el propietario la subió a **botella**. Ver
+  «Champán: de copa a botella» más abajo.)*
 - **Las 4 landings de sunset corregidas:** fuera la tabla de quesos y embutidos y la
   botella para brindar; el sunset lleva el mismo catering que el resto de salidas.
   Era lo único del sitio que prometía algo que podía no entregarse.
 - Las botellas de champán **como extra de pago siguen siendo correctas** y se han
-  dejado: copa incluida, botella extra.
+  dejado: copa incluida, botella extra. *(Con el cambio a botella incluida del mismo
+  día, esas menciones pasan a llamarse «botella adicional».)*
 
 Retirados los 6 comentarios `[CONFIRMAR CON PROPIETARIO]` de los posts nuevos.
 
@@ -364,6 +367,40 @@ de sunset de las 4 páginas de actividades seguía prometiendo tabla de quesos
 motores de las 4 portadas seguía mostrando `2× M` truncado, arreglado en su día
 solo en las fichas de flota. El grep queda a **0 hits** en las 135 páginas.
 
+### Champán: de copa a botella (19 de agosto de 2026)
+
+El propietario **subió el detalle incluido**: donde el sitio decía «copa de champán
+de cortesía» —dato que él mismo había confirmado esa misma mañana— ahora dice
+**botella**. Una botella por reserva, incluida en la tarifa y en **todas** las
+duraciones; no se promete marca, tamaño ni más de una.
+
+- **77 páginas y 173 sustituciones** en los 5 idiomas publicados: ES 40 · EN 41 ·
+  FR 34 · RU 46 · IT 12. HTML visible y `FAQPage` editados **a la vez** (misma
+  sustitución literal sobre el archivo entero), más `meta description`, `og:` y
+  `twitter:` de las páginas de sunset y de boat party, que la llevaban en la ficha
+  del buscador.
+- **Concordancia revisada a mano donde el cambio la rompe:** IT pasa de masculino a
+  femenino (`un calice` → `una bottiglia`, `il calice` → `la bottiglia`) y RU
+  cambia de caso según la frase (nominativo `бутылка`, instrumental `бутылкой` en
+  el post de invierno, acusativo `бутылку` en la lista del post de precios).
+- **Las botellas de pago pasan a llamarse «adicionales»** en las 11 frases donde se
+  ofrecían como extra, para que no choquen con la incluida: ES «botellas
+  adicionales», EN «additional bottle», FR «bouteilles supplémentaires», RU
+  «дополнительные бутылки», IT «bottiglie aggiuntive». **Ningún extra del
+  formulario de reserva era una botella de champán** —los cuatro son fotógrafo,
+  moto de agua, catering ampliado y decoración especial—, así que no hubo nada que
+  reformular ahí.
+- **La redacción vieja queda prohibida por script:** `check-datos-comerciales.sh`
+  incluye ahora la «copa/glass/coupe/бокал/calice de champán» como claim prohibido
+  en los 8 idiomas. Si reaparece, es regresión.
+- Actualizadas las **7 redacciones canónicas** (ES/EN/FR/RU/IT publicadas + NL/DE
+  preparadas para su oleada) en `README.md`, aquí y en `docs/contexto-chat.md`.
+
+**Deuda ajena corregida de paso:** el post RU de precios listaba «плавучий матрас»
+(colchoneta flotante) dentro del equipo de playa incluido. La colchoneta es uno de
+los claims que el propietario descartó el 19/08; el patrón RU del grep solo cubría
+«надувной матрас» y no lo veía. Corregido y ampliado el patrón.
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -415,9 +452,11 @@ solo en las fichas de flota. El grep queda a **0 hits** en las 135 páginas.
    precio confirmado — ver regla anti-invención.
 8. ~~**Equipamiento y bebida a bordo.**~~ **RESUELTO** (19/08/2026). El propietario
    confirmó: no hay Bluetooth, nevera ni ducha de agua dulce; no se promete
-   descorche; el único alcohol incluido es una copa de champán de cortesía; los
-   globos solo dentro del extra de decoración; y el sunset lleva el mismo catering
-   que el resto. Las 45 páginas afectadas se corrigieron en la misma tanda. Ver §2.
+   descorche; el único alcohol incluido es una **botella** de champán de cortesía
+   (confirmó primero una copa y la corrigió a botella el mismo día); los globos solo
+   dentro del extra de decoración; y el sunset lleva el mismo catering que el resto.
+   Las 45 páginas afectadas se corrigieron en la misma tanda, y las 76 de la
+   redacción del champán en la tanda de la botella. Ver §2.
 
 ### Programa multiidioma — lo que queda
 
@@ -519,17 +558,25 @@ Datos confirmados a día de hoy:
 - **Barco:** De Antonio D50, 15 m, año 2026, **2× Mercury V12 600 CV (1.200 CV)**.
 - **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf,
   snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una
-  copa de champán de cortesía** e IVA. *(Confirmado el 19/08/2026.)* Redacción
-  canónica de los idiomas nuevos (IT/NL/DE), en `README.md`.
+  botella de champán de cortesía** e IVA. *(Confirmado el 19/08/2026; sustituye a la
+  copa confirmada ese mismo día. Una botella por reserva, incluida en la tarifa y en
+  todas las duraciones; no se promete marca, tamaño ni más de una.)* Redacción por
+  idioma: ES `catering ligero, agua y refrescos, y botella de champán de cortesía` ·
+  EN `light catering, water and soft drinks, and a complimentary bottle of champagne`
+  · FR `catering léger, eau et sodas, et une bouteille de champagne offerte` · RU
+  `лёгкий кейтеринг, вода и напитки, и бутылка шампанского в подарок` · IT
+  `catering leggero, acqua e bibite e una bottiglia di champagne in omaggio`.
+  Redacción canónica de NL/DE, en `README.md`.
 - **El patrón habla ES · EN · FR · RU.** No está confirmado que se atienda en
   italiano, neerlandés, alemán ni árabe, así que **ninguna** página de esos
   idiomas lo afirma. Ver §5.11.
 - **No existe a bordo** (confirmado 19/08/2026): equipo de sonido / Bluetooth,
   nevera, ducha de agua dulce y **colchoneta flotante** —el único equipo de agua es
   el paddle surf. **No se promete descorche.** El único alcohol
-  incluido es la copa de champán; las botellas siguen siendo extra de pago. Los
-  globos solo dentro de «decoración especial (+120 €)». El **sunset lleva el mismo
-  catering** que el resto de salidas.
+  incluido es la botella de champán de cortesía; las botellas **adicionales** siguen
+  siendo extra de pago y hay que nombrarlas así para que no choquen con la incluida.
+  Los globos solo dentro de «decoración especial (+120 €)». El **sunset lleva el
+  mismo catering** que el resto de salidas.
 - **Puerto base:** Puerto Banús (Marbella). **Salida desde otros puertos de la Costa
   del Sol** (Estepona, Sotogrande, Fuengirola, Benalmádena, Málaga…) **disponible a
   consultar** *(confirmado el 19/08/2026)*. Redacción canónica: ES «Puerto base:

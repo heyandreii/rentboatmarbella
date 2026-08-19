@@ -179,26 +179,30 @@ sola página, para que no haya dos convenciones conviviendo.
 confirmados, no traducidas palabra por palabra: el objetivo es que suenen a
 alguien que vende en ese idioma, no a un traductor automático.
 
-**Lo incluido** *(catering ligero + agua y refrescos + copa de champán de cortesía)*
+**Lo incluido** *(catering ligero + agua y refrescos + botella de champán de
+cortesía)* — **actualizado el 19/08/2026: sustituye a la copa confirmada ese
+mismo día.**
 
-- **IT** — `catering leggero, acqua e bibite e un calice di champagne in omaggio`
+- **IT** — `catering leggero, acqua e bibite e una bottiglia di champagne in omaggio`
   · enumeración completa: `skipper, carburante della rotta abituale, assicurazione,
-  paddle surf, snorkeling, catering leggero, acqua e bibite, un calice di champagne
+  paddle surf, snorkeling, catering leggero, acqua e bibite, una bottiglia di champagne
   in omaggio e IVA`.
-- **NL** — `lichte catering, water en frisdrank en een glas champagne van het huis`
+- **NL** — `lichte catering, water en frisdrank en een fles champagne van het huis`
   · enumeración completa: `schipper, brandstof voor de gebruikelijke route,
-  verzekering, suppen, snorkelen, lichte catering, water en frisdrank, een glas
+  verzekering, suppen, snorkelen, lichte catering, water en frisdrank, een fles
   champagne van het huis en btw`.
-- **DE** — `leichtes Catering, Wasser und Softdrinks sowie ein Glas Champagner als
-  Aufmerksamkeit des Hauses` · enumeración completa: `Skipper, Kraftstoff für die
+- **DE** — `leichtes Catering, Wasser und Softdrinks sowie eine Flasche Champagner
+  als Aufmerksamkeit des Hauses` · enumeración completa: `Skipper, Kraftstoff für die
   übliche Route, Versicherung, Stand-up-Paddling, Schnorcheln, leichtes Catering,
-  Wasser und Softdrinks, ein Glas Champagner als Aufmerksamkeit des Hauses und
+  Wasser und Softdrinks, eine Flasche Champagner als Aufmerksamkeit des Hauses und
   Mehrwertsteuer`.
 
-*«En omaggio» / «van het huis» / «als Aufmerksamkeit des Hauses» son las tres
-formas idiomáticas de «de cortesía»: dicen que la copa la pone la casa sin
-prometer una botella. **Una copa, no una botella**; las botellas siguen siendo
-extra de pago.*
+*«In omaggio» / «van het huis» / «als Aufmerksamkeit des Hauses» son las tres
+formas idiomáticas de «de cortesía»: dicen que la botella la pone la casa. **Una
+botella por reserva, incluida en la tarifa y en todas las duraciones**; no se
+promete marca, tamaño ni un número mayor de botellas. Las botellas **adicionales**
+siguen siendo extra de pago, y así hay que llamarlas para que no choquen con la
+incluida.*
 
 **Puerto base y salida desde otros puertos**
 
@@ -291,9 +295,9 @@ Referencia de datos confirmados a día de hoy (fuente: home + formulario `/reser
 - **Duraciones y tarifas:** 2 h → 1.200 € · 4 h → 1.800 € · 8 h (día completo) → 3.000 €. *(No existe tarifa de 6 h ni de 2.400 €.)*
 - **Capacidad:** hasta **10** personas (por barco, no por persona).
 - **Barco y motorización:** De Antonio D50, 15 m de eslora, año 2026, **2× Mercury V12 de 600 CV (total 1.200 CV)**. Formato por idioma: ES `2× Mercury V12 600 CV` · EN `2× Mercury V12 600 hp` · FR `2× Mercury V12 600 ch` · RU `2× Mercury V12 600 л.с.` · IT `2× Mercury V12 da 600 CV` (NL/DE/AR: ver «Idiomas del programa multiidioma»)
-- **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf, snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una copa de champán de cortesía** e IVA. *(Confirmado por el propietario el 19/08/2026.)* Redacción por idioma: ES `catering ligero, agua y refrescos, y copa de champán de cortesía` · EN `light catering, water and soft drinks, and a complimentary glass of champagne` · FR `catering léger, eau et sodas, et une coupe de champagne offerte` · RU `лёгкий кейтеринг, вода и напитки, и бокал шампанского в подарок` · IT `catering leggero, acqua e bibite e un calice di champagne in omaggio` (NL/DE/AR: ver «Idiomas del programa multiidioma»).
-- **NO existe a bordo** (confirmado 19/08/2026, no publicar): equipo de sonido / Bluetooth, nevera, ducha de agua dulce, **colchoneta flotante** *(el único equipo de agua es el paddle surf)*. **No hay política de descorche**: no se promete subir bebida propia. **Alcohol incluido: solo la copa de champán de cortesía**; el resto de bebidas incluidas son sin alcohol (las botellas siguen siendo extra de pago). Los **globos** solo existen dentro del extra «decoración especial (+120 €)», nunca como incluido.
-- **El sunset no lleva catering especial:** mismo catering ligero + agua y refrescos + copa de champán de cortesía que el resto de salidas (confirmado 19/08/2026).
+- **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf, snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una botella de champán de cortesía** e IVA. *(Confirmado por el propietario el 19/08/2026; la botella **sustituye a la copa** que el propietario había confirmado ese mismo día. Una botella por reserva, incluida en la tarifa y en todas las duraciones: no se promete marca, tamaño ni más de una.)* Redacción por idioma: ES `catering ligero, agua y refrescos, y botella de champán de cortesía` · EN `light catering, water and soft drinks, and a complimentary bottle of champagne` · FR `catering léger, eau et sodas, et une bouteille de champagne offerte` · RU `лёгкий кейтеринг, вода и напитки, и бутылка шампанского в подарок` · IT `catering leggero, acqua e bibite e una bottiglia di champagne in omaggio` (NL/DE/AR: ver «Idiomas del programa multiidioma»).
+- **NO existe a bordo** (confirmado 19/08/2026, no publicar): equipo de sonido / Bluetooth, nevera, ducha de agua dulce, **colchoneta flotante** *(el único equipo de agua es el paddle surf)*. **No hay política de descorche**: no se promete subir bebida propia. **Alcohol incluido: solo la botella de champán de cortesía**; el resto de bebidas incluidas son sin alcohol. Las botellas **adicionales** siguen siendo extra de pago y hay que nombrarlas así («adicional / additional / supplémentaire / дополнительная / aggiuntiva») para que no choquen con la incluida. Los **globos** solo existen dentro del extra «decoración especial (+120 €)», nunca como incluido.
+- **El sunset no lleva catering especial:** mismo catering ligero + agua y refrescos + botella de champán de cortesía que el resto de salidas (confirmado 19/08/2026).
 - **Puerto base y salidas desde otros puertos** *(confirmado por el propietario el 19/08/2026)*: el barco está amarrado en **Puerto Banús (Marbella)**. La **salida desde otros puertos de la Costa del Sol** (Estepona, Sotogrande, Fuengirola, Benalmádena, Málaga…) está **disponible a consultar**. Redacción canónica por idioma: ES `Puerto base: Puerto Banús. Salida desde [X] disponible a consultar.` · EN `Home port: Puerto Banús. Departure from [X] available on request.` · FR `Port d'attache : Puerto Banús. Départ depuis [X] possible sur demande.` · RU `Порт базирования: Пуэрто-Банус. Выход из [X] — по запросу.` · IT `Porto base: Puerto Banús. Partenza da [X] disponibile su richiesta.` **Prohibido** inventar suplementos, precios de recogida, tiempos de traslado del barco o condiciones: solo «a consultar / on request», y nunca prometer la salida desde X como estándar.
 - Formato de cifras por idioma: ES `1.200€` · EN `€1,200` · FR/RU `1 200 €` · IT `1.200 €` · NL `€ 1.200` · DE `1.200 €`.
-- **Comprobación automática:** `scripts/check-datos-comerciales.sh` busca los claims prohibidos (equipo de sonido, nevera, hielo, descorche, ducha de agua dulce, colchoneta, alcohol incluido, tarifa de 6 h) en los 8 idiomas y falla si aparece alguno fuera de un comentario HTML. Al abrir una oleada nueva hay que añadirle sus patrones.
+- **Comprobación automática:** `scripts/check-datos-comerciales.sh` busca los claims prohibidos (equipo de sonido, nevera, hielo, descorche, ducha de agua dulce, colchoneta, alcohol incluido, tarifa de 6 h y la **redacción vieja de la «copa» de champán**) en los 8 idiomas y falla si aparece alguno fuera de un comentario HTML. Al abrir una oleada nueva hay que añadirle sus patrones.
