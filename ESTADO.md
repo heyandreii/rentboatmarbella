@@ -365,6 +365,15 @@ Datos confirmados a día de hoy:
   incluido es la copa de champán; las botellas siguen siendo extra de pago. Los
   globos solo dentro de «decoración especial (+120 €)». El **sunset lleva el mismo
   catering** que el resto de salidas.
+- **Puerto base:** Puerto Banús (Marbella). **Salida desde otros puertos de la Costa
+  del Sol** (Estepona, Sotogrande, Fuengirola, Benalmádena, Málaga…) **disponible a
+  consultar** *(confirmado el 19/08/2026)*. Redacción canónica: ES «Puerto base:
+  Puerto Banús. Salida desde [X] disponible a consultar.» · EN «Home port: Puerto
+  Banús. Departure from [X] available on request.» · FR «Port d'attache : Puerto
+  Banús. Départ depuis [X] possible sur demande.» · RU «Порт базирования:
+  Пуэрто-Банус. Выход из [X] — по запросу.» **No se inventan** suplementos, precios
+  de recogida, tiempos de traslado ni condiciones, y nunca se ofrece la salida desde
+  X como estándar.
 - **Formato de cifras:** ES `1.200€` · EN `€1,200` · FR/RU `1 200 €`.
 
 ### Anti-regresión
