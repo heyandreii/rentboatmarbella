@@ -21,6 +21,13 @@
 # del README y nunca acompañado de lo que sigue sin existir — DJ, barra premium,
 # altavoz portátil que preste la casa, karaoke.
 #
+# NO existe descuento ni tarifa de temporada baja (confirmado 19/08/2026): la
+# tarifa es la misma todo el año (2 h 1.200 € · 4 h 1.800 € · 8 h 3.000 €). El
+# post de invierno la prometía en ES y EN —incluida la ficha del buscador— y ahí
+# nace el patrón "temporada". Ojo al redactarlo: las NEGACIONES son legítimas y
+# no deben casar ("geen korting", "sin descuento"), por eso los patrones piden
+# la forma afirmativa completa y no la palabra suelta.
+#
 # Y la redacción VIEJA del champán: hasta el 19/08/2026 lo incluido era una
 # "copa" de champán y ese mismo día el propietario lo subió a "botella". La copa
 # queda prohibida en los 8 idiomas: si reaparece, es una regresión, no un dato.
@@ -82,6 +89,12 @@ alcohol|ru|открытый бар|алкоголь включ
 alcohol|it|open bar|alcolici inclusi|bevande alcoliche incluse
 alcohol|nl|open bar|alcohol inbegrepen|alcoholische dranken inbegrepen|onbeperkt drinken
 tarifa6h|xx|6 ?h(oras|ours|eures)? ?[·–-] ?2[.,]400|2[.,]400 ?€|€ ?2[.,]400
+temporada|es|descuentos? de temporada|precios especiales|tarifas? reducidas?|precios? reducidos?|oferta de temporada|más barato en (invierno|temporada baja)|barco premium por menos
+temporada|en|(seasonal|winter|low.season) discounts?|special rates?|special prices?|lower prices?|cheaper in (winter|the low season)|premium boat for less
+temporada|fr|réductions? de saison|prix réduits?|tarifs réduits|prix spéciaux|moins cher en (hiver|basse saison)
+temporada|ru|скидк\w* (в|на) (низкий|зимн)|специальные цены|дешевле (зимой|в низкий сезон)
+temporada|it|sconti? (di |in )?(stagione|bassa stagione|inverno)|prezzi ridotti|prezzi speciali|più economico in (inverno|bassa stagione)
+temporada|nl|korting(en)? (in|voor) (de winter|het laagseizoen)|winterkorting|lagere prijs|speciale prijzen
 copavieja|es|copa de champ[aá]n|copa de champagne
 copavieja|en|(complimentary |free )?glass of champagne
 copavieja|fr|coupe de champagne (offerte|incluse)

@@ -12,8 +12,8 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 
 - `*.html` — páginas del sitio con URLs traducidas. Cuatro idiomas completos
   (ES/EN/FR/RU) más los del **programa multiidioma** en curso (IT/NL/DE/AR, ver
-  su sección más abajo): **IT está completo** con 29 páginas (core, landings de
-  ocasión, formulario `/prenota`, índice de blog y 14 posts).
+  su sección más abajo): **IT y NL están completos**, con 29 páginas cada uno
+  (core, landings de ocasión, formulario propio, índice de blog y 14 posts).
 - `post/*.html` — artículos del blog (servidos como `/post/<slug>`).
 - `img/` — imágenes (WebP + fallback JPG, con variantes responsivas `-640`/`-768`/`-1280`;
   no todas tienen las tres: nunca se genera una variante más ancha que el original).
@@ -53,7 +53,7 @@ scripts/check-links.sh http://127.0.0.1:8000
 
 El script hace `curl` a todas las URLs internas enlazadas desde los índices del
 blog (`/blog-nautico-marbella`, `/yacht-blog`, `/blog-nautique`, `/morskoy-blog`,
-`/blog-nautica-marbella`)
+`/blog-nautica-marbella`, `/vaarblog-marbella`)
 y **falla con exit 1 si alguna no responde 200**. Si falla, **no hagas push**.
 
 > Nota: un `python3 -m http.server` pelado **no** replica `cleanUrls` de Vercel,
@@ -143,10 +143,10 @@ una replica el sitio completo en **tres entregas**:
 | 2 | Resto de landings de ocasión + **formulario de reserva propio del idioma**. |
 | 3 | Blog completo, incluidos los 5 posts de zona. |
 
-**Estado:** **IT completo** — las tres entregas cerradas, 29 páginas (5 core +
-8 landings + `/prenota` + índice de blog + 14 posts). **NL en curso**: Entregas 1
-y 2 cerradas (5 core + 8 landings + `/reserveren` = 14 páginas); queda la
-Entrega 3, el blog. Los slugs de las tres entregas NL ya están fijados abajo.
+**Estado:** **IT y NL completos** — tres entregas cerradas cada uno, 29 páginas
+por idioma (5 core + 8 landings + formulario propio + índice de blog + 14 posts).
+**La oleada siguiente es DE**, y antes de escribir nada hay que fijar sus slugs
+en las tablas de abajo, igual que se hizo con el italiano y el neerlandés.
 
 ### Convención de slugs
 
@@ -211,8 +211,20 @@ con la suya:
 > asocia con salir al agua. Los 29 slugs NL se contrastaron uno a uno contra las
 > 159 URLs publicadas antes de crear ninguna página: **cero colisiones**.
 
-Los slugs de NL/DE/AR se fijan aquí al abrir su oleada, antes de escribir una
+Los slugs de DE/AR se fijan aquí al abrir su oleada, antes de escribir una
 sola página, para que no haya dos convenciones conviviendo.
+
+> **Lo que la oleada NL deja aprendido para la alemana.** (1) Los subagentes de
+> redacción **retiran precios de extras confirmados** creyéndolos inventados: los
+> `+120 €`, `+180 €` y `+250 €` viven en el formulario de reserva, que la regla
+> anti-invención nombra como fuente de verdad, y hubo que restaurarlos en seis
+> páginas. Conviene decírselo en el brief desde el principio. (2) Un brief
+> demasiado restrictivo también hace daño: prohibir el precio de la ruta a
+> Gibraltar dejó la página sin el `desde 3.000 € + combustible` que publican ES e
+> IT, y hubo que restaurarlo. (3) El anti-clon de los cinco posts de zona sale
+> mejor si cada agente recibe **su ángulo y la lista de los ángulos ajenos que no
+> puede tocar**: con eso el solapamiento máximo de trigramas bajó del 17,7 % de la
+> oleada IT al 9,5 %.
 
 ### Formato de cifras y potencia
 
@@ -405,6 +417,14 @@ Referencia de datos confirmados a día de hoy (fuente: home + formulario `/reser
 - **Incluido:** patrón, combustible de la ruta habitual, seguro, paddle surf, snorkel, **catering ligero** (fruta y frutos secos), **agua y refrescos**, **una botella de champán de cortesía** e IVA. *(Confirmado por el propietario el 19/08/2026; la botella **sustituye a la copa** que el propietario había confirmado ese mismo día. Una botella por reserva, incluida en la tarifa y en todas las duraciones: no se promete marca, tamaño ni más de una.)* Redacción por idioma: ES `catering ligero, agua y refrescos, y botella de champán de cortesía` · EN `light catering, water and soft drinks, and a complimentary bottle of champagne` · FR `catering léger, eau et sodas, et une bouteille de champagne offerte` · RU `лёгкий кейтеринг, вода и напитки, и бутылка шампанского в подарок` · IT `catering leggero, acqua e bibite e una bottiglia di champagne in omaggio` (NL/DE/AR: ver «Idiomas del programa multiidioma»).
 - **Equipo de sonido: SÍ existe** *(aclarado por el propietario el 19/08/2026; **corrige** la confirmación anterior del mismo día, que lo daba por inexistente. La retirada de todas las menciones fue decisión editorial, no de existencia)*. Hay **equipo de sonido con Bluetooth** y el cliente **conecta su propia música**. Redacción canónica —**fuente única, y la única forma en que puede publicarse**—: ES `equipo de sonido con Bluetooth: conecta tu propia música` · EN `sound system with Bluetooth: connect your own music` · FR `système audio avec Bluetooth : connectez votre propre musique` · RU `аудиосистема с Bluetooth: подключайте свою музыку` · IT `impianto audio con Bluetooth: collega la tua musica` · NL `geluidssysteem met Bluetooth: verbind je eigen muziek` · DE `Soundsystem mit Bluetooth: eigene Musik verbinden`. **Límites:** no se promete **DJ**, **barra**, **altavoces portátiles adicionales**, **karaoke**, ni **marca o potencia** del equipo; nada de «premium sound» ni superlativos. **Dónde se publica** (criterio editorial, no técnico): sí en las landings de fiesta —despedidas, cumpleaños, eventos de empresa— y en los posts de boat party, como ítem de equipamiento y **nunca como titular**; sí en la sección de equipamiento de las fichas de flota, junto a paddle surf y snorkel; **no** en pedida, bodas, fotos de boda, sunset, delfines ni Gibraltar, cuyo tono es otro, salvo que la página ya tenga un bloque de equipamiento completo donde su ausencia chirríe.
 - **NO existe a bordo** (confirmado 19/08/2026, no publicar): nevera, ducha de agua dulce, **colchoneta flotante** *(el único equipo de agua es el paddle surf)*. **No hay política de descorche**: no se promete subir bebida propia. **Alcohol incluido: solo la botella de champán de cortesía**; el resto de bebidas incluidas son sin alcohol. Las botellas **adicionales** siguen siendo extra de pago y hay que nombrarlas así («adicional / additional / supplémentaire / дополнительная / aggiuntiva») para que no choquen con la incluida. Los **globos** solo existen dentro del extra «decoración especial (+120 €)», nunca como incluido.
+- **NO hay descuento ni tarifa de temporada baja** *(confirmado por el propietario
+  el 19/08/2026)*: la tarifa es **la misma todo el año** (2 h 1.200 € · 4 h 1.800 € ·
+  8 h 3.000 €, cada idioma con su formato). **Prohibido** prometer rebajas,
+  «precios especiales», «tarifas reducidas» o «más barato en invierno». Lo que
+  cambia en temporada baja es el mar, las calas vacías y la disponibilidad de
+  fechas — eso sí se puede decir. `check-datos-comerciales.sh` lo vigila con el
+  patrón `temporada` en los 6 idiomas, escrito en forma afirmativa para que las
+  negaciones legítimas («sin descuento», `geen korting`) no rompan el build.
 - **El sunset no lleva catering especial:** mismo catering ligero + agua y refrescos + botella de champán de cortesía que el resto de salidas (confirmado 19/08/2026).
 - **Puerto base y salidas desde otros puertos** *(confirmado por el propietario el 19/08/2026)*: el barco está amarrado en **Puerto Banús (Marbella)**. La **salida desde otros puertos de la Costa del Sol** (Estepona, Sotogrande, Fuengirola, Benalmádena, Málaga…) está **disponible a consultar**. Redacción canónica por idioma: ES `Puerto base: Puerto Banús. Salida desde [X] disponible a consultar.` · EN `Home port: Puerto Banús. Departure from [X] available on request.` · FR `Port d'attache : Puerto Banús. Départ depuis [X] possible sur demande.` · RU `Порт базирования: Пуэрто-Банус. Выход из [X] — по запросу.` · IT `Porto base: Puerto Banús. Partenza da [X] disponibile su richiesta.` **Prohibido** inventar suplementos, precios de recogida, tiempos de traslado del barco o condiciones: solo «a consultar / on request», y nunca prometer la salida desde X como estándar.
 - **Atención en italiano** *(confirmado por el propietario el 19/08/2026)*: se atiende por **WhatsApp y email en italiano**. Publicable **solo en las páginas IT** con la redacción canónica `Assistenza in italiano su WhatsApp ed e-mail`. Cubre el canal escrito, no el patrón: **prohibido** afirmar que se hable italiano a bordo. Sin confirmar para NL, DE y AR.

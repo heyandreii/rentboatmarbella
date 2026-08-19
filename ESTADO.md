@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (11.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (14.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -19,9 +19,10 @@ Web de **chárter privado de un solo barco** —un De Antonio D50 de 15 m, año 
 amarrado en **Puerto Banús (Marbella)**— con reserva directa, sin marketplace de
 por medio. Cuatro idiomas completos con URLs traducidas (**ES / EN / FR / RU**) y
 un **programa multiidioma** en curso que lo lleva a ocho: **IT → NL → DE → AR**,
-en oleadas de tres entregas cada una. **El italiano está completo**: 29 páginas
-—core, landings de ocasión, formulario propio, índice de blog y 14 posts— y es
-el quinto idioma del sitio a todos los efectos. **La oleada siguiente es NL.**
+en oleadas de tres entregas cada una. **El italiano y el neerlandés están
+completos**: 29 páginas cada uno —core, landings de ocasión, formulario propio,
+índice de blog y 14 posts— y son el quinto y el sexto idioma del sitio a todos
+los efectos. **La oleada siguiente es DE.**
 
 **Stack:** HTML estático puro, sin framework ni paso de build. Desplegado en
 **Vercel** desde `main` (`cleanUrls: true`, `trailingSlash: false`); cada push a
@@ -29,8 +30,8 @@ el quinto idioma del sitio a todos los efectos. **La oleada siguiente es NL.**
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 159 URLs en el sitemap · **70 posts de blog** · **5 índices de
-blog** · **5 formularios de reserva** (uno por idioma publicado) · 559 bloques
+**Tamaño actual:** 188 URLs en el sitemap · **84 posts de blog** · **6 índices de
+blog** · **6 formularios de reserva** (uno por idioma publicado) · 666 bloques
 JSON-LD validados.
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
@@ -616,6 +617,122 @@ hub de esperienze enlaza al blog.
 como «idioma no reconocido»; sin lo primero la fase 2 no los recorrería. Ahora
 recorre **153 URLs** y valida **70 posts sin huérfanos**.
 
+### Oleada NL completa: las tres entregas (19 de agosto de 2026)
+
+**El neerlandés es el sexto idioma del sitio**, con 29 páginas: 5 core, 8 landings
+de ocasión, el formulario `/reserveren`, el índice `/vaarblog-marbella` y 14 posts.
+Los **29 slugs se fijaron en el README antes de escribir una sola página** y se
+contrastaron uno a uno contra las 159 URLs publicadas: cero colisiones.
+
+**El gancho neerlandés no es el italiano.** El lector llega con el modelo de casa:
+`sloep huren per uur` en la gracht o en de plassen, `rondvaart` donde compras una
+plaza, y el `vaarbewijs`. Todo el sitio NL se apoya en ese contraste —de hele
+boot, schipper siempre a bordo, ningún vaarbewijs (tampoco el neerlandés), tarifa
+por embarcación y no per persoon— y en el segundo eje que ese mercado premia: la
+**transparencia de precio**, `geen verrassingen, geen verborgen kosten`.
+
+- **Entrega 1 — core.** `/nl`, `/vloot-boten-marbella`,
+  `/activiteiten-boot-marbella`, `/huwelijksaanzoek-boot-marbella` y
+  `/trouwfotos-boot-marbella`. 5 grupos `hreflang` de 5 a 6 miembros, con los
+  30 miembros reescritos. Sitemap 159 → 164.
+- **Entrega 2 — landings y formulario.** Las 8 landings de ocasión y
+  `/reserveren`. **Son 9 páginas, no 10**: `vrijgezellenfeest` es unisex en
+  neerlandés, así que las dos despedidas se desdoblan con `-man-` y `-vrouw-`,
+  exactamente el mismo recuento que la Entrega 2 italiana. La comparativa entra
+  con su grupo de 3 a 4. Sitemap 164 → 173.
+- **Entrega 3 — blog.** `/vaarblog-marbella` y los 14 posts. Sitemap 173 → 188.
+
+**El índice no calca al español ni al italiano.** «Nautische blog» es correcto y
+no colisiona, pero no lo busca nadie: se usa **`vaarblog-marbella`**, de *varen*,
+que es la palabra que un neerlandés asocia con salir al agua.
+
+**El formulario `/reserveren` se transformó, no se escribió.** 32 sustituciones
+estructurales y 82 de texto visible, cada una con su recuento exigido, de modo que
+hereda la lógica ya probada. Lo propio del neerlandés es el `CFG` —`sep` `"."` y
+`pre` `"€ "`, que hacen que `fmt()` rinda `€ 1.200`—, el `CC` con `def:"NL"`, +31
+y errores en neerlandés, y la **lista de 54 prefijos reordenada con colación
+neerlandesa** generada con `localeCompare('nl')`, la misma que usa el test:
+`Ierland · IJsland · Israël` caen donde el lector los busca.
+`test-booking-form.js` sube a 6 formularios: **380 → 456 comprobaciones**.
+
+**Los 5 posts de zona no son clones, y menos que nunca.** Cada uno con su ángulo
+exclusivo y con la lista de ángulos ajenos que tenía prohibido tocar:
+
+| Zona | Ángulo |
+|---|---|
+| Estepona | La geografía no premia el puerto más cercano: las calas de poniente quedan de camino |
+| Sotogrande | El puerto ya lo tienen; lo que cambia es **quién hay detrás** |
+| Fuengirola | El barco entero frente a los barcos del paseo — el paralelismo con la `rondvaart` — y el levante |
+| Benalmádena | Qué cambia **a bordo** frente a la excursión de Puerto Marina: cuatro diferencias enumeradas |
+| Málaga | La aritmética del día completo y el aeropuerto |
+
+Medido con trigramas de palabra sobre el `<main>`: el solapamiento máximo entre
+dos cualesquiera es del **9,5 %** (Jaccard), frente al **17,7 %** de los cinco
+italianos medidos igual. Cuerpos de 932 a 1.241 palabras.
+
+**Deuda ajena corregida: los 65 km del aeropuerto.** La cifra correcta es la del
+**centro** de Málaga, y así la miden bien los posts de zona ES/EN/FR, que además
+avisan de que desde el aeropuerto es menos. La oleada italiana la reatribuyó al
+**aeropuerto**, que está unos 8 km más cerca, y de ahí se extendió a 14 páginas.
+Se retiró el número y se dejó el tiempo —45-60 minuti / een uur rijden—, correcto
+desde los dos orígenes. 16 sustituciones.
+
+**Lo que costó revisar, y que ningún script veía.** Los subagentes de redacción
+**retiraron precios de extras confirmados** (`+120 €`, `+180 €`, `+250 €`)
+creyéndolos inventados: viven en el formulario de reserva, que la regla
+anti-invención nombra como fuente de verdad, y hubo que restaurarlos en seis
+páginas. En sentido contrario, un brief demasiado restrictivo dejó la ruta a
+Gibraltar sin el `vanaf € 3.000 + brandstof` que publican ES e IT, y también hubo
+que restaurarlo, `Offer` incluido.
+
+**`check-links.sh` conoce el índice neerlandés**, en `INDEXES` **y** en
+`index_for_lang()`. Recorre **180 URLs** y valida **84 posts sin huérfanos**.
+`check-datos-comerciales.sh` gana los patrones NL en las dos listas; el del hielo
+lleva frontera de palabra porque sin ella «prijs inbegrepen» casaba como hielo
+incluido. `check-offer-price.sh` pasa a vigilar **6** landings corporativas.
+
+### Tarifa única todo el año, y dos FAQ que no cuadraban (19 de agosto de 2026)
+
+Tanda corta de limpieza de deudas, las dos que la oleada neerlandesa había
+destapado y dejado declaradas.
+
+**No hay descuento de temporada baja** (confirmado por el propietario). La tarifa
+es la misma todo el año. El post de invierno lo prometía **en español e inglés**,
+y lo peor no era el cuerpo sino la **ficha del buscador**: `meta description`,
+`og:`, `twitter:` y el `description` del JSON-LD anunciaban «precios más
+económicos» / «better prices», y la tarjeta del índice remataba con «precios
+especiales de octubre a mayo» / «special rates from October to May». El propio
+cuerpo del post se contradecía: decía que «la tarifa base **se mantiene** desde
+1.200 €». **16 sustituciones** en ES y EN; FR, RU, IT y NL ya lo decían bien y
+no se han tocado. Lo que gana el invierno se dice ahora por lo que de verdad
+gana: mar en calma, calas vacías y muchas más fechas libres.
+
+`check-datos-comerciales.sh` gana el patrón **`temporada`** en los 6 idiomas.
+Está escrito en **forma afirmativa** a propósito —`descuentos de temporada`,
+`winter discount`, `korting in de winter`— y no como palabra suelta, porque las
+**negaciones son legítimas** y no deben romper el build: el post NL dice
+`geen korting` y el patrón no casa con él. Probado en los dos sentidos:
+inyectando un positivo en ES, EN y NL el script sale con 1, y al retirarlo vuelve
+a 0 hits.
+
+**Los `FAQPage` que preguntaban cosas que no están en la página.** La deuda que
+apareció al escribir el blog neerlandés era más ancha de lo declarado: no estaba
+solo en el post de calas, también en el de invierno. **8 páginas realineadas**
+—calas ES/EN/FR/RU e invierno ES/EN/FR/RU—, siempre con el HTML visible como
+fuente, que es lo que Google exige para que el schema sea elegible.
+
+| Página | Antes | Después |
+|---|---|---|
+| Calas ES / EN | 3 preguntas, **las 3** ausentes del cuerpo | las 3 visibles |
+| Calas FR / RU | 3 preguntas, las 3 ausentes; **había 4 visibles** | las 4 visibles |
+| Invierno ES / EN / FR | 1 huérfana («¿Es más barato…?») | 3 visibles |
+| Invierno RU | **2** huérfanas | 3 visibles |
+
+La FAQ «¿Es más barato alquilar un barco en invierno?» desaparece por las dos
+razones a la vez: no estaba en la página y prometía algo que no existe. **IT y NL
+cuadraban en los dos posts** y se verificaron sin tocarlos. Los pares Q/A
+validados del sitio pasan de 550 a 552.
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -623,9 +740,9 @@ recorre **153 URLs** y valida **70 posts sin huérfanos**.
 | `scripts/check-links.sh` | 0 enlaces rotos + 0 posts huérfanos del sitemap. **Obligatorio antes de cada push a `main`.** |
 | `scripts/check-lang-switcher.py` | El selector de idioma del header no apunta a páginas inexistentes o de otro idioma. |
 | `scripts/apply-lang-switcher.py` | Regenera el selector desde los `hreflang`. |
-| `scripts/test-booking-form.js` | **380** comprobaciones sobre los **5** formularios (validación, prefijos, orden de ejecución, no-fuga a GA4). |
+| `scripts/test-booking-form.js` | **456** comprobaciones sobre los **6** formularios (validación, prefijos, orden de ejecución, no-fuga a GA4). |
 | `scripts/test-lead-api.js` | 21 comprobaciones de `/api/lead` con Resend simulado, sin red. |
-| `scripts/check-offer-price.sh` | Que ningún `Offer` tenga `priceCurrency` sin `price` (5 landings corporativas). |
+| `scripts/check-offer-price.sh` | Que ningún `Offer` tenga `priceCurrency` sin `price` (6 landings corporativas). |
 | `scripts/check-datos-comerciales.sh` | Que no se publique ningún claim que el propietario confirmó falso (sonido, nevera, hielo, descorche, ducha, colchoneta, alcohol incluido, tarifa de 6 h), en los 8 idiomas. **Obligatorio antes de cada push a `main`.** |
 
 ---
@@ -682,31 +799,43 @@ recorre **153 URLs** y valida **70 posts sin huérfanos**.
    italiano + los 14 posts, nav con «Blog», `check-links.sh` con el índice IT.
    **Con esto la oleada italiana está COMPLETA**: 29 páginas. Ver §2.
 
-11. **🔵 Oleada NL — la siguiente, y ya se puede abrir.** Mismas tres entregas.
+11. ~~**Oleada NL.**~~ **HECHA** (19/08/2026), las tres entregas: 29 páginas.
+   Ver §2. Queda **una pregunta viva que la condiciona**: si se confirma que se
+   atiende en neerlandés, hay que repasar las 29 páginas para añadirlo (§5.16).
+
+12. **🔵 Oleada DE — la siguiente, y ya se puede abrir.** Mismas tres entregas.
    Antes de escribir una sola página: **fijar sus slugs en las tablas del
-   README** (core, landings y blog), igual que se hizo con el italiano. Lo que
-   la oleada italiana deja aprendido y conviene aplicar desde el principio:
+   README**, igual que se hizo con el italiano y el neerlandés. Lo aprendido en
+   las dos oleadas anteriores, para no repetirlo:
    - **Comprobar los choques de slug con el español** antes de empezar. En
-     italiano lo destapó el índice del blog (`blog-nautico` se escribe igual en
-     los dos idiomas); en neerlandés y alemán puede pasar con otras páginas.
+     italiano lo destapó el índice del blog; en neerlandés no hubo choque, pero
+     el calco (`nautische blog`) tampoco servía porque nadie lo busca.
    - **Preguntar por la atención en ese idioma antes de escribir** (§5.15): en
-     italiano la respuesta llegó a mitad de oleada y hubo que repasar 14
-     páginas para añadirla.
+     italiano la respuesta llegó a mitad de oleada y costó repasar 14 páginas;
+     en neerlandés no llegó y las 29 páginas salieron sin el argumento.
+   - **Decirle al brief de redacción que los precios de extras están
+     confirmados** (`+120 €`, `+180 €`, `+250 €`, en el formulario de reserva).
+     En neerlandés los subagentes los retiraron por su cuenta en seis páginas.
+   - **No sobre-restringir el brief:** prohibir el precio de Gibraltar dejó esa
+     página sin el `desde 3.000 € + combustible` que publican ES e IT.
    - **El formulario se transforma, no se escribe.** Sustituciones literales
      afirmadas sobre el inglés, y alta en `scripts/test-booking-form.js`.
    - **El nav va sin «Blog» hasta la Entrega 3**, y en esa entrega hay que dar
      de alta el índice en `check-links.sh` (los dos sitios) y recablear el nav
      y el footer de todas las páginas ya publicadas.
-   - Las redacciones canónicas NL y DE de **lo incluido, puerto base, capacidad,
+   - **El anti-clon de los 5 posts de zona sale mejor** si cada agente recibe su
+     ángulo *y la lista de los ángulos ajenos que no puede tocar*: así el
+     solapamiento bajó del 17,7 % (IT) al 9,5 % (NL).
+   - Las redacciones canónicas DE de **lo incluido, puerto base, capacidad,
      motorización y equipo de sonido** ya están escritas en el README.
-12. **Oleada AR — la última, y no se empieza hasta cerrar DE.** No es un idioma
+13. **Oleada AR — la última, y no se empieza hasta cerrar DE.** No es un idioma
    más: `dir="rtl"`, espejado de nav, footer, breadcrumbs y grids, tipografía e
    iconos direccionales, y una pasada de QA visual completa. La infraestructura
    del selector ya está preparada (ver README).
 
 ### Deuda detectada, acotada y cerrada
 
-13. ~~**La «música» del sitio, en las ~120 menciones que quedan.**~~ **CERRADO**
+14. ~~**La «música» del sitio, en las ~120 menciones que quedan.**~~ **CERRADO**
    (19/08/2026). El propietario aclaró que **sí hay equipo de sonido con
    Bluetooth**: la pregunta que bloqueaba el punto ya tiene respuesta. Las ~120
    menciones se revisaron una a una y **se conservan todas** —ninguna promete más
@@ -764,6 +893,15 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    hablando ES · EN · FR · RU** y ninguna página dice otra cosa. **La misma
    pregunta sigue abierta para NL, DE y AR**: hasta que se confirme, sus páginas
    no lo dirán.
+12b. **Indexar las 29 URLs neerlandesas — la oleada entera.** Las 14 de las
+   Entregas 1 y 2 (`/nl`, `/vloot-boten-marbella`, `/activiteiten-boot-marbella`,
+   las 8 landings de ocasión, la comparativa y `/reserveren`) y las **15 de la
+   Entrega 3**: `/vaarblog-marbella` y sus 14 posts. Repartirlas en tres o cuatro
+   días y **empezar por el índice del blog**, que es la puerta de entrada al
+   resto. Y **revalidar en Search Console los 29 grupos `hreflang` ampliados**:
+   5 en la Entrega 1, 9 en la 2 y 15 en la 3 — al pasar de 5 a 6 miembros Google
+   tarda en releer los alternates de las **116 páginas viejas** reescritas.
+
 12. **Indexar las 29 URLs italianas — la oleada entera.** Las 14 de las Entregas
    1 y 2 (`/it`, flota, hub, las 8 landings de ocasión, la comparativa y
    `/prenota`) y las **15 de la Entrega 3**: `/blog-nautica-marbella` y sus 14
@@ -805,6 +943,29 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
      como puente. Muchos neerlandeses aceptan sin fricción la atención en inglés,
      y decirlo explícitamente convierte mejor que el silencio — pero es una
      decisión comercial, no de código, y hoy no está tomada.
+   **Con la oleada NL cerrada, la pregunta ya cuesta 29 páginas y no 5.**
+
+17. ~~**🔴 ¿Existe de verdad un descuento de temporada baja?**~~ **RESUELTO**
+   (19/08/2026): **no existe.** El propietario confirma **tarifa única todo el
+   año** (2 h 1.200 € · 4 h 1.800 € · 8 h 3.000 €). El sitio ya no promete
+   rebajas en ningún idioma: 16 sustituciones en ES y EN —`meta description`,
+   `og:`, `twitter:`, el `description` del JSON-LD, el H3 «Mejores precios y
+   flexibilidad», el cierre «el mismo barco premium por menos» y la tarjeta del
+   índice— más la retirada de la FAQ «¿Es más barato…?», que además ni siquiera
+   estaba en el HTML visible. FR, RU, IT y NL ya lo decían bien. **El script lo
+   vigila**: `check-datos-comerciales.sh` gana el patrón `temporada` en los 6
+   idiomas, escrito en forma afirmativa para que las negaciones legítimas —el
+   `geen korting` del neerlandés, un «sin descuento»— no casen. Probado en los
+   dos sentidos. Ver §2.
+
+18. ~~**🟠 El `FAQPage` del post de calas no cuadra con su propia página.**~~
+   **RESUELTO** (19/08/2026), y era más ancho de lo que parecía: la
+   desincronización estaba también en los **posts de invierno**. En total **8
+   páginas** realineadas (calas ES/EN/FR/RU y invierno ES/EN/FR/RU), tomando
+   siempre el HTML visible como fuente. El ruso tenía dos preguntas huérfanas en
+   vez de una; el francés y el ruso de calas ganan una cuarta pregunta que ya
+   estaba en la página y que el schema no declaraba. IT y NL cuadraban en los
+   dos posts, verificado. Ver §2.
 
 ---
 
