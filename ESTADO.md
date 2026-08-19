@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026**.
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (2.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -25,8 +25,8 @@ por medio. Cuatro idiomas con URLs traducidas: **ES / EN / FR / RU**.
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 101 URLs en el sitemap · 27 posts de blog · 4 formularios de
-reserva (uno por idioma) · 336 bloques JSON-LD validados.
+**Tamaño actual:** 110 URLs en el sitemap · 36 posts de blog · 4 formularios de
+reserva (uno por idioma) · 372 bloques JSON-LD validados.
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
 y agosto de 2026 (PR #1 a #15) cerraron los problemas críticos (404 del blog,
@@ -41,11 +41,11 @@ es afinado, contenido y decisiones comerciales — nada bloqueante.
 
 - **Blog reparado.** Los `/post/...` enlazados desde los índices no existían: 404
   en todo el blog. Creados los posts y, desde entonces, un script anti-regresión
-  impide que vuelva a pasar. Hoy: **27 posts** en 4 idiomas, todos enlazados desde
+  impide que vuelva a pasar. Hoy: **36 posts** en 4 idiomas, todos enlazados desde
   el índice de su idioma.
-- **Schema completo** en las 101 páginas: `LocalBusiness` (con `legalName` y
+- **Schema completo** en las 110 páginas: `LocalBusiness` (con `legalName` y
   `taxID` reales), `Product` + `Offer`, `FAQPage`, `BlogPosting`,
-  `BreadcrumbList`, y `Organization` + `WebSite` en las 4 homes. 336 bloques
+  `BreadcrumbList`, y `Organization` + `WebSite` en las 4 homes. 372 bloques
   JSON-LD validados offline contra el vocabulario oficial de schema.org: 0 errores.
 - **Accesibilidad WCAG AA** (PR #2, #3): labels, `aria`, `main`, contraste del
   naranja de marca corregido a navy/ámbar. Lighthouse móvil: accesibilidad **96**,
@@ -58,7 +58,7 @@ es afinado, contenido y decisiones comerciales — nada bloqueante.
   páginas traducidas; nav, footer y breadcrumb siempre en el idioma de la página.
 - **Legal:** Aviso Legal, Privacidad, Términos y Cookies en los 4 idiomas (16
   páginas) con datos fiscales reales.
-- **`sitemap.xml`** con 101 URLs, sin rotas, referenciado desde `robots.txt`.
+- **`sitemap.xml`** con 110 URLs, sin rotas, referenciado desde `robots.txt`.
 - **`robots.txt` abierto a bots de IA**: `GPTBot`, `ClaudeBot`, `PerplexityBot` y
   `Google-Extended` permitidos explícitamente.
 
@@ -142,6 +142,33 @@ a mano).
   a línea: 303 inserciones / 303 borrados, 0 líneas donde cambiara algo más que el
   color, y los otros 1.008 usos de `#3F7A72` del sitio intactos.
 
+### Traducciones: los 4 grupos que faltaban (agosto 2026)
+
+Nueve posts nuevos en dos tandas. Con esto **no queda ningún post monolingüe** y los
+cuatro grupos del backlog están completos en ES/EN/FR/RU:
+
+- **Licencia** — `faut-il-permis-bateau-marbella` (FR) y
+  `nuzhny-li-prava-arenda-yakhty-marbella` (RU).
+- **Bodas y eventos** — `weddings-events-boat-marbella` (EN),
+  `mariages-evenements-bateau-marbella` (FR) y
+  `svadby-meropriyatiya-na-yakhte-marbella` (RU). Era el último post monolingüe.
+- **Costa del Sol** — `location-bateau-costa-del-sol-puerto-banus` (FR) y
+  `arenda-yakhty-kosta-del-sol-puerto-banus` (RU).
+- **Boat party** — `soiree-bateau-puerto-banus` (FR) y
+  `vecherinka-na-yakhte-puerto-banus` (RU).
+
+Localización, no traducción literal: el post de licencia FR compara con el *permis
+plaisance* francés y el RU con los *права ГИМС*, en ambos casos con una respuesta
+honesta sobre el reconocimiento de títulos extranjeros (no se afirma nada que no
+esté verificado); los de bodas hablan a quien viene de fuera a casarse en la Costa
+del Sol; los de Costa del Sol usan el tiempo desde el aeropuerto de Málaga como
+argumento para quien vuela desde París o Moscú.
+
+**Deuda detectada al traducir:** el original ES de bodas afirma descorche gratuito,
+sonido Bluetooth, champagne y «agua y hielo incluidos», y los posts de precios FR y
+RU repiten lo del descorche y el agua y el hielo. Nada de eso se ha trasladado a las
+traducciones nuevas — ver el punto 8 del backlog (§3).
+
 ### Herramientas de verificación en el repo
 
 | Script | Qué comprueba |
@@ -167,19 +194,12 @@ a mano).
 2. **Campo `url` en los 4 `Offer` corporativos.** Los `Offer` de las landings de
    eventos de empresa llevan `price`, `priceCurrency` y `availability`, pero no
    `url`. Es recomendado por Google y barato de añadir.
-3. **`hreflang` para el post que sigue sin traducción.** Queda solo
-   `post/bodas-eventos-barco-marbella` (ES), que declara un único alternate.
-   `post/boat-party-puerto-banus` **resuelto** en agosto de 2026 al crear su versión
-   ES (`post/fiesta-en-barco-puerto-banus`), con alternates recíprocos + `x-default`
-   en ambos. Se resuelve solo al traducirlo; mientras tanto es correcto como página
-   monolingüe.
-4. **Traducir a FR y RU los posts que solo están en ES/EN.** Quedan tres grupos
-   del Paquete A: licencia (`necesitas-licencia…` / `do-you-need-licence…`), Costa
-   del Sol (`alquiler-barco-costa-del-sol…` / `boat-rental-costa-del-sol…`) y el
-   grupo de boat party (`fiesta-en-barco-puerto-banus` / `boat-party-puerto-banus`),
-   además del monolingüe del punto anterior. Mismo criterio que en agosto:
-   **localización, no traducción literal** (adaptar gancho, ejemplos y referencias
-   a cada mercado).
+3. ~~**`hreflang` para los posts sin traducción.**~~ **RESUELTO** (agosto de 2026).
+   No queda ningún post monolingüe: los 36 posts declaran los 4 alternates +
+   `x-default`.
+4. ~~**Traducir a FR y RU los posts que solo están en ES/EN.**~~ **RESUELTO**
+   (agosto de 2026). Los cuatro grupos del Paquete A —licencia, Costa del Sol, bodas
+   y boat party— están completos en ES/EN/FR/RU. Ver §2.
 
 ### Contenido y marketing
 
