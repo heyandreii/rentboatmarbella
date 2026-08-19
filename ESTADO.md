@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (3.ª tanda del día).
+**Documento vivo.** Última actualización: **19 de agosto de 2026** (4.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -188,6 +188,54 @@ una vez**, no solo las páginas que las traducciones habían ido destapando:
   dejado: copa incluida, botella extra.
 
 Retirados los 6 comentarios `[CONFIRMAR CON PROPIETARIO]` de los posts nuevos.
+
+### Imágenes responsivas: `sizes` reales y tier -768 (19 de agosto de 2026)
+
+Dos tandas seguidas sobre el mismo problema. PageSpeed móvil daba 89 con LCP 3,0 s
+y 269 KiB de imágenes sobredimensionadas. Las `<picture>` y los `srcset` ya
+existían y eran correctos: **lo que fallaba era el atributo `sizes`**, que
+declaraba huecos sin relación con los reales, así que el navegador elegía siempre
+la variante más pesada.
+
+- **Primero, hero y cabina.** El hero declaraba `100vw` (pedía 1350 px para un
+  hueco de 1120) y la cabina `50vw` (675 para 536). Corregidos en las 4 homes y
+  las 4 páginas de flota.
+- **Después, todo el resto.** 178 de las 186 `<picture>` declaraban el mismo
+  `(max-width: 768px) 100vw, 50vw` copiado. Los huecos reales se **midieron**,
+  no se estimaron: sirviendo el repo en local y recorriendo las 110 páginas con
+  Playwright a 360/390/412/430/760/761/1024/1280/1350 px, leyendo el
+  `getBoundingClientRect()` de cada `<img>`. Las 186 caen en **8 plantillas de
+  layout** (cards de actividades y blog, landings, heros de post, galería de
+  flota, formularios de reserva, card destacada, hero y cabina de home), así que
+  se escribió **un `sizes` por plantilla**, no 186 a mano. Siguen el hueco real
+  con error <1 % en casi todo el rango.
+- **Tier -768 (15 variantes).** Entre 640 y 1280 no había nada y el hueco móvil a
+  DPR 2 pide ~700 px, así que los móviles DPR 2-3 —la mayoría del tráfico real—
+  bajaban la -1280. Método idéntico al de las variantes existentes
+  (`cwebp -q Q -resize W 0` sobre el original), con la Q y la fuente **calibradas
+  por imagen** buscando la que reproduce el peso de su variante ya existente:
+  todas dentro de ±1,4 % (q 79–82). Ningún original recomprimido ni sustituido.
+- **`boda` y `pedida`** iban con `<source srcset="img/boda.webp">`, sin descriptor
+  `w` ni `sizes` y sin ninguna variante: `boda` descargaba ~7× los píxeles que
+  pintaba. Ahora tienen -640 y -768. No se generan -1280 (originales de 950 y
+  900 px): sería reescalar hacia arriba, criterio ya aplicado en `flota-proa` y
+  `flota-cabina`.
+- **3 descriptores `w` mentían:** `despedida-soltera.webp` y `eventos.webp`
+  declaraban 1600w midiendo 1448, y `flota-perfil.webp` 1600w midiendo 1920. Los
+  59 ficheros referenciados declaran ya su ancho real.
+
+**Resultado**, sumando todas las `<picture>` del sitio en un móvil de 390 px:
+
+| | antes | ahora | |
+|---|---|---|---|
+| DPR 2 (usuario real) | 9.692 KiB | **5.634 KiB** | **−42 %** |
+| DPR 1,75 (emulación de Lighthouse) | 8.974 KiB | **3.926 KiB** | **−56 %** |
+
+Por página (DPR 1,75): `/actividades` 721→289 KiB · `/blog-nautico` 456→179 ·
+`/fleet` 441→192 · un post 116→42 · `/reservar` 46→20.
+
+`fetchpriority="high"` intacto en los heros y ninguno pasó a lazy: solo cambia la
+**talla** elegida, nunca la prioridad ni el diseño.
 
 ### Herramientas de verificación en el repo
 

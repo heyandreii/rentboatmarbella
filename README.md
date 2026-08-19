@@ -12,7 +12,8 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 
 - `*.html` — páginas del sitio en 4 idiomas (ES/EN/FR/RU), URLs traducidas.
 - `post/*.html` — artículos del blog (servidos como `/post/<slug>`).
-- `img/` — imágenes (WebP + fallback JPG, con variantes responsivas `-640`/`-1280`).
+- `img/` — imágenes (WebP + fallback JPG, con variantes responsivas `-640`/`-768`/`-1280`;
+  no todas tienen las tres: nunca se genera una variante más ancha que el original).
 - `vercel.json` — `cleanUrls`, `trailingSlash` y redirecciones 301.
 - `robots.txt`, `sitemap.xml`.
 - `mobile.css` — ajustes responsive (se sirve `immutable` un año: **si lo tocas,
