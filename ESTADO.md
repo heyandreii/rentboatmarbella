@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **19 de agosto de 2026** (14.ª tanda del día).
+**Documento vivo.** Última actualización: **20 de agosto de 2026** (4.ª tanda del día).
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -19,10 +19,11 @@ Web de **chárter privado de un solo barco** —un De Antonio D50 de 15 m, año 
 amarrado en **Puerto Banús (Marbella)**— con reserva directa, sin marketplace de
 por medio. Cuatro idiomas completos con URLs traducidas (**ES / EN / FR / RU**) y
 un **programa multiidioma** en curso que lo lleva a ocho: **IT → NL → DE → AR**,
-en oleadas de tres entregas cada una. **El italiano y el neerlandés están
-completos**: 29 páginas cada uno —core, landings de ocasión, formulario propio,
-índice de blog y 14 posts— y son el quinto y el sexto idioma del sitio a todos
-los efectos. **La oleada siguiente es DE.**
+en oleadas de tres entregas cada una. **El italiano, el neerlandés y el alemán
+están completos**: 29 páginas cada uno —core, landings de ocasión, formulario
+propio, índice de blog y 14 posts— y son el quinto, el sexto y el séptimo idioma
+del sitio a todos los efectos. **La oleada siguiente y última es AR**, y no se
+abre hasta que el propietario decida, tras revisar los datos de demanda.
 
 **Stack:** HTML estático puro, sin framework ni paso de build. Desplegado en
 **Vercel** desde `main` (`cleanUrls: true`, `trailingSlash: false`); cada push a
@@ -30,9 +31,10 @@ los efectos. **La oleada siguiente es DE.**
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 188 URLs en el sitemap · **84 posts de blog** · **6 índices de
-blog** · **6 formularios de reserva** (uno por idioma publicado) · 666 bloques
-JSON-LD validados.
+**Tamaño actual:** 217 URLs en el sitemap · **98 posts de blog** · **7 índices de
+blog** · **7 formularios de reserva** (uno por idioma publicado) · al menos 715
+bloques JSON-LD validados (cifra de la Entrega 2 DE; la Entrega 3 no volvió a
+contarlos tras sumar los 14 posts alemanes).
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
 y agosto de 2026 (PR #1 a #15) cerraron los problemas críticos (404 del blog,
@@ -740,10 +742,111 @@ validados del sitio pasan de 550 a 552.
 | `scripts/check-links.sh` | 0 enlaces rotos + 0 posts huérfanos del sitemap. **Obligatorio antes de cada push a `main`.** |
 | `scripts/check-lang-switcher.py` | El selector de idioma del header no apunta a páginas inexistentes o de otro idioma. |
 | `scripts/apply-lang-switcher.py` | Regenera el selector desde los `hreflang`. |
-| `scripts/test-booking-form.js` | **456** comprobaciones sobre los **6** formularios (validación, prefijos, orden de ejecución, no-fuga a GA4). |
+| `scripts/test-booking-form.js` | **532** comprobaciones sobre los **7** formularios (validación, prefijos, orden de ejecución, no-fuga a GA4). |
 | `scripts/test-lead-api.js` | 21 comprobaciones de `/api/lead` con Resend simulado, sin red. |
-| `scripts/check-offer-price.sh` | Que ningún `Offer` tenga `priceCurrency` sin `price` (6 landings corporativas). |
-| `scripts/check-datos-comerciales.sh` | Que no se publique ningún claim que el propietario confirmó falso (sonido, nevera, hielo, descorche, ducha, colchoneta, alcohol incluido, tarifa de 6 h), en los 8 idiomas. **Obligatorio antes de cada push a `main`.** |
+| `scripts/check-offer-price.sh` | Que ningún `Offer` tenga `priceCurrency` sin `price` (7 landings corporativas). |
+| `scripts/check-datos-comerciales.sh` | Que no se publique ningún claim que el propietario confirmó falso (sonido, nevera, hielo, descorche, ducha, colchoneta, alcohol incluido, tarifa de 6 h, temporada, la «coordinación completa» del evento), en los 8 idiomas. **Obligatorio antes de cada push a `main`.** |
+
+### Oleada DE completa: las tres entregas (20 de agosto de 2026)
+
+**El alemán es el séptimo idioma del sitio**, con 29 páginas: 5 core, 8 landings
+de ocasión, el formulario `/buchen`, el índice `/bootsblog-marbella` y 14 posts.
+Los 29 slugs se fijaron y contrastaron contra las 188 URLs publicadas antes de
+escribir una sola página: cero colisiones — salvo una evitada a tiempo, ver abajo.
+
+**Tratamiento: Sie**, no *du*. Es un servicio de 1.200-3.000 € dirigido a
+residentes y propietarios de segunda vivienda en la Costa, y el *du* de un
+proveedor a un cliente que no conoce lee como marca de viajes juveniles. La
+elección neerlandesa (*je*) no transfería: el *u* neerlandés suena rígido de un
+modo que el *Sie* no tiene. Cero ocurrencias de *du/dein/dich/dir* en las 29
+páginas. El gancho es la **transparencia de la tarifa** — «der Preis gilt für
+das ganze Boot, nicht pro Person», «keine versteckten Kosten» — más primer
+pliegue en vez de nota al pie.
+
+- **Entrega 1 — core.** `/de`, `/flotte-boote-marbella`,
+  `/bootsausfluege-marbella`, `/heiratsantrag-boot-marbella` y
+  `/hochzeitsfotos-boot-marbella`. 5 grupos `hreflang` de 6 a 7 miembros, 35
+  miembros reescritos. Sitemap 188 → 193.
+- **Entrega 2 — landings y formulario.** Las 8 landings de ocasión y `/buchen`.
+  El alemán **no** necesita el apaño `-man-`/`-vrouw-` del neerlandés: distingue
+  léxicamente *Junggesellenabschied* de *Junggesellinnenabschied*, como el
+  italiano. 7 grupos `hreflang` de 6 a 7 miembros y la comparativa de 4 a 5, 61
+  miembros reescritos. Sitemap 193 → 202.
+- **Entrega 3 — blog. Oleada COMPLETA.** `/bootsblog-marbella` y los 14 posts,
+  nav «Blog» recableado en las 14 páginas DE previas, 15 grupos `hreflang` de
+  6 a 7. Reformulada la afirmación jurídica del post de bodas, que no estaba
+  publicada en ningún idioma. Sitemap 202 → **217**.
+
+**Un choque de slug evitado, el segundo de la serie.** El patrón de familia del
+sunset (`sunset-tour-…`, compartido por ES/EN/FR/RU/IT y NL) daba en alemán
+`sunset-tour-boot-marbella` — que **ya es el neerlandés**, porque «boot» se
+escribe igual en los dos idiomas. Se usó `sonnenuntergang-bootstour-marbella`,
+que además es lo que se busca. Misma lección que el índice del blog italiano,
+dos oleadas seguidas: cuanto más se parecen dos lenguas, más hay que contrastar
+los slugs antes de crear nada.
+
+**Dos deudas propias detectadas y corregidas en el proceso**, ninguna la vio un
+script:
+- **La cancelación gratuita a 24 h**, degradada por error de brief a un simple
+  cambio de fecha en el borrador de la Entrega 1. Restaurada contra
+  `reservar.html` (fuente de verdad de la regla anti-invención) en 21 páginas.
+  Mismo patrón que el Gibraltar neerlandés: el brief sobrerrestringiendo, el
+  repo con razón.
+- **La Gibraltar neerlandesa se contradecía en producción** desde la tanda NL
+  que restauró su precio: metas, hero y `Offer` decían `desde 3.000 €`, pero el
+  cuerpo y la FAQ seguían en `geen vast tarief` / `offerte op maat`. La
+  encontró el agente alemán al comparar orígenes. 5 sustituciones, FAQ
+  alineada en JSON-LD y HTML visible a la vez.
+
+**`check-datos-comerciales.sh` gana los 8 patrones alemanes** (equipo,
+`Kühlschrank`, `Eis`, `Korkgeld`, `Süßwasserdusche`, `Luftmatratze`, *open bar*,
+`Saisonrabatt`) en las dos listas. El del hielo lleva frontera de palabra
+porque `Eis` es subcadena de media lengua alemana — comprobado que *Preis*,
+*Reise*, *leise*, *Kreis* y *Fleisch* no lo activan. `check-offer-price.sh` pasa
+a vigilar **7** landings corporativas. `test-booking-form.js` sube a **7**
+formularios: 456 → 532 comprobaciones (el `CFG` alemán es `sep "."` y
+`suf " €"`, `CC` con `def:"DE"` y +49, y la lista de 54 prefijos con colación
+alemana real: `Österreich` entre Omán y Polonia, `Südafrika` entre España y
+Chequia).
+
+**Ninguna página DE afirma atención en alemán**: sigue sin confirmarse, igual
+que en neerlandés. Donde el italiano lo dice, el alemán pone «Der Skipper
+spricht ES · EN · FR · RU». Ver §5.19.
+
+### Mini-tanda: aeropuerto unificado, coordinación acotada y extras confirmados (20 de agosto de 2026)
+
+Tanda corta, sin abrir oleada, para tres deudas sueltas destapadas al revisar
+producción tras cerrar el alemán.
+
+**Aeropuerto de Málaga: cada idioma daba una cifra distinta para el mismo
+trayecto.** El post de Costa del Sol y el de Málaga decían «45 min» en español,
+«alrededor de una hora» en neerlandés y en alemán, y «45-60 minuti» en
+italiano — que era la cifra correcta y sirvió de referencia. Unificado a
+**45-60 minutos / minuten / Minuten** en los dos posts, ES/NL/DE: 1 sustitución
+en el de Costa del Sol por idioma y 6-7 en el de Málaga por idioma (JSON-LD y
+HTML visible a la vez, para no desincronizarlos), 23 sustituciones en total. El
+post de Sotogrande solo menciona el aeropuerto de pasada, sin cifra propia, y
+no necesitó tocarse.
+
+**«Coordinación completa del evento» sobreclaimaba alcance, no cifras.** Las
+landings de eventos de empresa en ES/EN/FR/RU prometían coordinar «el evento»
+entero —agenda, venue, catering externo— cuando lo que de verdad se coordina es
+la salida a bordo. Corregido a «coordinación de la salida a bordo» (y
+equivalentes) en los 4 idiomas que lo publicaban, JSON-LD y HTML a la vez: 4
+sustituciones en ES, 2 en EN, 2 en FR y 2 en RU. La variante italiana
+(«coordinamento dell'evento», sin el intensificador «completo») no llevaba el
+mismo sobreclaim y se dejó tal cual — ver §3, «repaso final». Añadido el patrón
+`coordinacion` a `check-datos-comerciales.sh` en los 4 idiomas corregidos.
+
+**Los 3 extras de eventos de empresa, confirmados por el propietario:**
+transfer privado, bebida premium y decoración de marca se quedan tal cual están
+publicados en ES/EN/FR — existen como extras a medida, sin tarifa fija, y no
+hacía falta corregir nada. Documentado en el README (`Regla anti-invención`)
+para que no se marquen como deuda en futuras tandas.
+
+Checks: `check-datos-comerciales.sh` 0 prohibidos (patrón nuevo incluido) ·
+`check-links.sh` 207 URLs comprobadas contra producción, 0 fallos, 98 posts sin
+huérfanos · `check-offer-price.sh` 7/7 landings OK.
 
 ---
 
@@ -803,39 +906,36 @@ validados del sitio pasan de 550 a 552.
    Ver §2. Queda **una pregunta viva que la condiciona**: si se confirma que se
    atiende en neerlandés, hay que repasar las 29 páginas para añadirlo (§5.16).
 
-12. **🔵 Oleada DE — la siguiente, y ya se puede abrir.** Mismas tres entregas.
-   Antes de escribir una sola página: **fijar sus slugs en las tablas del
-   README**, igual que se hizo con el italiano y el neerlandés. Lo aprendido en
-   las dos oleadas anteriores, para no repetirlo:
-   - **Comprobar los choques de slug con el español** antes de empezar. En
-     italiano lo destapó el índice del blog; en neerlandés no hubo choque, pero
-     el calco (`nautische blog`) tampoco servía porque nadie lo busca.
-   - **Preguntar por la atención en ese idioma antes de escribir** (§5.15): en
-     italiano la respuesta llegó a mitad de oleada y costó repasar 14 páginas;
-     en neerlandés no llegó y las 29 páginas salieron sin el argumento.
-   - **Decirle al brief de redacción que los precios de extras están
-     confirmados** (`+120 €`, `+180 €`, `+250 €`, en el formulario de reserva).
-     En neerlandés los subagentes los retiraron por su cuenta en seis páginas.
-   - **No sobre-restringir el brief:** prohibir el precio de Gibraltar dejó esa
-     página sin el `desde 3.000 € + combustible` que publican ES e IT.
-   - **El formulario se transforma, no se escribe.** Sustituciones literales
-     afirmadas sobre el inglés, y alta en `scripts/test-booking-form.js`.
-   - **El nav va sin «Blog» hasta la Entrega 3**, y en esa entrega hay que dar
-     de alta el índice en `check-links.sh` (los dos sitios) y recablear el nav
-     y el footer de todas las páginas ya publicadas.
-   - **El anti-clon de los 5 posts de zona sale mejor** si cada agente recibe su
-     ángulo *y la lista de los ángulos ajenos que no puede tocar*: así el
-     solapamiento bajó del 17,7 % (IT) al 9,5 % (NL).
-   - Las redacciones canónicas DE de **lo incluido, puerto base, capacidad,
-     motorización y equipo de sonido** ya están escritas en el README.
-13. **Oleada AR — la última, y no se empieza hasta cerrar DE.** No es un idioma
-   más: `dir="rtl"`, espejado de nav, footer, breadcrumbs y grids, tipografía e
-   iconos direccionales, y una pasada de QA visual completa. La infraestructura
-   del selector ya está preparada (ver README).
+12. ~~**Oleada DE.**~~ **HECHA** (20/08/2026), las tres entregas: 29 páginas. Ver
+   §2. Misma pregunta viva que el neerlandés: si se confirma que se atiende en
+   alemán, hay que repasar las 29 páginas (§5.19).
+
+13. **Oleada AR — la última, y su apertura es una decisión del propietario, no
+   una fecha fija.** No se abre por calendario: se abre cuando el propietario
+   revise los datos de demanda (impresiones en Search Console, igual que se
+   miró para el alemán antes del programa, ver §2 «Contenido y marketing») y
+   decida si toca ahora. No es un idioma más cuando se abra: `dir="rtl"`,
+   espejado de nav, footer, breadcrumbs y grids, tipografía e iconos
+   direccionales, y una pasada de QA visual completa. La infraestructura del
+   selector ya está preparada (ver README).
+
+14. **Repaso final pendiente, a hacer cuando se cierre (o se descarte) AR — no
+   antes, para no repetirlo dos veces:**
+   - **Atención en neerlandés y en alemán**, sin confirmar en ninguna de las 58
+     páginas (29 + 29). Preguntas vivas en §5.16 y §5.19; si la respuesta llega
+     antes del repaso final, se aplica en el momento y no hay que esperar.
+   - **Matiz italiano en «coordinación de la salida a bordo».** La corrección
+     de hoy (§2, mini-tanda del 20/08/2026) reescribió ES/EN/FR/RU porque
+     prometían coordinar «el evento» entero; el italiano dice
+     `coordinamento dell'evento` — sin el intensificador «completo» que
+     disparaba el patrón— y se dejó tal cual por no ser el mismo sobreclaim.
+     Revisar entonces si conviene alinearlo también a
+     `coordinamento della partenza a bordo` por consistencia entre idiomas, o
+     si la diferencia no compensa tocar una página que ya está bien.
 
 ### Deuda detectada, acotada y cerrada
 
-14. ~~**La «música» del sitio, en las ~120 menciones que quedan.**~~ **CERRADO**
+15. ~~**La «música» del sitio, en las ~120 menciones que quedan.**~~ **CERRADO**
    (19/08/2026). El propietario aclaró que **sí hay equipo de sonido con
    Bluetooth**: la pregunta que bloqueaba el punto ya tiene respuesta. Las ~120
    menciones se revisaron una a una y **se conservan todas** —ninguna promete más
@@ -902,6 +1002,16 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    5 en la Entrega 1, 9 en la 2 y 15 en la 3 — al pasar de 5 a 6 miembros Google
    tarda en releer los alternates de las **116 páginas viejas** reescritas.
 
+12c. **Indexar las 29 URLs alemanas — la oleada entera.** Las 14 de las
+   Entregas 1 y 2 (`/de`, `/flotte-boote-marbella`, `/bootsausfluege-marbella`,
+   las 8 landings de ocasión, la comparativa y `/buchen`) y las **15 de la
+   Entrega 3**: `/bootsblog-marbella` y sus 14 posts. Repartirlas en tres o
+   cuatro días y **empezar por el índice del blog**. Y **revalidar en Search
+   Console los grupos `hreflang` ampliados**: 5 grupos de 6 a 7 en la Entrega 1,
+   7 grupos de 6 a 7 más la comparativa de 4 a 5 en la 2, y 15 grupos de 6 a 7
+   en la 3 — al pasar de 6 a 7 miembros Google tarda en releer los alternates de
+   las **188 páginas viejas** reescritas a lo largo de la oleada.
+
 12. **Indexar las 29 URLs italianas — la oleada entera.** Las 14 de las Entregas
    1 y 2 (`/it`, flota, hub, las 8 landings de ocasión, la comparativa y
    `/prenota`) y las **15 de la Entrega 3**: `/blog-nautica-marbella` y sus 14
@@ -944,6 +1054,15 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
      y decirlo explícitamente convierte mejor que el silencio — pero es una
      decisión comercial, no de código, y hoy no está tomada.
    **Con la oleada NL cerrada, la pregunta ya cuesta 29 páginas y no 5.**
+
+19. **🟠 ¿Se atiende en ALEMÁN por WhatsApp y email?** — misma pregunta viva que
+   el punto 16, ahora también con la oleada DE cerrada. Arrancó **sin** el dato,
+   así que **ninguna de las 29 páginas DE lo afirma**; donde el italiano lo
+   dice, el alemán pone `Der Skipper spricht ES · EN · FR · RU`. Mismas dos
+   ramas que el punto 16 (repasar 29 páginas si es sí, decidir «Auf Englisch
+   erhältlich» como puente si es no) y **candidata natural a resolverse junto
+   con el neerlandés en el repaso final del programa** (ver §3, ítem 14) en vez
+   de por separado.
 
 17. ~~**🔴 ¿Existe de verdad un descuento de temporada baja?**~~ **RESUELTO**
    (19/08/2026): **no existe.** El propietario confirma **tarifa única todo el

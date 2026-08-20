@@ -34,6 +34,14 @@
 # Ojo, las menciones AMBIENTALES de champán (decoración, extras, "brindis con
 # champán") son legítimas y no se buscan aquí — solo la copa "de cortesía".
 #
+# "Coordinación completa del evento" (o equivalente en EN/FR/RU, confirmado
+# 20/08/2026): sobreclaim de alcance, no de veracidad — el propietario coordina
+# la salida a bordo, no "el evento" entero (catering externo, agenda, venue).
+# Corregido en los 4 idiomas que lo publicaban (eventos-empresa/corporate-events/
+# évènements-entreprise/корпоративы) a "coordinación de la salida a bordo". La
+# variante italiana ("coordinamento dell'evento", sin "completo") no llevaba el
+# intensificador y se dejó tal cual por decisión del propietario.
+#
 # Uso:  scripts/check-datos-comerciales.sh
 # Sale 1 si encuentra algo. Los comentarios HTML (<!-- ... -->) se ignoran:
 # ahí sí se documenta lo que no existe, que es justo para lo que sirven.
@@ -110,6 +118,10 @@ copavieja|ru|бокал\w* шампанского в подарок
 copavieja|it|calice di champagne
 copavieja|nl|glas champagne van het huis
 copavieja|de|Glas Champagner als Aufmerksamkeit
+coordinacion|es|coordinaci[oó]n completa (del evento)?
+coordinacion|en|full (event|on-board) coordination
+coordinacion|fr|coordination compl[eè]te de l.[eé]v[eé]nement
+coordinacion|ru|полная организация мероприятия
 PATTERNS
 
 # Los globos solo pueden aparecer dentro del extra de decoración especial, así
