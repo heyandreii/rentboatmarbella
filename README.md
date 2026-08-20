@@ -433,8 +433,17 @@ Referencia de datos confirmados a día de hoy (fuente: home + formulario `/reser
   «precios especiales», «tarifas reducidas» o «más barato en invierno». Lo que
   cambia en temporada baja es el mar, las calas vacías y la disponibilidad de
   fechas — eso sí se puede decir. `check-datos-comerciales.sh` lo vigila con el
-  patrón `temporada` en los 6 idiomas, escrito en forma afirmativa para que las
+  patrón `temporada` en los 7 idiomas, escrito en forma afirmativa para que las
   negaciones legítimas («sin descuento», `geen korting`) no rompan el build.
+  **Hueco conocido del patrón en alemán:** la técnica (pedir la frase afirmativa
+  completa, no la palabra suelta) asume que negar el concepto cambia la cadena
+  de texto lo suficiente para no casar. Eso falla con compuestos alemanes:
+  `Saisonrabatt` es una sola palabra, así que `kein Saisonrabatt` —una frase
+  legítima si algún día alguien quisiera declarar la política igual que hace
+  este README— seguiría casando y el build fallaría en falso. No ha ocurrido
+  (el post de invierno DE se redactó en positivo, sin la palabra), pero si hace
+  falta negarlo alguna vez en alemán, el patrón necesita un lookbehind de
+  negación (`kein|keine`) antes de tratarlo como fallo real.
 - **El sunset no lleva catering especial:** mismo catering ligero + agua y refrescos + botella de champán de cortesía que el resto de salidas (confirmado 19/08/2026).
 - **Puerto base y salidas desde otros puertos** *(confirmado por el propietario el 19/08/2026)*: el barco está amarrado en **Puerto Banús (Marbella)**. La **salida desde otros puertos de la Costa del Sol** (Estepona, Sotogrande, Fuengirola, Benalmádena, Málaga…) está **disponible a consultar**. Redacción canónica por idioma: ES `Puerto base: Puerto Banús. Salida desde [X] disponible a consultar.` · EN `Home port: Puerto Banús. Departure from [X] available on request.` · FR `Port d'attache : Puerto Banús. Départ depuis [X] possible sur demande.` · RU `Порт базирования: Пуэрто-Банус. Выход из [X] — по запросу.` · IT `Porto base: Puerto Banús. Partenza da [X] disponibile su richiesta.` **Prohibido** inventar suplementos, precios de recogida, tiempos de traslado del barco o condiciones: solo «a consultar / on request», y nunca prometer la salida desde X como estándar.
 - **Atención en italiano** *(confirmado por el propietario el 19/08/2026)*: se atiende por **WhatsApp y email en italiano**. Publicable **solo en las páginas IT** con la redacción canónica `Assistenza in italiano su WhatsApp ed e-mail`. Cubre el canal escrito, no el patrón: **prohibido** afirmar que se hable italiano a bordo. Sin confirmar para NL, DE y AR.
