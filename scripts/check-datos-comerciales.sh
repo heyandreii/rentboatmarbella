@@ -61,6 +61,7 @@ equipo|ru|переносн\w+ колонк|премиум-бар|диджей н
 equipo|it|cassa portatile|open bar premium|dj a bordo|bevande fredde incluse|karaoke
 equipo|nl|draagbare speaker|premium bar|dj aan boord|koude drankjes inbegrepen|karaoke
 equipo|de|tragbare[rn]? Lautsprecher|Premium-Bar|DJ an Bord|kalte Getränke inklusive|Karaoke
+equipo|ar|سماعة محمولة|بار (مميز|فاخر)|دي جي على متن|مشروبات باردة متضمنة|كاريوكي
 nevera|es|nevera a bordo|nevera incluida|frigorífico
 nevera|en|(fridge|refrigerator|cool ?box|ice ?box) (on board|included)|on-?board fridge
 nevera|fr|(frigo|réfrigérateur|glacière) (à bord|inclus)
@@ -68,6 +69,7 @@ nevera|ru|холодильник на борту|холодильник вклю
 nevera|it|(frigorifero|frigo|ghiacciaia) (a bordo|incluso)
 nevera|nl|koelkast (aan boord|inbegrepen)|koelbox aan boord|minibar aan boord
 nevera|de|Kühlschrank (an Bord|inklusive)|Kühlbox an Bord|Minibar an Bord
+nevera|ar|ثلاجة (على متن|متضمنة)|براد على متن
 hielo|es|agua y hielo|hielo incluido|con hielo
 hielo|en|water and ice|ice included|ice buckets?
 hielo|fr|eau et glaçons|glaçons inclus|seau à glace
@@ -75,6 +77,7 @@ hielo|ru|вода и лёд|со льдом|лёд включ
 hielo|it|acqua e ghiaccio|ghiaccio incluso|con ghiaccio|secchiello del ghiaccio
 hielo|nl|water en ijs\b|\bijs inbegrepen|ijsemmer|ijsblokjes|\bijs aan boord
 hielo|de|Wasser und \bEis\b|\bEis inklusive|\bEis an Bord|Eiswürfel|Eiskübel
+hielo|ar|مياه وثلج|ثلج متضمن|دلو ثلج
 descorche|es|descorche|traer (tu|vuestra|su|vuestras|sus) propia?s? bebidas?|subir (tu|vuestra) bebida
 descorche|en|corkage|bring your own (drinks?|cava|wine|bottles?|booze|alcohol)
 descorche|fr|droit de bouchon|apporter (vos|votre) (propres? )?boissons?
@@ -82,6 +85,7 @@ descorche|ru|со своим алкоголем|свои напитки|свои
 descorche|it|diritto di tappo|portare (le |i )?(vostr[ie] )?(bevande|alcolici|bottiglie) da casa
 descorche|nl|kurkengeld|(eigen|zelf) (drank|drankjes|flessen) (mee|meenemen)|neem je eigen drank
 descorche|de|Korkgeld|eigene Getränke (mitbringen|mitnehmen)|Getränke selbst mitbringen
+descorche|ar|رسوم فتح الزجاجات|إحضار مشروباتكم الخاصة|اصطحاب مشروبات خاصة
 ducha|es|ducha de agua dulce
 ducha|en|fresh ?water shower
 ducha|fr|douche (à |d.)eau douce
@@ -89,6 +93,7 @@ ducha|ru|пресн(ый|ого) душ
 ducha|it|doccia (di |ad )?acqua dolce
 ducha|nl|zoetwaterdouche|douche aan boord
 ducha|de|Süßwasserdusche|Dusche an Bord
+ducha|ar|دش مياه عذبة|دش على متن
 colchoneta|es|colchoneta
 colchoneta|en|floating mat|inflatable mat
 colchoneta|fr|matelas (flottant|gonflable)
@@ -96,6 +101,7 @@ colchoneta|ru|(надувной|плавучий|плавающий) матра�
 colchoneta|it|materassino
 colchoneta|nl|opblaasmatras|drijfmatras|luchtbed
 colchoneta|de|Luftmatratze|Schwimmmatte|Badeinsel
+colchoneta|ar|مرتبة عائمة|مرتبة قابلة للنفخ
 alcohol|es|barra libre|alcohol incluido|bebidas alcohólicas incluidas
 alcohol|en|open bar|alcohol included|alcoholic drinks included
 alcohol|fr|open bar|alcool inclus|boissons alcoolisées incluses
@@ -103,6 +109,7 @@ alcohol|ru|открытый бар|алкоголь включ
 alcohol|it|open bar|alcolici inclusi|bevande alcoliche incluse
 alcohol|nl|open bar|alcohol inbegrepen|alcoholische dranken inbegrepen|onbeperkt drinken
 alcohol|de|open bar|Alkohol inklusive|alkoholische Getränke inklusive|Getränke frei
+alcohol|ar|بار مفتوح|كحول متضمن|مشروبات كحولية متضمنة
 tarifa6h|xx|6 ?h(oras|ours|eures)? ?[·–-] ?2[.,]400|2[.,]400 ?€|€ ?2[.,]400
 temporada|es|descuentos? de temporada|precios especiales|tarifas? reducidas?|precios? reducidos?|oferta de temporada|más barato en (invierno|temporada baja)|barco premium por menos
 temporada|en|(seasonal|winter|low.season) discounts?|special rates?|special prices?|lower prices?|cheaper in (winter|the low season)|premium boat for less
@@ -111,6 +118,7 @@ temporada|ru|скидк\w* (в|на) (низкий|зимн)|специальн�
 temporada|it|sconti? (di |in )?(stagione|bassa stagione|inverno)|prezzi ridotti|prezzi speciali|più economico in (inverno|bassa stagione)
 temporada|nl|korting(en)? (in|voor) (de winter|het laagseizoen)|winterkorting|lagere prijs|speciale prijzen
 temporada|de|Saisonrabatt|Nebensaisonpreise|Sonderpreise|günstigere Preise|Rabatt in der Nebensaison|billiger im Winter
+temporada|ar|خصومات موسمية|أسعار خاصة|أسعار مخفضة|أرخص في (الشتاء|موسم الركود)
 copavieja|es|copa de champ[aá]n|copa de champagne
 copavieja|en|(complimentary |free )?glass of champagne
 copavieja|fr|coupe de champagne (offerte|incluse)
@@ -118,15 +126,17 @@ copavieja|ru|бокал\w* шампанского в подарок
 copavieja|it|calice di champagne
 copavieja|nl|glas champagne van het huis
 copavieja|de|Glas Champagner als Aufmerksamkeit
+copavieja|ar|كأس شمبانيا (مجاملة|ترحيبية)
 coordinacion|es|coordinaci[oó]n completa (del evento)?
 coordinacion|en|full (event|on-board) coordination
 coordinacion|fr|coordination compl[eè]te de l.[eé]v[eé]nement
 coordinacion|ru|полная организация мероприятия
+coordinacion|ar|تنسيق كامل (للفعالية|للحدث)
 PATTERNS
 
 # Los globos solo pueden aparecer dentro del extra de decoración especial, así
 # que se listan aparte para revisarlos a mano en vez de darlos por rotos.
-GLOBOS='globos|balloons|ballons|шар(ы|ики)|palloncini|ballonnen'
+GLOBOS='globos|balloons|ballons|шар(ы|ики)|palloncini|ballonnen|بالونات'
 
 # El equipo de sonido es un claim CONFIRMADO con redacción canónica (README →
 # "Regla anti-invención"). Aquí no se busca su ausencia sino su deriva: cualquier
@@ -134,7 +144,7 @@ GLOBOS='globos|balloons|ballons|шар(ы|ики)|palloncini|ballonnen'
 # toda línea que nombra el equipo contenga "Bluetooth", que es la palabra que las
 # siete redacciones comparten; una mención sin ella es una reescritura a mano y
 # hay que revisarla.
-SONIDO_MENCION='equipo de sonido|sound system|système audio|аудиосистем|impianto audio|geluidssysteem|Soundsystem'
+SONIDO_MENCION='equipo de sonido|sound system|système audio|аудиосистем|impianto audio|geluidssysteem|Soundsystem|نظام صوت'
 
 echo "== Claims prohibidos =="
 while IFS='|' read -r tag lang rest; do

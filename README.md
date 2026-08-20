@@ -164,22 +164,22 @@ español (`<keyword>-<barco>-marbella`), sin acentos ni diacríticos:
 | IT | `/it` | `flotta-barche-marbella` | `escursioni-barca-marbella` | `proposta-matrimonio-barca-marbella` | `foto-matrimonio-barca-marbella` |
 | NL | `/nl` | `vloot-boten-marbella` | `activiteiten-boot-marbella` | `huwelijksaanzoek-boot-marbella` | `trouwfotos-boot-marbella` |
 | DE | `/de` | `flotte-boote-marbella` | `bootsausfluege-marbella` | `heiratsantrag-boot-marbella` | `hochzeitsfotos-boot-marbella` |
-| AR | `/ar` | *pendiente* | *pendiente* | *pendiente* | *pendiente* |
+| AR | `/ar` | `ustul-al-yakht-marbella` | `anshita-yakht-marbella` | `ard-zawaj-yakht-marbella` | `taswir-zafaf-yakht-marbella` |
 
 **Landings de ocasión y formulario (Entrega 2)** — fijados con la oleada IT, NL
 con la suya:
 
-| Página | ES | IT | NL | DE |
-|---|---|---|---|---|
-| Despedida de soltero | `despedida-soltero-barco-marbella` | `addio-al-celibato-barca-marbella` | `vrijgezellenfeest-man-boot-marbella` | `junggesellenabschied-boot-marbella` |
-| Despedida de soltera | `despedida-soltera-barco-marbella` | `addio-al-nubilato-barca-marbella` | `vrijgezellenfeest-vrouw-boot-marbella` | `junggesellinnenabschied-boot-marbella` |
-| Cumpleaños | `cumpleanos-en-barco-marbella` | `compleanno-in-barca-marbella` | `verjaardag-boot-marbella` | `geburtstag-boot-marbella` |
-| Sunset tour | `sunset-tour-barco-marbella` | `sunset-tour-barca-marbella` | `sunset-tour-boot-marbella` | `sonnenuntergang-bootstour-marbella` |
-| Delfines | `avistamiento-delfines-marbella` | `avvistamento-delfini-marbella` | `dolfijnen-spotten-marbella` | `delfine-beobachten-marbella` |
-| Gibraltar | `ruta-barco-gibraltar-marbella` | `escursione-barca-gibilterra-marbella` | `boottocht-gibraltar-marbella` | `bootstour-gibraltar-marbella` |
-| Eventos de empresa | `eventos-empresa-barco-marbella` | `eventi-aziendali-barca-marbella` | `bedrijfsuitje-boot-marbella` | `firmenevent-boot-marbella` |
-| Comparativa | `barco-privado-vs-plataformas` | `barca-privata-vs-piattaforme` | `prive-boot-vs-verhuurplatforms` | `privatboot-vs-mietplattformen` |
-| **Formulario de reserva** | `reservar` | `prenota` | `reserveren` | `buchen` |
+| Página | ES | IT | NL | DE | AR |
+|---|---|---|---|---|---|
+| Despedida de soltero | `despedida-soltero-barco-marbella` | `addio-al-celibato-barca-marbella` | `vrijgezellenfeest-man-boot-marbella` | `junggesellenabschied-boot-marbella` | `wadaa-al-uzubiya-rijal-marbella` |
+| Despedida de soltera | `despedida-soltera-barco-marbella` | `addio-al-nubilato-barca-marbella` | `vrijgezellenfeest-vrouw-boot-marbella` | `junggesellinnenabschied-boot-marbella` | `wadaa-al-uzubiya-nisaa-marbella` |
+| Cumpleaños | `cumpleanos-en-barco-marbella` | `compleanno-in-barca-marbella` | `verjaardag-boot-marbella` | `geburtstag-boot-marbella` | `eid-milad-yakht-marbella` |
+| Sunset tour | `sunset-tour-barco-marbella` | `sunset-tour-barca-marbella` | `sunset-tour-boot-marbella` | `sonnenuntergang-bootstour-marbella` | `ghurub-al-shams-yakht-marbella` |
+| Delfines | `avistamiento-delfines-marbella` | `avvistamento-delfini-marbella` | `dolfijnen-spotten-marbella` | `delfine-beobachten-marbella` | `mushahadat-al-dalafin-marbella` |
+| Gibraltar | `ruta-barco-gibraltar-marbella` | `escursione-barca-gibilterra-marbella` | `boottocht-gibraltar-marbella` | `bootstour-gibraltar-marbella` | `rihla-yakht-jabal-tariq-marbella` |
+| Eventos de empresa | `eventos-empresa-barco-marbella` | `eventi-aziendali-barca-marbella` | `bedrijfsuitje-boot-marbella` | `firmenevent-boot-marbella` | `faaliyat-al-sharikat-yakht-marbella` |
+| Comparativa | `barco-privado-vs-plataformas` | `barca-privata-vs-piattaforme` | `prive-boot-vs-verhuurplatforms` | `privatboot-vs-mietplattformen` | `yakht-khas-muqabil-manassat-marbella` |
+| **Formulario de reserva** | `reservar` | `prenota` | `reserveren` | `buchen` | `hajz` |
 
 > **`vrijgezellenfeest` es unisex en neerlandés**, así que las dos despedidas no
 > se distinguen solas como en italiano (`celibato`/`nubilato`): se desambiguan
@@ -197,19 +197,19 @@ con la suya:
 
 **Blog (Entrega 3)** — índice y los 14 grupos de posts:
 
-| Página | ES | IT | NL | DE |
-|---|---|---|---|---|
-| **Índice del blog** | `blog-nautico-marbella` | `blog-nautica-marbella` | `vaarblog-marbella` | `bootsblog-marbella` |
-| Precios | `post/cuanto-cuesta-alquilar-barco-marbella` | `post/quanto-costa-noleggiare-barca-marbella` | `post/wat-kost-boot-huren-marbella` | `post/was-kostet-boot-mieten-marbella` |
-| Licencia | `post/necesitas-licencia-alquilar-barco-marbella` | `post/serve-patente-nautica-noleggio-marbella` | `post/vaarbewijs-nodig-boot-huren-marbella` | `post/sportbootfuehrerschein-noetig-marbella` |
-| Calas | `post/mejores-calas-fondear-marbella` | `post/migliori-cale-ancoraggio-marbella` | `post/mooiste-baaien-ankeren-marbella` | `post/schoenste-buchten-ankern-marbella` |
-| Bodas y eventos | `post/bodas-eventos-barco-marbella` | `post/matrimoni-eventi-barca-marbella` | `post/bruiloften-evenementen-boot-marbella` | `post/hochzeiten-events-boot-marbella` |
-| Pedida | `post/pedida-matrimonio-en-el-mar` | `post/proposta-matrimonio-in-mare` | `post/huwelijksaanzoek-op-zee` | `post/heiratsantrag-auf-see` |
-| Despedida (consejos) | `post/despedida-soltera-barco-consejos` | `post/addio-al-nubilato-barca-consigli` | `post/vrijgezellenfeest-boot-tips` | `post/junggesellinnenabschied-boot-tipps` |
-| Boat party | `post/fiesta-en-barco-puerto-banus` | `post/festa-in-barca-puerto-banus` | `post/bootfeest-puerto-banus` | `post/bootsparty-puerto-banus` |
-| Costa del Sol | `post/alquiler-barco-costa-del-sol-puerto-banus` | `post/noleggio-barca-costa-del-sol-puerto-banus` | `post/boot-huren-costa-del-sol-puerto-banus` | `post/boot-mieten-costa-del-sol-puerto-banus` |
-| Invierno | `post/alquilar-barco-marbella-invierno` | `post/noleggio-barca-marbella-inverno` | `post/boot-huren-marbella-winter` | `post/boot-mieten-marbella-winter` |
-| Zona (×5) | `post/alquiler-barco-<zona>-puerto-banus` | `post/noleggio-barca-<zona>-puerto-banus` | `post/boot-huren-<zona>-puerto-banus` | `post/boot-mieten-<zona>-puerto-banus` |
+| Página | ES | IT | NL | DE | AR |
+|---|---|---|---|---|---|
+| **Índice del blog** | `blog-nautico-marbella` | `blog-nautica-marbella` | `vaarblog-marbella` | `bootsblog-marbella` | `mudawana-bahriya-marbella` |
+| Precios | `post/cuanto-cuesta-alquilar-barco-marbella` | `post/quanto-costa-noleggiare-barca-marbella` | `post/wat-kost-boot-huren-marbella` | `post/was-kostet-boot-mieten-marbella` | `post/kam-taklifat-istijar-yakht-marbella` |
+| Licencia | `post/necesitas-licencia-alquilar-barco-marbella` | `post/serve-patente-nautica-noleggio-marbella` | `post/vaarbewijs-nodig-boot-huren-marbella` | `post/sportbootfuehrerschein-noetig-marbella` | `post/hal-tahtaj-rukhsa-yakht-marbella` |
+| Calas | `post/mejores-calas-fondear-marbella` | `post/migliori-cale-ancoraggio-marbella` | `post/mooiste-baaien-ankeren-marbella` | `post/schoenste-buchten-ankern-marbella` | `post/afdal-al-khiljan-marbella` |
+| Bodas y eventos | `post/bodas-eventos-barco-marbella` | `post/matrimoni-eventi-barca-marbella` | `post/bruiloften-evenementen-boot-marbella` | `post/hochzeiten-events-boot-marbella` | `post/hafalat-zafaf-faaliyat-yakht-marbella` |
+| Pedida | `post/pedida-matrimonio-en-el-mar` | `post/proposta-matrimonio-in-mare` | `post/huwelijksaanzoek-op-zee` | `post/heiratsantrag-auf-see` | `post/ard-zawaj-fi-al-bahr` |
+| Despedida (consejos) | `post/despedida-soltera-barco-consejos` | `post/addio-al-nubilato-barca-consigli` | `post/vrijgezellenfeest-boot-tips` | `post/junggesellinnenabschied-boot-tipps` | `post/nasaeh-wadaa-uzubiya-yakht` |
+| Boat party | `post/fiesta-en-barco-puerto-banus` | `post/festa-in-barca-puerto-banus` | `post/bootfeest-puerto-banus` | `post/bootsparty-puerto-banus` | `post/hafla-yakht-puerto-banus` |
+| Costa del Sol | `post/alquiler-barco-costa-del-sol-puerto-banus` | `post/noleggio-barca-costa-del-sol-puerto-banus` | `post/boot-huren-costa-del-sol-puerto-banus` | `post/boot-mieten-costa-del-sol-puerto-banus` | `post/istijar-yakht-costa-del-sol-puerto-banus` |
+| Invierno | `post/alquilar-barco-marbella-invierno` | `post/noleggio-barca-marbella-inverno` | `post/boot-huren-marbella-winter` | `post/boot-mieten-marbella-winter` | `post/istijar-yakht-marbella-shita` |
+| Zona (×5) | `post/alquiler-barco-<zona>-puerto-banus` | `post/noleggio-barca-<zona>-puerto-banus` | `post/boot-huren-<zona>-puerto-banus` | `post/boot-mieten-<zona>-puerto-banus` | `post/istijar-yakht-<zona>-puerto-banus` |
 
 > **El índice no puede llamarse `blog-nautico-marbella`**: en italiano «blog
 > nautico» se escribe igual que en español y ese slug ya es del ES. Se usa el
@@ -225,6 +225,19 @@ con la suya:
 
 Los slugs de DE/AR se fijan aquí al abrir su oleada, antes de escribir una
 sola página, para que no haya dos convenciones conviviendo.
+
+> **Convención AR (fijada el 20/08/2026, Fase 0, con el visto bueno del
+> propietario).** El precedente que sigue el árabe es el **ruso**:
+> transliteración latina, no traducción a un alfabeto que la URL no admite. La
+> palabra núcleo es **`yakht`** (يخت), no `qareb`/`qarib` (قارب, "barco"
+> genérico): coherente con el posicionamiento premium y con el propio
+> precedente ruso, que usa `yakhta` y no una palabra genérica de barco. Los 29
+> slugs se contrastaron uno a uno contra las 217 URLs publicadas antes de
+> escribir una sola página: **cero colisiones**. `pedida` (landing,
+> `ard-zawaj-yakht-marbella`) y el post de pedida (`ard-zawaj-fi-al-bahr`) usan
+> raíces distintas a propósito, igual que en español
+> (`pedida-matrimonio-barco-marbella` vs `pedida-matrimonio-en-el-mar`), para
+> no colisionar entre sí.
 
 > **Lo que la oleada NL deja aprendido para la alemana.** (1) Los subagentes de
 > redacción **retiran precios de extras confirmados** creyéndolos inventados: los
@@ -248,7 +261,14 @@ sola página, para que no haya dos convenciones conviviendo.
 | **IT** | `1.200 €` | `600 CV` |
 | **NL** | `€ 1.200` | `600 pk` |
 | **DE** | `1.200 €` | `600 PS` |
-| **AR** | *se fija al abrir su oleada* | *idem* |
+| **AR** | `1,200 €` | `1,200 حصان` |
+
+> **Formato AR fijado el 20/08/2026 (Fase 0).** Dígitos **occidentales**
+> (`1,200 €`, no `١٬٢٠٠`): es el estándar del comercio digital dirigido al
+> Golfo y evita mezclar dígitos bidireccionales dentro de texto RTL.
+> Separador de miles con **coma** (convención inglesa que maneja a diario la
+> audiencia del Golfo), símbolo € **detrás** del número con espacio, igual que
+> el resto de idiomas europeos del sitio.
 
 ### Redacciones canónicas de los idiomas nuevos
 
@@ -274,19 +294,35 @@ mismo día.**
   übliche Route, Versicherung, Stand-up-Paddling, Schnorcheln, leichtes Catering,
   Wasser und Softdrinks, eine Flasche Champagner als Aufmerksamkeit des Hauses und
   Mehrwertsteuer`.
+- **AR** *(fijada el 20/08/2026, Fase 0)* — `وجبات خفيفة ومياه ومشروبات غازية
+  وزجاجة شمبانيا كمجاملة من الإدارة` · enumeración completa: `كابتن، وقود الرحلة
+  المعتادة، تأمين، ألواح تجديف واقفة، معدات غطس سطحي، وجبات خفيفة، مياه ومشروبات
+  غازية، وزجاجة شمبانيا كمجاملة من الإدارة، بالإضافة إلى ضريبة القيمة المضافة`.
+  **Orden deliberado** (condición del propietario al aprobar el checkpoint): las
+  bebidas sin alcohol van primero y la botella de champán al final, ponderada
+  pero **nunca oculta ni "bajo petición"** — se publica siempre, en todas las
+  páginas donde el resto de idiomas la publican.
 
-*«In omaggio» / «van het huis» / «als Aufmerksamkeit des Hauses» son las tres
-formas idiomáticas de «de cortesía»: dicen que la botella la pone la casa. **Una
-botella por reserva, incluida en la tarifa y en todas las duraciones**; no se
-promete marca, tamaño ni un número mayor de botellas. Las botellas **adicionales**
-siguen siendo extra de pago, y así hay que llamarlas para que no choquen con la
-incluida.*
+*«In omaggio» / «van het huis» / «als Aufmerksamkeit des Hauses» / «كمجاملة من
+الإدارة» son las formas idiomáticas de «de cortesía»: dicen que la botella la
+pone la casa. **Una botella por reserva, incluida en la tarifa y en todas las
+duraciones**; no se promete marca, tamaño ni un número mayor de botellas. Las
+botellas **adicionales** siguen siendo extra de pago, y así hay que llamarlas
+para que no choquen con la incluida.*
 
 **Equipo de sonido** *(confirmado el 19/08/2026; corrige la confirmación anterior,
 que lo daba por inexistente)*
 
 - **NL** — `geluidssysteem met Bluetooth: verbind je eigen muziek`
 - **DE** — `Soundsystem mit Bluetooth: eigene Musik verbinden`
+- **AR** *(fijada el 20/08/2026, Fase 0)* — `نظام صوت بتقنية Bluetooth: يمكنكم
+  توصيل موسيقاكم الخاصة`. **"Bluetooth" se escribe siempre en caracteres
+  latinos dentro de la frase árabe, nunca transliterado a `بلوتوث`.** Dos
+  razones: (1) es como se escribe de verdad en la publicidad tecnológica
+  árabe, no un forzado; (2) `check-datos-comerciales.sh` filtra por la
+  subcadena literal `bluetooth` case-insensitive en los 8 idiomas — si se
+  transliterara, las 29 páginas AR darían falso negativo y habría que tocar el
+  script. Con esta redacción no hace falta.
 
 *El cliente conecta su propia música. **Prohibido** prometer DJ, barra, altavoces
 portátiles adicionales, karaoke, ni marca o potencia del equipo — y nada de
@@ -297,10 +333,13 @@ portátiles adicionales, karaoke, ni marca o potencia del equipo — y nada de
 - **IT** — `Porto base: Puerto Banús. Partenza da [X] disponibile su richiesta.`
 - **NL** — `Thuishaven: Puerto Banús. Vertrek vanuit [X] op aanvraag mogelijk.`
 - **DE** — `Heimathafen: Puerto Banús. Abfahrt ab [X] auf Anfrage möglich.`
+- **AR** *(fijada el 20/08/2026, Fase 0)* — `الميناء الرئيسي: بويرتو بانوس.
+  الانطلاق من [X] متاح عند الطلب.`
 
 *Igual que en ES/EN/FR/RU: **prohibido** inventar suplementos, precios de
 recogida, tiempos de traslado del barco o condiciones. Solo «su richiesta / op
-aanvraag / auf Anfrage», y nunca ofrecer la salida desde X como estándar.*
+aanvraag / auf Anfrage / عند الطلب», y nunca ofrecer la salida desde X como
+estándar.*
 
 **Capacidad**
 
@@ -310,16 +349,21 @@ aanvraag / auf Anfrage», y nunca ofrecer la salida desde X como estándar.*
   boot, niet per persoon`.
 - **DE** — `bis zu 10 Personen an Bord` · tarifa: `der Preis gilt für das ganze
   Boot, nicht pro Person`.
+- **AR** *(fijada el 20/08/2026, Fase 0)* — `حتى 10 أشخاص على متن اليخت` ·
+  tarifa: `السعر يشمل اليخت بالكامل، وليس للشخص الواحد`.
 
 **Motorización**
 
 - **IT** — `2× Mercury V12 da 600 CV (1.200 CV totali)`
 - **NL** — `2× Mercury V12 van 600 pk (1.200 pk in totaal)`
 - **DE** — `2× Mercury V12 mit je 600 PS (1.200 PS gesamt)`
+- **AR** *(fijada el 20/08/2026, Fase 0)* — `2× Mercury V12 بقوة 600 حصان لكل
+  محرك (1,200 حصان إجمالي)`
 
 **Patrón multilingüe.** El patrón habla **ES · EN · FR · RU**. Las páginas de los
 idiomas nuevos lo dicen tal cual y **no** afirman que el patrón hable italiano,
-neerlandés, alemán ni árabe a bordo.
+neerlandés, alemán ni árabe a bordo. **AR** *(fijada el 20/08/2026)* —
+`يتحدث القبطان الإسبانية والإنجليزية والفرنسية والروسية.`
 
 **Atención en italiano (confirmado por el propietario el 19/08/2026).** Se
 atiende por **WhatsApp y email en italiano**. Es publicable en las páginas IT
@@ -333,7 +377,9 @@ derivar de aquí que el patrón hable italiano a bordo, que haya alguien
 italoparlante en el barco o que la atención sea 24/7. Donde conviven las dos
 cosas —la comparativa `barca-privata-vs-piattaforme`— se dicen por separado y en
 ese orden: el patrón habla ES/EN/FR/RU, la asistencia escrita es en italiano.
-Para NL, DE y AR el dato **sigue sin confirmar**: no se publica.
+Para NL, DE y AR el dato **sigue sin confirmar**: no se publica. **La atención
+por WhatsApp en árabe está planificada para el repaso final del programa**
+(§3 de `ESTADO.md`), no para esta oleada: no adelantarla en ninguna página AR.
 
 ### Páginas legales
 
@@ -341,8 +387,10 @@ Para NL, DE y AR el dato **sigue sin confirmar**: no se publica.
 cookies existen solo en ES/EN/FR/RU (16 páginas). El footer de las páginas
 IT/NL/DE/AR enlaza a las **EN** (`/legal-notice`, `/privacy-policy`,
 `/terms-conditions`, `/cookies-policy`), con `hreflang="en"` en cada enlace y un
-`(in inglese)` visible al lado para que nadie llegue por sorpresa a una página
-en otro idioma. Decisión del propietario.
+aviso visible al lado en el idioma de la página para que nadie llegue por
+sorpresa a una página en otro idioma — `(in inglese)` en italiano, `(in het
+Engels)` en neerlandés, `(auf Englisch)` en alemán y **`(بالإنجليزية)`** en
+árabe. Decisión del propietario.
 
 ### Formularios de reserva
 
@@ -381,14 +429,64 @@ de la página: el test lo comprueba con `localeCompare(nombre, lang)`.
 **AR es la última y no se empieza hasta cerrar DE.** No es «un idioma más»:
 requiere `dir="rtl"` en `<html>`, espejado de nav, footer, breadcrumbs y grids,
 revisión de tipografía y de los iconos direccionales, y una pasada de QA visual
-completa. Nada de eso está hecho, y hacerlo a medias se ve peor que no tenerlo.
+completa.
 
-Lo único ya preparado es la infraestructura del selector: `ORDER`, `CODE`,
-`ENDONYM`, `HOME`, `BTN_LABEL` y el conjunto `RTL` de
+Lo único ya preparado desde antes era la infraestructura del selector: `ORDER`,
+`CODE`, `ENDONYM`, `HOME`, `BTN_LABEL` y el conjunto `RTL` de
 `scripts/apply-lang-switcher.py` ya incluyen `ar`, el generador emite `dir="rtl"`
 en el enlace al árabe desde cualquier página LTR, `check-lang-switcher.py` valida
 que ese `dir` esté donde toca y solo ahí, y el panel del selector se posiciona
 con `inset-inline-end` en vez de `left`, así que se ancla solo al lado correcto.
+
+**Fase 0 — infraestructura RTL, resuelta y aprobada por el propietario el
+20/08/2026.**
+
+- **Espejado con propiedades lógicas, no un bloque `[dir="rtl"]` grande.** El
+  sitio no tiene hoja de estilos compartida (cada página lleva sus estilos
+  inline); grid y flexbox ya son *direction-aware* de forma nativa —un
+  `grid-template-columns:repeat(3,1fr)` o un `display:flex` en fila se espejan
+  solos bajo `dir="rtl"`—, así que lo único que no se espeja solo son las
+  propiedades físicas de posicionamiento (`left`, `right`, `margin-left`,
+  `text-align:left`). Como las 29 páginas AR son ficheros nuevos, cada una
+  escribe esas propiedades ya en su forma **lógica** desde el origen
+  (`inset-inline-start/end`, `margin-inline-start/end`, `text-align:start`),
+  que resuelve sola según el `dir` heredado del `<html>`. Cero impacto en las
+  217 páginas LTR porque no se tocan.
+- **Dos cambios en `mobile.css`, los dos inertes en LTR** (verificados:
+  `inset-inline-*` = valor físico original cuando `dir="ltr"`, así que no
+  cambia ni un píxel en las páginas existentes): la alineación del grupo
+  idioma+CTA del header en ≤760px pasa de `margin-left:auto` a
+  `margin-inline-start:auto`, y el botón flotante de WhatsApp en la misma
+  media query pasa de `right:16px!important;bottom:16px!important` a
+  `inset-inline-end:16px!important;bottom:16px!important`. Motivo de tocarlo:
+  ambos selectores matchean por substring de estilo (`div[style*="gap:16px"]`,
+  `a[href^="https://wa.me"][style*="position:fixed"]`) y alcanzarían también a
+  las páginas AR si reutilizan el mismo patrón de nav/botón. **`CSS_V` sube a
+  4** en `scripts/apply-lang-switcher.py` (`JS_V` se queda en 2: no se tocó
+  `js/`), y hay que reejecutar el script para propagar `?v=4`.
+- **El botón flotante de WhatsApp se espeja** (`inset-inline-start` en vez de
+  `right` en el estilo inline de cada página AR, incluida la posición base
+  fuera de la media query): coherencia total con la lectura RTL, ya que no
+  había ningún dato fuerte a favor de dejarlo fijo a la derecha.
+- **Flechas `→` en los CTA se escriben `←`** en el texto de las páginas AR: es
+  contenido, no CSS, así que no hay nada que espejar por script — cada página
+  nace con el carácter correcto.
+- **No hay breadcrumb visual en pantalla** (solo `BreadcrumbList` en JSON-LD),
+  así que no hay separadores que mirror-ear.
+- **Tipografía**: **Cairo** para títulos (sustituye a Space Grotesk) y
+  **Tajawal** para cuerpo de texto (sustituye a Manrope), cargadas de Google
+  Fonts con el mismo patrón `media="print" onload="this.media='all'"` que ya
+  usa el sitio, en un `<link>` **propio de las páginas AR** — no se añade al
+  `<link>` compartido de las 217 páginas, así que ningún otro idioma paga el
+  peso extra. Verificado con `curl` a una página ES tras cada entrega: la
+  etiqueta de Cairo/Tajawal no debe aparecer.
+- **Prefijo telefónico por defecto del formulario `/hajz` (Entrega 2):
+  `+971` (EAU).** El patrón del repo usa el país "representativo" del idioma,
+  no el más populoso (EN→`+44` GB, RU→`+7`); el árabe no tiene un único país,
+  pero el brief fija la audiencia principal como Golfo con EAU/Dubái nombrado
+  primero y el mercado de verano en Marbella mejor asentado ahí. Colación de
+  los 54 países con `localeCompare('ar')`, igual que las oleadas anteriores.
+  Teléfono destino: se mantiene `+33`.
 
 ### Al abrir el blog de un idioma nuevo (Entrega 3)
 

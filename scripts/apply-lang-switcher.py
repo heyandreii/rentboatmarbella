@@ -20,7 +20,7 @@ ROOT = os.path.abspath(sys.argv[1] if len(sys.argv) > 1 else '.')
 
 # Versión de los assets servidos `immutable`. Subirlas aquí y reejecutar es lo
 # que impide que un visitante recurrente vea el HTML nuevo con el asset viejo.
-CSS_V = 3
+CSS_V = 4
 JS_V = 2
 
 # Orden de aparición en el panel. Los cuatro originales primero y las oleadas

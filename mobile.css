@@ -71,7 +71,7 @@ html,body{overflow-x:hidden}
      misma fila que el logo: el header pasa de 3 filas a 2. margin-left:auto en
      vez de fiarlo al space-between del padre, para que el grupo quede pegado a
      la derecha tanto si comparte fila con el logo como si no. */
-  div[data-rbm-nav] div[style*="gap:16px"]{order:1;width:auto;margin-left:auto;justify-content:flex-end!important;gap:10px!important}
+  div[data-rbm-nav] div[style*="gap:16px"]{order:1;width:auto;margin-inline-start:auto;justify-content:flex-end!important;gap:10px!important}
   /* A 390px el logo se comía 210 de los 358 disponibles. Con 24px de alto y un
      CTA algo menos ancho entra hasta el ruso («Забронировать», el más largo).
      Si aun así no cupiera en algún dispositivo, el flex-wrap lo baja a una
@@ -89,7 +89,7 @@ html,body{overflow-x:hidden}
   div[style*="grid-template-columns:1.3fr"] a{padding:14px 26px!important;justify-content:center!important}
   img[style*="height:420px"],img[style*="height:400px"]{height:260px!important}
   div[style*="height:420px"],div[style*="height:400px"],div[style*="height:640px"]{height:300px!important}
-  a[href^="https://wa.me"][style*="position:fixed"]{right:16px!important;bottom:16px!important}
+  a[href^="https://wa.me"][style*="position:fixed"]{inset-inline-end:16px!important;bottom:16px!important}
 }
 
 @media (max-width: 380px){
