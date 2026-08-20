@@ -52,42 +52,49 @@ equipo|fr|enceinte portable|bar premium|dj à bord|boissons fraîches incluses|k
 equipo|ru|переносн\w+ колонк|премиум-бар|диджей на борту|караоке
 equipo|it|cassa portatile|open bar premium|dj a bordo|bevande fredde incluse|karaoke
 equipo|nl|draagbare speaker|premium bar|dj aan boord|koude drankjes inbegrepen|karaoke
+equipo|de|tragbare[rn]? Lautsprecher|Premium-Bar|DJ an Bord|kalte Getränke inklusive|Karaoke
 nevera|es|nevera a bordo|nevera incluida|frigorífico
 nevera|en|(fridge|refrigerator|cool ?box|ice ?box) (on board|included)|on-?board fridge
 nevera|fr|(frigo|réfrigérateur|glacière) (à bord|inclus)
 nevera|ru|холодильник на борту|холодильник включ
 nevera|it|(frigorifero|frigo|ghiacciaia) (a bordo|incluso)
 nevera|nl|koelkast (aan boord|inbegrepen)|koelbox aan boord|minibar aan boord
+nevera|de|Kühlschrank (an Bord|inklusive)|Kühlbox an Bord|Minibar an Bord
 hielo|es|agua y hielo|hielo incluido|con hielo
 hielo|en|water and ice|ice included|ice buckets?
 hielo|fr|eau et glaçons|glaçons inclus|seau à glace
 hielo|ru|вода и лёд|со льдом|лёд включ
 hielo|it|acqua e ghiaccio|ghiaccio incluso|con ghiaccio|secchiello del ghiaccio
 hielo|nl|water en ijs\b|\bijs inbegrepen|ijsemmer|ijsblokjes|\bijs aan boord
+hielo|de|Wasser und \bEis\b|\bEis inklusive|\bEis an Bord|Eiswürfel|Eiskübel
 descorche|es|descorche|traer (tu|vuestra|su|vuestras|sus) propia?s? bebidas?|subir (tu|vuestra) bebida
 descorche|en|corkage|bring your own (drinks?|cava|wine|bottles?|booze|alcohol)
 descorche|fr|droit de bouchon|apporter (vos|votre) (propres? )?boissons?
 descorche|ru|со своим алкоголем|свои напитки|своими напитками
 descorche|it|diritto di tappo|portare (le |i )?(vostr[ie] )?(bevande|alcolici|bottiglie) da casa
 descorche|nl|kurkengeld|(eigen|zelf) (drank|drankjes|flessen) (mee|meenemen)|neem je eigen drank
+descorche|de|Korkgeld|eigene Getränke (mitbringen|mitnehmen)|Getränke selbst mitbringen
 ducha|es|ducha de agua dulce
 ducha|en|fresh ?water shower
 ducha|fr|douche (à |d.)eau douce
 ducha|ru|пресн(ый|ого) душ
 ducha|it|doccia (di |ad )?acqua dolce
 ducha|nl|zoetwaterdouche|douche aan boord
+ducha|de|Süßwasserdusche|Dusche an Bord
 colchoneta|es|colchoneta
 colchoneta|en|floating mat|inflatable mat
 colchoneta|fr|matelas (flottant|gonflable)
 colchoneta|ru|(надувной|плавучий|плавающий) матрас
 colchoneta|it|materassino
 colchoneta|nl|opblaasmatras|drijfmatras|luchtbed
+colchoneta|de|Luftmatratze|Schwimmmatte|Badeinsel
 alcohol|es|barra libre|alcohol incluido|bebidas alcohólicas incluidas
 alcohol|en|open bar|alcohol included|alcoholic drinks included
 alcohol|fr|open bar|alcool inclus|boissons alcoolisées incluses
 alcohol|ru|открытый бар|алкоголь включ
 alcohol|it|open bar|alcolici inclusi|bevande alcoliche incluse
 alcohol|nl|open bar|alcohol inbegrepen|alcoholische dranken inbegrepen|onbeperkt drinken
+alcohol|de|open bar|Alkohol inklusive|alkoholische Getränke inklusive|Getränke frei
 tarifa6h|xx|6 ?h(oras|ours|eures)? ?[·–-] ?2[.,]400|2[.,]400 ?€|€ ?2[.,]400
 temporada|es|descuentos? de temporada|precios especiales|tarifas? reducidas?|precios? reducidos?|oferta de temporada|más barato en (invierno|temporada baja)|barco premium por menos
 temporada|en|(seasonal|winter|low.season) discounts?|special rates?|special prices?|lower prices?|cheaper in (winter|the low season)|premium boat for less
@@ -95,6 +102,7 @@ temporada|fr|réductions? de saison|prix réduits?|tarifs réduits|prix spéciau
 temporada|ru|скидк\w* (в|на) (низкий|зимн)|специальные цены|дешевле (зимой|в низкий сезон)
 temporada|it|sconti? (di |in )?(stagione|bassa stagione|inverno)|prezzi ridotti|prezzi speciali|più economico in (inverno|bassa stagione)
 temporada|nl|korting(en)? (in|voor) (de winter|het laagseizoen)|winterkorting|lagere prijs|speciale prijzen
+temporada|de|Saisonrabatt|Nebensaisonpreise|Sonderpreise|günstigere Preise|Rabatt in der Nebensaison|billiger im Winter
 copavieja|es|copa de champ[aá]n|copa de champagne
 copavieja|en|(complimentary |free )?glass of champagne
 copavieja|fr|coupe de champagne (offerte|incluse)
