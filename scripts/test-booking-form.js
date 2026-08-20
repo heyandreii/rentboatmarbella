@@ -1,5 +1,5 @@
-// Pruebas del formulario de reserva de las 6 páginas (/reservar, /booking,
-// /reservation, /zabronirovat, /prenota, /reserveren). No abre navegador ni red: lee los .html, extrae
+// Pruebas del formulario de reserva de las 7 páginas (/reservar, /booking,
+// /reservation, /zabronirovat, /prenota, /reserveren, /buchen). No abre navegador ni red: lee los .html, extrae
 // el bloque de validación REAL que se sirve al usuario (entre los marcadores
 // [RBM-VALIDATION-START] y [RBM-VALIDATION-END]) y lo ejecuta, más una serie de
 // comprobaciones estructurales sobre el marcado y el selector de prefijo.
@@ -15,7 +15,8 @@ const PAGES = [
   { file: 'reservation.html', lang: 'fr', dial: '+33', iso: 'FR', pais: 'Allemagne', buscar: 'Rechercher un pays' },
   { file: 'zabronirovat.html', lang: 'ru', dial: '+7', iso: 'RU', pais: 'Германия', buscar: 'Поиск страны' },
   { file: 'prenota.html', lang: 'it', dial: '+39', iso: 'IT', pais: 'Germania', buscar: 'Cerca un paese' },
-  { file: 'reserveren.html', lang: 'nl', dial: '+31', iso: 'NL', pais: 'Duitsland', buscar: 'Land zoeken' }
+  { file: 'reserveren.html', lang: 'nl', dial: '+31', iso: 'NL', pais: 'Duitsland', buscar: 'Land zoeken' },
+  { file: 'buchen.html', lang: 'de', dial: '+49', iso: 'DE', pais: 'Deutschland', buscar: 'Land suchen' }
 ];
 
 let fallos = 0;
