@@ -1,6 +1,6 @@
 # Estado del proyecto — rentboatmarbella.com
 
-**Documento vivo.** Última actualización: **20 de agosto de 2026** (4.ª tanda del día).
+**Documento vivo.** Última actualización: **21 de agosto de 2026**.
 Objetivo: que cualquier sesión futura (o el propietario) entienda en 5 minutos qué
 es esto, qué está hecho, qué falta y qué reglas no se pueden romper.
 
@@ -18,12 +18,13 @@ el proyecto).
 Web de **chárter privado de un solo barco** —un De Antonio D50 de 15 m, año 2026,
 amarrado en **Puerto Banús (Marbella)**— con reserva directa, sin marketplace de
 por medio. Cuatro idiomas completos con URLs traducidas (**ES / EN / FR / RU**) y
-un **programa multiidioma** en curso que lo lleva a ocho: **IT → NL → DE → AR**,
-en oleadas de tres entregas cada una. **El italiano, el neerlandés y el alemán
-están completos**: 29 páginas cada uno —core, landings de ocasión, formulario
-propio, índice de blog y 14 posts— y son el quinto, el sexto y el séptimo idioma
-del sitio a todos los efectos. **La oleada siguiente y última es AR**, y no se
-abre hasta que el propietario decida, tras revisar los datos de demanda.
+un **programa multiidioma** que lo llevó a ocho: **IT → NL → DE → AR**, en
+oleadas de tres entregas cada una. **El programa está COMPLETO: los ocho
+idiomas están cerrados** — italiano, neerlandés, alemán y árabe suman 29 páginas
+cada uno (core, landings de ocasión, formulario propio, índice de blog y 14
+posts) y son el quinto, sexto, séptimo y octavo idioma del sitio a todos los
+efectos. Único cabo suelto: el repaso final de si se atiende también en
+neerlandés, alemán y árabe (ver §3, «Programa multiidioma»).
 
 **Stack:** HTML estático puro, sin framework ni paso de build. Desplegado en
 **Vercel** desde `main` (`cleanUrls: true`, `trailingSlash: false`); cada push a
@@ -31,10 +32,10 @@ abre hasta que el propietario decida, tras revisar los datos de demanda.
 de cada solicitud por **Resend**. Medición con **GA4**, consentimiento con
 **Cookiebot**.
 
-**Tamaño actual:** 217 URLs en el sitemap · **98 posts de blog** · **7 índices de
-blog** · **7 formularios de reserva** (uno por idioma publicado) · al menos 715
-bloques JSON-LD validados (cifra de la Entrega 2 DE; la Entrega 3 no volvió a
-contarlos tras sumar los 14 posts alemanes).
+**Tamaño actual:** 246 URLs en el sitemap · **112 posts de blog** · **8 índices
+de blog** (uno por idioma) · **8 formularios de reserva** propios, 608
+comprobaciones en verde (`test-booking-form.js`) · **880 bloques JSON-LD**
+(recuento directo sobre el HTML publicado, 21/08/2026).
 
 **Estado general:** el sitio está **completo y en producción**. Las tandas de julio
 y agosto de 2026 (PR #1 a #15) cerraron los problemas críticos (404 del blog,
@@ -848,6 +849,88 @@ Checks: `check-datos-comerciales.sh` 0 prohibidos (patrón nuevo incluido) ·
 `check-links.sh` 207 URLs comprobadas contra producción, 0 fallos, 98 posts sin
 huérfanos · `check-offer-price.sh` 7/7 landings OK.
 
+### Oleada AR completa: las tres entregas. Programa multiidioma CERRADO 8/8 (20-21 de agosto de 2026)
+
+**El árabe es el octavo y último idioma del sitio**, con 29 páginas: 5 core, 8
+landings de ocasión, el formulario `/hajz`, el índice `/mudawana-bahriya-marbella`
+y 14 posts. Con su cierre termina el programa multiidioma completo abierto en
+julio: **8 idiomas, 246 URLs**. Fase 0 (RTL, tipografía Cairo/Tajawal, formato
+de cifras, redacciones canónicas) quedó resuelta y aprobada por el propietario
+el 20/08/2026 — ver README, «Idiomas del programa multiidioma».
+
+- **Entrega 1 — core (20/08/2026, commit `af3fac4`).** `/ar`,
+  `/ustul-al-yakht-marbella`, `/anshita-yakht-marbella`,
+  `/ard-zawaj-yakht-marbella`, `/taswir-zafaf-yakht-marbella`. 5 grupos
+  `hreflang` de 7 a 8 miembros, 35 páginas hermanas reescritas + `x-default`
+  a ES. CTAs temporales a `/booking` (EN), nav todavía sin «Blog». Sitemap
+  217 → 222.
+- **Entrega 2 — landings y formulario (20-21/08/2026, commit `ca0381b`).** Las
+  8 landings de ocasión (despedidas soltero/soltera, cumpleaños, sunset,
+  delfines, Gibraltar, eventos de empresa, comparativa) y `/hajz`. RTL nativo
+  en el formulario (LRM en precios, `<bdi>` en el contador de huéspedes y en
+  el mensaje de WhatsApp), colación árabe real de los 54 países del selector
+  de prefijo, prefijo por defecto `+971` (EAU). 27 CTA de la Entrega 1
+  recableados a `/hajz`. 9 grupos `hreflang` ampliados (61 páginas hermanas).
+  Alta en `scripts/test-booking-form.js` (8º formulario) y
+  `scripts/check-offer-price.sh` (8ª landing corporativa). Sitemap 222 → 231.
+
+  **Incidente y reconstrucción.** Una sesión anterior había cerrado esta
+  misma Entrega 2 con un resumen que daba por commiteado el hash `9276e1a`
+  ("9 páginas + formulario, checks en verde"); ese commit nunca existió en el
+  árbol — se perdió al tocar el límite de contexto de la sesión, y el
+  resumen lo reportó como hecho sin verificarlo con `git log`. La sesión
+  siguiente estuvo a punto de dar el push por bueno. La Entrega 2 se
+  **rehízo por completo** y esta vez sí quedó commiteada (`ca0381b`) y
+  verificada antes de escribir el resumen. De aquí sale la regla permanente
+  **COMMIT ANTES DE RESUMEN** (ver README, «Reglas para futuras sesiones»):
+  si el contexto se acerca al límite, se commitea el trabajo parcial primero
+  y el resumen de cierre solo se escribe después de confirmar con
+  `git log`/`git show <hash>` que el commit citado existe de verdad.
+
+- **Entrega 3 — el blog. Oleada AR y programa multiidioma COMPLETOS
+  (21/08/2026, commit `922846a`).** `/mudawana-bahriya-marbella` y los 14
+  posts (precios, licencia, calas, bodas y eventos, pedida,
+  despedida-consejos, boat party, Costa del Sol, invierno y los 5 posts de
+  zona). Nav y footer de las 14 páginas AR previas con el nuevo enlace
+  «المدونة». 15 grupos `hreflang` de 7 a 8 miembros (105 páginas hermanas
+  reescritas). `check-links.sh` con el índice AR dado de alta en `INDEXES` e
+  `index_for_lang()`. Sitemap 231 → **246**. Selector de idioma regenerado en
+  las 246 páginas del sitio (1.892 enlaces comprobados).
+
+  **Redactado por 15 subagentes en paralelo** (un brief compartido con datos
+  confirmados, reglas RTL y prohibiciones + un brief específico por pieza
+  con su ángulo), integrado y verificado por la sesión coordinadora. Deuda
+  propia detectada y corregida en la integración, no vista por ningún
+  script hasta entonces: **6 posts** sin `inLanguage:"ar"` en su bloque
+  `FAQPage` (el `BlogPosting` sí lo llevaba); **5 posts** que habían omitido
+  el pequeño `<nav>` interno «Inicio · Blog · título» del artículo por una
+  instrucción de brief demasiado genérica («no hay breadcrumb visual en el
+  sitio», cierto para landings pero no para los posts del blog, que sí lo
+  llevan en las 7 lenguas anteriores); y **3 posts** con la etiqueta del
+  blog inconsistente en su `BreadcrumbList` JSON-LD (normalizada a
+  «المدونة» en los 15). Ningún `[VERIFICAR:]` quedó pendiente: los
+  subagentes cubrieron todos los datos comerciales con el brief o con la
+  traducción literal de su referencia alemana.
+
+  **Anti-clon de los 5 posts de zona:** trigramas de palabra sobre
+  `<article>`, cuerpo de 845 a 1.072 palabras, solapamiento máximo **16,5%**
+  (Estepona vs. Málaga) — en línea con IT (17,7%) y DE (17,2%).
+
+  Checks: `check-links.sh` 235 URLs comprobadas contra producción, 0
+  fallos, 112 posts sin huérfanos (98→112) · `check-lang-switcher.py` 246
+  páginas, 1.892 enlaces, en verde · sincronía FAQ HTML↔JSON-LD verificada
+  por script propio, 15/15 · `check-datos-comerciales.sh` 0 prohibidos ·
+  `check-offer-price.sh` 8/8 · `test-booking-form.js` sin cambios, sigue en
+  **608 comprobaciones** sobre 8 formularios. Verificación post-deploy:
+  las 29 URLs AR en 200, `dir="rtl"` servido, control ES en `lang="es"` sin
+  fuentes Cairo/Tajawal, nav «Blog» presente en las 14 páginas AR previas.
+
+**Programa multiidioma cerrado — contadores finales:** **8 idiomas** (ES,
+EN, FR, RU, IT, NL, DE, AR) · **246 URLs** en el sitemap · **112 posts** de
+blog indexados, **8 índices** de blog (uno por idioma) · **8 formularios de
+reserva** propios, 608 comprobaciones en verde · páginas legales solo en
+ES/EN/FR/RU (16), con los idiomas nuevos enlazando a las EN.
+
 ---
 
 ## 3. Pendiente — backlog de otoño
@@ -894,7 +977,7 @@ huérfanos · `check-offer-price.sh` 7/7 landings OK.
    Las 45 páginas afectadas se corrigieron en la misma tanda, y las 76 de la
    redacción del champán en la tanda de la botella. Ver §2.
 
-### Programa multiidioma — lo que queda
+### Programa multiidioma — CERRADO 8/8. Queda el repaso final
 
 9. ~~**Oleada IT, Entrega 2.**~~ **HECHA** (19/08/2026): 8 landings de ocasión +
    `/prenota`, 27 CTA recableados, hub y footer al día. Ver §2.
@@ -910,22 +993,21 @@ huérfanos · `check-offer-price.sh` 7/7 landings OK.
    §2. Misma pregunta viva que el neerlandés: si se confirma que se atiende en
    alemán, hay que repasar las 29 páginas (§5.19).
 
-13. **Oleada AR — la última, y su apertura es una decisión del propietario, no
-   una fecha fija.** No se abre por calendario: se abre cuando el propietario
-   revise los datos de demanda (impresiones en Search Console, igual que se
-   miró para el alemán antes del programa, ver §2 «Contenido y marketing») y
-   decida si toca ahora. No es un idioma más cuando se abra: `dir="rtl"`,
-   espejado de nav, footer, breadcrumbs y grids, tipografía e iconos
-   direccionales, y una pasada de QA visual completa. La infraestructura del
-   selector ya está preparada (ver README).
+13. ~~**Oleada AR.**~~ **HECHA** (20-21/08/2026), las tres entregas: 29 páginas
+   (`af3fac4`, `ca0381b`, `922846a`). Ver §2. **Con esto el programa
+   multiidioma queda CERRADO: 8/8 idiomas, 246 URLs.** Misma pregunta viva
+   que NL y DE: si se confirma que se atiende en árabe (WhatsApp/email), hay
+   que repasar las 29 páginas AR para añadirlo — sigue sin confirmar, ver
+   README «Atención en italiano».
 
-14. **Repaso final pendiente, a hacer cuando se cierre (o se descarte) AR — no
-   antes, para no repetirlo dos veces:**
-   - **Atención en neerlandés y en alemán**, sin confirmar en ninguna de las 58
-     páginas (29 + 29). Preguntas vivas en §5.16 y §5.19; si la respuesta llega
-     antes del repaso final, se aplica en el momento y no hay que esperar.
+14. **Repaso final pendiente — único punto que queda abierto del programa
+   multiidioma, ya no bloqueado por nada:**
+   - **Atención en neerlandés, alemán y árabe**, sin confirmar en ninguna de
+     las 87 páginas (29 × 3). Preguntas vivas en §5.16, §5.19 y §5.20; si la
+     respuesta llega antes del repaso final, se aplica en el momento y no hay
+     que esperar.
    - **Matiz italiano en «coordinación de la salida a bordo».** La corrección
-     de hoy (§2, mini-tanda del 20/08/2026) reescribió ES/EN/FR/RU porque
+     del 20/08/2026 (§2, mini-tanda) reescribió ES/EN/FR/RU porque
      prometían coordinar «el evento» entero; el italiano dice
      `coordinamento dell'evento` — sin el intensificador «completo» que
      disparaba el patrón— y se dejó tal cual por no ser el mismo sobreclaim.
@@ -1063,6 +1145,17 @@ Referencias, **sin claves ni tokens**. Nada de esto vive en el repo.
    erhältlich» como puente si es no) y **candidata natural a resolverse junto
    con el neerlandés en el repaso final del programa** (ver §3, ítem 14) en vez
    de por separado.
+
+20. **🟠 ¿Se atiende en ÁRABE por WhatsApp y email?** — misma pregunta viva que
+   los puntos 16 y 19, ahora con las tres oleadas (NL, DE, AR) cerradas y el
+   programa multiidioma completo. Arrancó **sin** el dato — el README lo
+   marca explícito como fuera de alcance de la Entrega 3 («no adelantarla en
+   ninguna página AR»)— así que **ninguna de las 29 páginas AR lo afirma**;
+   donde el italiano lo dice, el árabe pone `يتحدث القبطان الإسبانية
+   والإنجليزية والفرنسية والروسية`. Mismas dos ramas que los puntos 16 y 19
+   (repasar 29 páginas si es sí, decidir un puente — p. ej. «متوفر بالإنجليزية»
+   — si es no) y **última pieza del repaso final del programa** (ver §3, ítem
+   14): con NL, DE y AR cerrados, el repaso final ya no tiene nada bloqueándolo.
 
 17. ~~**🔴 ¿Existe de verdad un descuento de temporada baja?**~~ **RESUELTO**
    (19/08/2026): **no existe.** El propietario confirma **tarifa única todo el

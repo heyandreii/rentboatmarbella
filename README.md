@@ -11,9 +11,10 @@ los `.html` se sirven tal cual (con `cleanUrls: true`, ver `vercel.json`).
 ## Estructura
 
 - `*.html` — páginas del sitio con URLs traducidas. Cuatro idiomas completos
-  (ES/EN/FR/RU) más los del **programa multiidioma** en curso (IT/NL/DE/AR, ver
-  su sección más abajo): **IT y NL están completos**, con 29 páginas cada uno
-  (core, landings de ocasión, formulario propio, índice de blog y 14 posts).
+  (ES/EN/FR/RU) más los cuatro del **programa multiidioma**, también completo
+  (IT/NL/DE/AR, ver su sección más abajo): **los ocho están cerrados**, con 29
+  páginas cada uno (core, landings de ocasión, formulario propio, índice de
+  blog y 14 posts) — **246 URLs** en total.
 - `post/*.html` — artículos del blog (servidos como `/post/<slug>`).
 - `img/` — imágenes (WebP + fallback JPG, con variantes responsivas `-640`/`-768`/`-1280`;
   no todas tienen las tres: nunca se genera una variante más ancha que el original).
@@ -143,12 +144,12 @@ una replica el sitio completo en **tres entregas**:
 | 2 | Resto de landings de ocasión + **formulario de reserva propio del idioma**. |
 | 3 | Blog completo, incluidos los 5 posts de zona. |
 
-**Estado:** **IT, NL y DE completos** — tres entregas cerradas cada uno, 29 páginas
-por idioma (5 core + 8 landings + formulario propio + índice de blog + 14 posts).
-**La oleada siguiente y última es AR**, y no se abre hasta que el propietario
-decida, tras revisar los datos de demanda, si toca ahora. Antes de escribir nada
-hay que fijar sus slugs en las tablas de abajo, igual que se hizo con las tres
-oleadas anteriores — y sumarle el espejado `dir="rtl"` que las demás no llevan.
+**Estado: PROGRAMA COMPLETO — IT, NL, DE y AR cerrados** (20-21/08/2026 el
+último, AR) — tres entregas cerradas cada uno, 29 páginas por idioma (5 core +
+8 landings + formulario propio + índice de blog + 14 posts). **246 URLs en el
+sitio.** Único cabo suelto: el repaso final de atención en NL/DE/AR por
+WhatsApp y email (ver ESTADO.md §3 y §5.16/§5.19/§5.20) — no bloquea nada, es
+contenido que se añade si la respuesta llega.
 
 ### Convención de slugs
 
@@ -223,8 +224,9 @@ con la suya:
 > asocia con salir al agua. Los 29 slugs NL se contrastaron uno a uno contra las
 > 159 URLs publicadas antes de crear ninguna página: **cero colisiones**.
 
-Los slugs de DE/AR se fijan aquí al abrir su oleada, antes de escribir una
-sola página, para que no haya dos convenciones conviviendo.
+Los slugs de DE y AR quedaron fijados aquí al abrir cada oleada, antes de
+escribir una sola página, para que no hubiera dos convenciones conviviendo —
+las notas de abajo documentan cómo se fijaron.
 
 > **Convención AR (fijada el 20/08/2026, Fase 0, con el visto bueno del
 > propietario).** El precedente que sigue el árabe es el **ruso**:
@@ -399,9 +401,10 @@ su oleada. Hasta entonces, los CTA de la Entrega 1 apuntan al formulario **EN**
 (`/booking`): es lo más cercano que un lector italiano, neerlandés o alemán
 entiende sin fricción, y evita publicar enlaces muertos o mandarlo al español.
 
-**IT ya está recableado:** los **27** CTA de las 5 páginas de la Entrega 1
-apuntan a `/prenota`, y el nav italiano tiene «Blog» desde la Entrega 3. **NL
-igual:** también **27** CTA, recableados a `/reserveren` en su Entrega 2. El grep para la oleada siguiente, con sus páginas:
+**Los ocho idiomas están recableados**, cada uno con sus 27 CTA de la Entrega 1
+apuntando a su propio formulario (`/prenota`, `/reserveren`, `/buchen`,
+`/hajz`...) y el nav con «Blog» desde su Entrega 3. El grep para comprobarlo en
+cualquier idioma, con sus páginas:
 
 ```bash
 grep -o 'href="/booking"' <páginas de la Entrega 1 del idioma> | wc -l
@@ -416,7 +419,8 @@ misma lógica ya probada (validación, prefijos, orden de disparo, `/api/lead`,
 no-fuga a GA4). Después hay que **dar de alta la página en
 `scripts/test-booking-form.js`** (array `PAGES`: fichero, `lang`, prefijo por
 defecto, ISO, nombre de Alemania y texto del buscador de países) y ejecutarlo:
-con el neerlandés son **456 comprobaciones** sobre 6 formularios.
+con los 8 formularios (el árabe, el último en incorporarse, con `+971` EAU por
+defecto) son **608 comprobaciones**.
 
 La lista de prefijos se traduce **y se reordena** alfabéticamente en el idioma
 de la página: el test lo comprueba con `localeCompare(nombre, lang)`.
@@ -424,12 +428,13 @@ de la página: el test lo comprueba con `localeCompare(nombre, lang)`.
 `js/form-tracking.js` no necesita cambios: saca el parámetro `lang` de
 `<html lang>`, así que el embudo de GA4 ya separa IT del resto por sí solo.
 
-### Árabe: última oleada, y con trabajo propio
+### Árabe: la última oleada, completa (20-21/08/2026)
 
-**AR es la última y no se empieza hasta cerrar DE.** No es «un idioma más»:
-requiere `dir="rtl"` en `<html>`, espejado de nav, footer, breadcrumbs y grids,
+**AR fue la última, y no se empezó hasta cerrar DE.** No fue «un idioma más»:
+requirió `dir="rtl"` en `<html>`, espejado de nav, footer, breadcrumbs y grids,
 revisión de tipografía y de los iconos direccionales, y una pasada de QA visual
-completa.
+completa — las tres entregas están cerradas (`af3fac4`, `ca0381b`, `922846a`),
+29 páginas, y con ella **el programa multiidioma queda completo (8/8)**.
 
 Lo único ya preparado desde antes era la infraestructura del selector: `ORDER`,
 `CODE`, `ENDONYM`, `HOME`, `BTN_LABEL` y el conjunto `RTL` de
@@ -471,8 +476,14 @@ con `inset-inline-end` en vez de `left`, así que se ancla solo al lado correcto
 - **Flechas `→` en los CTA se escriben `←`** en el texto de las páginas AR: es
   contenido, no CSS, así que no hay nada que espejar por script — cada página
   nace con el carácter correcto.
-- **No hay breadcrumb visual en pantalla** (solo `BreadcrumbList` en JSON-LD),
-  así que no hay separadores que mirror-ear.
+- **Landings, home, hub y formulario no llevan breadcrumb visual en pantalla**
+  (solo `BreadcrumbList` en JSON-LD). **Los posts del blog sí lo llevan**: un
+  `<nav>` de texto pequeño «Inicio · Blog · título» dentro del artículo, en
+  los 8 idiomas — se descubrió a mitad de la Entrega 3 AR que esta sección
+  generalizaba mal (decía que ningún idioma lo llevaba en ninguna página) y 5
+  de los 14 posts AR nacieron sin él por seguir esa instrucción; se corrigió
+  en la misma tanda. En árabe se espeja solo (propiedades lógicas, sin nada
+  que tocar por script).
 - **Tipografía**: **Cairo** para títulos (sustituye a Space Grotesk) y
   **Tajawal** para cuerpo de texto (sustituye a Manrope), cargadas de Google
   Fonts con el mismo patrón `media="print" onload="this.media='all'"` que ya
