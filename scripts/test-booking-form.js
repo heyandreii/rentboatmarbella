@@ -1,5 +1,5 @@
-// Pruebas del formulario de reserva de las 7 páginas (/reservar, /booking,
-// /reservation, /zabronirovat, /prenota, /reserveren, /buchen). No abre navegador ni red: lee los .html, extrae
+// Pruebas del formulario de reserva de las 8 páginas (/reservar, /booking,
+// /reservation, /zabronirovat, /prenota, /reserveren, /buchen, /hajz). No abre navegador ni red: lee los .html, extrae
 // el bloque de validación REAL que se sirve al usuario (entre los marcadores
 // [RBM-VALIDATION-START] y [RBM-VALIDATION-END]) y lo ejecuta, más una serie de
 // comprobaciones estructurales sobre el marcado y el selector de prefijo.
@@ -16,7 +16,8 @@ const PAGES = [
   { file: 'zabronirovat.html', lang: 'ru', dial: '+7', iso: 'RU', pais: 'Германия', buscar: 'Поиск страны' },
   { file: 'prenota.html', lang: 'it', dial: '+39', iso: 'IT', pais: 'Germania', buscar: 'Cerca un paese' },
   { file: 'reserveren.html', lang: 'nl', dial: '+31', iso: 'NL', pais: 'Duitsland', buscar: 'Land zoeken' },
-  { file: 'buchen.html', lang: 'de', dial: '+49', iso: 'DE', pais: 'Deutschland', buscar: 'Land suchen' }
+  { file: 'buchen.html', lang: 'de', dial: '+49', iso: 'DE', pais: 'Deutschland', buscar: 'Land suchen' },
+  { file: 'hajz.html', lang: 'ar', dial: '+971', iso: 'AE', pais: 'ألمانيا', buscar: 'البحث عن دولة' }
 ];
 
 let fallos = 0;
@@ -116,7 +117,10 @@ for (const pg of PAGES) {
 
   // ------------------------------- el teléfono viaja completo a los dos ----
   ok(/var tel=fullPhone\(\);/.test(submit), 'el teléfono se compone con prefijo + número');
-  ok(/\[CFG\.msg\.phone,tel\]/.test(submit), 'WhatsApp recibe el teléfono con prefijo');
+  // AR envuelve el teléfono con lrm() en el mensaje de WhatsApp (marca RTL invisible
+  // para que el número no se descoloque entre texto árabe); el resto de idiomas lo
+  // manda tal cual.
+  ok(/\[CFG\.msg\.phone,(?:lrm\(tel\)|tel)\]/.test(submit), 'WhatsApp recibe el teléfono con prefijo');
   ok(/phone:tel,/.test(submit), '/api/lead recibe el teléfono con prefijo');
   ok(!/phone:phoneEl/.test(submit), 'ya no se manda el número suelto sin prefijo');
 

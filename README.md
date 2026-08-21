@@ -515,6 +515,22 @@ curl -sI https://www.rentboatmarbella.com/robots.txt | head -1
 
 ## Reglas para futuras sesiones
 
+### Commit antes de resumen
+
+**El resumen de cierre de una tanda se escribe DESPUÉS de verificar con `git
+log`/`git show <hash>` que el commit citado existe de verdad en el árbol —
+nunca a partir de lo que la sesión "recuerda" haber hecho.** Si el contexto se
+acerca al límite de la sesión, lo primero es commitear el trabajo ya hecho
+(aunque sea parcial/WIP), no seguir avanzando ni escribir el resumen todavía.
+
+*Origen (20/08/2026):* una sesión cerró la Entrega 2 de la oleada AR con un
+resumen que daba por commiteado e íntegro el commit `9276e1a` (9 páginas +
+formulario, "aprobada para push"). Ese commit nunca existió — no estaba en el
+reflog, ni en ninguna rama, ni en el checkpoint automático de rate-limit (que
+solo guardó `.claude/RESUME.md`). El trabajo se perdió al tocar el límite de
+contexto, y el resumen lo reportó como hecho sin verificarlo. La sesión
+siguiente estuvo a punto de dar el push por bueno.
+
 ### Regla anti-invención de datos comerciales
 
 **Cualquier dato comercial en contenido nuevo (precios, duraciones, capacidades, extras, qué incluye una tarifa) debe existir previamente en la home o el formulario de reserva. Si no existe, marcarlo como `[CONFIRMAR CON PROPIETARIO]` y no publicar hasta confirmación. Nunca completar con cifras plausibles inventadas.**
