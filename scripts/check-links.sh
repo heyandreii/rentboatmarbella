@@ -44,7 +44,7 @@ if [ -n "${VERCEL_BYPASS_TOKEN:-}" ]; then
   echo "· Usando x-vercel-protection-bypass (Preview protegido)."
 fi
 
-INDEXES=(blog-nautico-marbella.html yacht-blog.html blog-nautique.html morskoy-blog.html blog-nautica-marbella.html vaarblog-marbella.html bootsblog-marbella.html)
+INDEXES=(blog-nautico-marbella.html yacht-blog.html blog-nautique.html morskoy-blog.html blog-nautica-marbella.html vaarblog-marbella.html bootsblog-marbella.html mudawana-bahriya-marbella.html)
 
 paths=$(for f in "${INDEXES[@]}"; do
           [ -f "$ROOT/$f" ] && grep -ohE 'href="/[^"#?]*"' "$ROOT/$f"
@@ -65,7 +65,7 @@ fi
 # (<html lang="xx">) y se exige que su índice enlace a /post/<slug>.
 # Mapa idioma -> índice: es→blog-nautico-marbella, en→yacht-blog,
 # fr→blog-nautique, ru→morskoy-blog, it→blog-nautica-marbella,
-# nl→vaarblog-marbella, de→bootsblog-marbella.
+# nl→vaarblog-marbella, de→bootsblog-marbella, ar→mudawana-bahriya-marbella.
 # ---------------------------------------------------------------------------
 index_for_lang() {
   case "$1" in
@@ -76,6 +76,7 @@ index_for_lang() {
     it) echo "blog-nautica-marbella.html" ;;
     nl) echo "vaarblog-marbella.html" ;;
     de) echo "bootsblog-marbella.html" ;;
+    ar) echo "mudawana-bahriya-marbella.html" ;;
     *)  echo "" ;;
   esac
 }
